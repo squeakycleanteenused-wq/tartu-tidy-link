@@ -370,6 +370,48 @@ export function BookingSection() {
           </form>
         </div>
       </section>
+
+      <Dialog open={confirmed !== null} onOpenChange={(o) => !o && setConfirmed(null)}>
+        <DialogContent className="max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <span className="grid size-9 place-items-center rounded-full bg-primary-soft text-primary">
+                <Check className="size-5" />
+              </span>
+              {t.booking.confirmTitle}
+            </DialogTitle>
+            <DialogDescription>
+              {t.booking.confirmText
+                .replace("{name}", confirmed?.name ?? "")
+                .replace("{email}", confirmed?.email ?? "")}
+            </DialogDescription>
+          </DialogHeader>
+          {confirmed && (
+            <div className="rounded-xl bg-secondary/70 p-4 text-sm">
+              <p className="font-semibold">{t.booking.confirmSummary}</p>
+              <dl className="mt-3 space-y-1.5">
+                {[
+                  [t.booking.service, confirmed.service],
+                  [t.booking.date, confirmed.date],
+                  [t.booking.time, confirmed.time],
+                  [t.booking.city, confirmed.city],
+                  [t.booking.objectAddress, confirmed.address],
+                ].map(([k, v]) => (
+                  <div key={k} className="flex flex-wrap justify-between gap-2">
+                    <dt className="text-muted-foreground">{k}</dt>
+                    <dd className="font-medium">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+          <DialogFooter>
+            <Button className="w-full rounded-full" onClick={() => setConfirmed(null)}>
+              {t.booking.close}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
