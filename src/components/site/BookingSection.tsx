@@ -30,6 +30,7 @@ import {
 import { cn } from "@/lib/utils";
 import { useLang } from "@/lib/i18n";
 import { submitBooking } from "@/lib/booking.functions";
+import { sendBookingEmails } from "@/lib/emailjs";
 
 const slotsForDay = (d: Date) => {
   const weekday = d.getDay();
@@ -98,25 +99,30 @@ export function BookingSection() {
     }
     setSending(true);
     try {
-      await submitBooking({
-        data: {
-          service,
-          clientType: clientType === "person" ? t.booking.person : t.booking.companyType,
-          name: name.trim(),
-          code: code.trim(),
-          billingAddress: billing.trim(),
-          objectAddress: objectAddress.trim(),
-          city,
-          email: email.trim(),
-          phone: phone.trim(),
-          date: format(date, "yyyy-MM-dd"),
-          time,
-          extra: extra.trim(),
-          consentTerms: c1,
-          consentWithdrawal: c2,
-          lang,
-        },
-      });
+      const payload = {
+        service,
+        clientType: clientType === "person" ? t.booking.person : t.booking.companyType,
+        name: name.trim(),
+        code: code.trim(),
+        billingAddress: billing.trim(),
+        objectAddress: objectAddress.trim(),
+        city,
+        email: email.trim(),
+        phone: phone.trim(),
+        date: format(date, "yyyy-MM-dd"),
+        time,
+        extra: extra.trim(),
+        consentTerms: c1,
+        consentWithdrawal: c2,
+      };
+
+      // Frontend-only email delivery via EmailJS.
+      await sendBookingEmails(payload);
+
+      // Best-effort backup copy in the database; never blocks the booking.
+      await submitBooking({ data: { ...payload, lang } }).catch((err) =>
+        console.warn("[booking] database backup skipped", err),
+      );
       toast.success(t.booking.success);
       setConfirmed({
         name: name.trim(),
