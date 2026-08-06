@@ -1,11 +1,9 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, MapPin, ShoppingBag, Sparkles } from "lucide-react";
+import { Menu, MapPin, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { Badge } from "@/components/ui/badge";
 import { useLang } from "@/lib/i18n";
-import { useCart } from "@/lib/shop";
 
 function LangSwitch() {
   const { lang, setLang } = useLang();
@@ -31,7 +29,6 @@ function LangSwitch() {
 
 export function Header() {
   const { t } = useLang();
-  const { count, setOpen } = useCart();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
@@ -70,20 +67,6 @@ export function Header() {
             ))}
           </nav>
           <LangSwitch />
-          <Button
-            variant="outline"
-            size="icon"
-            className="relative shrink-0 rounded-full"
-            onClick={() => setOpen(true)}
-            aria-label={t.shop.cart}
-          >
-            <ShoppingBag className="size-4" />
-            {count > 0 && (
-              <Badge className="absolute -right-1 -top-1 h-5 min-w-5 justify-center rounded-full px-1 text-[10px]">
-                {count}
-              </Badge>
-            )}
-          </Button>
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="shrink-0 rounded-full lg:hidden">

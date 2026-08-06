@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import { et as etLocale, enUS } from "date-fns/locale";
-import { CalendarIcon, Send, Clock } from "lucide-react";
+import { CalendarIcon, Send, Clock, Check } from "lucide-react";
 import { Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
@@ -19,6 +19,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/lib/i18n";
 import { submitBooking } from "@/lib/booking.functions";
@@ -56,6 +64,15 @@ export function BookingSection() {
   const [c1, setC1] = useState(false);
   const [c2, setC2] = useState(false);
   const [sending, setSending] = useState(false);
+  const [confirmed, setConfirmed] = useState<null | {
+    name: string;
+    email: string;
+    service: string;
+    date: string;
+    time: string;
+    city: string;
+    address: string;
+  }>(null);
 
   const slots = date ? slotsForDay(date) : [];
 
@@ -95,14 +112,26 @@ export function BookingSection() {
           date: format(date, "yyyy-MM-dd"),
           time,
           extra: extra.trim(),
+          consentTerms: c1,
+          consentWithdrawal: c2,
+          lang,
         },
       });
       toast.success(t.booking.success);
+      setConfirmed({
+        name: name.trim(),
+        email: email.trim(),
+        service,
+        date: format(date, "PPP", { locale }),
+        time,
+        city,
+        address: objectAddress.trim(),
+      });
       setC1(false);
       setC2(false);
       setExtra("");
     } catch {
-      toast.error(t.booking.required);
+      toast.error(t.booking.error);
     } finally {
       setSending(false);
     }
@@ -341,6 +370,48 @@ export function BookingSection() {
           </form>
         </div>
       </section>
+
+      <Dialog open={confirmed !== null} onOpenChange={(o) => !o && setConfirmed(null)}>
+        <DialogContent className="max-h-[90vh] overflow-y-auto">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2">
+              <span className="grid size-9 place-items-center rounded-full bg-primary-soft text-primary">
+                <Check className="size-5" />
+              </span>
+              {t.booking.confirmTitle}
+            </DialogTitle>
+            <DialogDescription>
+              {t.booking.confirmText
+                .replace("{name}", confirmed?.name ?? "")
+                .replace("{email}", confirmed?.email ?? "")}
+            </DialogDescription>
+          </DialogHeader>
+          {confirmed && (
+            <div className="rounded-xl bg-secondary/70 p-4 text-sm">
+              <p className="font-semibold">{t.booking.confirmSummary}</p>
+              <dl className="mt-3 space-y-1.5">
+                {[
+                  [t.booking.service, confirmed.service],
+                  [t.booking.date, confirmed.date],
+                  [t.booking.time, confirmed.time],
+                  [t.booking.city, confirmed.city],
+                  [t.booking.objectAddress, confirmed.address],
+                ].map(([k, v]) => (
+                  <div key={k} className="flex flex-wrap justify-between gap-2">
+                    <dt className="text-muted-foreground">{k}</dt>
+                    <dd className="font-medium">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          )}
+          <DialogFooter>
+            <Button className="w-full rounded-full" onClick={() => setConfirmed(null)}>
+              {t.booking.close}
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
