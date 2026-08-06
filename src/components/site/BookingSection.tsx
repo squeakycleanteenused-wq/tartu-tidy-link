@@ -19,6 +19,14 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 import { useLang } from "@/lib/i18n";
 import { submitBooking } from "@/lib/booking.functions";
@@ -56,6 +64,15 @@ export function BookingSection() {
   const [c1, setC1] = useState(false);
   const [c2, setC2] = useState(false);
   const [sending, setSending] = useState(false);
+  const [confirmed, setConfirmed] = useState<null | {
+    name: string;
+    email: string;
+    service: string;
+    date: string;
+    time: string;
+    city: string;
+    address: string;
+  }>(null);
 
   const slots = date ? slotsForDay(date) : [];
 
@@ -95,14 +112,26 @@ export function BookingSection() {
           date: format(date, "yyyy-MM-dd"),
           time,
           extra: extra.trim(),
+          consentTerms: c1,
+          consentWithdrawal: c2,
+          lang,
         },
       });
       toast.success(t.booking.success);
+      setConfirmed({
+        name: name.trim(),
+        email: email.trim(),
+        service,
+        date: format(date, "PPP", { locale }),
+        time,
+        city,
+        address: objectAddress.trim(),
+      });
       setC1(false);
       setC2(false);
       setExtra("");
     } catch {
-      toast.error(t.booking.required);
+      toast.error(t.booking.error);
     } finally {
       setSending(false);
     }
