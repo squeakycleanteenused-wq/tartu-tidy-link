@@ -168,4 +168,8 @@
 
 @utility hero-surface {
   background-image: var(--gradient-hero);
+}a[href*="lovable.dev"],
+[class*="lovable"],
+[id*="lovable"] {
+  display: none !important;
 }
