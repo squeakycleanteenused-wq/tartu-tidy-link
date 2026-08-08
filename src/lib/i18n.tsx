@@ -212,15 +212,15 @@ export const en: Dict = {
   },
   services: {
     title: "Services and pricing",
-    subtitle: "All prices are final – no VAT is added.",
+    subtitle: "The company is not VAT registered; VAT is not added to prices.",
     includes: "Includes",
     book: "Book this service",
-    note: "The service provider is not registered for VAT. All prices are final and no VAT is added. The minimum call-out fee is 30 € (2 working hours).",
+    note: "The company is not VAT registered; VAT is not added to prices. The minimum call-out fee is 30 € (2 working hours).",
     items: [
       {
         name: "Maintenance cleaning (light cleaning)",
-        price: "60 € – 70 €",
-        meta: "Estimated time: 4–5 hours, up to 70 m²",
+        price: "60 € to 70 €",
+        meta: "Estimated time: 4 to 5 hours, up to 70 m²",
         desc: "Designed for regularly maintained homes.",
         list: [
           "Dusting",
@@ -232,7 +232,7 @@ export const en: Dict = {
       },
       {
         name: "Deep cleaning",
-        price: "80 € – 100 €",
+        price: "80 € to 100 €",
         meta: "Final price depends on the size and condition of the space",
         desc: "Thorough deep cleaning before/after moving or a longer break.",
         list: [
@@ -248,9 +248,9 @@ export const en: Dict = {
         meta: "Price depends on the window type",
         desc: "Washing of inner and outer surfaces including frames and sills.",
         list: [
-          "Standard apartment window: 3.50 – 4.00 € / pc",
-          "Large floor-to-ceiling window / balcony door: 4.00 – 5.50 € / pc",
-          "Old wooden windows (double frames): 5.00 – 8.00 € / pc",
+          "Standard apartment window: 3.50 to 4.00 € / pc",
+          "Large floor-to-ceiling window / balcony door: 4.00 to 5.50 € / pc",
+          "Old wooden windows (double frames): 5.00 to 8.00 € / pc",
         ],
       },
       {
