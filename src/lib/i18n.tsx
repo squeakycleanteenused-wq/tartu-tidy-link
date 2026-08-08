@@ -23,10 +23,10 @@ export const et = {
   },
   services: {
     title: "Teenused ja hinnakiri",
-    subtitle: "Ettevõte pole KM kohustlane, KM hindadele ei lisandu.",
+    subtitle: "Ettevõte pole käibemaksukohustuslane, käibemaksu hindadele ei lisandu.",
     includes: "Sisaldab",
     book: "Broneeri see teenus",
-    note: "Ettevõte pole KM kohustlane, KM hindadele ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
+    note: "Ettevõte pole käibemaksukohustuslane, käibemaksu hindadele ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
     items: [
       {
         name: "Hoolduskoristus (kerge koristus)",
