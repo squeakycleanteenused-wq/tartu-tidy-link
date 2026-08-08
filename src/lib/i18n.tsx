@@ -23,15 +23,15 @@ export const et = {
   },
   services: {
     title: "Teenused ja hinnakiri",
-    subtitle: "Kõik hinnad on lõplikud – käibemaksu ei lisandu.",
+    subtitle: "Ettevõte pole KM kohustlane, KM hindadele ei lisandu.",
     includes: "Sisaldab",
     book: "Broneeri see teenus",
-    note: "Teenuseosutaja ei ole käibemaksukohustuslane. Kõik hinnad on lõplikud ning neile käibemaksu ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
+    note: "Ettevõte pole KM kohustlane, KM hindadele ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
     items: [
       {
         name: "Hoolduskoristus (kerge koristus)",
-        price: "60 € – 70 €",
-        meta: "Orienteeruv ajakulu: 4–5 tundi, kuni 70 m²",
+        price: "60 € kuni 70 €",
+        meta: "Orienteeruv ajakulu: 4 kuni 5 tundi, kuni 70 m²",
         desc: "Mõeldud regulaarselt hooldatud kodule.",
         list: [
           "Tolmu võtmine",
@@ -43,7 +43,7 @@ export const et = {
       },
       {
         name: "Suurpuhastus / Süvapesu",
-        price: "80 € – 100 €",
+        price: "80 € kuni 100 €",
         meta: "Lõplik hind oleneb pinna suurusest ja seisukorrast",
         desc: "Põhjalik süvapuhastus enne/pärast kolimist või pikemat pausi.",
         list: [
@@ -59,9 +59,9 @@ export const et = {
         meta: "Hind sõltub akna tüübist",
         desc: "Sise- ja välispindade pesu koos raamide ja pakkudega.",
         list: [
-          "Tavaline korteriaken: 3.50 – 4.00 € / tk",
-          "Suur maast laeni aken / rõduuks: 4.00 – 5.50 € / tk",
-          "Vanad puitaknad (topeltraamid): 5.00 – 8.00 € / tk",
+          "Tavaline korteriaken: 3.50 kuni 4.00 € / tk",
+          "Suur maast laeni aken / rõduuks: 4.00 kuni 5.50 € / tk",
+          "Vanad puitaknad (topeltraamid): 5.00 kuni 8.00 € / tk",
         ],
       },
       {
