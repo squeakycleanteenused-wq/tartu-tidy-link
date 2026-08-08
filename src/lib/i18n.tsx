@@ -23,15 +23,15 @@ export const et = {
   },
   services: {
     title: "Teenused ja hinnakiri",
-    subtitle: "Kõik hinnad on lõplikud – käibemaksu ei lisandu.",
+    subtitle: "Ettevõte pole KM kohustlane, KM hindadele ei lisandu.",
     includes: "Sisaldab",
     book: "Broneeri see teenus",
-    note: "Teenuseosutaja ei ole käibemaksukohustuslane. Kõik hinnad on lõplikud ning neile käibemaksu ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
+    note: "Ettevõte pole KM kohustlane, KM hindadele ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
     items: [
       {
         name: "Hoolduskoristus (kerge koristus)",
-        price: "60 € – 70 €",
-        meta: "Orienteeruv ajakulu: 4–5 tundi, kuni 70 m²",
+        price: "60 € kuni 70 €",
+        meta: "Orienteeruv ajakulu: 4 kuni 5 tundi, kuni 70 m²",
         desc: "Mõeldud regulaarselt hooldatud kodule.",
         list: [
           "Tolmu võtmine",
@@ -43,7 +43,7 @@ export const et = {
       },
       {
         name: "Suurpuhastus / Süvapesu",
-        price: "80 € – 100 €",
+        price: "80 € kuni 100 €",
         meta: "Lõplik hind oleneb pinna suurusest ja seisukorrast",
         desc: "Põhjalik süvapuhastus enne/pärast kolimist või pikemat pausi.",
         list: [
@@ -59,9 +59,9 @@ export const et = {
         meta: "Hind sõltub akna tüübist",
         desc: "Sise- ja välispindade pesu koos raamide ja pakkudega.",
         list: [
-          "Tavaline korteriaken: 3.50 – 4.00 € / tk",
-          "Suur maast laeni aken / rõduuks: 4.00 – 5.50 € / tk",
-          "Vanad puitaknad (topeltraamid): 5.00 – 8.00 € / tk",
+          "Tavaline korteriaken: 3.50 kuni 4.00 € / tk",
+          "Suur maast laeni aken / rõduuks: 4.00 kuni 5.50 € / tk",
+          "Vanad puitaknad (topeltraamid): 5.00 kuni 8.00 € / tk",
         ],
       },
       {
@@ -212,15 +212,15 @@ export const en: Dict = {
   },
   services: {
     title: "Services and pricing",
-    subtitle: "All prices are final – no VAT is added.",
+    subtitle: "The company is not VAT registered; VAT is not added to prices.",
     includes: "Includes",
     book: "Book this service",
-    note: "The service provider is not registered for VAT. All prices are final and no VAT is added. The minimum call-out fee is 30 € (2 working hours).",
+    note: "The company is not VAT registered; VAT is not added to prices. The minimum call-out fee is 30 € (2 working hours).",
     items: [
       {
         name: "Maintenance cleaning (light cleaning)",
-        price: "60 € – 70 €",
-        meta: "Estimated time: 4–5 hours, up to 70 m²",
+        price: "60 € to 70 €",
+        meta: "Estimated time: 4 to 5 hours, up to 70 m²",
         desc: "Designed for regularly maintained homes.",
         list: [
           "Dusting",
@@ -232,7 +232,7 @@ export const en: Dict = {
       },
       {
         name: "Deep cleaning",
-        price: "80 € – 100 €",
+        price: "80 € to 100 €",
         meta: "Final price depends on the size and condition of the space",
         desc: "Thorough deep cleaning before/after moving or a longer break.",
         list: [
@@ -248,9 +248,9 @@ export const en: Dict = {
         meta: "Price depends on the window type",
         desc: "Washing of inner and outer surfaces including frames and sills.",
         list: [
-          "Standard apartment window: 3.50 – 4.00 € / pc",
-          "Large floor-to-ceiling window / balcony door: 4.00 – 5.50 € / pc",
-          "Old wooden windows (double frames): 5.00 – 8.00 € / pc",
+          "Standard apartment window: 3.50 to 4.00 € / pc",
+          "Large floor-to-ceiling window / balcony door: 4.00 to 5.50 € / pc",
+          "Old wooden windows (double frames): 5.00 to 8.00 € / pc",
         ],
       },
       {
