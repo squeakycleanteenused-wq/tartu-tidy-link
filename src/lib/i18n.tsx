@@ -4,7 +4,7 @@ export type Lang = "et" | "en";
 
 export const et = {
   company: "Squeaky Clean Teenused OÜ",
-  area: "Tegevuspiirkond: Tartu linn, Põlva linn ja lähiümbrus",
+  area: "Teenust osutatakse Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses.",
   nav: {
     services: "Teenused & Hinnad",
     shop: "E-pood",
@@ -16,7 +16,7 @@ export const et = {
     eyebrow: "Kodu- ja kontorikoristus Lõuna-Eestis",
     title: "Puhas kodu ilma vaevata",
     subtitle:
-      "Hoolduskoristus, suurpuhastus ja aknapesu Tartus, Põlvas ja lähiümbruses. Läbipaistev hinnakiri, kindlustatud teenus ja mugav broneerimine.",
+      "Hoolduskoristus, suurpuhastus ja aknapesu Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Läbipaistev hinnakiri, kindlustatud teenus ja mugav broneerimine.",
     cta: "Broneeri aeg",
     cta2: "Vaata hinnakirja",
     points: ["Vastutuskindlustus", "Läbipaistvad hinnad", "Paindlikud ajad"],
@@ -114,7 +114,7 @@ export const et = {
   },
   calendar: {
     title: "Aja broneerimine",
-    subtitle: "Vali sobiv päev ja vaata vabu aegu Tartu ja Põlva piirkonnas.",
+    subtitle: "Vali sobiv päev ja vaata vabu aegu Tartu ja Põlva linnas ning kokkuleppel ka lähiümbruses.",
     free: "Vabad ajad",
     none: "Sel päeval vabu aegu ei ole. Palun vali teine päev.",
     select: "Vali päev kalendrist.",
@@ -141,13 +141,13 @@ export const et = {
     email: "E-post",
     reg: "Registrikood",
     areaLabel: "Tegevuspiirkond",
-    areaValue: "Tartu linn, Põlva linn ja lähiümbrus",
+    areaValue: "Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses",
   },
   terms: {
     link: "Eeskirjad & Tingimused",
     title: "Hinnakiri ja teenuseosutamise tingimused",
     intro:
-      "Kehtivad alates: mai 2026. Registrikood: 16288747, E-post: squeakycleanteenused@gmail.com, Tegevuspiirkond: Tartu linn, Põlva linn ja lähiümbrus.",
+      "Kehtivad alates: mai 2026. Registrikood: 16288747, E-post: squeakycleanteenused@gmail.com, Teenust osutatakse Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses.",
     back: "Tagasi avalehele",
     sections: [
       {
@@ -193,7 +193,7 @@ export type Dict = typeof et;
 
 export const en: Dict = {
   company: "Squeaky Clean Teenused OÜ",
-  area: "Service area: city of Tartu, city of Põlva and nearby areas",
+  area: "Services are provided in the cities of Tartu and Põlva and, by agreement, in their surrounding areas.",
   nav: {
     services: "Services & Prices",
     shop: "Shop",
@@ -205,7 +205,7 @@ export const en: Dict = {
     eyebrow: "Home and office cleaning in South Estonia",
     title: "A spotless home, effortlessly",
     subtitle:
-      "Maintenance cleaning, deep cleaning and window washing in Tartu, Põlva and nearby areas. Transparent pricing, insured service and easy booking.",
+      "Maintenance cleaning, deep cleaning and window washing in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. Transparent pricing, insured service and easy booking.",
     cta: "Book a time",
     cta2: "See pricing",
     points: ["Liability insurance", "Transparent pricing", "Flexible times"],
@@ -303,7 +303,7 @@ export const en: Dict = {
   },
   calendar: {
     title: "Book a time",
-    subtitle: "Pick a day and see available slots in the Tartu and Põlva regions.",
+    subtitle: "Pick a day and see available slots in the cities of Tartu and Põlva and, by agreement, in nearby areas.",
     free: "Available slots",
     none: "No free slots on this day. Please choose another day.",
     select: "Select a day from the calendar.",
@@ -330,13 +330,13 @@ export const en: Dict = {
     email: "Email",
     reg: "Registry code",
     areaLabel: "Service area",
-    areaValue: "City of Tartu, city of Põlva and nearby areas",
+    areaValue: "Cities of Tartu and Põlva and, by agreement, their surrounding areas"
   },
   terms: {
     link: "Terms & Conditions",
     title: "Pricing and terms of service",
     intro:
-      "Valid from: May 2026. Registry code: 16288747, Email: squeakycleanteenused@gmail.com, Service area: city of Tartu, city of Põlva and nearby areas.",
+      "Valid from: May 2026. Registry code: 16288747, Email: squeakycleanteenused@gmail.com, Services are provided in the cities of Tartu and Põlva and, by agreement, in their surrounding areas.",
     back: "Back to home",
     sections: [
       {
