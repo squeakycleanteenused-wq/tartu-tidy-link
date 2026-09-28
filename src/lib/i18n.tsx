@@ -16,10 +16,10 @@ export const et = {
     eyebrow: "Kodu- ja kontorikoristus Lõuna-Eestis",
     title: "Puhas kodu ilma vaevata",
     subtitle:
-      "Hoolduskoristus, suurpuhastus ja aknapesu Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Läbipaistev hinnakiri, kindlustatud teenus ja mugav broneerimine.",
+      "Hoolduskoristus, suurpuhastus ja aknapesu Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Läbipaistev hinnakiri ja selged tingimused.",
     cta: "Broneeri aeg",
     cta2: "Vaata hinnakirja",
-    points: ["Vastutuskindlustus", "Läbipaistvad hinnad", "Paindlikud ajad"],
+    points: ["Läbipaistvad hinnad", "Selged tingimused", "Paindlikud ajad"],
   },
   services: {
     title: "Teenused ja hinnakiri",
@@ -171,8 +171,8 @@ export const et = {
         p: "Tasumine toimub arve alusel pangaülekandega (maksetähtaeg 7 päeva). Sularahamakseid ei aktsepteerita.",
       },
       {
-        h: "6. Vastutus ja kindlustus",
-        p: "Teenuseosutajal on tegevuse vastutuskindlustus. Vastutus ei laiene pindade eelnevale kulumisele, varjatud puudustele ega teavitamata erimaterjalide kahjustustele.",
+        h: "6. Vastutus",
+        p: "Teenuseosutaja vastutab töö käigus tekitatud otsese ja tõendatud varakahju eest seaduses sätestatud korras. Vastutus ei laiene pindade eelnevale kulumisele, varjatud puudustele ega teavitamata erimaterjalide kahjustustele. See ei piira tarbija seadusest tulenevaid õigusi ega Teenuseosutaja vastutust tahtluse ja raske hooletuse eest.",
       },
       {
         h: "7. Tööde vastuvõtmine ja pretensioonid",
@@ -205,10 +205,10 @@ export const en: Dict = {
     eyebrow: "Home and office cleaning in South Estonia",
     title: "A spotless home, effortlessly",
     subtitle:
-      "Maintenance cleaning, deep cleaning and window washing in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. Transparent pricing, insured service and easy booking.",
+      "Maintenance cleaning, deep cleaning and window washing in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. Transparent pricing and clear terms.",
     cta: "Book a time",
     cta2: "See pricing",
-    points: ["Liability insurance", "Transparent pricing", "Flexible times"],
+    points: ["Transparent pricing", "Clear terms", "Flexible times"],
   },
   services: {
     title: "Services and pricing",
@@ -360,8 +360,8 @@ export const en: Dict = {
         p: "Payment is made by bank transfer against an invoice (payment term 7 days). Cash payments are not accepted.",
       },
       {
-        h: "6. Liability and insurance",
-        p: "The service provider holds operational liability insurance. Liability does not extend to pre-existing wear of surfaces, hidden defects or damage to special materials that were not notified.",
+        h: "6. Liability",
+        p: "The service provider is liable for direct, proven property damage caused during the work as provided by law. Liability does not extend to pre-existing wear of surfaces, hidden defects or damage to special materials that were not notified. This does not limit consumer rights under law or the provider's liability for intent and gross negligence.",
       },
       {
         h: "7. Acceptance of work and complaints",

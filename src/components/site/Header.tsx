@@ -28,13 +28,13 @@ function LangSwitch() {
 }
 
 export function Header() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
-    { href: "/#teenused", label: t.nav.services },
+    { href: "/#hinnakalkulaator", label: lang === "et" ? "Hinnapäring" : "Price request" },
     { href: "/#epood", label: t.nav.shop },
-    { href: "/#broneerimine", label: t.nav.booking },
+    { href: "/#taganemine", label: lang === "et" ? "Taganen lepingust" : "Withdraw from contract" },
     { href: "/tingimused", label: t.nav.terms },
     { href: "/#kontakt", label: t.nav.contact },
   ];
