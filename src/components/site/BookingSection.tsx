@@ -1,423 +1,198 @@
-import { useState } from "react";
-import { format } from "date-fns";
-import { et as etLocale, enUS } from "date-fns/locale";
-import { CalendarIcon, Send, Clock, Check } from "lucide-react";
-import { Link } from "@tanstack/react-router";
-import { toast } from "sonner";
-import { Button } from "@/components/ui/button";
-import { Calendar } from "@/components/ui/calendar";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
-import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
-import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle,
-  DialogFooter,
-} from "@/components/ui/dialog";
-import { cn } from "@/lib/utils";
-import { useLang } from "@/lib/i18n";
-import { submitBooking } from "@/lib/booking.functions";
-import { sendBookingEmails } from "@/lib/emailjs";
-
-const slotsForDay = (d: Date) => {
-  const weekday = d.getDay();
-  if (weekday === 0) return [];
-  const base = [
-    { time: "08:00 – 12:00", region: "Tartu" },
-    { time: "12:00 – 17:00", region: "Tartu" },
-    { time: "09:00 – 13:00", region: "Põlva" },
-  ];
-  if (weekday === 6) return base.slice(0, 1);
-  if (weekday % 2 === 0) return base.slice(0, 2);
-  return base;
-};
+import React, { useState } from "react";
 
 export function BookingSection() {
-  const { t, lang } = useLang();
-  const locale = lang === "et" ? etLocale : enUS;
-
-  const [date, setDate] = useState<Date | undefined>();
-  const [service, setService] = useState("");
-  const [clientType, setClientType] = useState("person");
+  const [clientType, setClientType] = useState("eraisik");
   const [name, setName] = useState("");
-  const [code, setCode] = useState("");
-  const [billing, setBilling] = useState("");
-  const [object, setObject] = useState("");
-  const [same, setSame] = useState(true);
-  const [city, setCity] = useState("");
+  const [companyName, setCompanyName] = useState("");
+  const [regCode, setRegCode] = useState("");
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
-  const [time, setTime] = useState("");
-  const [extra, setExtra] = useState("");
-  const [c1, setC1] = useState(false);
-  const [c2, setC2] = useState(false);
-  const [sending, setSending] = useState(false);
-  const [confirmed, setConfirmed] = useState<null | {
-    name: string;
-    email: string;
-    service: string;
-    date: string;
-    time: string;
-    city: string;
-    address: string;
-  }>(null);
+  
+  const [address, setAddress] = useState("");
+  const [date, setDate] = useState("");
+  const [rooms, setRooms] = useState("");
+  const [hasBathroom, setHasBathroom] = useState(true);
+  const [bathroomDeepClean, setBathroomDeepClean] = useState(false);
+  
+  const [allergies, setAllergies] = useState("");
+  const [details, setDetails] = useState("");
+  const [agreed, setAgreed] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+  
+  const [showCancellationForm, setShowCancellationForm] = useState(false);
 
-  const slots = date ? slotsForDay(date) : [];
-
-  const onSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const objectAddress = same ? billing : object;
-    if (
-      !service ||
-      name.trim().length < 2 ||
-      code.trim().length < 4 ||
-      billing.trim().length < 4 ||
-      objectAddress.trim().length < 4 ||
-      !city ||
-      !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim()) ||
-      phone.trim().length < 5 ||
-      !date ||
-      !time ||
-      !c1 ||
-      !c2
-    ) {
-      toast.error(t.booking.required);
+    if (!agreed) {
+      alert("Palun kinnitage, et olete tingimustega tutvunud ja nõustute nendega.");
       return;
     }
-    setSending(true);
-    try {
-      const payload = {
-        service,
-        clientType: clientType === "person" ? t.booking.person : t.booking.companyType,
-        name: name.trim(),
-        code: code.trim(),
-        billingAddress: billing.trim(),
-        objectAddress: objectAddress.trim(),
-        city,
-        email: email.trim(),
-        phone: phone.trim(),
-        date: format(date, "yyyy-MM-dd"),
-        time,
-        extra: extra.trim(),
-        consentTerms: c1,
-        consentWithdrawal: c2,
-      };
-
-      // Frontend-only email delivery via EmailJS.
-      await sendBookingEmails(payload);
-
-      // Best-effort backup copy in the database; never blocks the booking.
-      await submitBooking({ data: { ...payload, lang } }).catch((err) =>
-        console.warn("[booking] database backup skipped", err),
-      );
-      toast.success(t.booking.success);
-      setConfirmed({
-        name: name.trim(),
-        email: email.trim(),
-        service,
-        date: format(date, "PPP", { locale }),
-        time,
-        city,
-        address: objectAddress.trim(),
-      });
-      setC1(false);
-      setC2(false);
-      setExtra("");
-    } catch {
-      toast.error(t.booking.error);
-    } finally {
-      setSending(false);
-    }
+    setSubmitted(true);
   };
 
   return (
-    <>
-      <section id="kalender" className="scroll-mt-28 border-y border-border bg-secondary/40 py-16">
-        <div className="mx-auto max-w-6xl px-4">
-          <h2 className="text-3xl font-bold sm:text-4xl">{t.calendar.title}</h2>
-          <p className="mt-2 text-muted-foreground">{t.calendar.subtitle}</p>
-          <div className="mt-8 grid gap-5 md:grid-cols-[auto_minmax(0,1fr)]">
-            <div className="surface-card p-2">
-              <Calendar
-                mode="single"
-                selected={date}
-                onSelect={setDate}
-                locale={locale}
-                disabled={{ before: new Date() }}
-                className={cn("pointer-events-auto p-3")}
-              />
+    <section className="py-12 px-4 max-w-3xl mx-auto bg-white rounded-xl shadow-lg border border-gray-100 my-8 text-left">
+      <div className="text-center mb-8">
+        <h2 className="text-2xl font-bold text-gray-900">Squeaky Clean Teenused OÜ</h2>
+        <p className="text-sm text-gray-600 mt-1">
+          Reg. kood: 16288747 | Tartu ja Põlva ning lähiümbrus[cite: 2]
+        </p>
+        <div className="mt-3 bg-red-50 border border-red-200 text-red-700 text-xs px-3 py-2 rounded-lg font-semibold space-y-1">
+          <p>• Squeaky Clean Teenused OÜ ei ole käibemaksukohuslane – hinnale käibemaksu ei lisandu[cite: 2].</p>
+          <p>• Arveldamine toimub pangaülekandega, sularahamakseid ei aktsepteerita[cite: 2].</p>
+        </div>
+      </div>
+
+      {submitted ? (
+        <div className="bg-green-50 border border-green-200 text-green-800 p-6 rounded-lg text-center">
+          <h3 className="text-lg font-bold mb-2">Päring on edukalt esitatud!</h3>
+          <p className="text-sm">Täname! Vaatame andmed üle ja saadame teile kinnituse või võtame ühendust.</p>
+        </div>
+      ) : (
+        <form onSubmit={handleSubmit} className="space-y-6">
+          
+          {/* PUNKT 1: Kliendi tüüp ja andmed */}
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 space-y-4">
+            <h3 className="font-bold text-gray-800 border-b pb-2">1. Kliendi andmed ja arve saaja</h3>
+            
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">Kas tellite eraisikuna või ettevõttena?</label>
+              <select 
+                value={clientType} 
+                onChange={(e) => setClientType(e.target.value)}
+                className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900"
+              >
+                <option value="eraisik">Eraisik</option>
+                <option value="ettevote">Ettevõte</option>
+              </select>
             </div>
-            <div className="surface-card p-6">
-              <h3 className="text-base font-bold">{t.calendar.free}</h3>
-              {!date && <p className="mt-3 text-sm text-muted-foreground">{t.calendar.select}</p>}
-              {date && slots.length === 0 && (
-                <p className="mt-3 text-sm text-muted-foreground">{t.calendar.none}</p>
-              )}
-              <ul className="mt-4 space-y-2">
-                {slots.map((s) => (
-                  <li
-                    key={s.time + s.region}
-                    className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-border p-3"
-                  >
-                    <span className="flex min-w-0 items-center gap-2 text-sm font-medium">
-                      <Clock className="size-4 shrink-0 text-primary" />
-                      {s.time}
-                      <span className="text-muted-foreground">· {s.region}</span>
-                    </span>
-                    <Button
-                      size="sm"
-                      variant="outline"
-                      className="shrink-0 rounded-full"
-                      onClick={() => {
-                        setTime(s.time.startsWith("08") || s.time.startsWith("09") ? t.booking.morning : t.booking.afternoon);
-                        toast.success(t.calendar.chosen);
-                        document.getElementById("broneerimine")?.scrollIntoView({ behavior: "smooth" });
-                      }}
-                    >
-                      {t.calendar.choose}
-                    </Button>
-                  </li>
-                ))}
-              </ul>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Teie nimi:</label>
+                <input type="text" required value={name} onChange={(e) => setName(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Telefon:</label>
+                <input type="tel" required value={phone} onChange={(e) => setPhone(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">E-post:</label>
+              <input type="email" required value={email} onChange={(e) => setEmail(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+            </div>
+
+            {clientType === "ettevote" && (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-gray-200">
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Ettevõtte nimi:</label>
+                  <input type="text" required value={companyName} onChange={(e) => setCompanyName(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+                </div>
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-1">Registrikood:</label>
+                  <input type="text" required value={regCode} onChange={(e) => setRegCode(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* PUNKT 2: Objekti ja koristuse info */}
+          <div className="p-4 bg-gray-50 rounded-lg border border-gray-200 space-y-4">
+            <h3 className="font-bold text-gray-800 border-b pb-2">2. Objekti andmed ja koristuse maht</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Objekti täpne aadress:</label>
+                <input type="text" required placeholder="nt Soola tn 5, Tartu" value={address} onChange={(e) => setAddress(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+              </div>
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Soovitud kuupäev ja kellaaeg:</label>
+                <input type="text" required placeholder="nt 05.10.2026 kell 15:00" value={date} onChange={(e) => setDate(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm font-semibold text-gray-700 mb-1">Mitu tuba / ruumid:</label>
+                <input type="text" required placeholder="nt elutuba, magamistuba" value={rooms} onChange={(e) => setRooms(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" />
+              </div>
+              <div className="flex flex-col justify-end space-y-2 pt-2">
+                <label className="flex items-center gap-2 text-sm font-semibold text-gray-700 cursor-pointer">
+                  <input type="checkbox" checked={hasBathroom} onChange={(e) => setHasBathroom(e.target.checked)} className="h-4 w-4" />
+                  Vannituba / WC koristus
+                </label>
+                {hasBathroom && (
+                  <label className="flex items-center gap-2 text-sm text-gray-600 cursor-pointer pl-6">
+                    <input type="checkbox" checked={bathroomDeepClean} onChange={(e) => setBathroomDeepClean(e.target.checked)} className="h-4 w-4" />
+                    Soovin vannitoa süvapuhastust / katlakivi eemaldust
+                  </label>
+                )}
+              </div>
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">Lisasoovid ja täpsustused:</label>
+              <textarea rows={2} value={details} onChange={(e) => setDetails(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" placeholder="Kirjutage siia täiendavad soovid..." />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-gray-700 mb-1">Kas elanikel esineb allergiat või tundlikkust vahendite suhtes?</label>
+              <input type="text" value={allergies} onChange={(e) => setAllergies(e.target.value)} className="w-full p-3 border border-gray-300 rounded-lg bg-white text-gray-900" placeholder="Ei / Jah (täpsustage)" />
             </div>
           </div>
-        </div>
-      </section>
 
-      <section id="broneerimine" className="scroll-mt-28 py-16">
-        <div className="mx-auto max-w-3xl px-4">
-          <h2 className="text-3xl font-bold sm:text-4xl">{t.booking.title}</h2>
-          <p className="mt-2 text-muted-foreground">{t.booking.subtitle}</p>
+          {/* PUNKT 3: Juriidilised tingimused ja tarbija õigused */}
+          <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900 space-y-2">
+            <p className="font-bold text-sm">Olulised tingimused ja teenuseosutamise reeglid:</p>
+            <p>• <strong>Õigus keelduda / hinda korrigeerida:</strong> Teenuseosutajal on õigus hinda kohapeal korrigeerida või tööst keelduda, kui elamispind või mustuse aste erineb oluliselt kirjeldatust (nt ehitustolm, tugev erakorraline mustus)[cite: 2].</p>
+            <p>• <strong>Tööde sisu ja tühistamine:</strong> Klient kinnitab, et mõistab tellitava teenuse sisu ja mahtu. Tasuta tühistamine kuni 24h enne töö algust, hilisemal tühistamisel kehtib miinimumtasu 30 €[cite: 2].</p>
+            <p>• <strong>Tarbija taganemisõigus:</strong> Eraisikust kliendil on õigus 14 päeva jooksul lepingust taganeda[cite: 2]. Taganemiseks võib esitada vabas vormis avalduse või kasutada allpool leitavat tüüpvormi[cite: 1, 2]. Teenuse osutamisel enne 14 päeva möödumist nõustub klient ooteaja lühendamisega ja teenuse täielikul osutamisel taganemisõigus kaob[cite: 2].</p>
+            
+            {/* Taganemisavalduse tüüpvormi nupp / vaade */}
+            <div className="pt-2">
+              <button 
+                type="button" 
+                onClick={() => setShowCancellationForm(!showCancellationForm)}
+                className="text-blue-700 underline font-semibold focus:outline-none"
+              >
+                {showCancellationForm ? "Peida taganemisavalduse tüüpvorm" : "Vaata taganemisavalduse tüüpvormi (infovorm)"}
+              </button>
 
-          <form onSubmit={onSubmit} className="surface-card mt-8 space-y-6 p-6 sm:p-8">
-            <div className="grid gap-2">
-              <Label>{t.booking.service}</Label>
-              <Select value={service} onValueChange={setService}>
-                <SelectTrigger>
-                  <SelectValue placeholder={t.booking.servicePlaceholder} />
-                </SelectTrigger>
-                <SelectContent>
-                  {t.booking.serviceOptions.map((o) => (
-                    <SelectItem key={o} value={o}>
-                      {o}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            <div className="grid gap-2">
-              <Label>{t.booking.clientType}</Label>
-              <RadioGroup value={clientType} onValueChange={setClientType} className="flex gap-6">
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem value="person" id="ct-person" />
-                  <Label htmlFor="ct-person" className="font-normal">
-                    {t.booking.person}
-                  </Label>
+              {showCancellationForm && (
+                <div className="mt-3 p-3 bg-white border border-amber-300 rounded text-gray-800 space-y-2 text-left">
+                  <p className="font-bold">Sidevahendi abil sõlmitud lepingust taganemise tüüpvorm</p>
+                  <p className="text-[11px] text-gray-600">Kellele: Squeaky Clean Teenused OÜ, Reg. kood: 16288747, E-post: squeakycleanteenused@gmail.com[cite: 1]</p>
+                  <p className="text-[11px]">Käesolevaga taganen lepingust, mille esemeks on hoolduskoristus[cite: 1]. Vormi kasutamine ei ole kohustuslik, sobib ka vabas vormis ühemõtteline avaldus e-posti teel[cite: 1, 2].</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <RadioGroupItem value="company" id="ct-company" />
-                  <Label htmlFor="ct-company" className="font-normal">
-                    {t.booking.companyType}
-                  </Label>
-                </div>
-              </RadioGroup>
+              )}
             </div>
+          </div>
 
-            <div className="grid gap-4 sm:grid-cols-2">
-              <div className="grid gap-2">
-                <Label htmlFor="name">{t.booking.name}</Label>
-                <Input id="name" value={name} onChange={(e) => setName(e.target.value)} maxLength={120} />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="code">{t.booking.code}</Label>
-                <Input id="code" value={code} onChange={(e) => setCode(e.target.value)} maxLength={40} />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="email">{t.booking.email}</Label>
-                <Input id="email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={160} />
-              </div>
-              <div className="grid gap-2">
-                <Label htmlFor="phone">{t.booking.phone}</Label>
-                <Input id="phone" type="tel" value={phone} onChange={(e) => setPhone(e.target.value)} maxLength={40} />
-              </div>
-            </div>
-
-            <div className="grid gap-2">
-              <Label htmlFor="billing">{t.booking.billingAddress}</Label>
-              <Input id="billing" value={billing} onChange={(e) => setBilling(e.target.value)} maxLength={200} />
-            </div>
-
-            <div className="grid gap-2">
-              <div className="flex flex-wrap items-center justify-between gap-2">
-                <Label htmlFor="object">{t.booking.objectAddress}</Label>
-                <label className="flex items-center gap-2 text-sm text-muted-foreground">
-                  <Checkbox checked={same} onCheckedChange={(v) => setSame(v === true)} />
-                  {t.booking.sameAddress}
-                </label>
-              </div>
-              <Input
-                id="object"
-                value={same ? billing : object}
-                disabled={same}
-                onChange={(e) => setObject(e.target.value)}
-                maxLength={200}
+          {/* PUNKT 4: Kinnitus ja esitamine */}
+          <div className="pt-2">
+            <label className="flex items-start gap-3 cursor-pointer">
+              <input 
+                type="checkbox" 
+                required 
+                checked={agreed}
+                onChange={(e) => setAgreed(e.target.checked)}
+                className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded"
               />
-            </div>
-
-            <div className="grid gap-4 sm:grid-cols-3">
-              <div className="grid gap-2">
-                <Label>{t.booking.city}</Label>
-                <Select value={city} onValueChange={setCity}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={t.booking.city} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {t.booking.cityOptions.map((o) => (
-                      <SelectItem key={o} value={o}>
-                        {o}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-              <div className="grid gap-2">
-                <Label>{t.booking.date}</Label>
-                <Popover>
-                  <PopoverTrigger asChild>
-                    <Button
-                      type="button"
-                      variant="outline"
-                      className={cn("justify-start font-normal", !date && "text-muted-foreground")}
-                    >
-                      <CalendarIcon className="size-4" />
-                      {date ? format(date, "PPP", { locale }) : t.booking.pickDate}
-                    </Button>
-                  </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
-                    <Calendar
-                      mode="single"
-                      selected={date}
-                      onSelect={setDate}
-                      locale={locale}
-                      disabled={{ before: new Date() }}
-                      className={cn("p-3 pointer-events-auto")}
-                    />
-                  </PopoverContent>
-                </Popover>
-              </div>
-              <div className="grid gap-2">
-                <Label>{t.booking.time}</Label>
-                <Select value={time} onValueChange={setTime}>
-                  <SelectTrigger>
-                    <SelectValue placeholder={t.booking.time} />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectItem value={t.booking.morning}>{t.booking.morning}</SelectItem>
-                    <SelectItem value={t.booking.afternoon}>{t.booking.afternoon}</SelectItem>
-                  </SelectContent>
-                </Select>
-              </div>
-            </div>
-
-            <div className="grid gap-2">
-              <Label htmlFor="extra">{t.booking.extra}</Label>
-              <Textarea
-                id="extra"
-                rows={4}
-                value={extra}
-                onChange={(e) => setExtra(e.target.value)}
-                placeholder={t.booking.extraPlaceholder}
-                maxLength={2000}
-              />
-            </div>
-
-            <div className="space-y-3 rounded-xl bg-secondary/70 p-4">
-              <label className="flex gap-3 text-sm">
-                <Checkbox
-                  className="mt-0.5"
-                  checked={c1}
-                  onCheckedChange={(v) => setC1(v === true)}
-                />
-                <span>
-                  {t.booking.consent1}{" "}
-                  <Link to="/tingimused" className="text-primary underline">
-                    {t.terms.link}
-                  </Link>
-                </span>
-              </label>
-              <label className="flex gap-3 text-sm">
-                <Checkbox
-                  className="mt-0.5"
-                  checked={c2}
-                  onCheckedChange={(v) => setC2(v === true)}
-                />
-                <span>{t.booking.consent2}</span>
-              </label>
-            </div>
-
-            <Button type="submit" size="lg" className="w-full rounded-full" disabled={sending}>
-              <Send className="size-4" />
-              {t.booking.submit}
-            </Button>
-          </form>
-        </div>
-      </section>
-
-      <Dialog open={confirmed !== null} onOpenChange={(o) => !o && setConfirmed(null)}>
-        <DialogContent className="max-h-[90vh] overflow-y-auto">
-          <DialogHeader>
-            <DialogTitle className="flex items-center gap-2">
-              <span className="grid size-9 place-items-center rounded-full bg-primary-soft text-primary">
-                <Check className="size-5" />
+              <span className="text-xs text-gray-700 leading-relaxed">
+                Kinnitan, et olen tutvunud ja nõustun teenuseosutamise tingimustega, saan täielikult aru teenuse sisust ning mõistan, et sularahas arveldamist ei toimu[cite: 2]. Olen teadlik oma õigustest ja taganemisinfost.
               </span>
-              {t.booking.confirmTitle}
-            </DialogTitle>
-            <DialogDescription>
-              {t.booking.confirmText
-                .replace("{name}", confirmed?.name ?? "")
-                .replace("{email}", confirmed?.email ?? "")}
-            </DialogDescription>
-          </DialogHeader>
-          {confirmed && (
-            <div className="rounded-xl bg-secondary/70 p-4 text-sm">
-              <p className="font-semibold">{t.booking.confirmSummary}</p>
-              <dl className="mt-3 space-y-1.5">
-                {[
-                  [t.booking.service, confirmed.service],
-                  [t.booking.date, confirmed.date],
-                  [t.booking.time, confirmed.time],
-                  [t.booking.city, confirmed.city],
-                  [t.booking.objectAddress, confirmed.address],
-                ].map(([k, v]) => (
-                  <div key={k} className="flex flex-wrap justify-between gap-2">
-                    <dt className="text-muted-foreground">{k}</dt>
-                    <dd className="font-medium">{v}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
-          )}
-          <DialogFooter>
-            <Button className="w-full rounded-full" onClick={() => setConfirmed(null)}>
-              {t.booking.close}
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
-    </>
+            </label>
+          </div>
+
+          <button 
+            type="submit"
+            className="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3.5 px-6 rounded-lg transition duration-200 shadow-md"
+          >
+            Esita hinnapäring / broneering
+          </button>
+        </form>
+      )}
+    </section>
   );
 }
