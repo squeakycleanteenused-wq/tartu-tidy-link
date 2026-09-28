@@ -175,15 +175,21 @@ const COPY = {
     vacuumNoFee: (fee: number) => `Ilma tolmuimejata ei saa põrandaid puhastada. Toome oma tolmuimeja kaasa, lisatasu ${fee} €.`,
     vacuumNoPending: "Ilma tolmuimejata ei saa põrandaid puhastada. Toome oma tolmuimeja kaasa, lisatasu lepime kokku eraldi.",
     vacuumPending: "Tolmuimeja kaasaveo lisatasu lepime eraldi kokku.",
-    rentTitle: "Tekstiilipuhastaja rent",
+    rentTitle: "Tekstiilipuhastaja üür",
     rentText: `Spot Cleaner Pro tekstiilipuhastusmasin polstermööbli, vaipade ja madratsite puhastamiseks. Tagatisraha ei võeta. Kui masinaga midagi juhtub, lepime hüvitise kokku (kokkuleppe puudumisel remondikulu, kuid mitte üle masina turuväärtuse).`,
-    rentOn: "Soovin tekstiilipuhastaja rentida",
+    rentOn: "Soovin tekstiilipuhastajat üürida",
     rentDays: "Mitmeks päevaks",
     rentFrom: "Üüri algus",
     rentPlace: "Üleandmise ja tagastamise koht ja aeg",
     rentPlacePh: "nt Tartu, kokkuleppel",
     idCode: "Isikukood",
-    rentPending: "Rendi hind lepitakse kokku enne üleandmist.",
+    rentWho: "Üürnik",
+    renterAddrPerson: "Elukoha aadress",
+    renterAddrCompany: "Ettevõtte asukoha aadress",
+    repName: "Esindaja nimi (kes masina vastu võtab)",
+    rentVat: "Squeaky Clean Teenused OÜ ei ole käibemaksukohustuslane. Üürile käibemaksu ei lisandu, näidatud hind on lõplik.",
+    rentWhoHint: "Nimi, e-post, telefon ja ettevõtte puhul registrikood täidetakse jaotises „2. Sinu andmed“.",
+    rentPending: "Üüri hind lepitakse kokku enne üleandmist.",
     contractShow: "Vaata üürilepingut (täistekst)",
     contractNote: "Üürileping genereeritakse sinu sisestatud andmetega. Kontrolli see enne saatmist üle.",
     contractCopy: "Kopeeri leping",
@@ -209,7 +215,7 @@ const COPY = {
       old: "Vana puitaken",
       hours: "Lisatööd",
       vacuum: "Tolmuimeja kaasavedu",
-      rent: "Tekstiilipuhastaja rent",
+      rent: "Tekstiilipuhastaja üür",
     } as Record<string, string>,
     rentUnit: "päeva",
     units: { m2: "m²", pcs: "tk", h: "h" },
@@ -252,7 +258,7 @@ const COPY = {
     consent2: "Soovin, et teenuse (sh seadme üüri) osutamist alustatakse enne 14-päevase taganemistähtaja lõppu. Saan aru, et teenuse täielikul osutamisel kaotan taganemisõiguse ning taganemisel pärast teenuse alustamist tasun juba osutatud teenuse eest proportsionaalselt.",
     submit: "Saada hinnapäring",
     sendNote: "Avame sinu e-posti programmis valmis kirja. Päring jõuab meieni, kui vajutad seal «Saada».",
-    sendNoteDirect: "Päring jõuab meieni kohe ja saadame sulle koopia (koos üürilepinguga, kui tellisid rendi). Vastame e-postiga.",
+    sendNoteDirect: "Päring jõuab meieni kohe ja saadame sulle koopia (koos üürilepinguga, kui tellisid masina üüri). Vastame e-postiga.",
     sending: "Saadan…",
     sentTitle: "Päring on saadetud",
     sentOk: (email: string) => `Aitäh! Saime sinu päringu kätte. Vastame aadressile ${email}. Leping sõlmitakse, kui kinnitame päringu e-kirjaga.`,
@@ -275,11 +281,13 @@ const COPY = {
       yes: "JAH",
       no: "EI (toome oma, lisatasu kokkuleppel)",
       utilities: "Elekter ning sooja ja külma vee juurdepääs olemas: JAH",
-      rent: "Rent",
-      rentLine: "Tekstiilipuhastaja rent",
+      rent: "Üür",
+      rentLine: "Tekstiilipuhastaja üür",
       rentPeriod: "Üüriperiood",
       rentPlace: "Üleandmise ja tagastamise koht ja aeg",
       rentId: "Isikukood",
+      rentAddr: "Üürniku aadress",
+      rentRep: "Esindaja",
       c3: "Üürilepingu tingimused (tagatisraha puudub, kahju hüvitis kokkuleppel): JAH",
       contractNote: "Üürilepingu täistekst on kliendile kuvatud lehel ja kinnitatud nõustumisega.",
       other: "Muu töö kirjeldus",
@@ -345,6 +353,12 @@ const COPY = {
     rentPlace: "Place and time of handover and return",
     rentPlacePh: "e.g. Tartu, by agreement",
     idCode: "Personal ID code",
+    rentWho: "Renter",
+    renterAddrPerson: "Home address",
+    renterAddrCompany: "Company registered address",
+    repName: "Representative's name (who receives the machine)",
+    rentVat: "Squeaky Clean Teenused OÜ is not VAT registered. No VAT is added to the rent, the price shown is final.",
+    rentWhoHint: "Name, email, phone and, for a company, the registry code are filled in under “2. Your details”.",
     rentPending: "The rental price will be agreed before handover.",
     contractShow: "View the rental agreement (full text)",
     contractNote: "The agreement is generated with the details you entered. Please check it before sending. The agreement is in Estonian; ask us for an English copy if needed.",
@@ -442,6 +456,8 @@ const COPY = {
       rentPeriod: "Rental period",
       rentPlace: "Place and time of handover and return",
       rentId: "Personal ID code",
+      rentAddr: "Renter's address",
+      rentRep: "Representative",
       c3: "Rental agreement terms (no deposit, damage compensation by agreement): YES",
       contractNote: "The full text of the rental agreement was shown to the customer on the page and accepted.",
       other: "Description of other work",
@@ -500,6 +516,8 @@ export function PriceCalculator() {
   const [rentFrom, setRentFrom] = useState("");
   const [rentPlace, setRentPlace] = useState("");
   const [idCode, setIdCode] = useState("");
+  const [renterAddress, setRenterAddress] = useState("");
+  const [repName, setRepName] = useState("");
 
   const [clientType, setClientType] = useState<"person" | "company">("person");
   const [name, setName] = useState("");
@@ -552,14 +570,15 @@ export function PriceCalculator() {
         isCompany,
         name,
         code: isCompany ? regCode : idCode,
-        address,
+        address: renterAddress,
+        repName,
         phone,
         email,
         days,
         startISO: rentFrom,
         place: rentPlace,
       }),
-    [isCompany, name, regCode, idCode, address, phone, email, days, rentFrom, rentPlace],
+    [isCompany, name, regCode, idCode, renterAddress, repName, phone, email, days, rentFrom, rentPlace],
   );
   const period = rentalPeriod(rentFrom, days);
   const togglePick = (k: string) => setPicks((p) => (p.includes(k) ? p.filter((x) => x !== k) : [...p, k]));
@@ -588,7 +607,7 @@ export function PriceCalculator() {
     if (!canQuote) return setError(c.errNeed);
     if (!name.trim() || !email.trim() || phone.trim().length < 5 || address.trim().length < 4 || (isCompany && !regCode.trim()))
       return setError(c.errFields);
-    if (rentOn && (days < 1 || !rentFrom || !rentPlace.trim() || (!isCompany && idCode.trim().length < 6)))
+    if (rentOn && (days < 1 || !rentFrom || !rentPlace.trim() || renterAddress.trim().length < 4 || (isCompany ? repName.trim().length < 3 : !/^\d{11}$/.test(idCode.trim()))))
       return setError(c.errFields);
     if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.trim())) return setError(c.errEmail);
     if (!ok1 || (!isCompany && !ok2) || (needsSite && !ok0) || (rentOn && !ok3)) return setError(c.errConsent);
@@ -609,7 +628,8 @@ export function PriceCalculator() {
             `- ${m.rentLine}, ${days} ${c.rentUnit}`,
             `- ${m.rentPeriod}: ${period.start} – ${period.end}`,
             `- ${m.rentPlace}: ${rentPlace.trim()}`,
-            ...(!isCompany ? [`- ${m.rentId}: ${idCode.trim()}`] : []),
+            ...(!isCompany ? [`- ${m.rentId}: ${idCode.trim()}`] : [`- ${m.rentRep}: ${repName.trim()}`]),
+            `- ${m.rentAddr}: ${renterAddress.trim()}`,
           ]
         : []),
       "",
@@ -785,11 +805,35 @@ export function PriceCalculator() {
                     <Field label={c.rentPlace}>
                       <Input value={rentPlace} onChange={(e) => setRentPlace(e.target.value)} placeholder={c.rentPlacePh} maxLength={160} />
                     </Field>
-                    {!isCompany && (
-                      <Field label={c.idCode}>
-                        <Input value={idCode} onChange={(e) => setIdCode(e.target.value)} maxLength={20} inputMode="numeric" />
-                      </Field>
+                    <Field label={c.rentWho} hint={c.rentWhoHint}>
+                      <select className={fieldCls} value={clientType} onChange={(e) => setClientType(e.target.value as "person" | "company")}>
+                        <option value="person">{c.person}</option>
+                        <option value="company">{c.company}</option>
+                      </select>
+                    </Field>
+                    {isCompany ? (
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <Field label={c.repName}>
+                          <Input value={repName} onChange={(e) => setRepName(e.target.value)} maxLength={120} />
+                        </Field>
+                        <Field label={c.renterAddrCompany}>
+                          <Input value={renterAddress} onChange={(e) => setRenterAddress(e.target.value)} maxLength={200} />
+                        </Field>
+                      </div>
+                    ) : (
+                      <div className="grid gap-3 sm:grid-cols-2">
+                        <Field label={c.idCode}>
+                          <Input value={idCode} onChange={(e) => setIdCode(e.target.value.replace(/\D/g, ""))} maxLength={11} inputMode="numeric" />
+                        </Field>
+                        <Field label={c.renterAddrPerson}>
+                          <Input value={renterAddress} onChange={(e) => setRenterAddress(e.target.value)} maxLength={200} />
+                        </Field>
+                      </div>
                     )}
+                    <p className="flex gap-2 rounded-lg border border-border bg-background p-3 text-xs font-medium">
+                      <ShieldCheck className="mt-0.5 size-4 shrink-0 text-primary" />
+                      {c.rentVat}
+                    </p>
                     <p className="text-xs text-muted-foreground">{c.contractNote}</p>
                     <details className="rounded-lg border border-border bg-background p-3 text-xs">
                       <summary className="cursor-pointer font-medium">{c.contractShow}</summary>

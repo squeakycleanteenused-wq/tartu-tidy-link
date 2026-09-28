@@ -1,5 +1,5 @@
 /* ------------------------------------------------------------------ */
-/* TEKSTIILIPUHASTAJA ÜÜRILEPING (rent)                                */
+/* TEKSTIILIPUHASTAJA ÜÜRILEPING (VÕS § 271)                           */
 /* Muuda seadme andmeid ja hinda ainult siin.                          */
 /* ------------------------------------------------------------------ */
 export const RENTAL = {
@@ -38,7 +38,8 @@ export type RentalData = {
   isCompany: boolean;
   name: string;
   code: string; // isikukood (eraisik) või registrikood (ettevõte)
-  address: string;
+  address: string; // eraisikul elukoha, ettevõttel asukoha aadress
+  repName?: string; // ettevõtte esindaja nimi
   phone: string;
   email: string;
   days: number;
@@ -78,11 +79,13 @@ export function buildRentalContract(d: RentalData): string {
       : `Tagastamisega viivitamisel tasub Üürnik iga alanud viivituspäeva eest üüri päevamääras (${money(RENTAL.pricePerDay)}) kuni Masina tagastamiseni.`;
 
   return [
-    "TEKSTIILIPUHASTUSMASINA ÜÜRILEPING (RENT)",
+    "TEKSTIILIPUHASTUSMASINA ÜÜRILEPING",
     "",
     "1. POOLED",
-    `1.1. Üürileandja: ${RENTAL_COMPANY.name}, ${companyContact()}.`,
-    `1.2. Üürnik: ${v(d.name)}, ${d.isCompany ? "registrikood" : "isikukood"} ${v(d.code)}, aadress ${v(d.address)}, telefon ${v(d.phone)}, e-post ${v(d.email)}.`,
+    `1.1. Üürileandja: ${RENTAL_COMPANY.name}, ${companyContact()}. Üürileandja ei ole käibemaksukohustuslane.`,
+    d.isCompany
+      ? `1.2. Üürnik (ettevõte): ${v(d.name)}, registrikood ${v(d.code)}, asukoha aadress ${v(d.address)}, telefon ${v(d.phone)}, e-post ${v(d.email)}. Üürnikku esindab ja Masina võtab vastu ${v(d.repName ?? "")}.`
+      : `1.2. Üürnik (eraisik): ${v(d.name)}, isikukood ${v(d.code)}, elukoha aadress ${v(d.address)}, telefon ${v(d.phone)}, e-post ${v(d.email)}.`,
     "",
     "2. LEPINGU ESE",
     `2.1. Üürileandja annab Üürnikule ajutiselt kasutada seadme: ${RENTAL.device} koos tarvikutega (edaspidi Masin). Tarvikute komplekt fikseeritakse Masina üleandmisel.`,
@@ -113,20 +116,26 @@ export function buildRentalContract(d: RentalData): string {
     "6.3. Tagatisraha ei võeta. Hüvitis nõutakse kahju tekkimise korral eraldi arvega.",
     "6.4. Üürnik teavitab Üürileandjat viivitamata Masina rikkest, kahjustumisest või kaotsiminekust.",
     "6.5. Üürileandja vastutab Masina puuduste eest seaduses sätestatud ulatuses.",
-    "6.6. Käesolev peatükk ei piira tarbijast Üürniku seadusest tulenevaid õigusi. Üürileandja ei piira oma vastutust tahtluse ja raske hooletuse eest ega vastutust elu ja tervise kahjustamise eest.",
+    `6.6. ${d.isCompany ? "" : "Käesolev peatükk ei piira tarbijast Üürniku seadusest tulenevaid õigusi. "}Üürileandja ei piira oma vastutust tahtluse ja raske hooletuse eest ega vastutust elu ja tervise kahjustamise eest.`,
     "",
     "7. TÜHISTAMINE, TAGANEMINE JA LEPINGU LÕPETAMINE",
     "7.1. Üürnik võib tellimuse tasuta tühistada kuni 24 tundi enne Masina üleandmist.",
-    "7.2. Eraisikust Üürnikul on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda, teatades sellest Üürileandjale e-kirjaga või lehel oleva taganemisvormi kaudu (võib kasutada taganemisavalduse tüüpvormi). Kui Üürnik soovib Masina kasutamist alustada enne selle tähtaja lõppu, tasub ta taganemisel proportsionaalselt kasutatud aja eest.",
+    d.isCompany
+      ? "7.2. Ettevõttest Üürnikule ei kohaldu tarbija 14-päevane taganemisõigus."
+      : "7.2. Eraisikust Üürnikul on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda, teatades sellest Üürileandjale e-kirjaga või lehel oleva taganemisvormi kaudu (võib kasutada taganemisavalduse tüüpvormi). Kui Üürnik soovib Masina kasutamist alustada enne selle tähtaja lõppu, tasub ta taganemisel proportsionaalselt kasutatud aja eest.",
     "7.3. Üürileandjal on õigus leping erakorraliselt üles öelda ja Masin tagasi nõuda, kui Üürnik kasutab Masinat lepingu vastaselt või ei tasu üüri tähtajaks.",
     "",
     "8. ISIKUANDMED",
-    "8.1. Vastutav töötleja on Üürileandja (kontaktandmed punktis 1.1). Üürileandja töötleb Üürniku nime, isikukoodi (ettevõtte puhul registrikoodi), kontaktandmeid ja aadressi lepingu täitmiseks ning õigusnõuete esitamiseks ja kaitsmiseks. Isikukoodi kasutatakse Üürniku tuvastamiseks võimaliku kahjunõude korral.",
+    d.isCompany
+      ? "8.1. Vastutav töötleja on Üürileandja (kontaktandmed punktis 1.1). Üürileandja töötleb Üürniku esindaja nime ja kontaktandmeid lepingu täitmiseks ning õigusnõuete esitamiseks ja kaitsmiseks."
+      : "8.1. Vastutav töötleja on Üürileandja (kontaktandmed punktis 1.1). Üürileandja töötleb Üürniku nime, isikukoodi, kontaktandmeid ja aadressi lepingu täitmiseks ning õigusnõuete esitamiseks ja kaitsmiseks. Isikukoodi kasutatakse Üürniku tuvastamiseks võimaliku kahjunõude korral.",
     "8.2. Andmeid säilitatakse lepingu kehtivuse ajal ja pärast seda nii kaua, kui seadus nõuab (arvete ja muude raamatupidamisdokumentide puhul üldjuhul 7 aastat) või kuni nõuete aegumiseni. Andmeid ei anta edasi kolmandatele isikutele, välja arvatud seadusest tulenevalt ja teenusepakkujatele (nt e-kirjade saatmise teenus), kes töötlevad andmeid Üürileandja nimel.",
     "8.3. Üürnikul on õigus tutvuda oma andmetega, nõuda nende parandamist, kustutamist ja töötlemise piiramist ning esitada kaebus Andmekaitse Inspektsioonile.",
     "",
     "9. KOHALDATAV ÕIGUS JA VAIDLUSED",
-    "9.1. Lepingule kohaldatakse Eesti Vabariigi õigust. Vaidlused lahendatakse esmalt läbirääkimiste teel, kokkuleppe puudumisel kohtus (tarbijast Üürniku puhul tema elukohajärgses kohtus). Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.",
+    d.isCompany
+      ? "9.1. Lepingule kohaldatakse Eesti Vabariigi õigust. Vaidlused lahendatakse esmalt läbirääkimiste teel, kokkuleppe puudumisel Tartu Maakohtus."
+      : "9.1. Lepingule kohaldatakse Eesti Vabariigi õigust. Vaidlused lahendatakse esmalt läbirääkimiste teel, kokkuleppe puudumisel kohtus (tarbijast Üürniku puhul tema elukohajärgses kohtus). Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.",
     "",
     "10. LEPINGU SÕLMIMINE",
     "10.1. Üürnik esitab üüri taotluse hinnapäringu vormi kaudu ja kinnitab, et on lepingu tingimustega tutvunud ja nõustub nendega. Taotlus ei ole siduv leping. Leping loetakse sõlmituks, kui Üürileandja on taotluse kinnitanud e-kirjaga (püsival andmekandjal), lisades sellele käesoleva lepingu ja lõpliku üüri. Masin antakse üle pärast kinnitust.",
