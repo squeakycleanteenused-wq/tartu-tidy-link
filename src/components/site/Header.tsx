@@ -63,7 +63,7 @@ export function Header() {
               <a
                 key={l.href}
                 href={l.href}
-                className="rounded-full px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
+                className="rounded-md px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-secondary hover:text-foreground"
               >
                 {l.label}
               </a>
@@ -72,7 +72,7 @@ export function Header() {
           <LangSwitch />
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="shrink-0 rounded-full lg:hidden">
+              <Button variant="outline" size="icon" className="shrink-0 lg:hidden">
                 <Menu className="size-4" />
               </Button>
             </SheetTrigger>
@@ -83,7 +83,7 @@ export function Header() {
                     key={l.href}
                     href={l.href}
                     onClick={() => setMenuOpen(false)}
-                    className="rounded-lg px-3 py-3 text-sm font-medium hover:bg-secondary"
+                    className="rounded-md px-3 py-3 text-sm font-medium hover:bg-secondary"
                   >
                     {l.label}
                   </a>
@@ -93,7 +93,7 @@ export function Header() {
           </Sheet>
         </div>
       </div>
-      <div className="border-t border-border/60 bg-primary-soft/60">
+      <div className="border-t border-border/60 bg-secondary">
         <p className="mx-auto flex max-w-6xl items-center gap-2 px-4 py-1.5 text-[12px] text-secondary-foreground">
           <MapPin className="size-3.5 shrink-0" />
           <span className="truncate">{t.area}</span>

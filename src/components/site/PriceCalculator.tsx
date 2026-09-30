@@ -722,7 +722,7 @@ export function PriceCalculator() {
                   <Field label={c.area}>
                     <Input inputMode="decimal" value={area} onChange={(e) => setArea(e.target.value)} placeholder="nt 55" />
                   </Field>
-                  <p className="rounded-lg border border-border bg-secondary/40 p-3 text-xs text-secondary-foreground">
+                  <p className="rounded-md border border-border bg-secondary/40 p-3 text-xs text-secondary-foreground">
                     {c.includes[cleaning]}
                   </p>
                   <Field label={c.vacuumQ}>
@@ -783,7 +783,7 @@ export function PriceCalculator() {
                 <Input inputMode="decimal" value={hours} onChange={(e) => setHours(e.target.value)} placeholder="0" />
               </Field>
 
-              <div className="space-y-3 rounded-xl border border-border bg-secondary/30 p-4">
+              <div className="space-y-3 rounded-md border border-border bg-secondary/30 p-4">
                 <p className="text-sm font-semibold">{c.rentTitle}</p>
                 <p className="text-xs text-muted-foreground">{c.rentText}</p>
                 <label className="flex items-start gap-3 text-sm">
@@ -828,11 +828,11 @@ export function PriceCalculator() {
                         </Field>
                       </div>
                     )}
-                    <p className="rounded-lg border border-border bg-background p-3 text-xs font-medium">
+                    <p className="rounded-md border border-border bg-background p-3 text-xs font-medium">
                       {c.rentVat}
                     </p>
                     <p className="text-xs text-muted-foreground">{c.contractNote}</p>
-                    <details className="rounded-lg border border-border bg-background p-3 text-xs">
+                    <details className="rounded-md border border-border bg-background p-3 text-xs">
                       <summary className="cursor-pointer font-medium">{c.contractShow}</summary>
                       <pre className="mt-3 whitespace-pre-wrap font-sans text-secondary-foreground">{contract}</pre>
                     </details>
@@ -852,16 +852,16 @@ export function PriceCalculator() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-5 rounded-xl bg-primary-soft p-4">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">{c.total}</p>
-                    <p className="mt-1 text-3xl font-extrabold text-primary">{priceText}</p>
+                  <div className="mt-5 rounded-md bg-ink p-4 text-white">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">{c.total}</p>
+                    <p className="mt-1 font-display text-3xl font-bold">{priceText}</p>
                     {r.timeMax > 0 && (
-                      <p className="mt-1 text-sm text-secondary-foreground">
+                      <p className="mt-1 text-sm text-white/85">
                         {c.time}: {nf(Math.round(r.timeMin * 2) / 2)} – {nf(Math.round(r.timeMax * 2) / 2)} {c.hoursUnit}
-                        <span className="block text-xs text-muted-foreground">{c.timeNote}</span>
+                        <span className="block text-xs text-white/65">{c.timeNote}</span>
                       </p>
                     )}
-                    {r.minFeeApplied && <p className="mt-2 text-xs text-secondary-foreground">{c.minFee}</p>}
+                    {r.minFeeApplied && <p className="mt-2 text-xs text-white/85">{c.minFee}</p>}
                   </div>
                 </>
               ) : (
@@ -876,13 +876,13 @@ export function PriceCalculator() {
               )}
               {!r.hasItems && rentOn && rentPending && <p className="mt-3 text-xs text-secondary-foreground">{c.rentPending}</p>}
               <div className="mt-5 space-y-2 text-sm">
-                <p className="rounded-lg border border-border bg-secondary/70 p-3">
+                <p className="rounded-md border border-border bg-secondary/70 p-3">
                   {c.indicative}
                 </p>
-                <p className="rounded-lg border border-border bg-secondary/70 p-3 font-medium">
+                <p className="rounded-md border border-border bg-secondary/70 p-3 font-medium">
                   {c.vat}
                 </p>
-                <p className="rounded-lg border border-border bg-secondary/70 p-3 font-medium">
+                <p className="rounded-md border border-border bg-secondary/70 p-3 font-medium">
                   {c.pay}
                 </p>
               </div>
@@ -947,7 +947,7 @@ export function PriceCalculator() {
             <p className="text-sm text-muted-foreground">{c.legalIntro}</p>
             <dl className="grid gap-3 text-sm md:grid-cols-2">
               {[...legalItems.slice(0, 6), withdrawal, ...legalItems.slice(6)].map(([h, p]) => (
-                <div key={h} className="rounded-lg border border-border bg-secondary/40 p-3">
+                <div key={h} className="rounded-md border border-border bg-secondary/40 p-3">
                   <dt className="font-semibold">{h}</dt>
                   <dd className="mt-1 text-secondary-foreground">{p}</dd>
                 </div>
@@ -981,36 +981,36 @@ export function PriceCalculator() {
             )}
 
             {error && (
-              <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm font-medium text-destructive">
+              <p role="alert" className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm font-medium text-destructive">
                 {error}
               </p>
             )}
 
-            <Button type="submit" size="lg" className="rounded-full px-6" disabled={sending}>
+            <Button type="submit" size="lg" className="px-6" disabled={sending}>
               {sending ? c.sending : c.submit}
             </Button>
             <p className="text-xs text-muted-foreground">{canSendDirect() ? c.sendNoteDirect : c.sendNote}</p>
             {sent && (
-              <div className="rounded-xl border border-border bg-primary-soft/60 p-4 text-sm">
+              <div className="rounded-md border border-border bg-primary-soft/60 p-4 text-sm">
                 <p className="font-semibold">{c.sentTitle}</p>
                 <p className="mt-1 text-secondary-foreground">{c.sentOk(email.trim())}</p>
                 <p className="mt-1 text-secondary-foreground">{sentCopyOk ? c.sentCopy(email.trim()) : c.sentNoCopy}</p>
               </div>
             )}
             {mailText && !sent && !error && !sending && (
-              <div className="rounded-xl border border-border bg-primary-soft/60 p-4 text-sm">
+              <div className="rounded-md border border-border bg-primary-soft/60 p-4 text-sm">
                 <p className="font-semibold">{c.doneTitle}</p>
                 <p className="mt-1 text-secondary-foreground">{c.doneText}</p>
                 <div className="mt-3 flex flex-wrap gap-2">
-                  <Button type="button" variant="outline" size="sm" className="rounded-full" onClick={() => copyText(mailText)}>
+                  <Button type="button" variant="outline" size="sm" onClick={() => copyText(mailText)}>
                     {copied ? c.copied : c.copy}
                   </Button>
                   {rentOn && (
                     <>
-                      <Button type="button" variant="outline" size="sm" className="rounded-full" onClick={() => copyText(contract)}>
+                      <Button type="button" variant="outline" size="sm" onClick={() => copyText(contract)}>
                         {c.contractCopy}
                       </Button>
-                      <Button type="button" variant="outline" size="sm" className="rounded-full" onClick={downloadContract}>
+                      <Button type="button" variant="outline" size="sm" onClick={downloadContract}>
                         {c.contractDownload}
                       </Button>
                     </>

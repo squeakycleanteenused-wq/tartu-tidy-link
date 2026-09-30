@@ -139,16 +139,16 @@ export function WithdrawalSection() {
   };
 
   return (
-    <section id="taganemine" className="scroll-mt-28 border-t border-border bg-secondary/30 py-16">
+    <section id="taganemine" className="scroll-mt-28 bg-ink py-16 text-white">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="text-2xl font-bold sm:text-3xl">
           {c.title}
         </h2>
-        <p className="mt-3 text-sm text-secondary-foreground">{c.intro}</p>
-        <p className="mt-2 text-sm text-secondary-foreground">{c.how}</p>
-        <p className="mt-2 text-xs text-muted-foreground">{c.effects}</p>
+        <p className="mt-3 text-sm text-white/85">{c.intro}</p>
+        <p className="mt-2 text-sm text-white/85">{c.how}</p>
+        <p className="mt-2 text-xs text-white/65">{c.effects}</p>
 
-        <form onSubmit={onConfirm} noValidate className="surface-card mt-6 space-y-4 p-6">
+        <form onSubmit={onConfirm} noValidate className="mt-8 space-y-4 rounded-md bg-background p-6 text-foreground">
           <label className="block text-sm">
             <span className="mb-1 block font-medium">{c.name}</span>
             <Input value={name} onChange={(e) => setName(e.target.value)} maxLength={120} />
@@ -166,28 +166,28 @@ export function WithdrawalSection() {
             <Input type="email" value={email} onChange={(e) => setEmail(e.target.value)} maxLength={160} />
           </label>
           {error && (
-            <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm font-medium text-destructive">
+            <p role="alert" className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm font-medium text-destructive">
               {error}
             </p>
           )}
-          <Button type="submit" size="lg" className="rounded-full px-6" disabled={sending}>
+          <Button type="submit" size="lg" className="px-6" disabled={sending}>
             {sending ? c.sending : c.confirm}
           </Button>
           {sentCopyOk !== null && (
-            <div className="rounded-xl border border-border bg-primary-soft/60 p-4 text-sm">
+            <div className="rounded-md border border-border bg-secondary p-4 text-sm">
               <p className="font-semibold">{c.sentTitle}</p>
               <p className="mt-1 text-secondary-foreground">{sentCopyOk ? c.sentText(email.trim()) : c.sentNoCopy}</p>
             </div>
           )}
         </form>
 
-        <details className="mt-4 rounded-lg border border-border bg-background p-4 text-sm">
+        <details className="mt-4 rounded-md border border-white/20 p-4 text-sm">
           <summary className="cursor-pointer font-medium">{c.formTitle}</summary>
-          <div className="mt-3 space-y-2 text-secondary-foreground">
+          <div className="mt-3 space-y-2 text-white/85">
             {c.formLines.map((l) => (
               <p key={l}>{l.replace("{company}", company)}</p>
             ))}
-            <p className="text-xs text-muted-foreground">{c.verify}</p>
+            <p className="text-xs text-white/65">{c.verify}</p>
           </div>
         </details>
       </div>

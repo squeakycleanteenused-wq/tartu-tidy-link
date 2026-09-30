@@ -29,15 +29,15 @@ export function Shop() {
   };
 
   return (
-    <section id="epood" className="scroll-mt-28 border-t border-border bg-secondary/40 py-16">
+    <section id="epood" className="scroll-mt-28 border-y border-border bg-secondary py-16">
       <div className="mx-auto max-w-3xl px-4 text-center">
-        <span className="inline-block rounded-full bg-primary-soft px-4 py-1.5 text-sm font-medium text-primary">
+        <span className="text-xs font-semibold uppercase tracking-widest text-accent">
           {t.shop.soonBadge}
         </span>
-        <h2 className="mt-5 text-3xl font-bold sm:text-4xl">{t.shop.title}</h2>
+        <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{t.shop.title}</h2>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">{t.shop.soonText}</p>
 
-        <form onSubmit={onSubmit} className="surface-card mx-auto mt-8 max-w-lg p-6 text-left sm:p-8">
+        <form onSubmit={onSubmit} className="mx-auto mt-8 max-w-lg text-left">
           <p className="text-sm font-medium">{t.shop.notifyTitle}</p>
           <div className="mt-3 flex flex-col gap-2 sm:flex-row">
             <Input
@@ -48,7 +48,7 @@ export function Shop() {
               maxLength={160}
               aria-label={t.shop.orderEmail}
             />
-            <Button type="submit" className="rounded-full" disabled={sending}>
+            <Button type="submit" disabled={sending}>
               {t.shop.notifyMe}
             </Button>
           </div>

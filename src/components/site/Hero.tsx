@@ -7,13 +7,13 @@ export function Hero() {
   const { t, lang } = useLang();
   const et = lang === "et";
   return (
-    <section className="hero-surface border-b border-border">
+    <section className="border-b border-border bg-secondary">
       <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 py-14 md:grid-cols-2 md:py-20">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-widest text-primary">
+        <div className="hero-rise">
+          <p className="text-xs font-semibold uppercase tracking-widest text-accent">
             {t.hero.eyebrow}
           </p>
-          <h1 className="mt-4 text-4xl font-extrabold leading-[1.05] sm:text-5xl">
+          <h1 className="mt-4 text-4xl font-bold leading-[1.1] sm:text-5xl">
             {t.hero.title}
           </h1>
           <p className="mt-4 max-w-lg text-base text-muted-foreground">
@@ -22,10 +22,10 @@ export function Hero() {
               : "Maintenance cleaning, deep cleaning and window washing in Tartu and Põlva and, by agreement, their surroundings. Request a price online. Prices and terms are clear."}
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
-            <Button size="lg" className="rounded-full px-6" asChild>
+            <Button size="lg" className="px-6" asChild>
               <a href="#hinnakalkulaator">{et ? "Arvuta hind" : "Calculate price"}</a>
             </Button>
-            <Button size="lg" variant="outline" className="rounded-full px-6 bg-card" asChild>
+            <Button size="lg" variant="outline" className="px-6 bg-card" asChild>
               <Link to="/tingimused">{et ? "Tingimused" : "Terms"}</Link>
             </Button>
           </div>
@@ -35,7 +35,7 @@ export function Hero() {
             ))}
           </ul>
         </div>
-        <div className="overflow-hidden rounded-3xl border border-border shadow-[var(--shadow-lift)]">
+        <div className="hero-rise overflow-hidden rounded-md [animation-delay:120ms]">
           <img
             src={heroImage}
             alt={t.hero.title}

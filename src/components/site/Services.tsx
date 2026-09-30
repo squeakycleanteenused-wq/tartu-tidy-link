@@ -39,7 +39,7 @@ export function Services() {
           })}
         </div>
 
-        <p className="mt-8 rounded-xl border border-border bg-secondary/70 p-4 text-sm text-secondary-foreground">
+        <p className="mt-8 rounded-md border border-border bg-secondary/70 p-4 text-sm text-secondary-foreground">
           {t.services.note}
         </p>
       </div>

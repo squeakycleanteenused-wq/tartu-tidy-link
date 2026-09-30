@@ -196,14 +196,14 @@ export function PhotoQuestion() {
   };
 
   return (
-    <section id="kusi-nou" className="scroll-mt-28 border-t border-border py-16">
+    <section id="kusi-nou" className="scroll-mt-28 py-16">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="text-2xl font-bold sm:text-3xl">
           {c.title}
         </h2>
         <p className="mt-2 text-muted-foreground">{c.subtitle}</p>
 
-        <div className="surface-card mt-6 space-y-4 p-6">
+        <div className="mt-8 space-y-5 border-t-2 border-ink pt-6">
           <label className="block text-sm">
             <span className="mb-1 block font-medium">{c.what}</span>
             <select
@@ -225,7 +225,7 @@ export function PhotoQuestion() {
             <Button
               type="button"
               variant="outline"
-              className="rounded-full"
+             
               disabled={busy || photos.length >= MAX_PHOTOS}
               onClick={() => inputRef.current?.click()}
             >
@@ -236,7 +236,7 @@ export function PhotoQuestion() {
               <ul className="mt-3 flex flex-wrap gap-3">
                 {photos.map((p) => (
                   <li key={p.id} className="relative">
-                    <img src={p.url} alt="" className="size-24 rounded-lg border border-border object-cover" />
+                    <img src={p.url} alt="" className="size-24 rounded-md border border-border object-cover" />
                     <button
                       type="button"
                       aria-label={c.remove}
@@ -279,22 +279,22 @@ export function PhotoQuestion() {
           </label>
 
           {error && (
-            <p role="alert" className="rounded-lg border border-destructive/40 bg-destructive/10 p-3 text-sm font-medium text-destructive">
+            <p role="alert" className="rounded-md border border-destructive/40 bg-destructive/10 p-3 text-sm font-medium text-destructive">
               {error}
             </p>
           )}
 
           <div className="flex flex-wrap gap-3">
-            <Button type="button" size="lg" className="rounded-full px-6" onClick={sendMail}>
+            <Button type="button" size="lg" className="px-6" onClick={sendMail}>
               {c.mail}
             </Button>
             {canShare && (
-              <Button type="button" size="lg" variant="outline" className="rounded-full px-6" onClick={shareIt}>
+              <Button type="button" size="lg" variant="outline" className="px-6" onClick={shareIt}>
                 {c.share}
               </Button>
             )}
           </div>
-          {info && <p className="rounded-xl border border-border bg-primary-soft/60 p-3 text-sm text-secondary-foreground">{info}</p>}
+          {info && <p className="rounded-md border border-border bg-secondary p-3 text-sm text-secondary-foreground">{info}</p>}
           <p className="text-xs text-muted-foreground">{c.note}</p>
         </div>
       </div>

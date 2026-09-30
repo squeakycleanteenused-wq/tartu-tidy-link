@@ -7,8 +7,8 @@ export function Contact() {
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="text-3xl font-bold sm:text-4xl">{t.contact.title}</h2>
         <p className="mt-2 text-muted-foreground">{t.contact.subtitle}</p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-3">
-          <div className="surface-card p-6">
+        <div className="mt-8 grid gap-8 sm:grid-cols-3">
+          <div className="border-t-2 border-ink pt-4">
             <p className="text-xs uppercase tracking-wider text-muted-foreground">
               {t.contact.email}
             </p>
@@ -19,13 +19,13 @@ export function Contact() {
               squeakycleanteenused@gmail.com
             </a>
           </div>
-          <div className="surface-card p-6">
+          <div className="border-t-2 border-ink pt-4">
             <p className="text-xs uppercase tracking-wider text-muted-foreground">
               {t.contact.reg}
             </p>
             <p className="mt-1 text-sm font-semibold">16288747</p>
           </div>
-          <div className="surface-card p-6">
+          <div className="border-t-2 border-ink pt-4">
             <p className="text-xs uppercase tracking-wider text-muted-foreground">
               {t.contact.areaLabel}
             </p>
