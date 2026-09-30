@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Menu, MapPin, Sparkles } from "lucide-react";
+import { Menu, MapPin } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
@@ -34,7 +34,7 @@ export function Header() {
   const links = [
     { href: "/#hinnakalkulaator", label: lang === "et" ? "Hinnapäring" : "Price request" },
     { href: "/#epood", label: t.nav.shop },
-    { href: "/#taganemine", label: lang === "et" ? "Taganen lepingust" : "Withdraw from contract" },
+    { href: "/#taganemine", label: lang === "et" ? "Taganen lepingust" : "Withdraw from a contract" },
     { href: "/tingimused", label: t.nav.terms },
     { href: "/#kontakt", label: t.nav.contact },
   ];
@@ -43,8 +43,11 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-border/70 bg-background/85 backdrop-blur">
       <div className="mx-auto grid max-w-6xl grid-cols-[minmax(0,1fr)_auto] items-center gap-3 px-4 py-3">
         <Link to="/" className="flex min-w-0 items-center gap-2">
-          <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-primary text-primary-foreground">
-            <Sparkles className="size-4" />
+          <span
+            aria-hidden="true"
+            className="grid size-9 shrink-0 place-items-center rounded-md bg-primary font-display text-sm font-bold tracking-wide text-primary-foreground"
+          >
+            SC
           </span>
           <span className="min-w-0">
             <span className="block truncate font-display text-base font-bold leading-tight">

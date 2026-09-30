@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Sparkles, Mail } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -32,8 +31,7 @@ export function Shop() {
   return (
     <section id="epood" className="scroll-mt-28 border-t border-border bg-secondary/40 py-16">
       <div className="mx-auto max-w-3xl px-4 text-center">
-        <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-4 py-1.5 text-sm font-medium text-primary">
-          <Sparkles className="size-4" />
+        <span className="inline-block rounded-full bg-primary-soft px-4 py-1.5 text-sm font-medium text-primary">
           {t.shop.soonBadge}
         </span>
         <h2 className="mt-5 text-3xl font-bold sm:text-4xl">{t.shop.title}</h2>
@@ -51,7 +49,6 @@ export function Shop() {
               aria-label={t.shop.orderEmail}
             />
             <Button type="submit" className="rounded-full" disabled={sending}>
-              <Mail className="size-4" />
               {t.shop.notifyMe}
             </Button>
           </div>

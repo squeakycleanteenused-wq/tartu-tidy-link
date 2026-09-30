@@ -1,5 +1,4 @@
 import { Link } from "@tanstack/react-router";
-import { CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
 import heroImage from "@/assets/hero-clean-home.jpg";
@@ -30,12 +29,9 @@ export function Hero() {
               <Link to="/tingimused">{et ? "Tingimused" : "Terms"}</Link>
             </Button>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2">
+          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-secondary-foreground">
             {t.hero.points.map((p) => (
-              <li key={p} className="flex items-center gap-2 text-sm text-secondary-foreground">
-                <CheckCircle2 className="size-4 shrink-0 text-primary" />
-                {p}
-              </li>
+              <li key={p}>{p}</li>
             ))}
           </ul>
         </div>

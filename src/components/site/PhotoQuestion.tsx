@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Camera, Mail, Share2, X } from "lucide-react";
+import { X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLang } from "@/lib/i18n";
@@ -38,7 +38,7 @@ const COPY = {
     what: "Mis see on?",
     whatOpts: ["Polstermööbel", "Vaip", "Madrats", "Ahi", "Aken või rõdu", "Muu"],
     question: "Sinu küsimus",
-    questionPh: "nt Kas seda plekki on võimalik eemaldada? Kui vana vaip on, mis materjal?",
+    questionPh: "nt Kas seda plekki on võimalik eemaldada? Kui vana on vaip ja mis materjalist?",
     email: "Sinu e-post (vastuse saatmiseks)",
     name: "Sinu nimi (valikuline)",
     photos: "Fotod",
@@ -56,7 +56,7 @@ const COPY = {
     errConsent: "Palun kinnita nõusolek.",
     errPhotos: "Lisa vähemalt üks foto.",
     afterMail: (n: number) =>
-      `Avasime sinu e-posti programmis valmis kirja. Lisa sellele oma ${n} foto${n === 1 ? "" : "t"} manusena ja vajuta «Saada». Kui kiri ei avanenud, saada küsimus ja fotod aadressile ${RENTAL_COMPANY.email}.`,
+      `Avasime sinu e-posti programmis valmis kirja. Lisa sellele oma ${n} foto${n === 1 ? "" : "t"} manusena ja vajuta „Saada“. Kui kiri ei avanenud, saada küsimus ja fotod aadressile ${RENTAL_COMPANY.email}.`,
     afterShare: `Valitud rakenduses saada kiri aadressile ${RENTAL_COMPANY.email}.`,
     subject: "Küsimus fotoga",
     mailLines: { head: "KÜSIMUS FOTOGA", what: "Mis see on", q: "Küsimus", email: "Vastuse e-post", name: "Nimi", photos: "Fotosid", attach: "Lisa fotod kirjale manusena." },
@@ -69,7 +69,7 @@ const COPY = {
     what: "What is it?",
     whatOpts: ["Upholstered furniture", "Carpet", "Mattress", "Oven", "Window or balcony", "Other"],
     question: "Your question",
-    questionPh: "e.g. Can this stain be removed? How old is the carpet, what material?",
+    questionPh: "e.g. Can this stain be removed? How old is the carpet and what is it made of?",
     email: "Your email (for our reply)",
     name: "Your name (optional)",
     photos: "Photos",
@@ -198,8 +198,7 @@ export function PhotoQuestion() {
   return (
     <section id="kusi-nou" className="scroll-mt-28 border-t border-border py-16">
       <div className="mx-auto max-w-3xl px-4">
-        <h2 className="flex items-center gap-3 text-2xl font-bold sm:text-3xl">
-          <Camera className="size-7 text-primary" />
+        <h2 className="text-2xl font-bold sm:text-3xl">
           {c.title}
         </h2>
         <p className="mt-2 text-muted-foreground">{c.subtitle}</p>
@@ -230,7 +229,6 @@ export function PhotoQuestion() {
               disabled={busy || photos.length >= MAX_PHOTOS}
               onClick={() => inputRef.current?.click()}
             >
-              <Camera className="size-4" />
               {c.add} ({photos.length}/{MAX_PHOTOS})
             </Button>
             <span className="mt-1 block text-xs text-muted-foreground">{c.photosHint}</span>
@@ -288,12 +286,10 @@ export function PhotoQuestion() {
 
           <div className="flex flex-wrap gap-3">
             <Button type="button" size="lg" className="rounded-full px-6" onClick={sendMail}>
-              <Mail className="size-4" />
               {c.mail}
             </Button>
             {canShare && (
               <Button type="button" size="lg" variant="outline" className="rounded-full px-6" onClick={shareIt}>
-                <Share2 className="size-4" />
                 {c.share}
               </Button>
             )}

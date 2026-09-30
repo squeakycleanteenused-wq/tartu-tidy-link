@@ -6,10 +6,10 @@ export const et = {
   company: "Squeaky Clean Teenused OÜ",
   area: "Teenust osutatakse Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses.",
   nav: {
-    services: "Teenused & Hinnad",
+    services: "Teenused ja hinnad",
     shop: "E-pood",
     booking: "Aja broneerimine",
-    terms: "Eeskirjad & Tingimused",
+    terms: "Eeskirjad ja tingimused",
     contact: "Kontakt",
   },
   hero: {
@@ -23,10 +23,10 @@ export const et = {
   },
   services: {
     title: "Teenused ja hinnakiri",
-    subtitle: "Ettevõte pole käibemaksukohustuslane, käibemaksu hindadele ei lisandu.",
+    subtitle: "Ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu.",
     includes: "Sisaldab",
     book: "Broneeri see teenus",
-    note: "Ettevõte pole käibemaksukohustuslane, käibemaksu hindadele ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
+    note: "Ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
     items: [
       {
         name: "Hoolduskoristus (kerge koristus)",
@@ -42,7 +42,7 @@ export const et = {
         ],
       },
       {
-        name: "Suurpuhastus / Süvapesu",
+        name: "Suurpuhastus / süvapesu",
         price: "80 € kuni 100 €",
         meta: "Lõplik hind oleneb pinna suurusest ja seisukorrast",
         desc: "Põhjalik süvapuhastus enne/pärast kolimist või pikemat pausi.",
@@ -55,18 +55,18 @@ export const et = {
       },
       {
         name: "Aknapesu",
-        price: "alates 3.50 €/tk",
+        price: "alates 3,50 €/tk",
         meta: "Hind sõltub akna tüübist",
         desc: "Sise- ja välispindade pesu koos raamide ja pakkudega.",
         list: [
-          "Tavaline korteriaken: 3.50 kuni 4.00 € / tk",
-          "Suur maast laeni aken / rõduuks: 4.00 kuni 5.50 € / tk",
-          "Vanad puitaknad (topeltraamid): 5.00 kuni 8.00 € / tk",
+          "Tavaline korteriaken: 3,50 kuni 4,00 €/tk",
+          "Suur maast laeni aken / rõduuks: 4,00 kuni 5,50 €/tk",
+          "Vanad puitaknad (topeltraamid): 5,00 kuni 8,00 €/tk",
         ],
       },
       {
         name: "Lisatööd (tunnihind)",
-        price: "15 € / tund",
+        price: "15 €/tund",
         meta: "Erisoovid ja lisategevused",
         desc: "Tellitav lisaks põhiteenusele.",
         list: ["Kappide sisemus", "Kodumasinate sisepesu", "Muud erisoovid"],
@@ -74,7 +74,7 @@ export const et = {
     ],
   },
   booking: {
-    title: "Broneeri / Telli",
+    title: "Broneeri / telli",
     subtitle: "Täida vorm ühe korraga – kogume kõik vajalikud kontakt- ja arveandmed.",
     service: "Teenuse valik",
     servicePlaceholder: "Vali teenus",
@@ -82,12 +82,12 @@ export const et = {
     clientType: "Kliendi tüüp",
     person: "Eraisik",
     companyType: "Ettevõte",
-    name: "Ees- ja perekonnanimi / Ettevõtte nimi",
-    code: "Isikukood / Registrikood",
-    billingAddress: "Arve aadress",
+    name: "Ees- ja perekonnanimi / ettevõtte nimi",
+    code: "Isikukood / registrikood",
+    billingAddress: "Arveaadress",
     objectAddress: "Koristusobjekti aadress",
-    sameAddress: "Sama mis arve aadress",
-    city: "Objekti asukoht / Linn",
+    sameAddress: "Sama mis arveaadress",
+    city: "Objekti asukoht / linn",
     cityOptions: ["Tartu linn", "Põlva linn", "Lähiümbrus"],
     email: "E-posti aadress",
     phone: "Telefoninumber",
@@ -104,11 +104,11 @@ export const et = {
       "Soovin teenuse osutamist enne 14-päevase taganemistähtaja lõppu ning olen teadlik, et teenuse täielikul osutamisel kaotan seadusjärgse taganemisõiguse (VÕS § 53 lg 4).",
     submit: "Saada broneering",
     required: "Palun täida kõik kohustuslikud väljad ja kinnita mõlemad nõusolekud.",
-    success: "Aitäh! Broneering on saadetud – võtame teiega peagi ühendust.",
+    success: "Aitäh! Broneering on saadetud – võtame sinuga peagi ühendust.",
     error: "Broneeringu saatmine ebaõnnestus. Palun proovi uuesti või kirjuta meile.",
     confirmTitle: "Broneering saadetud!",
     confirmText:
-      "Aitäh, {name}! Saatsime kinnituse aadressile {email}. Võtame teiega ühendust broneeringu kinnitamiseks.",
+      "Aitäh, {name}! Saatsime kinnituse aadressile {email}. Võtame sinuga broneeringu kinnitamiseks ühendust.",
     confirmSummary: "Broneeringu kokkuvõte",
     close: "Sulge",
   },
@@ -126,7 +126,7 @@ export const et = {
     title: "E-pood",
     soonBadge: "Tulekul",
     soonText:
-      "Squeaky Clean E-pood avaneb peagi! Peagi leiad siit meie soovitatud puhastusvahendid ja kingikomplektid.",
+      "Squeaky Cleani e-pood avaneb peagi! Varsti leiad siit meie soovitatud puhastusvahendid ja kingikomplektid.",
     notifyTitle: "Soovid teavitust, kui e-pood avaneb?",
     notifyMe: "Teavita mind",
     notifyNote: "Kasutame sinu e-posti ainult e-poe avamise teavituseks.",
@@ -144,10 +144,10 @@ export const et = {
     areaValue: "Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses",
   },
   terms: {
-    link: "Eeskirjad & Tingimused",
+    link: "Eeskirjad ja tingimused",
     title: "Hinnakiri ja teenuseosutamise tingimused",
     intro:
-      "Kehtivad alates: mai 2026. Registrikood: 16288747, E-post: squeakycleanteenused@gmail.com, Teenust osutatakse Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses.",
+      "Kehtivad alates maist 2026. Registrikood: 16288747. E-post: squeakycleanteenused@gmail.com. Teenust osutatakse Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses.",
     back: "Tagasi avalehele",
     sections: [
       {
@@ -156,7 +156,7 @@ export const et = {
       },
       {
         h: "2. Kliendi kohustused ja ettevalmistus",
-        p: "Klient tagab ligipääsu, vee ja elektri. Väärisasjad, sularaha ja konfidentsiaalsed dokumendid tuleb lukustada. Teenuseosutaja isiklikke asju ei tõsta ega sorteeri. Spetsiifilistest pindadest tuleb eelnevalt teavitada.",
+        p: "Klient tagab ligipääsu, vee ja elektri. Väärisasjad, sularaha ja konfidentsiaalsed dokumendid tuleb lukustada. Teenuseosutaja ei tõsta ega sorteeri kliendi isiklikke asju. Spetsiifilistest pindadest tuleb eelnevalt teavitada.",
       },
       {
         h: "3. Tarbija taganemisõigus (VÕS § 56)",
@@ -164,7 +164,7 @@ export const et = {
       },
       {
         h: "4. Tühistamine ja ooteaeg",
-        p: "Tasuta tühistamine kuni 24h enne töö algust. Hilisema tühistamise või sissepääsu mittetagamise korral (ooteaeg uksel max 30 min) on tühistamistasu 30 € (minimaalne väljakutsetasu).",
+        p: "Tasuta tühistamine kuni 24 h enne töö algust. Hilisema tühistamise või sissepääsu mittetagamise korral (ooteaeg uksel kuni 30 min) on tühistamistasu 30 € (minimaalne väljakutsetasu).",
       },
       {
         h: "5. Arveldamine",
@@ -176,11 +176,11 @@ export const et = {
       },
       {
         h: "7. Tööde vastuvõtmine ja pretensioonid",
-        p: "Tööd vaadatakse üle koheselt kohapeal või esitatakse teade fotodega mõistliku aja jooksul (äriklientidel 24h jooksul). Puuduste ilmnemisel teostab Teenuseosutaja tasuta paranduse (VÕS § 646). Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole (TTJA).",
+        p: "Tööd vaadatakse üle kohe kohapeal või esitatakse teade fotodega mõistliku aja jooksul (äriklientidel 24 h jooksul). Puuduste ilmnemisel teeb Teenuseosutaja tasuta parandustöö (VÕS § 646). Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole (TTJA).",
       },
       {
         h: "8. Isikuandmed (GDPR)",
-        p: "Andmeid töödeldakse lepingu täitmiseks. Teenuseosutajal on õigus teha kvaliteedikontrolliks 'enne ja pärast' fotosid ilma isikuandmeid või privaatseid detaile jäädvustamata.",
+        p: "Andmeid töödeldakse lepingu täitmiseks. Teenuseosutajal on õigus teha kvaliteedikontrolliks „enne ja pärast“ fotosid ilma isikuandmeid või privaatseid detaile jäädvustamata.",
       },
     ],
   },
@@ -212,10 +212,10 @@ export const en: Dict = {
   },
   services: {
     title: "Services and pricing",
-    subtitle: "The company is not VAT registered; VAT is not added to prices.",
+    subtitle: "The company is not VAT-registered; VAT is not added to prices.",
     includes: "Includes",
     book: "Book this service",
-    note: "The company is not VAT registered; VAT is not added to prices. The minimum call-out fee is 30 € (2 working hours).",
+    note: "The company is not VAT-registered; VAT is not added to prices. The minimum call-out fee is 30 € (2 working hours).",
     items: [
       {
         name: "Maintenance cleaning (light cleaning)",
@@ -239,7 +239,7 @@ export const en: Dict = {
           "Everything in maintenance cleaning",
           "Degreasing of kitchen surfaces",
           "Limescale and grout cleaning",
-          "Cleaning of skirtings, doors and switches",
+          "Cleaning of skirting boards, doors and switches",
         ],
       },
       {
@@ -248,14 +248,14 @@ export const en: Dict = {
         meta: "Price depends on the window type",
         desc: "Washing of inner and outer surfaces including frames and sills.",
         list: [
-          "Standard apartment window: 3.50 to 4.00 € / pc",
-          "Large floor-to-ceiling window / balcony door: 4.00 to 5.50 € / pc",
-          "Old wooden windows (double frames): 5.00 to 8.00 € / pc",
+          "Standard apartment window: 3.50 to 4.00 €/pc",
+          "Large floor-to-ceiling window / balcony door: 4.00 to 5.50 €/pc",
+          "Old wooden windows (double frames): 5.00 to 8.00 €/pc",
         ],
       },
       {
         name: "Extra work (hourly rate)",
-        price: "15 € / hour",
+        price: "15 €/hour",
         meta: "Special requests and additional tasks",
         desc: "Ordered in addition to the main service.",
         list: ["Inside of cabinets", "Interior cleaning of appliances", "Other special requests"],
@@ -264,7 +264,7 @@ export const en: Dict = {
   },
   booking: {
     title: "Book / Order",
-    subtitle: "Fill the form once – we collect all required contact and invoicing details.",
+    subtitle: "Fill in the form once – we collect all required contact and invoicing details.",
     service: "Service",
     servicePlaceholder: "Choose a service",
     serviceOptions: ["Maintenance cleaning", "Deep cleaning", "Window washing", "Extra work"],
@@ -288,11 +288,11 @@ export const en: Dict = {
     extra: "Additional information",
     extraPlaceholder: "m², number of rooms, special requests, specific surfaces…",
     consent1:
-      "I confirm that I have read and agree with the service terms and privacy policy of Squeaky Clean Teenused OÜ.",
+      "I confirm that I have read and agree to the service terms and privacy policy of Squeaky Clean Teenused OÜ.",
     consent2:
       "I request the service to be performed before the end of the 14-day withdrawal period and I am aware that once the service is fully performed I lose the statutory right of withdrawal (LOA § 53 (4)).",
     submit: "Send booking",
-    required: "Please fill all required fields and confirm both consents.",
+    required: "Please fill in all required fields and confirm both consents.",
     success: "Thank you! Your booking has been sent – we will contact you shortly.",
     error: "Sending the booking failed. Please try again or email us.",
     confirmTitle: "Booking sent!",
@@ -308,7 +308,7 @@ export const en: Dict = {
     none: "No free slots on this day. Please choose another day.",
     select: "Select a day from the calendar.",
     choose: "Choose this slot",
-    chosen: "Slot selected – please fill the booking form.",
+    chosen: "Slot selected – please fill in the booking form.",
     region: "Region",
   },
   shop: {
@@ -330,13 +330,13 @@ export const en: Dict = {
     email: "Email",
     reg: "Registry code",
     areaLabel: "Service area",
-    areaValue: "Cities of Tartu and Põlva and, by agreement, their surrounding areas"
+    areaValue: "Cities of Tartu and Põlva and, by agreement, their surrounding areas",
   },
   terms: {
     link: "Terms & Conditions",
     title: "Pricing and terms of service",
     intro:
-      "Valid from: May 2026. Registry code: 16288747, Email: squeakycleanteenused@gmail.com, Services are provided in the cities of Tartu and Põlva and, by agreement, in their surrounding areas.",
+      "Valid from May 2026. Registry code: 16288747. Email: squeakycleanteenused@gmail.com. Services are provided in the cities of Tartu and Põlva and, by agreement, in their surrounding areas.",
     back: "Back to home",
     sections: [
       {
@@ -345,7 +345,7 @@ export const en: Dict = {
       },
       {
         h: "2. Client obligations and preparation",
-        p: "The Client ensures access, water and electricity. Valuables, cash and confidential documents must be locked away. The service provider does not move or sort personal belongings. Specific surfaces must be notified in advance.",
+        p: "The Client ensures access, water and electricity. Valuables, cash and confidential documents must be locked away. The service provider does not move or sort the Client's personal belongings. The service provider must be notified of specific surfaces in advance.",
       },
       {
         h: "3. Consumer right of withdrawal (LOA § 56)",
@@ -353,7 +353,7 @@ export const en: Dict = {
       },
       {
         h: "4. Cancellation and waiting time",
-        p: "Free cancellation up to 24h before the start of work. In case of later cancellation or failure to provide access (waiting time at the door max 30 min), the cancellation fee is 30 € (the minimum call-out fee).",
+        p: "Free cancellation up to 24 h before the start of work. In case of later cancellation or failure to provide access (waiting time at the door up to 30 min), the cancellation fee is 30 € (the minimum call-out fee).",
       },
       {
         h: "5. Invoicing",
@@ -365,11 +365,11 @@ export const en: Dict = {
       },
       {
         h: "7. Acceptance of work and complaints",
-        p: "Work is reviewed immediately on site or a notice with photos is submitted within a reasonable time (within 24h for business clients). If defects appear, the service provider carries out a free correction (LOA § 646). Consumers have the right to turn to the Consumer Disputes Committee (TTJA).",
+        p: "Work is reviewed immediately on site or a notice with photos is submitted within a reasonable time (within 24 h for business clients). If defects appear, the service provider carries out a free correction (LOA § 646). Consumers have the right to turn to the Consumer Disputes Committee (TTJA).",
       },
       {
         h: "8. Personal data (GDPR)",
-        p: "Data is processed for performance of the contract. For quality control the service provider may take 'before and after' photos without capturing personal data or private details.",
+        p: "Data is processed for the performance of the contract. For quality control the service provider may take 'before and after' photos without capturing personal data or private details.",
       },
     ],
   },

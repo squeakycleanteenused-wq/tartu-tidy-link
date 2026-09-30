@@ -1,4 +1,3 @@
-import { Mail, MapPin, Building2 } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 
 export function Contact() {
@@ -10,8 +9,7 @@ export function Contact() {
         <p className="mt-2 text-muted-foreground">{t.contact.subtitle}</p>
         <div className="mt-8 grid gap-4 sm:grid-cols-3">
           <div className="surface-card p-6">
-            <Mail className="size-5 text-primary" />
-            <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">
               {t.contact.email}
             </p>
             <a
@@ -22,15 +20,13 @@ export function Contact() {
             </a>
           </div>
           <div className="surface-card p-6">
-            <Building2 className="size-5 text-primary" />
-            <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">
               {t.contact.reg}
             </p>
             <p className="mt-1 text-sm font-semibold">16288747</p>
           </div>
           <div className="surface-card p-6">
-            <MapPin className="size-5 text-primary" />
-            <p className="mt-3 text-xs uppercase tracking-wider text-muted-foreground">
+            <p className="text-xs uppercase tracking-wider text-muted-foreground">
               {t.contact.areaLabel}
             </p>
             <p className="mt-1 text-sm font-semibold">{t.contact.areaValue}</p>

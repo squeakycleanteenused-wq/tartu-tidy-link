@@ -35,11 +35,11 @@ export function BookingSection() {
       <div className="text-center mb-8">
         <h2 className="text-2xl font-bold text-gray-900">Squeaky Clean Teenused OÜ</h2>
         <p className="text-sm text-gray-600 mt-1">
-          Reg. kood: 16288747 | Tartu ja Põlva ning lähiümbrus[cite: 2]
+          Reg. kood: 16288747 | Tartu ja Põlva ning lähiümbrus
         </p>
         <div className="mt-3 bg-red-50 border border-red-200 text-red-700 text-xs px-3 py-2 rounded-lg font-semibold space-y-1">
-          <p>• Squeaky Clean Teenused OÜ ei ole käibemaksukohuslane – hinnale käibemaksu ei lisandu[cite: 2].</p>
-          <p>• Arveldamine toimub pangaülekandega, sularahamakseid ei aktsepteerita[cite: 2].</p>
+          <p>• Squeaky Clean Teenused OÜ ei ole käibemaksukohustuslane – hinnale käibemaksu ei lisandu.</p>
+          <p>• Arveldamine toimub pangaülekandega, sularahamakseid ei aktsepteerita.</p>
         </div>
       </div>
 
@@ -145,9 +145,9 @@ export function BookingSection() {
           {/* PUNKT 3: Juriidilised tingimused ja tarbija õigused */}
           <div className="p-4 bg-amber-50 rounded-lg border border-amber-200 text-xs text-amber-900 space-y-2">
             <p className="font-bold text-sm">Olulised tingimused ja teenuseosutamise reeglid:</p>
-            <p>• <strong>Õigus keelduda / hinda korrigeerida:</strong> Teenuseosutajal on õigus hinda kohapeal korrigeerida või tööst keelduda, kui elamispind või mustuse aste erineb oluliselt kirjeldatust (nt ehitustolm, tugev erakorraline mustus)[cite: 2].</p>
-            <p>• <strong>Tööde sisu ja tühistamine:</strong> Klient kinnitab, et mõistab tellitava teenuse sisu ja mahtu. Tasuta tühistamine kuni 24h enne töö algust, hilisemal tühistamisel kehtib miinimumtasu 30 €[cite: 2].</p>
-            <p>• <strong>Tarbija taganemisõigus:</strong> Eraisikust kliendil on õigus 14 päeva jooksul lepingust taganeda[cite: 2]. Taganemiseks võib esitada vabas vormis avalduse või kasutada allpool leitavat tüüpvormi[cite: 1, 2]. Teenuse osutamisel enne 14 päeva möödumist nõustub klient ooteaja lühendamisega ja teenuse täielikul osutamisel taganemisõigus kaob[cite: 2].</p>
+            <p>• <strong>Õigus keelduda / hinda korrigeerida:</strong> Teenuseosutajal on õigus hinda kohapeal korrigeerida või tööst keelduda, kui elamispind või mustuse aste erineb oluliselt kirjeldatust (nt ehitustolm, tugev erakorraline mustus).</p>
+            <p>• <strong>Tööde sisu ja tühistamine:</strong> Klient kinnitab, et mõistab tellitava teenuse sisu ja mahtu. Tasuta tühistamine kuni 24h enne töö algust, hilisemal tühistamisel kehtib miinimumtasu 30 €.</p>
+            <p>• <strong>Tarbija taganemisõigus:</strong> Eraisikust kliendil on õigus 14 päeva jooksul lepingust taganeda. Taganemiseks võib esitada vabas vormis avalduse või kasutada allpool leitavat tüüpvormi. Teenuse osutamisel enne 14 päeva möödumist nõustub klient ooteaja lühendamisega ja teenuse täielikul osutamisel taganemisõigus kaob.</p>
             
             {/* Taganemisavalduse tüüpvormi nupp / vaade */}
             <div className="pt-2">
@@ -162,8 +162,8 @@ export function BookingSection() {
               {showCancellationForm && (
                 <div className="mt-3 p-3 bg-white border border-amber-300 rounded text-gray-800 space-y-2 text-left">
                   <p className="font-bold">Sidevahendi abil sõlmitud lepingust taganemise tüüpvorm</p>
-                  <p className="text-[11px] text-gray-600">Kellele: Squeaky Clean Teenused OÜ, Reg. kood: 16288747, E-post: squeakycleanteenused@gmail.com[cite: 1]</p>
-                  <p className="text-[11px]">Käesolevaga taganen lepingust, mille esemeks on hoolduskoristus[cite: 1]. Vormi kasutamine ei ole kohustuslik, sobib ka vabas vormis ühemõtteline avaldus e-posti teel[cite: 1, 2].</p>
+                  <p className="text-[11px] text-gray-600">Kellele: Squeaky Clean Teenused OÜ, Reg. kood: 16288747, E-post: squeakycleanteenused@gmail.com</p>
+                  <p className="text-[11px]">Käesolevaga taganen lepingust, mille esemeks on hoolduskoristus. Vormi kasutamine ei ole kohustuslik, sobib ka vabas vormis ühemõtteline avaldus e-posti teel.</p>
                 </div>
               )}
             </div>
@@ -180,7 +180,7 @@ export function BookingSection() {
                 className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded"
               />
               <span className="text-xs text-gray-700 leading-relaxed">
-                Kinnitan, et olen tutvunud ja nõustun teenuseosutamise tingimustega, saan täielikult aru teenuse sisust ning mõistan, et sularahas arveldamist ei toimu[cite: 2]. Olen teadlik oma õigustest ja taganemisinfost.
+                Kinnitan, et olen tutvunud ja nõustun teenuseosutamise tingimustega, saan täielikult aru teenuse sisust ning mõistan, et sularahas arveldamist ei toimu. Olen teadlik oma õigustest ja taganemisinfost.
               </span>
             </label>
           </div>

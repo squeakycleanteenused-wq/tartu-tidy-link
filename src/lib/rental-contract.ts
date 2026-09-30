@@ -93,7 +93,7 @@ export function buildRentalContract(d: RentalData): string {
     "2.3. Masin on mõeldud kodutekstiilide (nt polstermööbel, vaibad, madratsid, autoistmed) niiskeks puhastamiseks.",
     "",
     "3. ÜÜRIPERIOOD, ÜLEANDMINE JA TAGASTAMINE",
-    `3.1. Üüriperiood on ${d.days > 0 ? d.days : "…"} päeva, algusega ${start}. Masin tagastatakse hiljemalt ${end}.`,
+    `3.1. Üüriperiood on ${d.days > 0 ? d.days : "…"} päeva ja algab ${start}. Masin tagastatakse hiljemalt ${end}.`,
     `3.2. Üleandmise ja tagastamise koht ja aeg: ${v(d.place)}.`,
     "3.3. Üürnik tagastab Masina puhtana: mahutid on tühjendatud ja loputatud.",
     `3.4. ${lateLine}`,
@@ -101,7 +101,7 @@ export function buildRentalContract(d: RentalData): string {
     "4. ÜÜR JA MAKSMINE",
     `4.1. ${rentLine}`,
     "4.2. Üürileandja ei ole käibemaksukohustuslane, käibemaksu üürile ei lisandu.",
-    "4.3. Üür tasutakse Üürileandja esitatud arve alusel pangaülekandega, maksetähtaeg üldjuhul 7 päeva. Sularahamakseid ei aktsepteerita.",
+    "4.3. Üür tasutakse Üürileandja esitatud arve alusel pangaülekandega, maksetähtaeg on üldjuhul 7 päeva. Sularahamakseid ei aktsepteerita.",
     "4.4. Üürileandja ei nõua tagatisraha (pandi).",
     "",
     "5. MASINA KASUTAMINE",
@@ -112,7 +112,7 @@ export function buildRentalContract(d: RentalData): string {
     "",
     "6. VASTUTUS",
     "6.1. Üürnik vastutab Masina kaotsimineku, varguse ja kahjustumise eest, kui see on tekkinud Üürniku süül (sh kasutusjuhendi või juhiste vastasel kasutamisel). Tavapärasest kulumisest tulenevat kahju Üürnik ei hüvita.",
-    "6.2. Kahju hüvitise suuruses lepivad pooled kokku. Kokkuleppe puudumisel on hüvitis Masina parandamise põhjendatud kulu, kuid mitte rohkem kui Masina turuväärtus kahju tekkimise ajal.",
+    "6.2. Kahjuhüvitise suuruses lepivad pooled kokku. Kokkuleppe puudumisel on hüvitis Masina parandamise põhjendatud kulu, kuid mitte rohkem kui Masina turuväärtus kahju tekkimise ajal.",
     "6.3. Tagatisraha ei võeta. Hüvitis nõutakse kahju tekkimise korral eraldi arvega.",
     "6.4. Üürnik teavitab Üürileandjat viivitamata Masina rikkest, kahjustumisest või kaotsiminekust.",
     "6.5. Üürileandja vastutab Masina puuduste eest seaduses sätestatud ulatuses.",
@@ -122,7 +122,7 @@ export function buildRentalContract(d: RentalData): string {
     "7.1. Üürnik võib tellimuse tasuta tühistada kuni 24 tundi enne Masina üleandmist.",
     d.isCompany
       ? "7.2. Ettevõttest Üürnikule ei kohaldu tarbija 14-päevane taganemisõigus."
-      : "7.2. Eraisikust Üürnikul on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda, teatades sellest Üürileandjale e-kirjaga või lehel oleva taganemisvormi kaudu (võib kasutada taganemisavalduse tüüpvormi). Kui Üürnik soovib Masina kasutamist alustada enne selle tähtaja lõppu, tasub ta taganemisel proportsionaalselt kasutatud aja eest.",
+      : "7.2. Eraisikust Üürnikul on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda, teatades sellest Üürileandjale e-kirjaga või veebilehel oleva taganemisvormi kaudu (võib kasutada taganemisavalduse tüüpvormi). Kui Üürnik soovib Masina kasutamist alustada enne selle tähtaja lõppu, tasub ta taganemisel proportsionaalselt kasutatud aja eest.",
     "7.3. Üürileandjal on õigus leping erakorraliselt üles öelda ja Masin tagasi nõuda, kui Üürnik kasutab Masinat lepingu vastaselt või ei tasu üüri tähtajaks.",
     "",
     "8. ISIKUANDMED",
@@ -138,7 +138,7 @@ export function buildRentalContract(d: RentalData): string {
       : "9.1. Lepingule kohaldatakse Eesti Vabariigi õigust. Vaidlused lahendatakse esmalt läbirääkimiste teel, kokkuleppe puudumisel kohtus (tarbijast Üürniku puhul tema elukohajärgses kohtus). Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.",
     "",
     "10. LEPINGU SÕLMIMINE",
-    "10.1. Üürnik esitab üüri taotluse hinnapäringu vormi kaudu ja kinnitab, et on lepingu tingimustega tutvunud ja nõustub nendega. Taotlus ei ole siduv leping. Leping loetakse sõlmituks, kui Üürileandja on taotluse kinnitanud e-kirjaga (püsival andmekandjal), lisades sellele käesoleva lepingu ja lõpliku üüri. Masin antakse üle pärast kinnitust.",
+    "10.1. Üürnik esitab üüritaotluse hinnapäringu vormi kaudu ja kinnitab, et on lepingu tingimustega tutvunud ja nõustub nendega. Taotlus ei ole siduv leping. Leping loetakse sõlmituks, kui Üürileandja on taotluse kinnitanud e-kirjaga (püsival andmekandjal), lisades sellele käesoleva lepingu ja lõpliku üüri. Masin antakse üle pärast kinnitust.",
     "10.2. Leping on koostatud eesti keeles.",
   ].join("\n");
 }

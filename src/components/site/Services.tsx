@@ -1,8 +1,5 @@
-import { Check, Info, Sparkles, SprayCan, PanelsTopLeft, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
-
-const icons = [Sparkles, SprayCan, PanelsTopLeft, Clock];
 
 export function Services() {
   const { t } = useLang();
@@ -13,14 +10,10 @@ export function Services() {
         <p className="mt-2 text-muted-foreground">{t.services.subtitle}</p>
 
         <div className="mt-10 grid gap-5 md:grid-cols-2">
-          {t.services.items.map((s, i) => {
-            const Icon = icons[i] ?? Sparkles;
+          {t.services.items.map((s) => {
             return (
               <article key={s.name} className="surface-card flex flex-col p-6">
                 <div className="flex items-start gap-4">
-                  <span className="grid size-11 shrink-0 place-items-center rounded-xl bg-primary-soft text-primary">
-                    <Icon className="size-5" />
-                  </span>
                   <div className="min-w-0 flex-1">
                     <h3 className="text-lg font-bold">{s.name}</h3>
                     <p className="mt-1 text-sm text-muted-foreground">{s.meta}</p>
@@ -33,24 +26,20 @@ export function Services() {
                 <p className="mt-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
                   {t.services.includes}
                 </p>
-                <ul className="mt-2 space-y-1.5">
+                <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-secondary-foreground">
                   {s.list.map((li) => (
-                    <li key={li} className="flex gap-2 text-sm text-secondary-foreground">
-                      <Check className="mt-0.5 size-4 shrink-0 text-primary" />
-                      {li}
-                    </li>
+                    <li key={li}>{li}</li>
                   ))}
                 </ul>
                 <Button variant="ghost" className="mt-5 self-start px-0 text-primary" asChild>
-                  <a href="#broneerimine">{t.services.book} →</a>
+                  <a href="#broneerimine">{t.services.book}</a>
                 </Button>
               </article>
             );
           })}
         </div>
 
-        <p className="mt-8 flex gap-3 rounded-xl border border-border bg-secondary/70 p-4 text-sm text-secondary-foreground">
-          <Info className="mt-0.5 size-4 shrink-0 text-primary" />
+        <p className="mt-8 rounded-xl border border-border bg-secondary/70 p-4 text-sm text-secondary-foreground">
           {t.services.note}
         </p>
       </div>

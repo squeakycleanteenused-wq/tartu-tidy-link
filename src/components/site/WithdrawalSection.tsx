@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Mail, Undo2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLang } from "@/lib/i18n";
@@ -15,9 +14,9 @@ const COPY = {
     title: "Taganen lepingust",
     intro:
       "Eraisikust tellijal (tarbijal) on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda. Tähtaeg algab lepingu sõlmimisest ehk meie kinnituse päevast ja lõpeb 14 päeva möödumisel. Tähtaja pidamiseks piisab, kui saadad avalduse enne tähtaja lõppu ära. Ettevõttest tellijale taganemisõigus ei kohaldu.",
-    how: "Taganemiseks täida allolev vorm ja vajuta «Kinnitan taganemise» (avaneb valmis e-kiri, mille pead saatma) või saada meile vabas vormis ühemõtteline avaldus e-postiga. Kinnitame avalduse kättesaamise e-kirjaga viivitamata.",
+    how: "Taganemiseks täida allolev vorm ja vajuta „Kinnitan taganemise“ (avaneb valmis e-kiri, mille pead saatma) või saada meile vabas vormis ühemõtteline avaldus e-postiga. Kinnitame avalduse kättesaamise e-kirjaga viivitamata.",
     effects:
-      "Kui oled taotlenud teenuse osutamise alustamist taganemistähtaja jooksul, tasud meile taganemise korral proportsionaalselt juba osutatud teenuse eest (võrreldes lepingu täieliku täitmisega). Teenuse täielikul osutamisel kaob taganemisõigus, kui oled sellega eelnevalt nõustunud. Muul juhul tagastame sinu tasutu viivitamata, kuid mitte hiljem kui 14 päeva jooksul taganemisavalduse kättesaamisest. Rendi puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest.",
+      "Kui oled taotlenud teenuse osutamise alustamist taganemistähtaja jooksul, tasud meile taganemise korral proportsionaalselt juba osutatud teenuse eest (võrreldes lepingu täieliku täitmisega). Teenuse täielikul osutamisel kaob taganemisõigus, kui oled sellega eelnevalt nõustunud. Muul juhul tagastame sinu tasutu viivitamata, kuid mitte hiljem kui 14 päeva jooksul taganemisavalduse kättesaamisest. Üüri puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest.",
     name: "Sinu nimi",
     address: "Sinu aadress",
     contract: "Leping (nt teenus, kuupäev, tellimuse info)",
@@ -40,10 +39,10 @@ const COPY = {
     verify: "Tüüpvorm põhineb justiitsministri määrusel nr 41 (17.12.2013).",
     sending: "Saadan…",
     sentTitle: "Taganemisavaldus on saadetud",
-    sentText: (email: string) => `Saime sinu avalduse kätte. Kinnituse (sisu, kuupäeva ja kellaajaga) saatsime aadressile ${email}. Kui seda pole mõne minuti pärast, vaata rämpsposti kausta.`,
-    sentNoCopy: "Saime sinu avalduse kätte. Kinnituse saatmine sinu e-postile ei õnnestunud, salvesta see teade ja ekraanipilt.",
+    sentText: (email: string) => `Saime sinu avalduse kätte. Kinnituse (sisu, kuupäeva ja kellaajaga) saatsime aadressile ${email}. Kui kirja mõne minuti pärast ei ole, vaata rämpspostikausta.`,
+    sentNoCopy: "Saime sinu avalduse kätte. Kinnituse saatmine sinu e-postile ei õnnestunud. Salvesta see teade ja tee sellest ekraanipilt.",
     failed: "Otse saatmine ei õnnestunud. Avame selle asemel e-posti programmi.",
-    confirmMsg: (name: string, when: string, body: string) => `Tere ${name}!\n\nKinnitame, et saime sinu taganemisavalduse kätte ${when}.\n\nAvalduse sisu:\n${body}\n\nTagastame sinu tasutu viivitamata, kuid hiljemalt 14 päeva jooksul avalduse kättesaamisest (arvestades juba osutatud teenuse proportsionaalset tasu, kui teenus on alanud sinu soovil). Rendi puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest.\n\nSqueaky Clean Teenused OÜ`,
+    confirmMsg: (name: string, when: string, body: string) => `Tere, ${name}!\n\nKinnitame, et saime sinu taganemisavalduse kätte ${when}.\n\nAvalduse sisu:\n${body}\n\nTagastame sinu tasutu viivitamata, kuid hiljemalt 14 päeva jooksul avalduse kättesaamisest (arvestades juba osutatud teenuse proportsionaalset tasu, kui teenus on alanud sinu soovil). Üüri puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest.\n\nSqueaky Clean Teenused OÜ`,
     mail: { subject: "Taganemisavaldus", head: "TAGANEMISAVALDUS", to: "Kellele", body: "Mina, {name}, teatan käesolevaga, et taganen lepingust", contract: "Leping", address: "Aadress", email: "E-post kinnituse saatmiseks", date: "Kuupäev" },
   },
   en: {
@@ -76,9 +75,9 @@ const COPY = {
     sending: "Sending…",
     sentTitle: "Your withdrawal notice has been sent",
     sentText: (email: string) => `We received your notice. We sent a confirmation (with the content, date and time) to ${email}. If it does not arrive in a few minutes, check your spam folder.`,
-    sentNoCopy: "We received your notice. Sending the confirmation to your email failed, please save this message and a screenshot.",
+    sentNoCopy: "We received your notice. Sending the confirmation to your email failed, please save this message and take a screenshot of it.",
     failed: "Direct sending failed. We will open your mail app instead.",
-    confirmMsg: (name: string, when: string, body: string) => `Hello ${name}!\n\nWe confirm that we received your withdrawal notice on ${when}.\n\nContent of the notice:\n${body}\n\nWe will refund what you paid without delay and no later than 14 days after receiving your notice (taking into account proportional payment for the service already provided, if it started at your request). For a rental, return the machine without delay and no later than 14 days after your notice.\n\nSqueaky Clean Teenused OÜ`,
+    confirmMsg: (name: string, when: string, body: string) => `Hello, ${name}!\n\nWe confirm that we received your withdrawal notice on ${when}.\n\nContent of the notice:\n${body}\n\nWe will refund what you paid without delay and no later than 14 days after receiving your notice (taking into account proportional payment for the service already provided, if it started at your request). For a rental, return the machine without delay and no later than 14 days after your notice.\n\nSqueaky Clean Teenused OÜ`,
     mail: { subject: "Withdrawal notice", head: "WITHDRAWAL NOTICE", to: "To", body: "I, {name}, hereby give notice that I withdraw from the contract", contract: "Contract", address: "Address", email: "Email for confirmation", date: "Date" },
   },
 } as const;
@@ -142,8 +141,7 @@ export function WithdrawalSection() {
   return (
     <section id="taganemine" className="scroll-mt-28 border-t border-border bg-secondary/30 py-16">
       <div className="mx-auto max-w-3xl px-4">
-        <h2 className="flex items-center gap-3 text-2xl font-bold sm:text-3xl">
-          <Undo2 className="size-7 text-primary" />
+        <h2 className="text-2xl font-bold sm:text-3xl">
           {c.title}
         </h2>
         <p className="mt-3 text-sm text-secondary-foreground">{c.intro}</p>
@@ -173,7 +171,6 @@ export function WithdrawalSection() {
             </p>
           )}
           <Button type="submit" size="lg" className="rounded-full px-6" disabled={sending}>
-            <Mail className="size-4" />
             {sending ? c.sending : c.confirm}
           </Button>
           {sentCopyOk !== null && (
