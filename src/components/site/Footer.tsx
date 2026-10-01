@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Building2 } from "lucide-react";
+import { Mail, MapPin, Building2, Phone } from "lucide-react";
 import { useLang } from "@/lib/i18n";
+import { RENTAL_COMPANY } from "@/lib/rental-contract";
 
 export function Footer() {
   const { t } = useLang();
@@ -13,20 +14,35 @@ export function Footer() {
         </div>
         <ul className="space-y-2 text-sm text-muted-foreground">
           <li className="flex items-center gap-2">
-            <Mail className="size-4 shrink-0" /> squeakycleanteenused@gmail.com
+            <Mail className="size-4 shrink-0" />
+            <a href={`mailto:${RENTAL_COMPANY.email}`} className="hover:underline">
+              {RENTAL_COMPANY.email}
+            </a>
           </li>
           <li className="flex items-center gap-2">
-            <Building2 className="size-4 shrink-0" /> {t.contact.reg}: 16288747
+            <Phone className="size-4 shrink-0" />
+            <a href={`tel:${RENTAL_COMPANY.phone.replace(/\s/g, "")}`} className="hover:underline">
+              {RENTAL_COMPANY.phone}
+            </a>
           </li>
           <li className="flex items-start gap-2">
-            <MapPin className="mt-0.5 size-4 shrink-0" /> {t.contact.areaValue}
+            <MapPin className="mt-0.5 size-4 shrink-0" /> {RENTAL_COMPANY.address}
+          </li>
+          <li className="flex items-center gap-2">
+            <Building2 className="size-4 shrink-0" /> {t.contact.reg}: {RENTAL_COMPANY.code}
           </li>
         </ul>
-        <div className="text-sm">
-          <Link to="/tingimused" className="font-medium text-primary hover:underline">
+        <div className="space-y-2 text-sm">
+          <Link to="/tingimused" className="block font-medium text-primary hover:underline">
             {t.terms.link}
           </Link>
-          <p className="mt-4 text-muted-foreground">
+          <Link to="/privaatsus" className="block font-medium text-primary hover:underline">
+            {t.footer.privacy}
+          </Link>
+          <a href="/#taganemine" className="block font-medium text-primary hover:underline">
+            {t.footer.withdraw}
+          </a>
+          <p className="pt-2 text-muted-foreground">
             © {new Date().getFullYear()} {t.company}. {t.footer.rights}
           </p>
         </div>

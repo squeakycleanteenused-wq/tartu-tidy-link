@@ -13,10 +13,10 @@ const COPY = {
   et: {
     title: "Taganen lepingust",
     intro:
-      "Eraisikust tellijal (tarbijal) on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda. Tähtaeg algab lepingu sõlmimisest ehk meie kinnituse päevast ja lõpeb 14 päeva möödumisel. Tähtaja pidamiseks piisab, kui saadad avalduse enne tähtaja lõppu ära. Ettevõttest tellijale taganemisõigus ei kohaldu.",
+      "Eraisikust tellijal (tarbijal) on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda. Tähtaeg algab lepingu sõlmimisest ehk päevast, mil kinnitasid meie pakkumise, ja lõpeb 14 päeva möödumisel. Tähtaja pidamiseks piisab, kui saadad avalduse enne tähtaja lõppu ära. Ettevõttest tellijale taganemisõigus ei kohaldu.",
     how: "Taganemiseks täida allolev vorm ja vajuta „Kinnitan taganemise“ (avaneb valmis e-kiri, mille pead saatma) või saada meile vabas vormis ühemõtteline avaldus e-postiga. Kinnitame avalduse kättesaamise e-kirjaga viivitamata.",
     effects:
-      "Kui oled taotlenud teenuse osutamise alustamist taganemistähtaja jooksul, tasud meile taganemise korral proportsionaalselt juba osutatud teenuse eest (võrreldes lepingu täieliku täitmisega). Teenuse täielikul osutamisel kaob taganemisõigus, kui oled sellega eelnevalt nõustunud. Muul juhul tagastame sinu tasutu viivitamata, kuid mitte hiljem kui 14 päeva jooksul taganemisavalduse kättesaamisest. Üüri puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest.",
+      "Kui oled taotlenud teenuse osutamise alustamist taganemistähtaja jooksul, tasud meile taganemise korral proportsionaalselt juba osutatud teenuse eest (võrreldes lepingu täieliku täitmisega). Teenuse täielikul osutamisel kaob taganemisõigus, kui oled sellega eelnevalt nõustunud. Muul juhul tagastame sinu tasutu viivitamata, kuid mitte hiljem kui 14 päeva jooksul taganemisavalduse kättesaamisest. Üüri puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest; tagastamise otsesed kulud kannad sina.",
     name: "Sinu nimi",
     address: "Sinu aadress",
     contract: "Leping (nt teenus, kuupäev, tellimuse info)",
@@ -48,10 +48,10 @@ const COPY = {
   en: {
     title: "Withdraw from a contract",
     intro:
-      "A private customer (consumer) has the right to withdraw from a contract concluded at a distance within 14 days without giving a reason. The period starts when the contract is concluded, i.e. on the day of our confirmation, and ends 14 days later. It is enough to send your notice before the period ends. The right of withdrawal does not apply to business customers.",
+      "A private customer (consumer) has the right to withdraw from a contract concluded at a distance within 14 days without giving a reason. The period starts when the contract is concluded, i.e. on the day you confirm our offer, and ends 14 days later. It is enough to send your notice before the period ends. The right of withdrawal does not apply to business customers.",
     how: "To withdraw, fill in the form below and press “Confirm withdrawal” (a ready-made email opens which you must send) or send us any unambiguous statement by email. We will confirm receipt of your notice by email without delay.",
     effects:
-      "If you asked us to start the service during the withdrawal period, you pay proportionally for the service already provided (compared with full performance of the contract). The right of withdrawal is lost once the service has been fully performed, if you agreed to this in advance. Otherwise we refund what you paid without delay and no later than 14 days after receiving your notice. For a rental, return the machine without delay and no later than 14 days after your notice.",
+      "If you asked us to start the service during the withdrawal period, you pay proportionally for the service already provided (compared with full performance of the contract). The right of withdrawal is lost once the service has been fully performed, if you agreed to this in advance. Otherwise we refund what you paid without delay and no later than 14 days after receiving your notice. For a rental, return the machine without delay and no later than 14 days after your notice; you bear the direct costs of returning it.",
     name: "Your name",
     address: "Your address",
     contract: "Contract (e.g. service, date, order details)",

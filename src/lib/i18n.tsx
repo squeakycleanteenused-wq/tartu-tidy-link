@@ -140,52 +140,25 @@ export const et = {
     subtitle: "Küsimused ja pakkumised",
     email: "E-post",
     reg: "Registrikood",
+    phone: "Telefon",
+    address: "Asukoha aadress",
     areaLabel: "Tegevuspiirkond",
     areaValue: "Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses",
   },
   terms: {
     link: "Eeskirjad ja tingimused",
     title: "Hinnakiri ja teenuseosutamise tingimused",
-    intro:
-      "Kehtivad alates maist 2026. Registrikood: 16288747. E-post: squeakycleanteenused@gmail.com. Teenust osutatakse Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses.",
+    intro: "Kehtivad alates 01.10.2026. Tingimused kehtivad hinnakalkulaatori kaudu tellitud teenustele ja tekstiilipuhastaja üürile.",
     back: "Tagasi avalehele",
-    sections: [
-      {
-        h: "1. Teenuse osutamise alused ja maht",
-        p: "Teenust osutatakse Kliendi esitatud andmete alusel. Minimaalne väljakutsetasu on 30 € (2 töötundi). Detaile või mustuseastet korrigeeritakse enne töö algust kohapeal.",
-      },
-      {
-        h: "2. Kliendi kohustused ja ettevalmistus",
-        p: "Klient tagab ligipääsu, vee ja elektri. Väärisasjad, sularaha ja konfidentsiaalsed dokumendid tuleb lukustada. Teenuseosutaja ei tõsta ega sorteeri kliendi isiklikke asju. Spetsiifilistest pindadest tuleb eelnevalt teavitada.",
-      },
-      {
-        h: "3. Tarbija taganemisõigus (VÕS § 56)",
-        p: "Eraisikust Kliendil on sidevahendi teel sõlmitud lepingust 14 päeva jooksul õigus taganeda. Teenuse osutamisel enne 14 päeva möödumist nõustub Klient ooteaja lühendamisega ning teenuse täielikul osutamisel taganemisõigus kaob.",
-      },
-      {
-        h: "4. Tühistamine ja ooteaeg",
-        p: "Tasuta tühistamine kuni 24 h enne töö algust. Hilisema tühistamise või sissepääsu mittetagamise korral (ooteaeg uksel kuni 30 min) on tühistamistasu 30 € (minimaalne väljakutsetasu).",
-      },
-      {
-        h: "5. Arveldamine",
-        p: "Tasumine toimub arve alusel pangaülekandega (maksetähtaeg 7 päeva). Sularahamakseid ei aktsepteerita.",
-      },
-      {
-        h: "6. Vastutus",
-        p: "Teenuseosutaja vastutab töö käigus tekitatud otsese ja tõendatud varakahju eest seaduses sätestatud korras. Vastutus ei laiene pindade eelnevale kulumisele, varjatud puudustele ega teavitamata erimaterjalide kahjustustele. See ei piira tarbija seadusest tulenevaid õigusi ega Teenuseosutaja vastutust tahtluse ja raske hooletuse eest.",
-      },
-      {
-        h: "7. Tööde vastuvõtmine ja pretensioonid",
-        p: "Tööd vaadatakse üle kohe kohapeal või esitatakse teade fotodega mõistliku aja jooksul (äriklientidel 24 h jooksul). Puuduste ilmnemisel teeb Teenuseosutaja tasuta parandustöö (VÕS § 646). Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole (TTJA).",
-      },
-      {
-        h: "8. Isikuandmed (GDPR)",
-        p: "Andmeid töödeldakse lepingu täitmiseks. Teenuseosutajal on õigus teha kvaliteedikontrolliks „enne ja pärast“ fotosid ilma isikuandmeid või privaatseid detaile jäädvustamata.",
-      },
-    ],
+    prices: "Hinnakiri",
+    pricesNote: "Hinnad on käibemaksuta (ettevõte ei ole käibemaksukohustuslane). Hinnakalkulaator annab orienteeruva hinna; siduv kindel hind on kirjas pakkumises, mille saadame enne lepingu sõlmimist.",
+    conditions: "Tingimused",
+    withdrawForm: "Taganemisavalduse vorm ja tüüpvorm",
   },
   footer: {
     rights: "Kõik õigused kaitstud.",
+    privacy: "Privaatsuspoliitika",
+    withdraw: "Taganen lepingust",
   },
 };
 
@@ -329,52 +302,25 @@ export const en: Dict = {
     subtitle: "Questions and quotes",
     email: "Email",
     reg: "Registry code",
+    phone: "Phone",
+    address: "Registered address",
     areaLabel: "Service area",
     areaValue: "Cities of Tartu and Põlva and, by agreement, their surrounding areas",
   },
   terms: {
     link: "Terms & Conditions",
     title: "Pricing and terms of service",
-    intro:
-      "Valid from May 2026. Registry code: 16288747. Email: squeakycleanteenused@gmail.com. Services are provided in the cities of Tartu and Põlva and, by agreement, in their surrounding areas.",
+    intro: "Valid from 1 October 2026. These terms apply to services ordered via the price calculator and to the upholstery cleaner rental.",
     back: "Back to home",
-    sections: [
-      {
-        h: "1. Basis and scope of the service",
-        p: "The service is provided based on the information submitted by the Client. The minimum call-out fee is 30 € (2 working hours). Details or the level of soiling are adjusted on site before work begins.",
-      },
-      {
-        h: "2. Client obligations and preparation",
-        p: "The Client ensures access, water and electricity. Valuables, cash and confidential documents must be locked away. The service provider does not move or sort the Client's personal belongings. The service provider must be notified of specific surfaces in advance.",
-      },
-      {
-        h: "3. Consumer right of withdrawal (LOA § 56)",
-        p: "A Client who is a private person has the right to withdraw from a distance contract within 14 days. By requesting the service before the 14 days have passed, the Client agrees to shorten the waiting period, and once the service is fully performed the right of withdrawal is lost.",
-      },
-      {
-        h: "4. Cancellation and waiting time",
-        p: "Free cancellation up to 24 h before the start of work. In case of later cancellation or failure to provide access (waiting time at the door up to 30 min), the cancellation fee is 30 € (the minimum call-out fee).",
-      },
-      {
-        h: "5. Invoicing",
-        p: "Payment is made by bank transfer against an invoice (payment term 7 days). Cash payments are not accepted.",
-      },
-      {
-        h: "6. Liability",
-        p: "The service provider is liable for direct, proven property damage caused during the work as provided by law. Liability does not extend to pre-existing wear of surfaces, hidden defects or damage to special materials that were not notified. This does not limit consumer rights under law or the provider's liability for intent and gross negligence.",
-      },
-      {
-        h: "7. Acceptance of work and complaints",
-        p: "Work is reviewed immediately on site or a notice with photos is submitted within a reasonable time (within 24 h for business clients). If defects appear, the service provider carries out a free correction (LOA § 646). Consumers have the right to turn to the Consumer Disputes Committee (TTJA).",
-      },
-      {
-        h: "8. Personal data (GDPR)",
-        p: "Data is processed for the performance of the contract. For quality control the service provider may take 'before and after' photos without capturing personal data or private details.",
-      },
-    ],
+    prices: "Price list",
+    pricesNote: "Prices exclude VAT (the company is not VAT-registered). The price calculator gives an estimate; the binding fixed price is stated in the offer we send before the contract is concluded.",
+    conditions: "Terms",
+    withdrawForm: "Withdrawal form and standard form",
   },
   footer: {
     rights: "All rights reserved.",
+    privacy: "Privacy policy",
+    withdraw: "Withdraw from a contract",
   },
 };
 

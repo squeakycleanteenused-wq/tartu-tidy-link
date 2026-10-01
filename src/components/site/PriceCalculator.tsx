@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { useLang, type Lang } from "@/lib/i18n";
 import { canSendDirect, sendRequest } from "@/lib/send-request";
 import { RENTAL, RENTAL_COMPANY, buildRentalContract, companyContact, rentalPeriod, rentalTotal } from "@/lib/rental-contract";
+import { legalTerms } from "@/lib/legal";
 
 /* ------------------------------------------------------------------ */
 /* HINNAD: muuda ainult siin. Kõik on eurodes, käibemaksuta.           */
@@ -203,7 +204,7 @@ const COPY = {
     hoursUnit: "h",
     minFee: "Rakendatud on minimaalne väljakutsetasu 30 € (2 töötundi).",
     indicative:
-      "Hind on orienteeruv ja põhineb sinu sisestatud andmetel. See ei ole siduv pakkumine; leping sõlmitakse alles siis, kui kinnitame päringu e-kirjaga. Kui objekt või mustuse aste erineb oluliselt kirjeldatust, on teenuseosutajal õigus hinda kohapeal korrigeerida või tööst keelduda.",
+      "Hind on orienteeruv ja põhineb sinu sisestatud andmetel. See ei ole siduv pakkumine. Saadame sulle e-kirjaga pakkumise kindla hinnaga ja leping sõlmitakse alles siis, kui sa selle kinnitad. Kui objekt või mustuse aste erineb oluliselt kirjeldatust, on teenuseosutajal õigus hinda kohapeal korrigeerida või tööst keelduda.",
     vat: "Käibemaksuta: ettevõte ei ole käibemaksukohustuslane, käibemaksu hinnale ei lisandu.",
     pay: "Maksmine ainult pangaülekandega arve alusel. Sularahas kahjuks maksta ei saa.",
     lines: {
@@ -236,23 +237,8 @@ const COPY = {
     notesPh: "Ruumide arv, allergiad, erilised pinnad, erisoovid",
     s3: "3. Olulised tingimused",
     legalIntro: "Palun loe läbi enne päringu saatmist.",
-    legal: [
-      ["Teenuseosutaja", "__PROVIDER__ Tegevuspiirkond: Tartu ja Põlva linn ning kokkuleppel nende lähiümbrus. Kaebused ja küsimused palume saata ülaltoodud aadressile või e-postile."],
-      ["Lepingu sõlmimine", "See kalkulaator ja päring ei ole siduv pakkumine ega leping. Leping sõlmitakse, kui kinnitame sinu päringu e-kirjaga. Kinnituses saad meilt lõpliku hinna, aja, tingimused ning taganemisinfo ja tüüpvormi. Kuni kinnituseni võid päringust loobuda."],
-      ["Hind ja käibemaks", "Ettevõte ei ole käibemaksukohustuslane, käibemaksu hinnale ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi). Kui mustuse aste või töömaht erineb oluliselt kirjeldatust, võime hinda enne töö algust korrigeerida või tööaega pikendada (lisatööde tunnihind 15 €/h). Enne töö algust küsime sinu nõusolekut uue hinnaga. Kui sa ei nõustu, võid tööst loobuda ja tasud ainult minimaalse väljakutsetasu (30 €). Lõplik hind kinnitatakse enne töö algust."],
-      ["Arveldamine", "Tasumine toimub arve alusel pangaülekandega (maksetähtaeg üldjuhul 7 päeva). Sularahamakseid ei aktsepteerita. Maksmisega viivitamisel on viivis 0,05% päevas. Teenuseosutajal on õigus nõuda ettemaksu, eriti suuremate tööde ja esmatellimuste puhul."],
-      ["Kliendi kohustused", "Klient tagab kokkulepitud ajal takistusteta ligipääsu, töötava elektri, sooja ja külma vee ning võimaluse kasutada töökorras tolmuimejat (vastasel juhul toome lisatasu eest kaasa oma tolmuimeja). Erihooldust vajavatest pindadest (nt õlitatud põrandad, looduskivi) tuleb ette teatada. Sularaha, väärisasjad, dokumendid ja kergesti purunevad esemed tuleb enne eemaldada või lukustada. Isiklikke asju me ei tõsta ega korrasta."],
-      ["Tühistamine", "Tasuta tühistamine kuni 24 h enne töö algust. Hilisema tühistamise või sissepääsu mittetagamise korral (ooteaeg uksel kuni 30 min) on tasu 30 €."],
-      ["Vastutus", "Teenuseosutaja vastutab töö käigus tekitatud otsese ja tõendatud varakahju eest seaduses sätestatud korras. Vastutus ei laiene pindade eelnevale kulumisele, varjatud puudustele ega teavitamata erimaterjalide kahjustustele. See ei piira tarbija seadusest tulenevaid õigusi ega meie vastutust tahtluse ja raske hooletuse eest."],
-      ["Pretensioonid", "Puudustest teavita kohe kohapeal või fotodega mõistliku aja jooksul (ettevõttest tellijal 24 h jooksul). Puuduse korral teeme tasuta parandustöö. Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole."],
-      ["Isikuandmed", "Vastutav töötleja on Squeaky Clean Teenused OÜ. Töötleme sinu nime, kontaktandmeid ja aadressi hinnapakkumise koostamiseks ja lepingu täitmiseks. Arvete andmeid säilitame seadusega nõutud tähtaja jooksul (üldjuhul 7 aastat), muid andmeid nii kaua, kui see on vajalik nõuete esitamiseks ja kaitsmiseks. E-kirjade saatmisel kasutame teenusepakkujat, kes töötleb andmeid meie nimel. Sul on õigus oma andmetega tutvuda, neid parandada, kustutada ja töötlemist piirata ning esitada kaebus Andmekaitse Inspektsioonile. Kvaliteedikontrolliks võime teha „enne ja pärast“ fotosid ilma isikuandmeid jäädvustamata."],
-    ] as [string, string][],
-    withdrawalPerson: [
-      "Taganemisõigus (eraisik)",
-      "Sul on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda. Tähtaeg algab lepingu sõlmimisest ehk meie kinnituse päevast. Teavita meid ühemõtteliselt (e-postiga või lehel oleva vormi „Taganen lepingust“ kaudu, võid kasutada tüüpvormi). Tähtaja pidamiseks piisab avalduse ärasaatmisest. Kui soovid teenust alustada enne selle tähtaja lõppu, tasud taganemisel juba osutatud teenuse eest proportsionaalselt ning teenuse täielikul osutamisel taganemisõigus kaob.",
-    ] as [string, string],
-    withdrawalCompany: ["Taganemisõigus", "Ettevõttest tellijale tarbija taganemisõigus ei kohaldu."] as [string, string],
     fullTerms: "Loe täielikke tingimusi",
+    privacy: "Privaatsuspoliitika",
     consent1: "Olen tutvunud ja nõustun teenuseosutamise tingimustega. Saan aru, et teenuseosutaja ei ole käibemaksukohustuslane, hinnale käibemaksu ei lisandu, ning et arveldamine toimub ainult pangaülekandega (sularahamakseid ei aktsepteerita).",
     consent2: "Soovin, et teenuse (sh seadme üüri) osutamist alustatakse enne 14-päevase taganemistähtaja lõppu. Saan aru, et teenuse täielikul osutamisel kaotan taganemisõiguse ning taganemisel pärast teenuse alustamist tasun juba osutatud teenuse eest proportsionaalselt.",
     submit: "Saada hinnapäring",
@@ -260,12 +246,12 @@ const COPY = {
     sendNoteDirect: "Päring jõuab meieni kohe ja saadame sulle koopia (koos üürilepinguga, kui tellisid masina üüri). Vastame e-postiga.",
     sending: "Saadan…",
     sentTitle: "Päring on saadetud",
-    sentOk: (email: string) => `Aitäh! Saime sinu päringu kätte. Vastame aadressile ${email}. Leping sõlmitakse, kui kinnitame päringu e-kirjaga.`,
+    sentOk: (email: string) => `Aitäh! Saime sinu päringu kätte. Saadame pakkumise kindla hinnaga aadressile ${email}. Leping sõlmitakse, kui sa pakkumise kinnitad.`,
     sentCopy: (email: string) => `Saatsime koopia aadressile ${email}. Kui kirja mõne minuti pärast ei ole, vaata rämpspostikausta.`,
     sentNoCopy: "Koopia saatmine sinu e-postile ei õnnestunud. Salvesta see leht või kopeeri päring.",
     sendFail: "Otse saatmine ei õnnestunud. Avame selle asemel e-posti programmi.",
-    clientIntro: (name: string) => `Tere, ${name}!\n\nSaime sinu päringu. See ei ole veel leping: leping sõlmitakse, kui kinnitame päringu e-kirjaga. Allpool on kõik, mille sa saatsid.`,
-    clientOutro: (contact: string, origin: string) => `Teenuseosutaja: Squeaky Clean Teenused OÜ, ${contact}.\nTingimused: ${origin}/tingimused\nTarbijal (eraisikul) on õigus lepingust 14 päeva jooksul põhjust avaldamata taganeda. Taganemisvorm ja tüüpvorm: ${origin}/#taganemine\nKaebused: saada samale aadressile või e-postile. Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.`,
+    clientIntro: (name: string) => `Tere, ${name}!\n\nSaime sinu päringu. See ei ole veel leping ega too kaasa maksekohustust. Saadame sulle pakkumise kindla hinnaga ja leping sõlmitakse, kui sa selle e-kirjaga kinnitad. Allpool on kõik, mille sa saatsid.`,
+    clientOutro: (contact: string, origin: string) => `Teenuseosutaja: Squeaky Clean Teenused OÜ, ${contact}.\nTingimused: ${origin}/tingimused\nTarbijal (eraisikul) on õigus lepingust 14 päeva jooksul põhjust avaldamata taganeda. Taganemine: lehe ülamenüüs „Taganen lepingust“ (${origin}/#taganemine), seal on ka tüüpvorm.\nPrivaatsuspoliitika: ${origin}/privaatsus\nKaebused: saada samale aadressile või e-postile. Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.`,
     contractHead: "ÜÜRILEPING (koostatud sinu andmetega)",
     errNeed: "Sisesta vajadus (pind, aknad või muu töö), et hind arvutada.",
     errFields: "Palun täida kõik kohustuslikud väljad.",
@@ -373,7 +359,7 @@ const COPY = {
     hoursUnit: "h",
     minFee: "The minimum call-out fee of 30 € (2 working hours) has been applied.",
     indicative:
-      "The price is an estimate based on the information you entered. It is not a binding offer; the contract is concluded only when we confirm by email. If the property or level of dirt differs significantly from the description, the provider may adjust the price on site or refuse the work.",
+      "The price is an estimate based on the information you entered. It is not a binding offer. We send you an offer with a fixed price by email and the contract is concluded only when you confirm it. If the property or level of dirt differs significantly from the description, the provider may adjust the price on site or refuse the work.",
     vat: "No VAT: the company is not VAT-registered; VAT is not added to the price.",
     pay: "Payment by bank transfer against an invoice only. Unfortunately, cash payments are not accepted.",
     lines: {
@@ -406,23 +392,8 @@ const COPY = {
     notesPh: "Number of rooms, allergies, special surfaces, requests",
     s3: "3. Important terms",
     legalIntro: "Please read before sending your request.",
-    legal: [
-      ["Service provider", "__PROVIDER__ Service area: Tartu and Põlva cities and, by agreement, their surroundings. Please send complaints and questions to the address or email above."],
-      ["Conclusion of contract", "This calculator and your request are not a binding offer or contract. The contract is concluded when we confirm your request by email. The confirmation will contain the final price, time, terms, and the withdrawal information and standard form. Until confirmation you may cancel your request."],
-      ["Price and VAT", "The company is not VAT-registered; VAT is not added to prices. The minimum call-out fee is 30 € (2 working hours). If the level of dirt or the scope differs significantly from the description, we may adjust the price or extend the working time before starting (extra work 15 €/h). We ask for your confirmation of the new price before starting. If you do not agree, you may cancel the work and pay only the minimum call-out fee (30 €). The final price is confirmed before the work starts."],
-      ["Payment", "Payment is made against an invoice by bank transfer (payment term generally 7 days). Cash payments are not accepted. Late payment interest is 0.05% per day. The provider may require a prepayment, especially for larger jobs and first orders."],
-      ["Customer obligations", "The customer ensures unobstructed access at the agreed time, working electricity, hot and cold water, and the use of a working vacuum cleaner (otherwise we bring our own for an extra fee). Surfaces needing special care (e.g. oiled floors, natural stone) must be reported in advance. Cash, valuables, documents and fragile items must be removed or locked away. We do not move or organise personal belongings."],
-      ["Cancellation", "Free cancellation up to 24 h before the start. For later cancellation or no access (waiting time at the door up to 30 min) a 30 € fee applies."],
-      ["Liability", "The provider is liable for direct, proven property damage caused during the work as provided by law. Liability does not cover prior wear of surfaces, hidden defects or damage to special materials not disclosed in advance. This does not limit consumer rights under law or our liability for intent and gross negligence."],
-      ["Complaints", "Report defects immediately on site or with photos within a reasonable time (business customers within 24 h). We will fix defects free of charge. Consumers may turn to the Consumer Disputes Committee."],
-      ["Personal data", "The controller is Squeaky Clean Teenused OÜ. We process your name, contact details and address to prepare the offer and perform the contract. We keep invoice data for the period required by law (generally 7 years) and other data as long as needed to make and defend claims. We use an email service provider that processes data on our behalf. You have the right to access, correct, erase and restrict your data and to complain to the Estonian Data Protection Inspectorate. For quality control we may take before/after photos without capturing personal data."],
-    ] as [string, string][],
-    withdrawalPerson: [
-      "Right of withdrawal (private person)",
-      "You have the right to withdraw from a contract concluded at a distance within 14 days without giving a reason. The period starts when the contract is concluded, i.e. on the day of our confirmation. Inform us unambiguously (by email or using the “Withdraw from a contract” form on this site; you may use the standard form). It is enough to send your notice before the period ends. If you ask us to start the service before this period ends, you pay proportionally for the service already provided if you withdraw, and the right of withdrawal is lost once the service has been fully performed.",
-    ] as [string, string],
-    withdrawalCompany: ["Right of withdrawal", "The consumer right of withdrawal does not apply to business customers."] as [string, string],
     fullTerms: "Read the full terms",
+    privacy: "Privacy policy",
     consent1: "I have read and accept the service terms. I understand that the provider is not VAT-registered, that VAT is not added to the price and that payment is by bank transfer only (cash is not accepted).",
     consent2: "I ask that the service (incl. equipment rental) start before the 14-day withdrawal period ends. I understand that I lose the right of withdrawal once the service is fully performed and that if I withdraw after the service has started I pay proportionally for what has been provided.",
     submit: "Send price request",
@@ -430,12 +401,12 @@ const COPY = {
     sendNoteDirect: "Your request reaches us immediately and we send you a copy (with the rental agreement if you ordered a rental). We reply by email.",
     sending: "Sending…",
     sentTitle: "Your request has been sent",
-    sentOk: (email: string) => `Thank you! We received your request. We will reply to ${email}. The contract is concluded when we confirm your request by email.`,
+    sentOk: (email: string) => `Thank you! We received your request. We will send an offer with a fixed price to ${email}. The contract is concluded when you confirm the offer.`,
     sentCopy: (email: string) => `We sent a copy to ${email}. If it does not arrive in a few minutes, check your spam folder.`,
     sentNoCopy: "Sending a copy to your email did not work. Save this page or copy the request.",
     sendFail: "Direct sending failed. We will open your mail app instead.",
-    clientIntro: (name: string) => `Hello, ${name}!\n\nWe received your request. It is not yet a contract: the contract is concluded when we confirm your request by email. Below is everything you sent.`,
-    clientOutro: (contact: string, origin: string) => `Service provider: Squeaky Clean Teenused OÜ, ${contact}.\nTerms: ${origin}/tingimused\nA consumer (private person) has the right to withdraw from the contract within 14 days without giving a reason. Withdrawal form and standard form: ${origin}/#taganemine\nComplaints: send to the same address or email. Consumers may turn to the Consumer Disputes Committee.`,
+    clientIntro: (name: string) => `Hello, ${name}!\n\nWe received your request. It is not yet a contract and creates no obligation to pay. We will send you an offer with a fixed price, and the contract is concluded when you confirm it by email. Below is everything you sent.`,
+    clientOutro: (contact: string, origin: string) => `Service provider: Squeaky Clean Teenused OÜ, ${contact}.\nTerms: ${origin}/tingimused\nA consumer (private person) has the right to withdraw from the contract within 14 days without giving a reason. Withdrawal: “Withdraw from a contract” in the top menu (${origin}/#taganemine), the standard form is there too.\nPrivacy policy: ${origin}/privaatsus\nComplaints: send to the same address or email. Consumers may turn to the Consumer Disputes Committee.`,
     contractHead: "RENTAL AGREEMENT (generated with your details)",
     errNeed: "Enter what you need (area, windows or other work) to calculate a price.",
     errFields: "Please fill in all required fields.",
@@ -583,9 +554,7 @@ export function PriceCalculator() {
   const togglePick = (k: string) => setPicks((p) => (p.includes(k) ? p.filter((x) => x !== k) : [...p, k]));
 
   const priceText = r.min === r.max ? eur(r.min) : `${eur(r.min)} – ${eur(r.max)}`;
-  const withdrawal = isCompany ? c.withdrawalCompany : c.withdrawalPerson;
-  const providerText = `${COMPANY.name}, ${companyContact()}.`;
-  const legalItems: [string, string][] = c.legal.map(([h, p]) => [h, p.replace("__PROVIDER__", providerText)]);
+  const legalItems = legalTerms(lang, isCompany);
 
   const lineText = (l: Line) => {
     const price = l.min === l.max ? eur(l.min) : `${eur(l.min)} – ${eur(l.max)}`;
@@ -946,16 +915,21 @@ export function PriceCalculator() {
             <h3 className="text-lg font-bold">{c.s3}</h3>
             <p className="text-sm text-muted-foreground">{c.legalIntro}</p>
             <dl className="grid gap-3 text-sm md:grid-cols-2">
-              {[...legalItems.slice(0, 6), withdrawal, ...legalItems.slice(6)].map(([h, p]) => (
+              {legalItems.map(([h, p]) => (
                 <div key={h} className="rounded-md border border-border bg-secondary/40 p-3">
                   <dt className="font-semibold">{h}</dt>
                   <dd className="mt-1 text-secondary-foreground">{p}</dd>
                 </div>
               ))}
             </dl>
-            <Link to="/tingimused" target="_blank" className="inline-block text-sm font-medium text-primary hover:underline">
-              {c.fullTerms}
-            </Link>
+            <div className="flex flex-wrap gap-x-6 gap-y-1">
+              <Link to="/tingimused" target="_blank" className="text-sm font-medium text-primary hover:underline">
+                {c.fullTerms}
+              </Link>
+              <Link to="/privaatsus" target="_blank" className="text-sm font-medium text-primary hover:underline">
+                {c.privacy}
+              </Link>
+            </div>
 
             <label className="flex items-start gap-3 text-sm">
               <input type="checkbox" checked={ok1} onChange={(e) => setOk1(e.target.checked)} className="mt-1 size-4 accent-primary" />

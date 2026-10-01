@@ -18,7 +18,7 @@ export const RENTAL_COMPANY = {
   name: "Squeaky Clean Teenused OÜ",
   code: "16288747",
   email: "squeakycleanteenused@gmail.com",
-  address: "Rattasepa tee 16, Soinaste küla", // TÄIDA VEEL: lisa vald/maakond ja postiindeks, kui need kuuluvad aadressi juurde
+  address: "Rattasepa tee 16, Soinaste küla, Kambja vald, 61709 Tartu maakond",
   phone: "+372 5685 7899",
 };
 
@@ -97,6 +97,7 @@ export function buildRentalContract(d: RentalData): string {
     `3.2. Üleandmise ja tagastamise koht ja aeg: ${v(d.place)}.`,
     "3.3. Üürnik tagastab Masina puhtana: mahutid on tühjendatud ja loputatud.",
     `3.4. ${lateLine}`,
+    "3.5. Masina tagastamise otsesed kulud kannab Üürnik, kui pooled ei ole kokku leppinud teisiti.",
     "",
     "4. ÜÜR JA MAKSMINE",
     `4.1. ${rentLine}`,
@@ -122,7 +123,7 @@ export function buildRentalContract(d: RentalData): string {
     "7.1. Üürnik võib tellimuse tasuta tühistada kuni 24 tundi enne Masina üleandmist.",
     d.isCompany
       ? "7.2. Ettevõttest Üürnikule ei kohaldu tarbija 14-päevane taganemisõigus."
-      : "7.2. Eraisikust Üürnikul on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda, teatades sellest Üürileandjale e-kirjaga või veebilehel oleva taganemisvormi kaudu (võib kasutada taganemisavalduse tüüpvormi). Kui Üürnik soovib Masina kasutamist alustada enne selle tähtaja lõppu, tasub ta taganemisel proportsionaalselt kasutatud aja eest.",
+      : "7.2. Eraisikust Üürnikul on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda, teatades sellest Üürileandjale e-kirjaga või veebilehe ülamenüüs oleva nupu „Taganen lepingust“ kaudu (võib kasutada taganemisavalduse tüüpvormi). Taganemise korral tagastab Üürnik Masina viivitamata, kuid mitte hiljem kui 14 päeva jooksul taganemisavalduse tegemisest, ning kannab selle tagastamise otsesed kulud. Kui Üürnik soovib Masina kasutamist alustada enne selle tähtaja lõppu, tasub ta taganemisel proportsionaalselt kasutatud aja eest.",
     "7.3. Üürileandjal on õigus leping erakorraliselt üles öelda ja Masin tagasi nõuda, kui Üürnik kasutab Masinat lepingu vastaselt või ei tasu üüri tähtajaks.",
     "",
     "8. ISIKUANDMED",
@@ -138,7 +139,7 @@ export function buildRentalContract(d: RentalData): string {
       : "9.1. Lepingule kohaldatakse Eesti Vabariigi õigust. Vaidlused lahendatakse esmalt läbirääkimiste teel, kokkuleppe puudumisel kohtus (tarbijast Üürniku puhul tema elukohajärgses kohtus). Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.",
     "",
     "10. LEPINGU SÕLMIMINE",
-    "10.1. Üürnik esitab üüritaotluse hinnapäringu vormi kaudu ja kinnitab, et on lepingu tingimustega tutvunud ja nõustub nendega. Taotlus ei ole siduv leping. Leping loetakse sõlmituks, kui Üürileandja on taotluse kinnitanud e-kirjaga (püsival andmekandjal), lisades sellele käesoleva lepingu ja lõpliku üüri. Masin antakse üle pärast kinnitust.",
+    "10.1. Üürnik esitab üüritaotluse hinnapäringu vormi kaudu ja kinnitab, et on lepingu tingimustega tutvunud ja nõustub nendega. Taotlus ei ole siduv leping ega too kaasa maksekohustust. Üürileandja saadab Üürnikule e-kirjaga (püsival andmekandjal) pakkumise, millele on lisatud käesolev leping ja lõplik üür. Leping loetakse sõlmituks, kui Üürnik on pakkumise e-kirjaga kinnitanud. Masin antakse üle pärast lepingu sõlmimist.",
     "10.2. Leping on koostatud eesti keeles.",
   ].join("\n");
 }

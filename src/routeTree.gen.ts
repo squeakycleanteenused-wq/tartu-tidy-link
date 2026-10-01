@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as PrivaatsusRouteImport } from './routes/privaatsus'
 import { Route as TingimusedRouteImport } from './routes/tingimused'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivaatsusRoute = PrivaatsusRouteImport.update({
+  id: '/privaatsus',
+  path: '/privaatsus',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TingimusedRoute = TingimusedRouteImport.update({
@@ -25,27 +31,31 @@ const TingimusedRoute = TingimusedRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/tingimused'
+  fullPaths: '/' | '/privaatsus' | '/tingimused'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/tingimused'
-  id: '__root__' | '/' | '/tingimused'
+  to: '/' | '/privaatsus' | '/tingimused'
+  id: '__root__' | '/' | '/privaatsus' | '/tingimused'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  PrivaatsusRoute: typeof PrivaatsusRoute
   TingimusedRoute: typeof TingimusedRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privaatsus': {
+      id: '/privaatsus'
+      path: '/privaatsus'
+      fullPath: '/privaatsus'
+      preLoaderRoute: typeof PrivaatsusRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tingimused': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  PrivaatsusRoute: PrivaatsusRoute,
   TingimusedRoute: TingimusedRoute,
 }
 export const routeTree = rootRouteImport
