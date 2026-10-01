@@ -159,6 +159,7 @@ export const et = {
     rights: "Kõik õigused kaitstud.",
     privacy: "Privaatsuspoliitika",
     withdraw: "Taganen lepingust",
+    cookies: "Küpsiste seaded",
   },
 };
 
@@ -321,6 +322,7 @@ export const en: Dict = {
     rights: "All rights reserved.",
     privacy: "Privacy policy",
     withdraw: "Withdraw from a contract",
+    cookies: "Cookie settings",
   },
 };
 

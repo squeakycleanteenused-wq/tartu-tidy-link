@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Mail, MapPin, Building2, Phone } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
+import { OPEN_COOKIE_SETTINGS } from "./CookieConsent";
 
 export function Footer() {
   const { t } = useLang();
@@ -42,6 +43,13 @@ export function Footer() {
           <a href="/#taganemine" className="block font-medium text-primary hover:underline">
             {t.footer.withdraw}
           </a>
+          <button
+            type="button"
+            onClick={() => window.dispatchEvent(new Event(OPEN_COOKIE_SETTINGS))}
+            className="block font-medium text-primary hover:underline"
+          >
+            {t.footer.cookies}
+          </button>
           <p className="pt-2 text-muted-foreground">
             © {new Date().getFullYear()} {t.company}. {t.footer.rights}
           </p>
