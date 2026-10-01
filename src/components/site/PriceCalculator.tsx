@@ -3,8 +3,8 @@ import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLang, type Lang } from "@/lib/i18n";
-import { canSendDirect, sendRequest } from "@/lib/send-request";
-import { RENTAL, RENTAL_COMPANY, buildRentalContract, companyContact, rentalPeriod, rentalTotal } from "@/lib/rental-contract";
+import { sendRequest, useDirectMail } from "@/lib/send-request";
+import { RENTAL, RENTAL_COMPANY, buildRentalContract, rentalPeriod, rentalTotal } from "@/lib/rental-contract";
 import { legalTerms } from "@/lib/legal";
 
 /* ------------------------------------------------------------------ */
@@ -250,8 +250,6 @@ const COPY = {
     sentCopy: (email: string) => `Saatsime koopia aadressile ${email}. Kui kirja mõne minuti pärast ei ole, vaata rämpspostikausta.`,
     sentNoCopy: "Koopia saatmine sinu e-postile ei õnnestunud. Salvesta see leht või kopeeri päring.",
     sendFail: "Otse saatmine ei õnnestunud. Avame selle asemel e-posti programmi.",
-    clientIntro: (name: string) => `Tere, ${name}!\n\nSaime sinu päringu. See ei ole veel leping ega too kaasa maksekohustust. Saadame sulle pakkumise kindla hinnaga ja leping sõlmitakse, kui sa selle e-kirjaga kinnitad. Allpool on kõik, mille sa saatsid.`,
-    clientOutro: (contact: string, origin: string) => `Teenuseosutaja: Squeaky Clean Teenused OÜ, ${contact}.\nTingimused: ${origin}/tingimused\nTarbijal (eraisikul) on õigus lepingust 14 päeva jooksul põhjust avaldamata taganeda. Taganemine: lehe ülamenüüs „Taganen lepingust“ (${origin}/#taganemine), seal on ka tüüpvorm.\nPrivaatsuspoliitika: ${origin}/privaatsus\nKaebused: saada samale aadressile või e-postile. Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.`,
     contractHead: "ÜÜRILEPING (koostatud sinu andmetega)",
     errNeed: "Sisesta vajadus (pind, aknad või muu töö), et hind arvutada.",
     errFields: "Palun täida kõik kohustuslikud väljad.",
@@ -405,8 +403,6 @@ const COPY = {
     sentCopy: (email: string) => `We sent a copy to ${email}. If it does not arrive in a few minutes, check your spam folder.`,
     sentNoCopy: "Sending a copy to your email did not work. Save this page or copy the request.",
     sendFail: "Direct sending failed. We will open your mail app instead.",
-    clientIntro: (name: string) => `Hello, ${name}!\n\nWe received your request. It is not yet a contract and creates no obligation to pay. We will send you an offer with a fixed price, and the contract is concluded when you confirm it by email. Below is everything you sent.`,
-    clientOutro: (contact: string, origin: string) => `Service provider: Squeaky Clean Teenused OÜ, ${contact}.\nTerms: ${origin}/tingimused\nA consumer (private person) has the right to withdraw from the contract within 14 days without giving a reason. Withdrawal: “Withdraw from a contract” in the top menu (${origin}/#taganemine), the standard form is there too.\nPrivacy policy: ${origin}/privaatsus\nComplaints: send to the same address or email. Consumers may turn to the Consumer Disputes Committee.`,
     contractHead: "RENTAL AGREEMENT (generated with your details)",
     errNeed: "Enter what you need (area, windows or other work) to calculate a price.",
     errFields: "Please fill in all required fields.",
@@ -510,6 +506,7 @@ export function PriceCalculator() {
   const [sentCopyOk, setSentCopyOk] = useState(false);
 
   const isCompany = clientType === "company";
+  const directMail = useDirectMail();
 
   const noVacuum = cleaning !== "none" && vacuum === "no";
   const days = rentOn ? Math.floor(num(rentDays, RENTAL.maxDays)) : 0;
@@ -625,15 +622,15 @@ export function PriceCalculator() {
     const openMail = () => {
       window.location.href = `mailto:${COMPANY.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(text)}`;
     };
-    if (!canSendDirect()) {
+    if (!directMail) {
       openMail();
       return;
     }
     const full = rentOn ? `${text}\n\n=== ${c.contractHead} ===\n\n${contract}` : text;
-    const clientMessage = `${c.clientIntro(name.trim())}\n\n${full}\n\n---\n${c.clientOutro(companyContact(), window.location.origin)}`;
     setSending(true);
-    sendRequest({ subject, message: full, clientEmail: email.trim(), clientName: name.trim(), clientMessage })
+    sendRequest({ kind: "request", lang, subject, message: full, clientEmail: email.trim(), clientName: name.trim() })
       .then((res) => {
+        if (!res.sent) return openMail();
         setSentCopyOk(res.copy);
         setSent(true);
       })
@@ -963,7 +960,7 @@ export function PriceCalculator() {
             <Button type="submit" size="lg" className="px-6" disabled={sending}>
               {sending ? c.sending : c.submit}
             </Button>
-            <p className="text-xs text-muted-foreground">{canSendDirect() ? c.sendNoteDirect : c.sendNote}</p>
+            <p className="text-xs text-muted-foreground">{directMail ? c.sendNoteDirect : c.sendNote}</p>
             {sent && (
               <div className="rounded-md border border-border bg-primary-soft/60 p-4 text-sm">
                 <p className="font-semibold">{c.sentTitle}</p>

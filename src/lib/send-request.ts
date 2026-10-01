@@ -1,59 +1,36 @@
-import { COMPANY_EMAIL, emailjsConfig, isEmailjsConfigured } from "@/lib/emailjs";
+import { useEffect, useState } from "react";
+import { mailStatus, sendSiteMail } from "@/lib/mail.functions";
+import type { MailKind } from "@/lib/mail-texts";
+import type { Lang } from "@/lib/i18n";
 
-/* Saadab päringu (koos valmis üürilepinguga) otse sinu postkasti ja kliendile koopia.
-   Töötab siis, kui Vercelis on määratud 4 muutujat (vt juhend):
-   VITE_EMAILJS_SERVICE_ID, VITE_EMAILJS_TEMPLATE_ID_COMPANY,
-   VITE_EMAILJS_TEMPLATE_ID_CLIENT, VITE_EMAILJS_PUBLIC_KEY.
-   Kui neid pole, kasutavad vormid vana e-posti programmi (mailto) lahendust. */
-
-export const canSendDirect = () => isEmailjsConfigured();
+/* Saadab päringu või taganemisavalduse serveri kaudu (MailerSend) sinu postkasti ja kliendile
+   koopia/kinnituse. Kui saatmine pole Vercelis seadistatud, tagastab { sent: false } ja vorm
+   avab kliendi e-posti programmi (mailto). */
 
 export type SendParams = {
+  kind: MailKind;
+  lang: Lang;
   subject: string;
-  message: string; // sinu postkasti
+  message: string;
   clientEmail: string;
   clientName: string;
-  clientMessage: string; // kliendi koopia
 };
 
-/** Tagastab { copy }: kas kliendile koopia ka õnnestus. Viskab vea, kui sinu kiri ei läinud. */
-export async function sendRequest(p: SendParams): Promise<{ copy: boolean }> {
-  const emailjs = (await import("@emailjs/browser")).default;
-  const opts = { publicKey: emailjsConfig.publicKey };
+export function sendRequest(p: SendParams) {
+  return sendSiteMail({ data: p });
+}
 
-  await emailjs.send(
-    emailjsConfig.serviceId,
-    emailjsConfig.templateIdCompany,
-    {
-      to_email: COMPANY_EMAIL,
-      reply_to: p.clientEmail,
-      subject: p.subject,
-      message: p.message,
-      client_name: p.clientName,
-      client_email: p.clientEmail,
-    },
-    opts,
-  );
-
-  let copy = false;
-  if (emailjsConfig.templateIdClient) {
-    try {
-      await emailjs.send(
-        emailjsConfig.serviceId,
-        emailjsConfig.templateIdClient,
-        {
-          to_email: p.clientEmail,
-          reply_to: COMPANY_EMAIL,
-          subject: p.subject,
-          message: p.clientMessage,
-          client_name: p.clientName,
-        },
-        opts,
-      );
-      copy = true;
-    } catch {
-      copy = false;
-    }
-  }
-  return { copy };
+/** Kas otse saatmine on seadistatud (päritakse serverilt üks kord). */
+export function useDirectMail() {
+  const [configured, setConfigured] = useState(false);
+  useEffect(() => {
+    let alive = true;
+    mailStatus()
+      .then((r) => alive && setConfigured(r.configured))
+      .catch(() => {});
+    return () => {
+      alive = false;
+    };
+  }, []);
+  return configured;
 }

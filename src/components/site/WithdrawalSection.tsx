@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLang } from "@/lib/i18n";
 import { RENTAL_COMPANY, companyContact } from "@/lib/rental-contract";
-import { canSendDirect, sendRequest } from "@/lib/send-request";
+import { sendRequest, useDirectMail } from "@/lib/send-request";
 
 /* Taganemisõiguse info ja lihtne taganemisvorm ("Taganen lepingust").
    Seadus (alates 1.09.2026) nõuab veebis sõlmitud tarbijalepingute puhul lihtsat taganemisvõimalust
@@ -14,7 +14,7 @@ const COPY = {
     title: "Taganen lepingust",
     intro:
       "Eraisikust tellijal (tarbijal) on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda. Tähtaeg algab lepingu sõlmimisest ehk päevast, mil kinnitasid meie pakkumise, ja lõpeb 14 päeva möödumisel. Tähtaja pidamiseks piisab, kui saadad avalduse enne tähtaja lõppu ära. Ettevõttest tellijale taganemisõigus ei kohaldu.",
-    how: "Taganemiseks täida allolev vorm ja vajuta „Kinnitan taganemise“ (avaneb valmis e-kiri, mille pead saatma) või saada meile vabas vormis ühemõtteline avaldus e-postiga. Kinnitame avalduse kättesaamise e-kirjaga viivitamata.",
+    how: "Taganemiseks täida allolev vorm ja vajuta „Kinnitan taganemise“ või saada meile vabas vormis ühemõtteline avaldus e-postiga. Kinnitame avalduse kättesaamise e-kirjaga viivitamata, märkides avalduse sisu, kuupäeva ja kellaaja.",
     effects:
       "Kui oled taotlenud teenuse osutamise alustamist taganemistähtaja jooksul, tasud meile taganemise korral proportsionaalselt juba osutatud teenuse eest (võrreldes lepingu täieliku täitmisega). Teenuse täielikul osutamisel kaob taganemisõigus, kui oled sellega eelnevalt nõustunud. Muul juhul tagastame sinu tasutu viivitamata, kuid mitte hiljem kui 14 päeva jooksul taganemisavalduse kättesaamisest. Üüri puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest; tagastamise otsesed kulud kannad sina.",
     name: "Sinu nimi",
@@ -42,14 +42,13 @@ const COPY = {
     sentText: (email: string) => `Saime sinu avalduse kätte. Kinnituse (sisu, kuupäeva ja kellaajaga) saatsime aadressile ${email}. Kui kirja mõne minuti pärast ei ole, vaata rämpspostikausta.`,
     sentNoCopy: "Saime sinu avalduse kätte. Kinnituse saatmine sinu e-postile ei õnnestunud. Salvesta see teade ja tee sellest ekraanipilt.",
     failed: "Otse saatmine ei õnnestunud. Avame selle asemel e-posti programmi.",
-    confirmMsg: (name: string, when: string, body: string) => `Tere, ${name}!\n\nKinnitame, et saime sinu taganemisavalduse kätte ${when}.\n\nAvalduse sisu:\n${body}\n\nTagastame sinu tasutu viivitamata, kuid hiljemalt 14 päeva jooksul avalduse kättesaamisest (arvestades juba osutatud teenuse proportsionaalset tasu, kui teenus on alanud sinu soovil). Üüri puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest.\n\nSqueaky Clean Teenused OÜ`,
     mail: { subject: "Taganemisavaldus", head: "TAGANEMISAVALDUS", to: "Kellele", body: "Mina, {name}, teatan käesolevaga, et taganen lepingust", contract: "Leping", address: "Aadress", email: "E-post kinnituse saatmiseks", date: "Kuupäev" },
   },
   en: {
     title: "Withdraw from a contract",
     intro:
       "A private customer (consumer) has the right to withdraw from a contract concluded at a distance within 14 days without giving a reason. The period starts when the contract is concluded, i.e. on the day you confirm our offer, and ends 14 days later. It is enough to send your notice before the period ends. The right of withdrawal does not apply to business customers.",
-    how: "To withdraw, fill in the form below and press “Confirm withdrawal” (a ready-made email opens which you must send) or send us any unambiguous statement by email. We will confirm receipt of your notice by email without delay.",
+    how: "To withdraw, fill in the form below and press “Confirm withdrawal”, or send us any unambiguous statement by email. We will confirm receipt of your notice by email without delay, stating its content, date and time.",
     effects:
       "If you asked us to start the service during the withdrawal period, you pay proportionally for the service already provided (compared with full performance of the contract). The right of withdrawal is lost once the service has been fully performed, if you agreed to this in advance. Otherwise we refund what you paid without delay and no later than 14 days after receiving your notice. For a rental, return the machine without delay and no later than 14 days after your notice; you bear the direct costs of returning it.",
     name: "Your name",
@@ -77,7 +76,6 @@ const COPY = {
     sentText: (email: string) => `We received your notice. We sent a confirmation (with the content, date and time) to ${email}. If it does not arrive in a few minutes, check your spam folder.`,
     sentNoCopy: "We received your notice. Sending the confirmation to your email failed, please save this message and take a screenshot of it.",
     failed: "Direct sending failed. We will open your mail app instead.",
-    confirmMsg: (name: string, when: string, body: string) => `Hello, ${name}!\n\nWe confirm that we received your withdrawal notice on ${when}.\n\nContent of the notice:\n${body}\n\nWe will refund what you paid without delay and no later than 14 days after receiving your notice (taking into account proportional payment for the service already provided, if it started at your request). For a rental, return the machine without delay and no later than 14 days after your notice.\n\nSqueaky Clean Teenused OÜ`,
     mail: { subject: "Withdrawal notice", head: "WITHDRAWAL NOTICE", to: "To", body: "I, {name}, hereby give notice that I withdraw from the contract", contract: "Contract", address: "Address", email: "Email for confirmation", date: "Date" },
   },
 } as const;
@@ -85,6 +83,7 @@ const COPY = {
 export function WithdrawalSection() {
   const { lang } = useLang();
   const c = COPY[lang];
+  const directMail = useDirectMail();
   const company = `${RENTAL_COMPANY.name}, ${companyContact()}`;
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
@@ -117,20 +116,13 @@ export function WithdrawalSection() {
     const openMail = () => {
       window.location.href = `mailto:${RENTAL_COMPANY.email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     };
-    if (!canSendDirect()) {
+    if (!directMail) {
       openMail();
       return;
     }
-    const when = new Date().toLocaleString(lang === "et" ? "et-EE" : "en-GB");
     setSending(true);
-    sendRequest({
-      subject,
-      message: body,
-      clientEmail: email.trim(),
-      clientName: name.trim(),
-      clientMessage: c.confirmMsg(name.trim(), when, body),
-    })
-      .then((res) => setSentCopyOk(res.copy))
+    sendRequest({ kind: "withdrawal", lang, subject, message: body, clientEmail: email.trim(), clientName: name.trim() })
+      .then((res) => (res.sent ? setSentCopyOk(res.copy) : openMail()))
       .catch(() => {
         setError(c.failed);
         openMail();
