@@ -6,6 +6,7 @@ import { PhotoQuestion } from "@/components/site/PhotoQuestion";
 import { Shop } from "@/components/site/Shop";
 import { WithdrawalSection } from "@/components/site/WithdrawalSection";
 import { Contact } from "@/components/site/Contact";
+import { SITE_URL, canonical, siteJsonLd } from "@/lib/site";
 
 const title = "Koristusteenused Tartus ja Põlvas | Squeaky Clean";
 const description =
@@ -19,8 +20,11 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: `${SITE_URL}/` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [canonical("/")],
+    scripts: [siteJsonLd],
   }),
   component: Index,
 });

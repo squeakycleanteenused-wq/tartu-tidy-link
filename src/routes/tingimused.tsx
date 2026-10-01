@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
 import { useLang } from "@/lib/i18n";
+import { SITE_URL, canonical } from "@/lib/site";
 
 const title = "Teenuseosutamise tingimused | Squeaky Clean Teenused OÜ";
 const description =
@@ -15,8 +16,10 @@ export const Route = createFileRoute("/tingimused")({
       { property: "og:title", content: title },
       { property: "og:description", content: description },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: `${SITE_URL}/tingimused` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [canonical("/tingimused")],
   }),
   component: TermsPage,
 });
