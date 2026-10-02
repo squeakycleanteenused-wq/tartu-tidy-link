@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -198,6 +198,7 @@ const COPY = {
     consent3: "Olen üürilepingu tingimustega tutvunud ja nõustun nendega. Saan aru, et tagatisraha ei võeta, kuid masina kahjustamisel hüvitan kahju kokkuleppel (kokkuleppe puudumisel remondikulu, kuid mitte üle masina turuväärtuse).",
     timeNote: "Ajakulu on hinnang. Tegelik aeg sõltub pinna suurusest ja seisukorrast.",
     resultTitle: "Orienteeruv hind",
+    seeDetails: "Vaata täpsemalt",
     empty: "Sisesta vajadus, et hinda näha.",
     total: "Kokku",
     time: "Orienteeruv ajakulu",
@@ -351,6 +352,7 @@ const COPY = {
     consent3: "I have read and accept the rental agreement. I understand that no deposit is taken, but if the machine is damaged I will compensate by agreement (failing agreement, the repair cost, but not more than the market value of the machine).",
     timeNote: "Time is an estimate. Actual time depends on the size and condition of the space.",
     resultTitle: "Estimated price",
+    seeDetails: "See details",
     empty: "Enter your needs to see the price.",
     total: "Total",
     time: "Estimated time",
@@ -551,6 +553,29 @@ export function PriceCalculator() {
   const togglePick = (k: string) => setPicks((p) => (p.includes(k) ? p.filter((x) => x !== k) : [...p, k]));
 
   const priceText = r.min === r.max ? eur(r.min) : `${eur(r.min)} – ${eur(r.max)}`;
+
+  /* Mobiilis on hinnakast vormi all: näitame ekraani all kinnist hinnariba, kui kalkulaator on
+     nähtaval, aga tume "Kokku" kast ise mitte. */
+  const sectionRef = useRef<HTMLElement>(null);
+  const priceRef = useRef<HTMLDivElement>(null);
+  const [sectionVisible, setSectionVisible] = useState(false);
+  const [priceVisible, setPriceVisible] = useState(false);
+  useEffect(() => {
+    const sec = sectionRef.current;
+    const price = priceRef.current;
+    if (!sec || typeof IntersectionObserver === "undefined") return;
+    const o1 = new IntersectionObserver(([e]) => setSectionVisible(!!e?.isIntersecting));
+    const o2 = new IntersectionObserver(([e]) => setPriceVisible(!!e?.isIntersecting), { threshold: 0.5 });
+    o1.observe(sec);
+    if (price) o2.observe(price);
+    else setPriceVisible(false);
+    return () => {
+      o1.disconnect();
+      o2.disconnect();
+    };
+    // Hinnakast ("Kokku") tekib alles siis, kui midagi on valitud.
+  }, [r.hasItems]);
+  const showBar = r.hasItems && sectionVisible && !priceVisible;
   const legalItems = legalTerms(lang, isCompany);
 
   const lineText = (l: Line) => {
@@ -661,7 +686,7 @@ export function PriceCalculator() {
   };
 
   return (
-    <section id="hinnakalkulaator" className="scroll-mt-28 py-16">
+    <section id="hinnakalkulaator" ref={sectionRef} className={`scroll-mt-28 py-16 ${showBar ? "pb-28 lg:pb-16" : ""}`}>
       <div className="mx-auto max-w-6xl px-4">
         <h2 className="text-3xl font-bold sm:text-4xl">
           {c.title}
@@ -807,7 +832,7 @@ export function PriceCalculator() {
               </div>
             </div>
 
-            <div className="surface-card flex flex-col p-6">
+            <div id="hinnakalkulaator-hind" className="surface-card flex scroll-mt-28 flex-col p-6">
               <h3 className="text-lg font-bold">{c.resultTitle}</h3>
               {r.hasItems ? (
                 <>
@@ -818,7 +843,7 @@ export function PriceCalculator() {
                       </li>
                     ))}
                   </ul>
-                  <div className="mt-5 rounded-md bg-ink p-4 text-white">
+                  <div ref={priceRef} className="mt-5 rounded-md bg-ink p-4 text-white">
                     <p className="text-xs font-semibold uppercase tracking-wider text-white/70">{c.total}</p>
                     <p className="mt-1 font-display text-3xl font-bold">{priceText}</p>
                     {r.timeMax > 0 && (
@@ -992,6 +1017,24 @@ export function PriceCalculator() {
           </div>
         </form>
       </div>
+      {showBar && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink px-4 py-3 text-white lg:hidden">
+          <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
+            <div className="min-w-0">
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-white/70">{c.total}</p>
+              <p className="font-display text-xl font-bold leading-tight">{priceText}</p>
+              {r.timeMax > 0 && (
+                <p className="text-xs text-white/75">
+                  {c.time}: {nf(Math.round(r.timeMin * 2) / 2)} – {nf(Math.round(r.timeMax * 2) / 2)} {c.hoursUnit}
+                </p>
+              )}
+            </div>
+            <a href="#hinnakalkulaator-hind" className="shrink-0 text-sm font-medium underline underline-offset-4">
+              {c.seeDetails}
+            </a>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
