@@ -1,0 +1,18 @@
+# Dependabot: iganädalane pakettide kontroll ja turvaparanduste ettepanekud (pull request).
+version: 2
+updates:
+  - package-ecosystem: "bun"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # Ära paku versioone, mis on alla 3 päeva vanad (sama mis bunfig.toml).
+    cooldown:
+      default-days: 3
+    open-pull-requests-limit: 5
+    groups:
+      tanstack:
+        patterns: ["@tanstack/*"]
+      koik-muud:
+        patterns: ["*"]
+        exclude-patterns: ["@tanstack/*"]
