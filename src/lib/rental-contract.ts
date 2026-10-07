@@ -4,6 +4,7 @@
 /* ------------------------------------------------------------------ */
 export const RENTAL = {
   device: "Spot Cleaner Pro tekstiilipuhastusmasin",
+  deviceEn: "Spot Cleaner Pro upholstery cleaning machine",
   // Üür ühe päeva eest eurodes, käibemaksuta. Kui null, kirjutatakse lepingusse "hind kokkuleppel".
   pricePerDay: 18 as number | null,
   maxDays: 14,
@@ -22,13 +23,17 @@ export const RENTAL_COMPANY = {
   phone: "+372 5685 7899",
 };
 
-export function companyContact() {
+export function companyContact(lang: "et" | "en" = "et") {
   const c = RENTAL_COMPANY;
+  const l =
+    lang === "en"
+      ? { code: "registry code", address: "registered address", phone: "phone", email: "email" }
+      : { code: "registrikood", address: "asukoha aadress", phone: "telefon", email: "e-post" };
   return [
-    `registrikood ${c.code}`,
-    c.address ? `asukoha aadress ${c.address}` : "",
-    c.phone ? `telefon ${c.phone}` : "",
-    `e-post ${c.email}`,
+    `${l.code} ${c.code}`,
+    c.address ? `${l.address} ${c.address}` : "",
+    c.phone ? `${l.phone} ${c.phone}` : "",
+    `${l.email} ${c.email}`,
   ]
     .filter(Boolean)
     .join(", ");

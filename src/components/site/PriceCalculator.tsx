@@ -4,8 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLang, type Lang } from "@/lib/i18n";
 import { sendRequest, useDirectMail } from "@/lib/send-request";
-import { RENTAL, RENTAL_COMPANY, buildRentalContract, rentalPeriod, rentalTotal } from "@/lib/rental-contract";
-import { legalTerms } from "@/lib/legal";
+import { RENTAL, RENTAL_COMPANY, buildRentalContract, companyContact, rentalPeriod, rentalTotal } from "@/lib/rental-contract";
 
 /* ------------------------------------------------------------------ */
 /* HINNAD: muuda ainult siin. Kõik on eurodes, käibemaksuta.           */
@@ -238,9 +237,19 @@ const COPY = {
     notesPh: "Ruumide arv, allergiad, erilised pinnad, erisoovid",
     s3: "3. Olulised tingimused",
     legalIntro: "Palun loe läbi enne päringu saatmist.",
+    keyTerms: "Põhitingimused",
+    key: {
+      provider: "Teenuseosutaja",
+      price: "Hinnad on käibemaksuta (ettevõte ei ole käibemaksukohustuslane). Minimaalne väljakutsetasu on 30 €.",
+      pay: "Maksmine ainult pangaülekandega arve alusel, sularaha ei aktsepteerita.",
+      cancel: "Tasuta tühistamine kuni 24 h enne töö algust.",
+      withdrawPre: "Eraisikul on 14 päeva ",
+      withdrawLink: "taganemisõigus",
+      withdrawPost: "; ettevõttest tellijal taganemisõigus puudub.",
+    },
     fullTerms: "Loe täielikke tingimusi",
     privacy: "Privaatsuspoliitika",
-    consent1: "Olen tutvunud ja nõustun teenuseosutamise tingimustega. Saan aru, et teenuseosutaja ei ole käibemaksukohustuslane, hinnale käibemaksu ei lisandu, ning et arveldamine toimub ainult pangaülekandega (sularahamakseid ei aktsepteerita).",
+    consent1: ["Olen tutvunud ja nõustun ", "teenuseosutamise tingimustega", ". Saan aru, et teenuseosutaja ei ole käibemaksukohustuslane, hinnale käibemaksu ei lisandu, ning et arveldamine toimub ainult pangaülekandega (sularahamakseid ei aktsepteerita)."] as [string, string, string],
     consent2: "Soovin, et teenuse (sh seadme üüri) osutamist alustatakse enne 14-päevase taganemistähtaja lõppu. Saan aru, et teenuse täielikul osutamisel kaotan taganemisõiguse ning taganemisel pärast teenuse alustamist tasun juba osutatud teenuse eest proportsionaalselt.",
     submit: "Saada hinnapäring",
     sendNote: "Avame sinu e-posti programmis valmis kirja. Päring jõuab meieni, kui vajutad seal „Saada“.",
@@ -392,9 +401,19 @@ const COPY = {
     notesPh: "Number of rooms, allergies, special surfaces, requests",
     s3: "3. Important terms",
     legalIntro: "Please read before sending your request.",
+    keyTerms: "Key terms",
+    key: {
+      provider: "Service provider",
+      price: "Prices exclude VAT (the company is not VAT-registered). The minimum call-out fee is 30 €.",
+      pay: "Payment by bank transfer against an invoice only; cash is not accepted.",
+      cancel: "Free cancellation up to 24 h before the start of work.",
+      withdrawPre: "Private customers have a 14-day ",
+      withdrawLink: "right of withdrawal",
+      withdrawPost: "; business customers do not.",
+    },
     fullTerms: "Read the full terms",
     privacy: "Privacy policy",
-    consent1: "I have read and accept the service terms. I understand that the provider is not VAT-registered, that VAT is not added to the price and that payment is by bank transfer only (cash is not accepted).",
+    consent1: ["I have read and accept the ", "service terms", ". I understand that the provider is not VAT-registered, that VAT is not added to the price and that payment is by bank transfer only (cash is not accepted)."] as [string, string, string],
     consent2: "I ask that the service (incl. equipment rental) start before the 14-day withdrawal period ends. I understand that I lose the right of withdrawal once the service is fully performed and that if I withdraw after the service has started I pay proportionally for what has been provided.",
     submit: "Send price request",
     sendNote: "We will open a ready-made email in your mail app. Your request reaches us when you press “Send” there.",
@@ -576,7 +595,6 @@ export function PriceCalculator() {
     // Hinnakast ("Kokku") tekib alles siis, kui midagi on valitud.
   }, [r.hasItems]);
   const showBar = r.hasItems && sectionVisible && !priceVisible;
-  const legalItems = legalTerms(lang, isCompany);
 
   const lineText = (l: Line) => {
     const price = l.min === l.max ? eur(l.min) : `${eur(l.min)} – ${eur(l.max)}`;
@@ -936,26 +954,42 @@ export function PriceCalculator() {
           <div className="surface-card space-y-4 p-6">
             <h3 className="text-lg font-bold">{c.s3}</h3>
             <p className="text-sm text-muted-foreground">{c.legalIntro}</p>
-            <dl className="grid gap-3 text-sm md:grid-cols-2">
-              {legalItems.map(([h, p]) => (
-                <div key={h} className="rounded-md border border-border bg-secondary/40 p-3">
-                  <dt className="font-semibold">{h}</dt>
-                  <dd className="mt-1 text-secondary-foreground">{p}</dd>
-                </div>
-              ))}
-            </dl>
+            <div className="rounded-md border border-border bg-secondary/40 p-4 text-sm">
+              <p className="font-semibold">{c.keyTerms}</p>
+              <ul className="mt-2 list-disc space-y-1.5 pl-5 text-secondary-foreground">
+                <li>
+                  {c.key.provider}: {COMPANY.name}, {companyContact(lang)}.
+                </li>
+                <li>{c.key.price}</li>
+                <li>{c.key.pay}</li>
+                <li>{c.key.cancel}</li>
+                <li>
+                  {c.key.withdrawPre}
+                  <a href="#taganemine" className="font-medium text-primary underline">
+                    {c.key.withdrawLink}
+                  </a>
+                  {c.key.withdrawPost}
+                </li>
+              </ul>
+            </div>
             <div className="flex flex-wrap gap-x-6 gap-y-1">
-              <Link to="/tingimused" target="_blank" className="text-sm font-medium text-primary hover:underline">
+              <Link to="/tingimused" target="_blank" rel="noopener" className="text-sm font-medium text-primary hover:underline">
                 {c.fullTerms}
               </Link>
-              <Link to="/privaatsus" target="_blank" className="text-sm font-medium text-primary hover:underline">
+              <Link to="/privaatsus" target="_blank" rel="noopener" className="text-sm font-medium text-primary hover:underline">
                 {c.privacy}
               </Link>
             </div>
 
             <label className="flex items-start gap-3 text-sm">
               <input type="checkbox" checked={ok1} onChange={(e) => setOk1(e.target.checked)} className="mt-1 size-4 accent-primary" />
-              <span>{c.consent1}</span>
+              <span>
+                {c.consent1[0]}
+                <Link to="/tingimused" target="_blank" rel="noopener" className="font-medium text-primary underline">
+                  {c.consent1[1]}
+                </Link>
+                {c.consent1[2]}
+              </span>
             </label>
             {needsSite && (
               <label className="flex items-start gap-3 text-sm">

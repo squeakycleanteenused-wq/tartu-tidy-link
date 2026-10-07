@@ -84,7 +84,7 @@ export function WithdrawalSection() {
   const { lang } = useLang();
   const c = COPY[lang];
   const directMail = useDirectMail();
-  const company = `${RENTAL_COMPANY.name}, ${companyContact()}`;
+  const company = `${RENTAL_COMPANY.name}, ${companyContact(lang)}`;
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [contract, setContract] = useState("");

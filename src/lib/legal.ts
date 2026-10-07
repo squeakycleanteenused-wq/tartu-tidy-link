@@ -1,5 +1,5 @@
 import type { Lang } from "@/lib/i18n";
-import { RENTAL_COMPANY, companyContact } from "@/lib/rental-contract";
+import { RENTAL, RENTAL_COMPANY, companyContact } from "@/lib/rental-contract";
 
 /* ------------------------------------------------------------------ */
 /* TEENUSEOSUTAMISE TINGIMUSED: üks allikas kalkulaatorile ja          */
@@ -8,7 +8,7 @@ import { RENTAL_COMPANY, companyContact } from "@/lib/rental-contract";
 
 export const TERMS_VALID_FROM = { et: "01.10.2026", en: "1 October 2026" };
 
-const provider = () => `${RENTAL_COMPANY.name}, ${companyContact()}.`;
+const provider = (lang: Lang) => `${RENTAL_COMPANY.name}, ${companyContact(lang)}.`;
 
 const ET = {
   items: [
@@ -20,7 +20,7 @@ const ET = {
     ["Tühistamine", "Tasuta tühistamine kuni 24 h enne töö algust. Hilisema tühistamise või sissepääsu mittetagamise korral (ooteaeg uksel kuni 30 min) on tasu 30 €."],
     ["Vastutus", "Teenuseosutaja vastutab töö käigus tekitatud otsese ja tõendatud varakahju eest seaduses sätestatud korras. Vastutus ei laiene pindade eelnevale kulumisele, varjatud puudustele ega teavitamata erimaterjalide kahjustustele. See ei piira tarbija seadusest tulenevaid õigusi ega meie vastutust tahtluse ja raske hooletuse eest."],
     ["Pretensioonid", "Puudustest teavita kohe kohapeal või fotodega mõistliku aja jooksul (ettevõttest tellijal 24 h jooksul). Puuduse korral teeme tasuta parandustöö. See ei lühenda tarbija seadusest tulenevaid tähtaegu ega õiguskaitsevahendeid. Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole (Tarbijakaitse ja Tehnilise Järelevalve Amet, www.ttja.ee)."],
-    ["Tekstiilipuhastaja üür", "Masin antakse üle ja tagastatakse kokkulepitud kohas. Masina tagastamise otsesed kulud kannab Üürnik, kui pooled ei lepi kokku teisiti. Üüri täistingimused on üürilepingus, mille näed hinnakalkulaatoris enne päringu saatmist."],
+    ["Tekstiilipuhastaja üür", `Üüritakse ${RENTAL.device} polstermööbli, vaipade ja madratsite puhastamiseks. Üür on ${RENTAL.pricePerDay == null ? "kokkuleppel" : `${RENTAL.pricePerDay} € päevas`} (käibemaksuta), üüriperiood kuni ${RENTAL.maxDays} päeva. Tagatisraha ei võeta. Kui masin saab Üürniku süül kahjustada, lepitakse hüvitis kokku; kokkuleppe puudumisel on hüvitis põhjendatud remondikulu, kuid mitte üle masina turuväärtuse. Tavapärast kulumist ei hüvitata. Eraisikust Üürniku puhul kasutatakse isikukoodi tuvastamiseks võimaliku kahjunõude korral. Masin antakse üle ja tagastatakse kokkulepitud kohas puhtana; tagastamise otsesed kulud kannab Üürnik, kui pooled ei lepi kokku teisiti. Üüri täistingimused on üürilepingus, mille näed hinnakalkulaatoris enne päringu saatmist.`],
     ["Isikuandmed", "Vastutav töötleja on Squeaky Clean Teenused OÜ. Töötleme sinu andmeid pakkumise koostamiseks ja lepingu täitmiseks. Täpsem teave, sh andmete saajad, säilitamise tähtajad ja sinu õigused, on privaatsuspoliitikas (/privaatsus). Kvaliteedikontrolliks võime teha „enne ja pärast“ fotosid ilma isikuandmeid jäädvustamata."],
   ] as [string, string][],
   withdrawalPerson: [
@@ -40,7 +40,7 @@ const EN: typeof ET = {
     ["Cancellation", "Free cancellation up to 24 h before the start. For later cancellation or no access (waiting time at the door up to 30 min) a 30 € fee applies."],
     ["Liability", "The provider is liable for direct, proven property damage caused during the work as provided by law. Liability does not cover prior wear of surfaces, hidden defects or damage to special materials not disclosed in advance. This does not limit consumer rights under law or our liability for intent and gross negligence."],
     ["Complaints", "Report defects immediately on site or with photos within a reasonable time (business customers within 24 h). We will fix defects free of charge. This does not shorten the statutory periods or remedies available to consumers. Consumers may turn to the Consumer Disputes Committee (Consumer Protection and Technical Regulatory Authority, www.ttja.ee)."],
-    ["Upholstery cleaner rental", "The machine is handed over and returned at the agreed place. The renter bears the direct costs of returning the machine unless agreed otherwise. The full rental terms are in the rental agreement shown in the price calculator before you send your request."],
+    ["Upholstery cleaner rental", `We rent out the ${RENTAL.deviceEn} for cleaning upholstery, carpets and mattresses. The rent is ${RENTAL.pricePerDay == null ? "agreed individually" : `${RENTAL.pricePerDay} € per day`} (no VAT), for up to ${RENTAL.maxDays} days. No deposit is taken. If the machine is damaged through the renter's fault, compensation is agreed; failing agreement, it is the reasonable repair cost, but not more than the market value of the machine. Normal wear is not compensated. For a private renter, the personal ID code is used for identification in case of a damage claim. The machine is handed over and returned clean at the agreed place; the renter bears the direct costs of returning it unless agreed otherwise. The full rental terms are in the rental agreement shown in the price calculator before you send your request.`],
     ["Personal data", "The controller is Squeaky Clean Teenused OÜ. We process your data to prepare the offer and perform the contract. More details, including recipients, retention periods and your rights, are in the privacy policy (/privaatsus). For quality control we may take before/after photos without capturing personal data."],
   ],
   withdrawalPerson: [
@@ -55,7 +55,7 @@ const LEGAL: Record<Lang, typeof ET> = { et: ET, en: EN };
 /** Tingimused koos täidetud teenuseosutaja andmetega. Taganemispunkt on "Tühistamise" järel. */
 export function legalTerms(lang: Lang, isCompany = false): [string, string][] {
   const l = LEGAL[lang];
-  const items = l.items.map(([h, p]) => [h, p.replace("__PROVIDER__", provider())] as [string, string]);
+  const items = l.items.map(([h, p]) => [h, p.replace("__PROVIDER__", provider(lang))] as [string, string]);
   const withdrawal = isCompany ? l.withdrawalCompany : l.withdrawalPerson;
   return [...items.slice(0, 6), withdrawal, ...items.slice(6)];
 }

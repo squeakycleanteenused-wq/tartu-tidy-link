@@ -9,8 +9,8 @@ export type MailKind = "request" | "withdrawal";
 
 const outro = (lang: Lang) =>
   lang === "et"
-    ? `Teenuseosutaja: ${RENTAL_COMPANY.name}, ${companyContact()}.\nTingimused: ${SITE_URL}/tingimused\nPrivaatsuspoliitika: ${SITE_URL}/privaatsus\nTarbijal (eraisikul) on õigus lepingust 14 päeva jooksul põhjust avaldamata taganeda: lehe ülamenüüs „Taganen lepingust“ (${SITE_URL}/#taganemine), seal on ka tüüpvorm.\nKaebused: saada samale aadressile või e-postile. Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.`
-    : `Service provider: ${RENTAL_COMPANY.name}, ${companyContact()}.\nTerms: ${SITE_URL}/tingimused\nPrivacy policy: ${SITE_URL}/privaatsus\nA consumer (private person) has the right to withdraw from the contract within 14 days without giving a reason: “Withdraw from a contract” in the top menu (${SITE_URL}/#taganemine), the standard form is there too.\nComplaints: send to the same address or email. Consumers may turn to the Consumer Disputes Committee.`;
+    ? `Teenuseosutaja: ${RENTAL_COMPANY.name}, ${companyContact("et")}.\nTingimused: ${SITE_URL}/tingimused\nPrivaatsuspoliitika: ${SITE_URL}/privaatsus\nTarbijal (eraisikul) on õigus lepingust 14 päeva jooksul põhjust avaldamata taganeda: lehe ülamenüüs „Taganen lepingust“ (${SITE_URL}/#taganemine), seal on ka tüüpvorm.\nKaebused: saada samale aadressile või e-postile. Tarbijal on õigus pöörduda Tarbijavaidluste komisjoni poole.`
+    : `Service provider: ${RENTAL_COMPANY.name}, ${companyContact("en")}.\nTerms: ${SITE_URL}/tingimused\nPrivacy policy: ${SITE_URL}/privaatsus\nA consumer (private person) has the right to withdraw from the contract within 14 days without giving a reason: “Withdraw from a contract” in the top menu (${SITE_URL}/#taganemine), the standard form is there too.\nComplaints: send to the same address or email. Consumers may turn to the Consumer Disputes Committee.`;
 
 export function clientCopySubject(kind: MailKind, lang: Lang) {
   if (kind === "withdrawal") return lang === "et" ? "Taganemisavalduse kättesaamise kinnitus" : "Confirmation of receipt of your withdrawal notice";
