@@ -63,7 +63,7 @@ function loadGoogleAds() {
   window.gtag("consent", "default", {
     ad_storage: "granted",
     ad_user_data: "granted",
-    ad_personalization: "granted",
+    ad_personalization: "denied",
     analytics_storage: "denied",
   });
   window.gtag("js", new Date());

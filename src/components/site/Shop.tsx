@@ -3,10 +3,10 @@ import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLang } from "@/lib/i18n";
-import { subscribeNewsletter } from "@/lib/booking.functions";
+import { notifyShopSignup } from "@/lib/mail.functions";
 
 export function Shop() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [email, setEmail] = useState("");
   const [sending, setSending] = useState(false);
 
@@ -18,7 +18,7 @@ export function Shop() {
     }
     setSending(true);
     try {
-      await subscribeNewsletter({ data: { email: email.trim() } });
+      await notifyShopSignup({ data: { email: email.trim(), lang } });
       toast.success(t.shop.subscribed);
       setEmail("");
     } catch {

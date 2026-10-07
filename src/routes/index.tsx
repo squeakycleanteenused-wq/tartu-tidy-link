@@ -7,6 +7,7 @@ import { Shop } from "@/components/site/Shop";
 import { WithdrawalSection } from "@/components/site/WithdrawalSection";
 import { Contact } from "@/components/site/Contact";
 import { SITE_URL, canonical, siteJsonLd } from "@/lib/site";
+import heroImage from "@/assets/hero-clean-home.jpg";
 
 const title = "Koristusteenused Tartus ja Põlvas | Squeaky Clean";
 const description =
@@ -21,6 +22,11 @@ export const Route = createFileRoute("/")({
       { property: "og:description", content: description },
       { property: "og:type", content: "website" },
       { property: "og:url", content: `${SITE_URL}/` },
+      { property: "og:image", content: `${SITE_URL}${heroImage}` },
+      { property: "og:image:width", content: "1280" },
+      { property: "og:image:height", content: "960" },
+      { property: "og:image:alt", content: "Puhas ja valgusküllane elutuba" },
+      { name: "twitter:image", content: `${SITE_URL}${heroImage}` },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [canonical("/")],

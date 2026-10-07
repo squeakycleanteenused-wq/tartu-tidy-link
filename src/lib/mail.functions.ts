@@ -78,3 +78,24 @@ export const sendSiteMail = createServerFn({ method: "POST" })
     }
     return { sent: true as const, copy };
   });
+
+/* E-poe avamise teavituse soov: saadetakse ainult ettevõtte postkasti (kliendile ei saadeta midagi). */
+const shopSchema = z.object({
+  email: z.string().trim().email().max(160),
+  lang: z.enum(["et", "en"]),
+});
+
+export const notifyShopSignup = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) => shopSchema.parse(data))
+  .handler(async ({ data }) => {
+    if (!token()) throw new Error("Mail not configured");
+    if (!allow()) throw new Error("Too many requests");
+    const at = new Date().toLocaleString("et-EE", { timeZone: "Europe/Tallinn" });
+    await send(
+      { email: RENTAL_COMPANY.email, name: RENTAL_COMPANY.name },
+      { email: data.email },
+      "E-poe avamise teavituse soov",
+      `Palun teavita e-poe avamisest: ${data.email}\nKeel: ${data.lang}\nAeg: ${at}\n\nNõusolek: ainult e-poe avamise teavitus. Kustuta aadress pärast teavituse saatmist või kui inimene seda palub.`,
+    );
+    return { ok: true as const };
+  });
