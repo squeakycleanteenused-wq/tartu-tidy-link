@@ -146,7 +146,7 @@ const COPY = {
     subtitle: "Sisesta oma vajadus ja näed kohe orienteeruvat hinda. Seejärel saad päringu meile saata. Hind kehtib ühekordsele koristusele.",
     s1: "1. Mida vajad?",
     cleaning: "Koristuse liik",
-    cleaningOpts: { none: "Ei vaja (ainult aknapesu või lisatööd)", maintenance: "Hoolduskoristus (kerge koristus)", deep: "Suurpuhastus / süvapesu" },
+    cleaningOpts: { none: "Ei vaja (ainult aknapesu või lisatööd)", maintenance: "Hoolduskoristus (kerge koristus)", deep: "Suurpuhastus / kolimiskoristus" },
     area: "Pind (m²)",
     includes: {
       none: "",
@@ -311,7 +311,7 @@ const COPY = {
     subtitle: "Enter what you need and see an estimated price right away. Then you can send us your request. The price is for a one-time cleaning.",
     s1: "1. What do you need?",
     cleaning: "Type of cleaning",
-    cleaningOpts: { none: "None (window washing or extras only)", maintenance: "Maintenance cleaning (light cleaning)", deep: "Deep cleaning" },
+    cleaningOpts: { none: "None (window washing or extras only)", maintenance: "Maintenance cleaning (light cleaning)", deep: "Deep / move-out cleaning" },
     area: "Area (m²)",
     includes: {
       none: "",

@@ -7,7 +7,7 @@ const COPY = {
     title: "Miks valida Squeaky Clean",
     items: [
       ["Hind on teada enne tööd", "Kalkulaator näitab orienteeruva hinna kohe ja pakkumises saad kindla hinna. Kui olukord kohapeal oluliselt erineb, küsime enne töö algust sinu nõusolekut."],
-      ["Ühekordne, ilma kohustusteta", "Iga koristus on eraldi tellimus. Püsilepingut, kuutasu ega minimaalset perioodi ei ole."],
+      ["Ilma kohustusteta", "Iga koristus on eraldi tellimus – nii ühekordne kui ka regulaarne. Püsilepingut, kuutasu ega minimaalset perioodi ei ole."],
       ["Maksad arve alusel", "Tasumine pangaülekandega arve alusel, üldjuhul 7-päevase maksetähtajaga. Hinnale käibemaksu ei lisandu."],
       ["Kohalik teenus", "Koristame Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses."],
       ["Selged tingimused", "Tingimused, privaatsuspoliitika ja 14-päevane taganemisõigus eraisikule on lehel avalikult kirjas."],
@@ -18,7 +18,7 @@ const COPY = {
     title: "Why choose Squeaky Clean",
     items: [
       ["Know the price before the work", "The calculator shows an estimate right away and the offer gives you a fixed price. If the situation on site differs significantly, we ask for your consent before starting."],
-      ["One-time, no commitments", "Each cleaning is a separate order. No ongoing contract, monthly fee or minimum period."],
+      ["No commitments", "Each cleaning is a separate order – one-time or regular. No ongoing contract, monthly fee or minimum period."],
       ["Pay by invoice", "Payment by bank transfer against an invoice, generally within 7 days. No VAT is added to the price."],
       ["Local service", "We clean in the cities of Tartu and Põlva and, by agreement, their surroundings."],
       ["Clear terms", "Our terms, privacy policy and the 14-day right of withdrawal for private customers are published on the site."],

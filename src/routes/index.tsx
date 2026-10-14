@@ -16,7 +16,7 @@ import heroImage from "@/assets/hero-clean-home.jpg";
 
 const title = "Kodukoristus Tartus ja Põlvas | Squeaky Clean";
 const description =
-  "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses: hoolduskoristus, suurpuhastus ja aknapesu. Arvuta hind veebis kalkulaatoriga.";
+  "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses: hoolduskoristus, suurpuhastus, kolimiskoristus ja aknapesu. Arvuta hind veebis ja telli koristaja koju.";
 
 export const Route = createFileRoute("/")({
   head: () => ({

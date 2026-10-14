@@ -49,7 +49,7 @@ export function Hero() {
         <div className="hero-rise overflow-hidden rounded-md [animation-delay:120ms]">
           <img
             src={heroImage}
-            alt={t.hero.title}
+            alt={et ? "Puhtaks koristatud valgusküllane elutuba – kodukoristus Tartus ja Põlvas" : "A freshly cleaned bright living room – home cleaning in Tartu and Põlva"}
             width={1280}
             height={960}
             className="h-full w-full object-cover"

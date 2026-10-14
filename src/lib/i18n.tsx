@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { RENTAL } from "@/lib/rental-contract";
 
 export type Lang = "et" | "en";
 
@@ -22,7 +23,7 @@ export const et = {
     points: ["Hoolduskoristus", "Suurpuhastus", "Aknapesu"],
   },
   services: {
-    title: "Teenused ja hinnakiri",
+    title: "Koristusteenused ja hinnad Tartus ja Põlvas",
     subtitle: "Ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu.",
     includes: "Sisaldab",
     book: "Arvuta hind",
@@ -42,10 +43,10 @@ export const et = {
         ],
       },
       {
-        name: "Suurpuhastus / süvapesu",
+        name: "Suurpuhastus ja kolimiskoristus",
         price: "80 € kuni 100 €",
         meta: "Lõplik hind oleneb pinna suurusest ja seisukorrast",
-        desc: "Põhjalik süvapuhastus enne/pärast kolimist või pikemat pausi.",
+        desc: "Põhjalik süvapuhastus, mis sobib kolimiskoristuseks enne või pärast kolimist ning pärast pikemat pausi.",
         list: [
           "Kogu hoolduskoristuse maht",
           "Köögipindade rasva eemaldamine",
@@ -57,7 +58,7 @@ export const et = {
         name: "Aknapesu",
         price: "alates 3,50 €/tk",
         meta: "Hind sõltub akna tüübist",
-        desc: "Sise- ja välispindade pesu koos raamide ja pakkudega.",
+        desc: "Akende pesemine sise- ja välispindadelt koos raamide ja pakkudega.",
         list: [
           "Tavaline korteriaken: 3,50 kuni 4,00 €/tk",
           "Suur maast laeni aken / rõduuks: 4,00 kuni 5,50 €/tk",
@@ -70,6 +71,13 @@ export const et = {
         meta: "Erisoovid ja lisategevused",
         desc: "Tellitav lisaks põhiteenusele.",
         list: ["Kappide sisemus", "Kodumasinate sisepesu", "Muud erisoovid"],
+      },
+      {
+        name: "Tekstiilipuhastusmasina üür",
+        price: RENTAL.pricePerDay == null ? "hind kokkuleppel" : `${RENTAL.pricePerDay} €/päev`,
+        meta: `Kuni ${RENTAL.maxDays} päeva, tagatisraha ei võeta`,
+        desc: "Pehme mööbli, vaipade ja madratsite puhastamiseks ise: üüri masin ja puhasta diivan, tugitool, vaip või madrats kodus.",
+        list: ["Spot Cleaner Pro tekstiilipuhastusmasin", "Sobib polstermööblile, vaipadele, madratsitele ja autoistmetele", "Üleandmine ja tagastamine kokkuleppel"],
       },
     ],
   },
@@ -185,7 +193,7 @@ export const en: Dict = {
     points: ["Maintenance cleaning", "Deep cleaning", "Window washing"],
   },
   services: {
-    title: "Services and pricing",
+    title: "Cleaning services and prices in Tartu and Põlva",
     subtitle: "The company is not VAT-registered; VAT is not added to prices.",
     includes: "Includes",
     book: "Calculate price",
@@ -205,10 +213,10 @@ export const en: Dict = {
         ],
       },
       {
-        name: "Deep cleaning",
+        name: "Deep cleaning and move-out cleaning",
         price: "80 € to 100 €",
         meta: "Final price depends on the size and condition of the space",
-        desc: "Thorough deep cleaning before/after moving or a longer break.",
+        desc: "Thorough deep cleaning, suitable as move-in or move-out cleaning and after a longer break.",
         list: [
           "Everything in maintenance cleaning",
           "Degreasing of kitchen surfaces",
@@ -233,6 +241,13 @@ export const en: Dict = {
         meta: "Special requests and additional tasks",
         desc: "Ordered in addition to the main service.",
         list: ["Inside of cabinets", "Interior cleaning of appliances", "Other special requests"],
+      },
+      {
+        name: "Upholstery cleaner rental",
+        price: RENTAL.pricePerDay == null ? "price by agreement" : `${RENTAL.pricePerDay} €/day`,
+        meta: `Up to ${RENTAL.maxDays} days, no deposit`,
+        desc: "Clean upholstery, carpets and mattresses yourself: rent the machine and clean your sofa, armchair, rug or mattress at home.",
+        list: ["Spot Cleaner Pro upholstery cleaning machine", "Suitable for upholstered furniture, carpets, mattresses and car seats", "Handover and return by agreement"],
       },
     ],
   },

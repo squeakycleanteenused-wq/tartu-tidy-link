@@ -5,11 +5,11 @@ const COPY = {
   et: {
     title: "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses",
     paragraphs: [
-      "Squeaky Clean Teenused OÜ pakub kodukoristusteenust Tartu linnas, Põlva linnas ja kokkuleppel nende lähiümbruses. Koristame kortereid ja maju nii eraisikutele kui ka ettevõtetele.",
-      "Pakume hoolduskoristust, mis taastab igapäevase puhtuse, ja suurpuhastust, mis sobib enne või pärast kolimist või pärast pikemat pausi. Lisaks peseme aknaid ning teeme lisatöid, näiteks ahju, külmkapi ja kappide sisepesu või rõdu ja terrassi koristuse. Meilt saab üürida ka tekstiilipuhastusmasina polstermööbli, vaipade ja madratsite puhastamiseks.",
+      "Squeaky Clean Teenused OÜ pakub kodukoristusteenust Tartu linnas, Põlva linnas ja kokkuleppel nende lähiümbruses. Koristame kortereid ja maju nii eraisikutele kui ka ettevõtetele. Koristaja koju saad tellida lihtsalt veebis: arvuta hind ja saada päring.",
+      "Pakume hoolduskoristust, mis taastab igapäevase puhtuse, ja suurpuhastust, mis sobib ka kolimiskoristuseks enne või pärast kolimist või pärast pikemat pausi. Lisaks peseme aknaid ning teeme lisatöid, näiteks ahju, külmkapi ja kappide sisepesu või rõdu ja terrassi koristuse. Meilt saab üürida ka tekstiilipuhastusmasina polstermööbli, vaipade ja madratsite puhastamiseks.",
     ],
-    onceTitle: "Iga koristus on ühekordne teenus",
-    once: "Kõik meie teenused on ühekordsed. Iga koristus on eraldi tellimus: püsilepingut ega kuutasu ei ole ja sul ei teki kohustust uuesti tellida. Kui soovid koristust korduvalt, näiteks kord kuus, saadame igaks korraks eraldi pakkumise.",
+    onceTitle: "Ühekordne või regulaarne, ilma püsilepinguta",
+    once: "Iga koristus on eraldi tellimus: püsilepingut ega kuutasu ei ole ja sul ei teki kohustust uuesti tellida. Soovi korral käime ka regulaarselt, näiteks kord nädalas või kord kuus, nii kodudes kui ka ettevõtetes – iga külastuse kohta saadame eraldi pakkumise ja võid igal ajal lõpetada.",
     howTitle: "Kuidas tellida",
     how: [
       "Arvuta allpool hinnakalkulaatoriga orienteeruv hind ja saada päring.",
@@ -21,11 +21,11 @@ const COPY = {
   en: {
     title: "One-time home cleaning in Tartu, Põlva and the surrounding area",
     paragraphs: [
-      "Squeaky Clean Teenused OÜ offers home cleaning in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. We clean apartments and houses for private customers and companies.",
-      "We offer maintenance cleaning to restore everyday cleanliness and deep cleaning before or after a move or after a longer break. We also wash windows and do extra jobs such as cleaning the inside of ovens, fridges and cupboards, or cleaning balconies and terraces. You can also rent an upholstery cleaning machine for sofas, carpets and mattresses.",
+      "Squeaky Clean Teenused OÜ offers home cleaning in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. We clean apartments and houses for private customers and companies. You can book a cleaner for your home online: calculate the price and send a request.",
+      "We offer maintenance cleaning to restore everyday cleanliness and deep cleaning, also as move-in or move-out cleaning or after a longer break. We also wash windows and do extra jobs such as cleaning the inside of ovens, fridges and cupboards, or cleaning balconies and terraces. You can also rent an upholstery cleaning machine for sofas, carpets and mattresses.",
     ],
-    onceTitle: "Every cleaning is a one-time service",
-    once: "All our services are one-time services. Each cleaning is a separate order: there is no ongoing contract or monthly fee and no obligation to order again. If you want regular cleaning, for example once a month, we send a separate offer for each visit.",
+    onceTitle: "One-time or regular, without a long-term contract",
+    once: "Each cleaning is a separate order: there is no ongoing contract or monthly fee and no obligation to order again. We can also come regularly, for example weekly or monthly, for homes and companies – we send a separate offer for each visit and you can stop at any time.",
     howTitle: "How to order",
     how: [
       "Use the price calculator below to get an estimate and send a request.",
