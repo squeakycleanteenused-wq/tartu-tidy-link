@@ -4,6 +4,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useLang } from "@/lib/i18n";
+import { ThemeToggle } from "./ThemeToggle";
 
 function LangSwitch() {
   const { lang, setLang } = useLang();
@@ -70,6 +71,7 @@ export function Header() {
             ))}
           </nav>
           <LangSwitch />
+          <ThemeToggle />
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="shrink-0 lg:hidden">

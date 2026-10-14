@@ -15,14 +15,14 @@ type Choice = "granted" | "denied";
 const COPY = {
   et: {
     title: "Küpsised",
-    text: "Kasutame Google Adsi küpsiseid, et mõõta, kas meie reklaamid toovad kliente. Need lisame ainult sinu nõusolekul. Lehe toimimiseks vajalikud andmed (keelevalik ja see valik) salvestatakse ainult sinu brauserisse.",
+    text: "Kasutame Google Adsi küpsiseid, et mõõta, kas meie reklaamid toovad kliente. Need lisame ainult sinu nõusolekul. Lehe toimimiseks vajalikud andmed (keele- ja kujundusvalik ning see valik) salvestatakse ainult sinu brauserisse.",
     more: "Privaatsuspoliitika",
     accept: "Nõustun",
     reject: "Keeldun",
   },
   en: {
     title: "Cookies",
-    text: "We use Google Ads cookies to measure whether our ads bring us customers. We only set them with your consent. Data needed for the site to work (language choice and this choice) is stored only in your browser.",
+    text: "We use Google Ads cookies to measure whether our ads bring us customers. We only set them with your consent. Data needed for the site to work (language and display choice, and this choice) is stored only in your browser.",
     more: "Privacy policy",
     accept: "Accept",
     reject: "Reject",
