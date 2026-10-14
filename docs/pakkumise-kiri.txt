@@ -4,7 +4,7 @@ Tere, [NIMI]!
 
 Aitäh päringu eest. Saadame sulle pakkumise:
 
-Teenus: [TEENUS, nt hoolduskoristus 55 m², 4 tavalist akent]
+Teenus: [TEENUS, nt hoolduskoristus 55 m², 4 tavalist akent] – ühekordne teenus
 Objekti aadress: [AADRESS]
 Aeg: [KUUPÄEV] kell [KELLAAEG], orienteeruv kestus [X] h
 Hind: [SUMMA] € (kindel hind; käibemaksu ei lisandu, ettevõte ei ole käibemaksukohustuslane)
@@ -32,7 +32,7 @@ Veebis: https://squeakycleanteenused.ee/tingimused · Privaatsuspoliitika: https
 Squeaky Clean Teenused OÜ, registrikood 16288747, asukoha aadress Rattasepa tee 16, Soinaste küla, Kambja vald, 61709 Tartu maakond, telefon +372 5685 7899, e-post squeakycleanteenused@gmail.com. Tegevuspiirkond: Tartu ja Põlva linn ning kokkuleppel nende lähiümbrus. Kaebused ja küsimused palume saata ülaltoodud aadressile või e-postile.
 
 2. Lepingu sõlmimine
-Hinnakalkulaator ja päring ei ole siduv pakkumine ega leping ning päringu saatmine ei too kaasa maksekohustust. Pärast päringut saadame sulle e-kirjaga pakkumise, milles on lõplik kindel hind, aeg, tingimused ning taganemisinfo ja tüüpvorm. Leping sõlmitakse, kui vastad pakkumisele e-kirjaga ja kinnitad selle. Kuni kinnitamiseni ei ole sul mingeid kohustusi. Lepingu sõlmimise keel on eesti keel (soovi korral suhtleme ka inglise keeles). Pakkumise ja sinu kinnituse e-kirjad jäävad mõlemale poolele alles.
+Teenus on ühekordne: iga koristus (ja iga masina üür) on eraldi leping. Püsilepingut, kuutasu ega minimaalset lepinguperioodi ei ole ning kohustust uuesti tellida ei teki. Korduva koristuse soovi korral teeme igaks korraks eraldi pakkumise. Hinnakalkulaator ja päring ei ole siduv pakkumine ega leping ning päringu saatmine ei too kaasa maksekohustust. Pärast päringut saadame sulle e-kirjaga pakkumise, milles on lõplik kindel hind, aeg, tingimused ning taganemisinfo ja tüüpvorm. Leping sõlmitakse, kui vastad pakkumisele e-kirjaga ja kinnitad selle. Kuni kinnitamiseni ei ole sul mingeid kohustusi. Lepingu sõlmimise keel on eesti keel (soovi korral suhtleme ka inglise keeles). Pakkumise ja sinu kinnituse e-kirjad jäävad mõlemale poolele alles.
 
 3. Hind ja käibemaks
 Ettevõte ei ole käibemaksukohustuslane, käibemaksu hinnale ei lisandu. Kalkulaatori hind on orienteeruv; siduv on pakkumises märgitud kindel hind. Minimaalne väljakutsetasu on 30 € (2 töötundi). Kui mustuse aste või töömaht erineb oluliselt kirjeldatust, võime hinda enne töö algust korrigeerida või tööaega pikendada (lisatööde tunnihind 15 €/h). Enne töö algust küsime sinu nõusolekut uue hinnaga. Kui sa ei nõustu, võid tööst loobuda. Ettevõttest tellija tasub sel juhul minimaalse väljakutsetasu (30 €); eraisik tasub taganemistähtaja jooksul ainult proportsionaalselt juba osutatud teenuse eest.

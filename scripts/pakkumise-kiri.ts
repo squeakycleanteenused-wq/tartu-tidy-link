@@ -17,7 +17,7 @@ Tere, [NIMI]!
 
 Aitäh päringu eest. Saadame sulle pakkumise:
 
-Teenus: [TEENUS, nt hoolduskoristus 55 m², 4 tavalist akent]
+Teenus: [TEENUS, nt hoolduskoristus 55 m², 4 tavalist akent] – ühekordne teenus
 Objekti aadress: [AADRESS]
 Aeg: [KUUPÄEV] kell [KELLAAEG], orienteeruv kestus [X] h
 Hind: [SUMMA] € (kindel hind; käibemaksu ei lisandu, ettevõte ei ole käibemaksukohustuslane)

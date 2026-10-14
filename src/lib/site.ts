@@ -33,7 +33,7 @@ export const siteJsonLd = {
         addressCountry: "EE",
       },
       areaServed: ["Tartu", "Põlva"],
-      description: "Hoolduskoristus, suurpuhastus ja aknapesu Tartus, Põlvas ja lähiümbruses.",
+      description: "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses: hoolduskoristus, suurpuhastus ja aknapesu.",
     },
   ]),
 };

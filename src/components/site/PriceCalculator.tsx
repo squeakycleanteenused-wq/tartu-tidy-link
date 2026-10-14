@@ -143,7 +143,7 @@ const COPY = {
   et: {
     title: "Hinnakalkulaator",
     askPhoto: "Pole kindel, kas midagi on võimalik puhastada? Küsi nõu fotoga",
-    subtitle: "Sisesta oma vajadus ja näed kohe orienteeruvat hinda. Seejärel saad päringu meile saata.",
+    subtitle: "Sisesta oma vajadus ja näed kohe orienteeruvat hinda. Seejärel saad päringu meile saata. Hind kehtib ühekordsele koristusele.",
     s1: "1. Mida vajad?",
     cleaning: "Koristuse liik",
     cleaningOpts: { none: "Ei vaja (ainult aknapesu või lisatööd)", maintenance: "Hoolduskoristus (kerge koristus)", deep: "Suurpuhastus / süvapesu" },
@@ -240,6 +240,7 @@ const COPY = {
     keyTerms: "Põhitingimused",
     key: {
       provider: "Teenuseosutaja",
+      once: "Teenus on ühekordne: iga koristus on eraldi tellimus, püsilepingut ega kuutasu ei ole.",
       price: "Hinnad on käibemaksuta (ettevõte ei ole käibemaksukohustuslane). Minimaalne väljakutsetasu on 30 €.",
       pay: "Maksmine ainult pangaülekandega arve alusel, sularaha ei aktsepteerita.",
       cancel: "Tasuta tühistamine kuni 24 h enne töö algust.",
@@ -307,7 +308,7 @@ const COPY = {
   en: {
     title: "Price calculator",
     askPhoto: "Not sure if something can be cleaned? Ask with a photo",
-    subtitle: "Enter what you need and see an estimated price right away. Then you can send us your request.",
+    subtitle: "Enter what you need and see an estimated price right away. Then you can send us your request. The price is for a one-time cleaning.",
     s1: "1. What do you need?",
     cleaning: "Type of cleaning",
     cleaningOpts: { none: "None (window washing or extras only)", maintenance: "Maintenance cleaning (light cleaning)", deep: "Deep cleaning" },
@@ -404,6 +405,7 @@ const COPY = {
     keyTerms: "Key terms",
     key: {
       provider: "Service provider",
+      once: "One-time service: each cleaning is a separate order, with no ongoing contract or monthly fee.",
       price: "Prices exclude VAT (the company is not VAT-registered). The minimum call-out fee is 30 €.",
       pay: "Payment by bank transfer against an invoice only; cash is not accepted.",
       cancel: "Free cancellation up to 24 h before the start of work.",
@@ -960,6 +962,7 @@ export function PriceCalculator() {
                 <li>
                   {c.key.provider}: {COMPANY.name}, {companyContact(lang)}.
                 </li>
+                <li>{c.key.once}</li>
                 <li>{c.key.price}</li>
                 <li>{c.key.pay}</li>
                 <li>{c.key.cancel}</li>

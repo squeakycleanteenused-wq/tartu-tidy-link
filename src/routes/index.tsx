@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { Hero } from "@/components/site/Hero";
+import { Intro } from "@/components/site/Intro";
 import { PriceCalculator } from "@/components/site/PriceCalculator";
 import { PhotoQuestion } from "@/components/site/PhotoQuestion";
 import { Shop } from "@/components/site/Shop";
@@ -9,9 +10,9 @@ import { Contact } from "@/components/site/Contact";
 import { SITE_URL, canonical, siteJsonLd } from "@/lib/site";
 import heroImage from "@/assets/hero-clean-home.jpg";
 
-const title = "Koristusteenused Tartus ja Põlvas | Squeaky Clean";
+const title = "Kodukoristus Tartus ja Põlvas | Squeaky Clean";
 const description =
-  "Hoolduskoristus, suurpuhastus ja aknapesu Tartus, Põlvas ja lähiümbruses. Arvuta hind veebis kalkulaatoriga.";
+  "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses: hoolduskoristus, suurpuhastus ja aknapesu. Arvuta hind veebis kalkulaatoriga.";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -39,6 +40,7 @@ function Index() {
   return (
     <SiteLayout>
       <Hero />
+      <Intro />
       <PriceCalculator />
       <PhotoQuestion />
       <Shop />
