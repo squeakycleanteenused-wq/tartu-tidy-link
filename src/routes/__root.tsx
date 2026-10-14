@@ -11,6 +11,7 @@ import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
 import { Toaster } from "@/components/ui/sonner";
+import { Analytics } from "@vercel/analytics/react";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { SITE_NAME } from "../lib/site";
 import { themeInitScript } from "../components/site/ThemeToggle";
@@ -128,6 +129,8 @@ function RootComponent() {
       {/* Required: nested routes render here. Removing <Outlet /> breaks all child routes. */}
       <Outlet />
       <Toaster position="top-center" richColors />
+      {/* Vercel Web Analytics: küpsisteta külastusstatistika, ei vaja nõusolekut */}
+      <Analytics />
     </QueryClientProvider>
   );
 }
