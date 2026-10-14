@@ -39,5 +39,5 @@ Allow: /
 User-agent: Googlebot
 Allow: /
 
-Sitemap: https://squeakycleanteenused.ee/sitemap.xml
-# Ülevaade AI-assistentidele: https://squeakycleanteenused.ee/llms.txt
+Sitemap: https://www.squeakycleanteenused.ee/sitemap.xml
+# Ülevaade AI-assistentidele: https://www.squeakycleanteenused.ee/llms.txt

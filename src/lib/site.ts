@@ -1,7 +1,7 @@
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
 
 /* Lehe ametlik aadress. Google kasutab seda otsingutulemustes (canonical, og:url). */
-export const SITE_URL = "https://squeakycleanteenused.ee";
+export const SITE_URL = "https://www.squeakycleanteenused.ee";
 export const SITE_NAME = "Squeaky Clean";
 
 export const canonical = (path: string) => ({ rel: "canonical", href: `${SITE_URL}${path}` });

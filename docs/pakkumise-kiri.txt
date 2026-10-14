@@ -25,7 +25,7 @@ registrikood 16288747, asukoha aadress Rattasepa tee 16, Soinaste küla, Kambja 
 ======================================================================
 TEENUSEOSUTAMISE TINGIMUSED (kehtivad alates 01.10.2026)
 Need tingimused on osa lepingust. Salvesta see kiri.
-Veebis: https://squeakycleanteenused.ee/tingimused · Privaatsuspoliitika: https://squeakycleanteenused.ee/privaatsus
+Veebis: https://www.squeakycleanteenused.ee/tingimused · Privaatsuspoliitika: https://www.squeakycleanteenused.ee/privaatsus
 ======================================================================
 
 1. Teenuseosutaja
@@ -66,7 +66,7 @@ Ettevõttest tellijale tarbija taganemisõigus ei kohaldu.
 ======================================================================
 TAGANEMISAVALDUSE TÜÜPVORM
 (Täitke ja saatke see vorm ainult juhul, kui soovite lepingust taganeda.
-Taganeda saab ka veebilehe ülamenüüs nupuga „Taganen lepingust“: https://squeakycleanteenused.ee/#taganemine)
+Taganeda saab ka veebilehe ülamenüüs nupuga „Taganen lepingust“: https://www.squeakycleanteenused.ee/#taganemine)
 ======================================================================
 
 Kellele: Squeaky Clean Teenused OÜ, registrikood 16288747, asukoha aadress Rattasepa tee 16, Soinaste küla, Kambja vald, 61709 Tartu maakond, telefon +372 5685 7899, e-post squeakycleanteenused@gmail.com
