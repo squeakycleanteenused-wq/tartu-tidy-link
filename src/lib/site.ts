@@ -33,6 +33,17 @@ export const siteJsonLd = {
         addressCountry: "EE",
       },
       areaServed: ["Tartu", "Põlva"],
+      priceRange: "30–100 €",
+      sameAs: [RENTAL_COMPANY.instagram],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Koristusteenused",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Hoolduskoristus" }, priceSpecification: { "@type": "PriceSpecification", minPrice: 60, maxPrice: 70, priceCurrency: "EUR" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Suurpuhastus" }, priceSpecification: { "@type": "PriceSpecification", minPrice: 80, maxPrice: 100, priceCurrency: "EUR" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Aknapesu" }, priceSpecification: { "@type": "UnitPriceSpecification", minPrice: 3.5, priceCurrency: "EUR", unitText: "tk" } },
+        ],
+      },
       description: "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses: hoolduskoristus, suurpuhastus ja aknapesu.",
     },
   ]),

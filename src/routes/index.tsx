@@ -2,6 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { Hero } from "@/components/site/Hero";
 import { Intro } from "@/components/site/Intro";
+import { Services } from "@/components/site/Services";
+import { WhyUs } from "@/components/site/WhyUs";
+import { Faq } from "@/components/site/Faq";
+import { faqJsonLd } from "@/lib/faq";
 import { PriceCalculator } from "@/components/site/PriceCalculator";
 import { PhotoQuestion } from "@/components/site/PhotoQuestion";
 import { Shop } from "@/components/site/Shop";
@@ -31,7 +35,7 @@ export const Route = createFileRoute("/")({
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [canonical("/")],
-    scripts: [siteJsonLd],
+    scripts: [siteJsonLd, faqJsonLd],
   }),
   component: Index,
 });
@@ -41,8 +45,11 @@ function Index() {
     <SiteLayout>
       <Hero />
       <Intro />
+      <Services />
+      <WhyUs />
       <PriceCalculator />
       <PhotoQuestion />
+      <Faq />
       <Shop />
       <WithdrawalSection />
       <Contact />

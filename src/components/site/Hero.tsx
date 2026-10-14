@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
 import { useLang } from "@/lib/i18n";
+import { RENTAL_COMPANY } from "@/lib/rental-contract";
 import heroImage from "@/assets/hero-clean-home.jpg";
 
 export function Hero() {
@@ -29,7 +30,17 @@ export function Hero() {
               <Link to="/tingimused">{et ? "Tingimused" : "Terms"}</Link>
             </Button>
           </div>
-          <ul className="mt-8 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-secondary-foreground">
+          <p className="mt-5 text-sm text-secondary-foreground">
+            {et ? "Küsimused? Helista " : "Questions? Call "}
+            <a href={`tel:${RENTAL_COMPANY.phone.replace(/\s/g, "")}`} className="font-semibold text-primary underline underline-offset-4">
+              {RENTAL_COMPANY.phone}
+            </a>
+            {et ? " või kirjuta " : " or email "}
+            <a href={`mailto:${RENTAL_COMPANY.email}`} className="font-semibold text-primary underline underline-offset-4">
+              {RENTAL_COMPANY.email}
+            </a>
+          </p>
+          <ul className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm font-medium text-secondary-foreground">
             {t.hero.points.map((p) => (
               <li key={p}>{p}</li>
             ))}

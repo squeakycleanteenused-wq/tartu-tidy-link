@@ -21,6 +21,7 @@ export const RENTAL_COMPANY = {
   email: "squeakycleanteenused@gmail.com",
   address: "Rattasepa tee 16, Soinaste küla, Kambja vald, 61709 Tartu maakond",
   phone: "+372 5685 7899",
+  instagram: "https://www.instagram.com/squeakycleanteenused/",
 };
 
 export function companyContact(lang: "et" | "en" = "et") {

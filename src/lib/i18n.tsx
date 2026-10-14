@@ -25,7 +25,7 @@ export const et = {
     title: "Teenused ja hinnakiri",
     subtitle: "Ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu.",
     includes: "Sisaldab",
-    book: "Broneeri see teenus",
+    book: "Arvuta hind",
     note: "Ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
     items: [
       {
@@ -188,7 +188,7 @@ export const en: Dict = {
     title: "Services and pricing",
     subtitle: "The company is not VAT-registered; VAT is not added to prices.",
     includes: "Includes",
-    book: "Book this service",
+    book: "Calculate price",
     note: "The company is not VAT-registered; VAT is not added to prices. The minimum call-out fee is 30 € (2 working hours).",
     items: [
       {

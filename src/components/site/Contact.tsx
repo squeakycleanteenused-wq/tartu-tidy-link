@@ -21,6 +21,14 @@ export function Contact() {
       ),
     },
     { label: t.contact.address, value: RENTAL_COMPANY.address },
+    {
+      label: "Instagram",
+      value: (
+        <a href={RENTAL_COMPANY.instagram} target="_blank" rel="noopener" className="hover:underline">
+          @squeakycleanteenused
+        </a>
+      ),
+    },
     { label: t.contact.reg, value: RENTAL_COMPANY.code },
     { label: t.contact.areaLabel, value: t.contact.areaValue },
   ];

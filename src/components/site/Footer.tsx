@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Mail, MapPin, Building2, Phone } from "lucide-react";
+import { Mail, MapPin, Building2, Phone, Instagram } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
 import { OPEN_COOKIE_SETTINGS } from "./CookieConsent";
@@ -24,6 +24,12 @@ export function Footer() {
             <Phone className="size-4 shrink-0" />
             <a href={`tel:${RENTAL_COMPANY.phone.replace(/\s/g, "")}`} className="hover:underline">
               {RENTAL_COMPANY.phone}
+            </a>
+          </li>
+          <li className="flex items-center gap-2">
+            <Instagram className="size-4 shrink-0" />
+            <a href={RENTAL_COMPANY.instagram} target="_blank" rel="noopener" className="hover:underline">
+              @squeakycleanteenused
             </a>
           </li>
           <li className="flex items-start gap-2">

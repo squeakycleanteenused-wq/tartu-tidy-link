@@ -33,8 +33,9 @@ export function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   const links = [
+    { href: "/#teenused", label: lang === "et" ? "Teenused ja hinnad" : "Services & prices" },
     { href: "/#hinnakalkulaator", label: lang === "et" ? "Hinnapäring" : "Price request" },
-    { href: "/#epood", label: t.nav.shop },
+    { href: "/#kkk", label: lang === "et" ? "KKK" : "FAQ" },
     { href: "/#taganemine", label: lang === "et" ? "Taganen lepingust" : "Withdraw from a contract" },
     { href: "/tingimused", label: t.nav.terms },
     { href: "/#kontakt", label: t.nav.contact },
@@ -59,7 +60,7 @@ export function Header() {
         </Link>
 
         <div className="flex items-center gap-2">
-          <nav className="hidden items-center gap-1 lg:flex">
+          <nav className="hidden items-center gap-1 xl:flex">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -74,7 +75,7 @@ export function Header() {
           <ThemeToggle />
           <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
             <SheetTrigger asChild>
-              <Button variant="outline" size="icon" className="shrink-0 lg:hidden">
+              <Button variant="outline" size="icon" className="shrink-0 xl:hidden">
                 <Menu className="size-4" />
               </Button>
             </SheetTrigger>
