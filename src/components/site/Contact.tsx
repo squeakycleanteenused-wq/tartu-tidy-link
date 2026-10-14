@@ -31,7 +31,7 @@ export function Contact() {
         <p className="mt-2 text-muted-foreground">{t.contact.subtitle}</p>
         <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((i) => (
-            <div key={i.label} className="border-t-2 border-ink pt-4">
+            <div key={i.label} className="border-t-2 border-gold pt-4">
               <p className="text-xs uppercase tracking-wider text-muted-foreground">{i.label}</p>
               <p className="mt-1 text-sm font-semibold">{i.value}</p>
             </div>

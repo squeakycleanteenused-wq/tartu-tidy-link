@@ -131,7 +131,7 @@ export function WithdrawalSection() {
   };
 
   return (
-    <section id="taganemine" className="scroll-mt-28 bg-ink py-16 text-white">
+    <section id="taganemine" className="scroll-mt-28 border-y-2 border-gold bg-ink py-16 text-white">
       <div className="mx-auto max-w-3xl px-4">
         <h2 className="text-2xl font-bold sm:text-3xl">
           {c.title}

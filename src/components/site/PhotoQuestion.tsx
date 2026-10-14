@@ -203,7 +203,7 @@ export function PhotoQuestion() {
         </h2>
         <p className="mt-2 text-muted-foreground">{c.subtitle}</p>
 
-        <div className="mt-8 space-y-5 border-t-2 border-ink pt-6">
+        <div className="mt-8 space-y-5 border-t-2 border-gold pt-6">
           <label className="block text-sm">
             <span className="mb-1 block font-medium">{c.what}</span>
             <select

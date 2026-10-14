@@ -863,8 +863,8 @@ export function PriceCalculator() {
                       </li>
                     ))}
                   </ul>
-                  <div ref={priceRef} className="mt-5 rounded-md bg-ink p-4 text-white">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-white/70">{c.total}</p>
+                  <div ref={priceRef} className="mt-5 rounded-md border-t-2 border-gold bg-ink p-4 text-white">
+                    <p className="text-xs font-semibold uppercase tracking-wider text-gold">{c.total}</p>
                     <p className="mt-1 font-display text-3xl font-bold">{priceText}</p>
                     {r.timeMax > 0 && (
                       <p className="mt-1 text-sm text-white/85">
@@ -1055,10 +1055,10 @@ export function PriceCalculator() {
         </form>
       </div>
       {showBar && (
-        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-ink px-4 py-3 text-white lg:hidden">
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t-2 border-gold bg-ink px-4 py-3 text-white lg:hidden">
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
             <div className="min-w-0">
-              <p className="text-[11px] font-semibold uppercase tracking-wider text-white/70">{c.total}</p>
+              <p className="text-[11px] font-semibold uppercase tracking-wider text-gold">{c.total}</p>
               <p className="font-display text-xl font-bold leading-tight">{priceText}</p>
               {r.timeMax > 0 && (
                 <p className="text-xs text-white/75">

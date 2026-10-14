@@ -45,7 +45,7 @@ export function Header() {
         <Link to="/" className="flex min-w-0 items-center gap-2">
           <span
             aria-hidden="true"
-            className="grid size-9 shrink-0 place-items-center rounded-md bg-primary font-display text-sm font-bold tracking-wide text-primary-foreground"
+            className="grid size-9 shrink-0 place-items-center rounded-md bg-ink font-display text-sm font-bold tracking-wide text-gold ring-1 ring-gold/60"
           >
             SC
           </span>

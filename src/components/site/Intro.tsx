@@ -51,11 +51,11 @@ export function Intro() {
           ))}
         </div>
         <div className="space-y-8">
-          <div className="border-t-2 border-ink pt-4">
+          <div className="border-t-2 border-gold pt-4">
             <h3 className="font-sans text-base font-semibold">{c.onceTitle}</h3>
             <p className="mt-2 text-sm leading-relaxed text-secondary-foreground">{c.once}</p>
           </div>
-          <div className="border-t-2 border-ink pt-4">
+          <div className="border-t-2 border-gold pt-4">
             <h3 className="font-sans text-base font-semibold">{c.howTitle}</h3>
             <ol className="mt-2 list-decimal space-y-1.5 pl-5 text-sm text-secondary-foreground">
               {c.how.map((s) => (

@@ -152,6 +152,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-primary-soft: var(--primary-soft);
   --color-ink: var(--brand-ink);
+  --color-gold: var(--brand-gold);
   --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
   --font-sans: "Public Sans", ui-sans-serif, system-ui, sans-serif;
   --color-destructive: var(--destructive);
@@ -177,13 +178,14 @@
 
 :root {
   /* Brändi palett */
-  --brand-ink: #15314b; /* sügavsinine: pealkirjad, tume taustaplokk */
-  --brand-blue: #1f5a8a; /* põhivärv: nupud, lingid */
+  --brand-ink: #10291e; /* sügav metsaroheline (logo toon): pealkirjad, tumedad plokid */
+  --brand-green: #1d4a36; /* tumeroheline: nupud, lingid */
   --brand-white: #ffffff;
-  --brand-paper: #f4f1ec; /* soe helehall: vahelduv taust */
-  --brand-stone: #6b655c; /* soe hall: abitekst */
-  --brand-line: #ddd7ce; /* soe hall: jooned */
-  --brand-accent: #2e8b7a; /* aktsent: hind, esiletõsted */
+  --brand-paper: #f5f1e8; /* elevandiluu: vahelduv taust */
+  --brand-stone: #6a655a; /* soe hall: abitekst */
+  --brand-line: #e0d8c6; /* soe helekuld-hall: jooned */
+  --brand-gold: #b8913b; /* kuld: jooned ja detailid, tekst tumedal taustal */
+  --brand-gold-text: #7d5f18; /* tumedam kuld: kuldne tekst heledal taustal (loetav) */
 
   --radius: 0.375rem;
   --background: var(--brand-white);
@@ -192,20 +194,20 @@
   --card-foreground: var(--brand-ink);
   --popover: var(--brand-white);
   --popover-foreground: var(--brand-ink);
-  --primary: var(--brand-blue);
+  --primary: var(--brand-green);
   --primary-foreground: var(--brand-white);
   --primary-soft: var(--brand-paper);
   --secondary: var(--brand-paper);
-  --secondary-foreground: #3a4552;
+  --secondary-foreground: #3d4740;
   --muted: var(--brand-paper);
   --muted-foreground: var(--brand-stone);
-  --accent: var(--brand-accent);
+  --accent: var(--brand-gold-text);
   --accent-foreground: var(--brand-white);
   --destructive: #b3261e;
   --destructive-foreground: var(--brand-white);
   --border: var(--brand-line);
-  --input: #cbc4b8;
-  --ring: var(--brand-blue);
+  --input: #cfc6b2;
+  --ring: var(--brand-green);
   --shadow-soft: 0 1px 2px rgb(21 49 75 / 0.06), 0 4px 12px -6px rgb(21 49 75 / 0.12);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
