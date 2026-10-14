@@ -53,7 +53,7 @@ export function Header() {
             <span className="block truncate font-display text-base font-bold leading-tight">
               Squeaky Clean
             </span>
-            <span className="block truncate text-[11px] text-muted-foreground">Teenused OÜ</span>
+            <span className="block truncate text-[11px] text-muted-foreground">{t.hero.title}</span>
           </span>
         </Link>
 

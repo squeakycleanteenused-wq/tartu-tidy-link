@@ -18,8 +18,8 @@ export function Hero() {
           </h1>
           <p className="mt-4 max-w-lg text-base text-muted-foreground">
             {et
-              ? "Ühekordne kodukoristus Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses: hoolduskoristus, suurpuhastus ja aknapesu. Iga koristus on eraldi tellimus, püsilepingut ega kuutasu pole. Küsi hinda veebis."
-              : "One-time home cleaning in Tartu and Põlva and, by agreement, their surroundings: maintenance cleaning, deep cleaning and window washing. Each cleaning is a separate order, with no ongoing contract or monthly fee. Request a price online."}
+              ? "Puhas kodu ilma vaevata: koristame kortereid ja maju Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Iga koristus on eraldi ühekordne tellimus, püsilepingut ega kuutasu pole. Arvuta hind veebis ja saada päring."
+              : "A spotless home, effortlessly: we clean apartments and houses in Tartu and Põlva and, by agreement, their surroundings. Each cleaning is a separate one-time order, with no ongoing contract or monthly fee. Calculate the price online and send a request."}
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
             <Button size="lg" className="px-6" asChild>

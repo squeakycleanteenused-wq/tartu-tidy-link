@@ -13,13 +13,13 @@ export const et = {
     contact: "Kontakt",
   },
   hero: {
-    eyebrow: "Kodu- ja kontorikoristus Lõuna-Eestis",
-    title: "Puhas kodu ilma vaevata",
+    eyebrow: "Koristusettevõte · ühekordne kodukoristus",
+    title: "Kodukoristus Tartus ja Põlvas",
     subtitle:
       "Hoolduskoristus, suurpuhastus ja aknapesu Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Läbipaistev hinnakiri ja selged tingimused.",
     cta: "Broneeri aeg",
     cta2: "Vaata hinnakirja",
-    points: ["Läbipaistvad hinnad", "Selged tingimused", "Paindlikud ajad"],
+    points: ["Hoolduskoristus", "Suurpuhastus", "Aknapesu"],
   },
   services: {
     title: "Teenused ja hinnakiri",
@@ -176,13 +176,13 @@ export const en: Dict = {
     contact: "Contact",
   },
   hero: {
-    eyebrow: "Home and office cleaning in South Estonia",
-    title: "A spotless home, effortlessly",
+    eyebrow: "Cleaning company · one-time home cleaning",
+    title: "Home cleaning in Tartu and Põlva",
     subtitle:
       "Maintenance cleaning, deep cleaning and window washing in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. Transparent pricing and clear terms.",
     cta: "Book a time",
     cta2: "See pricing",
-    points: ["Transparent pricing", "Clear terms", "Flexible times"],
+    points: ["Maintenance cleaning", "Deep cleaning", "Window washing"],
   },
   services: {
     title: "Services and pricing",
