@@ -108,7 +108,7 @@ export function buildRentalContract(d: RentalData): string {
     "4. ÜÜR JA MAKSMINE",
     `4.1. ${rentLine}`,
     "4.2. Üürileandja ei ole käibemaksukohustuslane, käibemaksu üürile ei lisandu.",
-    "4.3. Üür tasutakse Üürileandja esitatud arve alusel pangaülekandega, maksetähtaeg on üldjuhul 7 päeva. Sularahamakseid ei aktsepteerita.",
+    "4.3. Üür tasutakse Üürileandja esitatud arve alusel pangaülekandega, maksetähtaeg on 7 päeva. Sularahamakseid ei aktsepteerita.",
     "4.4. Üürileandja ei nõua tagatisraha (pandi).",
     "",
     "5. MASINA KASUTAMINE",

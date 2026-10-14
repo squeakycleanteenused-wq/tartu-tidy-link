@@ -36,7 +36,7 @@ export function buildLlmsTxt() {
 - Keeled: eesti, inglise
 - Käibemaks: ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu
 - Teenuse liik: ühekordne või soovi korral regulaarne (nt kord nädalas/kuus) kodudes ja ettevõtetes – iga koristus on eraldi tellimus, püsilepingut ega kuutasu ei ole
-- Maksmine: arve alusel pangaülekandega (üldjuhul 7 päeva), sularaha ei aktsepteerita
+- Maksmine: arve alusel pangaülekandega (maksetähtaeg 7 päeva), sularaha ei aktsepteerita
 
 ## Teenused ja hinnad
 
