@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as PrivaatsusRouteImport } from './routes/privaatsus'
 import { Route as TingimusedRouteImport } from './routes/tingimused'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
+  id: '/llms.txt',
+  path: '/llms.txt',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PrivaatsusRoute = PrivaatsusRouteImport.update({
@@ -31,30 +37,34 @@ const TingimusedRoute = TingimusedRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/privaatsus' | '/tingimused'
+  fullPaths: '/' | '/llms.txt' | '/privaatsus' | '/tingimused'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/privaatsus' | '/tingimused'
-  id: '__root__' | '/' | '/privaatsus' | '/tingimused'
+  to: '/' | '/llms.txt' | '/privaatsus' | '/tingimused'
+  id: '__root__' | '/' | '/llms.txt' | '/privaatsus' | '/tingimused'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  LlmsDottxtRoute: typeof LlmsDottxtRoute
   PrivaatsusRoute: typeof PrivaatsusRoute
   TingimusedRoute: typeof TingimusedRoute
 }
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/llms.txt': {
+      id: '/llms.txt'
+      path: '/llms.txt'
+      fullPath: '/llms.txt'
+      preLoaderRoute: typeof LlmsDottxtRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/privaatsus': {
@@ -87,6 +104,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  LlmsDottxtRoute: LlmsDottxtRoute,
   PrivaatsusRoute: PrivaatsusRoute,
   TingimusedRoute: TingimusedRoute,
 }

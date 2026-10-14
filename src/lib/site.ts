@@ -32,7 +32,13 @@ export const siteJsonLd = {
         postalCode: "61709",
         addressCountry: "EE",
       },
-      areaServed: ["Tartu", "Põlva"],
+      areaServed: [
+        { "@type": "City", name: "Tartu" },
+        { "@type": "City", name: "Põlva" },
+      ],
+      knowsAbout: ["kodukoristus", "hoolduskoristus", "suurpuhastus", "aknapesu", "home cleaning", "deep cleaning", "window washing"],
+      availableLanguage: ["et", "en"],
+      paymentAccepted: "Pangaülekanne (arve alusel)",
       priceRange: "30–100 €",
       sameAs: [RENTAL_COMPANY.instagram],
       hasOfferCatalog: {
