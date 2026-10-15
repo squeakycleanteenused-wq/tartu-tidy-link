@@ -121,7 +121,7 @@ export function CookieConsent() {
       role="dialog"
       aria-live="polite"
       aria-label={t.title}
-      className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background px-4 py-4 shadow-[0_-4px_16px_rgb(21_49_75/0.08)]"
+      className="fixed inset-x-0 bottom-0 z-50 border-t border-border bg-background px-4 py-4 shadow-[0_-4px_16px_rgb(16_41_30/0.08)]"
     >
       <div className="mx-auto flex max-w-6xl flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <p className="text-sm text-secondary-foreground">
