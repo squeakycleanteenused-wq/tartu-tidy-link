@@ -89,6 +89,60 @@ export type Database = {
         }
         Relationships: []
       }
+      shop_waitlist: {
+        Row: {
+          confirmed_at: string | null
+          created_at: string
+          email: string
+          expires_at: string | null
+          id: string
+          lang: string
+          last_sent_at: string
+          status: string
+          token_hash: string
+        }
+        Insert: {
+          confirmed_at?: string | null
+          created_at?: string
+          email: string
+          expires_at?: string | null
+          id?: string
+          lang?: string
+          last_sent_at?: string
+          status?: string
+          token_hash: string
+        }
+        Update: {
+          confirmed_at?: string | null
+          created_at?: string
+          email?: string
+          expires_at?: string | null
+          id?: string
+          lang?: string
+          last_sent_at?: string
+          status?: string
+          token_hash?: string
+        }
+        Relationships: []
+      }
+      shop_waitlist_attempts: {
+        Row: {
+          created_at: string
+          id: number
+          ip_hash: string
+        }
+        Insert: {
+          created_at?: string
+          id?: never
+          ip_hash: string
+        }
+        Update: {
+          created_at?: string
+          id?: never
+          ip_hash?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
