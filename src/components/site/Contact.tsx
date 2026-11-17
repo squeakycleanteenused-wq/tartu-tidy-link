@@ -1,4 +1,5 @@
 import { useLang } from "@/lib/i18n";
+import { SectionHeading } from "@/components/site/SectionHeading";
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
 
 export function Contact() {
@@ -33,15 +34,14 @@ export function Contact() {
     { label: t.contact.areaLabel, value: t.contact.areaValue },
   ];
   return (
-    <section id="kontakt" className="scroll-mt-28 py-16">
-      <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-3xl font-bold sm:text-4xl">{t.contact.title}</h2>
-        <p className="mt-2 text-muted-foreground">{t.contact.subtitle}</p>
-        <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+    <section id="kontakt" className="scroll-mt-28 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading eyebrow={t.nav.contact} title={t.contact.title} subtitle={t.contact.subtitle} />
+        <div className="mt-14 grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((i) => (
-            <div key={i.label} className="border-t-2 border-gold pt-4">
-              <p className="text-xs uppercase tracking-wider text-muted-foreground">{i.label}</p>
-              <p className="mt-1 text-sm font-semibold">{i.value}</p>
+            <div key={i.label} className="border-t border-gold/60 pt-5">
+              <p className="text-[11px] uppercase tracking-[0.25em] text-muted-foreground">{i.label}</p>
+              <p className="mt-2 font-display text-lg font-light">{i.value}</p>
             </div>
           ))}
         </div>

@@ -1,8 +1,16 @@
 import { useLang } from "@/lib/i18n";
+import { SectionHeading } from "@/components/site/SectionHeading";
 
-/* Avalehe tutvustus: mida pakume, kus ja et iga teenus on ühekordne. */
+/* Intro: lühike lubadus ja tellimise sammud kohe foto all.
+   About: pikem tutvustus (oluline otsingumootoritele), asub lehe allosas KKK järel. */
 const COPY = {
   et: {
+    eyebrow: "Squeaky Clean",
+    lead: "Puhas kodu,",
+    leadAccent: "ilma et peaksid sellele mõtlema.",
+    leadText: "Ütle meile, mida vajad. Meie saadame kindla hinna, tuleme kokkulepitud ajal ja sina saad oma aja tagasi.",
+    howEyebrow: "Kuidas see käib",
+    aboutEyebrow: "Meist",
     title: "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses",
     paragraphs: [
       "Squeaky Clean Teenused OÜ pakub kodukoristusteenust Tartu linnas, Põlva linnas ja kokkuleppel nende lähiümbruses. Koristame kortereid ja maju nii eraisikutele kui ka ettevõtetele. Koristaja koju saad tellida lihtsalt veebis: arvuta hind ja saada päring.",
@@ -19,6 +27,12 @@ const COPY = {
     ],
   },
   en: {
+    eyebrow: "Squeaky Clean",
+    lead: "A clean home,",
+    leadAccent: "without having to think about it.",
+    leadText: "Tell us what you need. We send a fixed price, arrive at the agreed time and you get your time back.",
+    howEyebrow: "How it works",
+    aboutEyebrow: "About us",
     title: "One-time home cleaning in Tartu, Põlva and the surrounding area",
     paragraphs: [
       "Squeaky Clean Teenused OÜ offers home cleaning in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. We clean apartments and houses for private customers and companies. You can book a cleaner for your home online: calculate the price and send a request.",
@@ -40,29 +54,42 @@ export function Intro() {
   const { lang } = useLang();
   const c = COPY[lang];
   return (
-    <section id="teenus" className="scroll-mt-28 border-b border-border py-16">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 lg:grid-cols-[3fr_2fr]">
+    <section id="teenus" className="scroll-mt-28 py-24 sm:py-32">
+      <div className="mx-auto max-w-6xl px-6">
+        <SectionHeading eyebrow={c.eyebrow} title={c.lead} accent={c.leadAccent} subtitle={c.leadText} />
+
+        <p className="mt-20 text-[11px] font-medium uppercase tracking-[0.3em] text-accent">{c.howEyebrow}</p>
+        <ol className="mt-8 grid gap-x-10 gap-y-10 sm:grid-cols-2 lg:grid-cols-4">
+          {c.how.map((s, i) => (
+            <li key={s} className="border-t border-gold/60 pt-6">
+              <span className="font-display text-5xl font-light italic text-accent">{i + 1}</span>
+              <p className="mt-4 text-base font-light leading-relaxed text-secondary-foreground">{s}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
+
+export function About() {
+  const { lang } = useLang();
+  const c = COPY[lang];
+  return (
+    <section id="meist" className="scroll-mt-28 py-24 sm:py-32">
+      <div className="mx-auto grid max-w-6xl gap-14 px-6 lg:grid-cols-[3fr_2fr]">
         <div>
-          <h2 className="text-3xl font-bold sm:text-4xl">{c.title}</h2>
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-accent">{c.aboutEyebrow}</p>
+          <h2 className="mt-5 font-display text-3xl font-light leading-[1.15] tracking-tight sm:text-4xl">{c.title}</h2>
           {c.paragraphs.map((p) => (
-            <p key={p.slice(0, 20)} className="mt-4 max-w-2xl text-base leading-relaxed text-secondary-foreground">
+            <p key={p.slice(0, 20)} className="mt-6 max-w-2xl text-base font-light leading-relaxed text-secondary-foreground">
               {p}
             </p>
           ))}
         </div>
-        <div className="space-y-8">
-          <div className="border-t-2 border-gold pt-4">
-            <h3 className="font-sans text-base font-semibold">{c.onceTitle}</h3>
-            <p className="mt-2 text-sm leading-relaxed text-secondary-foreground">{c.once}</p>
-          </div>
-          <div className="border-t-2 border-gold pt-4">
-            <h3 className="font-sans text-base font-semibold">{c.howTitle}</h3>
-            <ol className="mt-2 list-decimal space-y-1.5 pl-5 text-sm text-secondary-foreground">
-              {c.how.map((s) => (
-                <li key={s}>{s}</li>
-              ))}
-            </ol>
-          </div>
+        <div className="self-end border-t border-gold/60 pt-6">
+          <h3 className="font-display text-2xl font-light">{c.onceTitle}</h3>
+          <p className="mt-4 text-base font-light leading-relaxed text-secondary-foreground">{c.once}</p>
         </div>
       </div>
     </section>

@@ -706,12 +706,11 @@ export function PriceCalculator() {
   };
 
   return (
-    <section id="hinnakalkulaator" ref={sectionRef} className={`scroll-mt-28 py-16 ${showBar ? "pb-28 lg:pb-16" : ""}`}>
+    <section id="hinnakalkulaator" ref={sectionRef} className={`scroll-mt-28 py-24 sm:py-32 ${showBar ? "pb-28 lg:pb-32" : ""}`}>
       <div className="mx-auto max-w-6xl px-4">
-        <h2 className="text-3xl font-bold sm:text-4xl">
-          {c.title}
-        </h2>
-        <p className="mt-2 text-muted-foreground">{c.subtitle}</p>
+        <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-accent">{lang === "et" ? "Hind" : "Price"}</p>
+        <h2 className="mt-5 font-display text-4xl font-light leading-[1.1] tracking-tight sm:text-5xl">{c.title}</h2>
+        <p className="mt-5 max-w-3xl text-base font-light leading-relaxed text-muted-foreground sm:text-lg">{c.subtitle}</p>
         <a href="#kusi-nou" className="mt-1 inline-block text-sm font-medium text-primary hover:underline">
           {c.askPhoto}
         </a>
