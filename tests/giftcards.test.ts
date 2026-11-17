@@ -206,8 +206,9 @@ describe("kinkekaardid", () => {
     const t = adminToken(d);
     expect(verifyAdminToken(d, t)).toBe(true);
     expect(verifyAdminToken(d, t.replace(/.$/, "x"))).toBe(false);
-    expect(checkPassword("salasõna123", "salasõna123")).toBe(true);
-    expect(checkPassword("vale", "salasõna123")).toBe(false);
+    expect(checkPassword("pikk-salasõna-123", "pikk-salasõna-123")).toBe(true);
+    expect(checkPassword("vale", "pikk-salasõna-123")).toBe(false);
+    expect(checkPassword("lühike", "lühike")).toBe(false);
     expect(checkPassword("", "")).toBe(false);
 
     const secret = "whsec_test";

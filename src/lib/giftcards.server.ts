@@ -152,7 +152,7 @@ export function verifyAdminToken(d: Pick<Deps, "secret" | "now">, token: string 
   return safeEqual(sig, hmac(d.secret, `admin.${exp}`));
 }
 export function checkPassword(given: string, expected: string) {
-  return expected.length >= 8 && safeEqual(hmac("pw", given), hmac("pw", expected));
+  return expected.length >= 12 && safeEqual(hmac("pw", given), hmac("pw", expected));
 }
 
 /** Stripe'i webhooki allkirja kontroll (Stripe-Signature päis, HMAC-SHA256, 5 min tolerants). */

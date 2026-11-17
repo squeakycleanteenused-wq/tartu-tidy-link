@@ -9,7 +9,11 @@ import { SITE_URL } from "@/lib/site";
 export const Route = createFileRoute("/kinkekaardid/aitah")({
   validateSearch: z.object({ session_id: z.string().optional().catch(undefined) }),
   head: () => ({
-    meta: [{ title: "Aitäh! | Squeaky Clean kinkekaart" }, { name: "robots", content: "noindex" }],
+    meta: [
+      { title: "Aitäh! | Squeaky Clean kinkekaart" },
+      { name: "robots", content: "noindex" },
+      { name: "referrer", content: "no-referrer" },
+    ],
     links: [{ rel: "canonical", href: `${SITE_URL}/kinkekaardid` }],
   }),
   component: Page,
@@ -18,7 +22,20 @@ export const Route = createFileRoute("/kinkekaardid/aitah")({
 type Result = Awaited<ReturnType<typeof giftCardPurchase>>;
 
 function Page() {
-  const { session_id } = Route.useSearch();
+  const fromUrl = Route.useSearch().session_id;
+  const [session_id] = useState(() => {
+    if (typeof window === "undefined") return fromUrl;
+    try {
+      if (fromUrl) window.sessionStorage.setItem("sc-gc-session", fromUrl);
+      return fromUrl ?? window.sessionStorage.getItem("sc-gc-session") ?? undefined;
+    } catch {
+      return fromUrl;
+    }
+  });
+  // Makse ID ei jää aadressiribale (ei satu analüütikasse, ajalukku ega jagatud linki).
+  useEffect(() => {
+    if (fromUrl) window.history.replaceState(null, "", window.location.pathname);
+  }, [fromUrl]);
   const [r, setR] = useState<Result | null>(null);
   const [tries, setTries] = useState(0);
 

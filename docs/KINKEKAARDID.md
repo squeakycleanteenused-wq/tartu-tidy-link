@@ -34,7 +34,7 @@ Failid:
      Kopeeri **Signing secret** (`whsec_...`).
 3. **Vercel → Settings → Environment Variables** (Preview keskkonda):
    `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `GIFTCARD_SECRET` (vähemalt 32 juhuslikku märki,
-   nt `openssl rand -base64 48`), `ADMIN_PASSWORD`, soovi korral `OWNER_EMAIL`.
+   nt `openssl rand -base64 48`), `ADMIN_PASSWORD` (vähemalt 12 märki, juhuslik), soovi korral `OWNER_EMAIL`.
    `MAILERSEND_API_TOKEN` ja Supabase'i muutujad on juba olemas. Vaata ka `.env.example`.
 4. Tee uus deploy ja testi Stripe'i testkaardiga `4242 4242 4242 4242` (mis tahes tulevane kuupäev ja CVC).
 

@@ -28,6 +28,8 @@ const orderSchema = z
     buyerEmail: z.string().trim().email().max(160),
     buyerPhone: text(40),
     terms: z.literal(true),
+    website: z.string().max(200).optional(), // meepott: inimene seda välja ei näe
+    elapsedMs: z.number().optional(),
   })
   .refine((o) => o.delivery === "digital" || !!o.address, { message: "Postiaadress puudub", path: ["address"] });
 
@@ -35,8 +37,12 @@ const orderSchema = z
 export const startGiftCardCheckout = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) => orderSchema.parse(data))
   .handler(async ({ data }) => {
+    // Botikaitse: täidetud meepott või liiga kiire täitmine. Andmebaasi ja Stripe'i ei puudutata.
+    if ((data.website ?? "").trim() !== "" || !(typeof data.elapsedMs === "number" && data.elapsedMs >= 4000)) {
+      throw new Error("Vorm saadeti liiga kiiresti");
+    }
     const { g, d, origin } = await ctx();
-    const { terms: _terms, ...input } = data;
+    const { terms: _terms, website: _w, elapsedMs: _e, ...input } = data;
     return g.startCheckout(d, input, origin);
   });
 

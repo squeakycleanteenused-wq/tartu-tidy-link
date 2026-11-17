@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from "react";
+import { useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { CARD_THUMBS, GiftCardPreview } from "@/components/site/GiftCardPreview";
@@ -59,6 +59,8 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
   const [errors, setErrors] = useState<Errors>({});
   const [sending, setSending] = useState(false);
   const [failure, setFailure] = useState("");
+  const [website, setWebsite] = useState("");
+  const openedAt = useRef(Date.now());
 
   const d = DESIGNS.find((x) => x.id === design)!;
   const amount = amountSel === "custom" ? validAmount(custom === "" ? NaN : Number(custom)) : Number(amountSel);
@@ -110,6 +112,8 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
           buyerEmail: buyer.email.trim(),
           buyerPhone: buyer.phone.trim(),
           terms: true,
+          website,
+          elapsedMs: Date.now() - openedAt.current,
         },
       });
       window.location.href = r.url;
@@ -295,6 +299,14 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
                 )}
               </div>
             </fieldset>
+          </div>
+
+          {/* Meepott robotitele: peidetud inimese ja ekraanilugeja eest */}
+          <div aria-hidden="true" className="absolute -left-[9999px] h-px w-px overflow-hidden">
+            <label>
+              Veebileht
+              <input tabIndex={-1} autoComplete="off" value={website} onChange={(e) => setWebsite(e.target.value)} />
+            </label>
           </div>
 
           {/* Eelvaade ja makse */}
