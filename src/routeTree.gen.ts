@@ -13,6 +13,8 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as PrivaatsusRouteImport } from './routes/privaatsus'
 import { Route as TingimusedRouteImport } from './routes/tingimused'
+import { Route as EpoodKinnitaRouteImport } from './routes/epood.kinnita'
+import { Route as EpoodLoobuRouteImport } from './routes/epood.loobu'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -34,18 +36,32 @@ const TingimusedRoute = TingimusedRouteImport.update({
   path: '/tingimused',
   getParentRoute: () => rootRouteImport,
 } as any)
+const EpoodKinnitaRoute = EpoodKinnitaRouteImport.update({
+  id: '/epood/kinnita',
+  path: '/epood/kinnita',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EpoodLoobuRoute = EpoodLoobuRouteImport.update({
+  id: '/epood/loobu',
+  path: '/epood/loobu',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
+  '/epood/kinnita': typeof EpoodKinnitaRoute
+  '/epood/loobu': typeof EpoodLoobuRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
+  '/epood/kinnita': typeof EpoodKinnitaRoute
+  '/epood/loobu': typeof EpoodLoobuRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -53,13 +69,34 @@ export interface FileRoutesById {
   '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
   '/tingimused': typeof TingimusedRoute
+  '/epood/kinnita': typeof EpoodKinnitaRoute
+  '/epood/loobu': typeof EpoodLoobuRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/llms.txt' | '/privaatsus' | '/tingimused'
+  fullPaths:
+    | '/'
+    | '/llms.txt'
+    | '/privaatsus'
+    | '/tingimused'
+    | '/epood/kinnita'
+    | '/epood/loobu'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/llms.txt' | '/privaatsus' | '/tingimused'
-  id: '__root__' | '/' | '/llms.txt' | '/privaatsus' | '/tingimused'
+  to:
+    | '/'
+    | '/llms.txt'
+    | '/privaatsus'
+    | '/tingimused'
+    | '/epood/kinnita'
+    | '/epood/loobu'
+  id:
+    | '__root__'
+    | '/'
+    | '/llms.txt'
+    | '/privaatsus'
+    | '/tingimused'
+    | '/epood/kinnita'
+    | '/epood/loobu'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -67,6 +104,8 @@ export interface RootRouteChildren {
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   PrivaatsusRoute: typeof PrivaatsusRoute
   TingimusedRoute: typeof TingimusedRoute
+  EpoodKinnitaRoute: typeof EpoodKinnitaRoute
+  EpoodLoobuRoute: typeof EpoodLoobuRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -99,6 +138,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof TingimusedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/epood/kinnita': {
+      id: '/epood/kinnita'
+      path: '/epood/kinnita'
+      fullPath: '/epood/kinnita'
+      preLoaderRoute: typeof EpoodKinnitaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/epood/loobu': {
+      id: '/epood/loobu'
+      path: '/epood/loobu'
+      fullPath: '/epood/loobu'
+      preLoaderRoute: typeof EpoodLoobuRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -107,6 +160,8 @@ const rootRouteChildren: RootRouteChildren = {
   LlmsDottxtRoute: LlmsDottxtRoute,
   PrivaatsusRoute: PrivaatsusRoute,
   TingimusedRoute: TingimusedRoute,
+  EpoodKinnitaRoute: EpoodKinnitaRoute,
+  EpoodLoobuRoute: EpoodLoobuRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
