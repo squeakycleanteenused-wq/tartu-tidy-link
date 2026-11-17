@@ -1,0 +1,3 @@
+Fondid: Playfair Display, Cinzel, Oswald, Inter (Google Fonts).
+Litsents: SIL Open Font License 1.1, https://openfontlicense.org
+Kasutatakse kinkekaardi eelvaates ja PDF-is (põimitud).

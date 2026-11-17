@@ -35,6 +35,7 @@ export function Header() {
   const links = [
     { href: "/#teenused", label: lang === "et" ? "Teenused" : "Services" },
     { href: "/#hinnakalkulaator", label: lang === "et" ? "Hind" : "Price" },
+    { href: "/kinkekaardid", label: lang === "et" ? "Kinkekaardid" : "Gift cards" },
     { href: "/#kkk", label: lang === "et" ? "KKK" : "FAQ" },
     { href: "/#kontakt", label: t.nav.contact },
   ];

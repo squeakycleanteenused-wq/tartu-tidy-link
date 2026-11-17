@@ -89,6 +89,132 @@ export type Database = {
         }
         Relationships: []
       }
+      gift_card_orders: {
+        Row: {
+          amount_eur: number
+          buyer_email: string
+          buyer_name: string
+          buyer_phone: string
+          created_at: string
+          delivery: string
+          design: string
+          envelope_message: string
+          id: string
+          print_fee_eur: number
+          recipient_name: string
+          shipping_address: Json | null
+          stripe_session_id: string | null
+          total_eur: number
+        }
+        Insert: {
+          amount_eur: number
+          buyer_email: string
+          buyer_name: string
+          buyer_phone?: string
+          created_at?: string
+          delivery: string
+          design: string
+          envelope_message?: string
+          id?: string
+          print_fee_eur?: number
+          recipient_name?: string
+          shipping_address?: Json | null
+          stripe_session_id?: string | null
+          total_eur: number
+        }
+        Update: {
+          amount_eur?: number
+          buyer_email?: string
+          buyer_name?: string
+          buyer_phone?: string
+          created_at?: string
+          delivery?: string
+          design?: string
+          envelope_message?: string
+          id?: string
+          print_fee_eur?: number
+          recipient_name?: string
+          shipping_address?: Json | null
+          stripe_session_id?: string | null
+          total_eur?: number
+        }
+        Relationships: []
+      }
+      gift_cards: {
+        Row: {
+          amount_eur: number
+          buyer_email: string
+          buyer_name: string
+          buyer_phone: string
+          card_number: string
+          delivery: string
+          design: string
+          envelope_message: string
+          id: string
+          issued_at: string
+          notes: string
+          order_id: string | null
+          paid_at: string | null
+          payment_id: string | null
+          payment_provider: string
+          print_fee_eur: number
+          print_status: string | null
+          recipient_name: string
+          shipping_address: Json | null
+          status: string
+          used_at: string | null
+          valid_until: string
+        }
+        Insert: {
+          amount_eur: number
+          buyer_email?: string
+          buyer_name?: string
+          buyer_phone?: string
+          card_number: string
+          delivery: string
+          design: string
+          envelope_message?: string
+          id?: string
+          issued_at?: string
+          notes?: string
+          order_id?: string | null
+          paid_at?: string | null
+          payment_id?: string | null
+          payment_provider?: string
+          print_fee_eur?: number
+          print_status?: string | null
+          recipient_name?: string
+          shipping_address?: Json | null
+          status?: string
+          used_at?: string | null
+          valid_until: string
+        }
+        Update: {
+          amount_eur?: number
+          buyer_email?: string
+          buyer_name?: string
+          buyer_phone?: string
+          card_number?: string
+          delivery?: string
+          design?: string
+          envelope_message?: string
+          id?: string
+          issued_at?: string
+          notes?: string
+          order_id?: string | null
+          paid_at?: string | null
+          payment_id?: string | null
+          payment_provider?: string
+          print_fee_eur?: number
+          print_status?: string | null
+          recipient_name?: string
+          shipping_address?: Json | null
+          status?: string
+          used_at?: string | null
+          valid_until?: string
+        }
+        Relationships: []
+      }
       shop_waitlist: {
         Row: {
           confirmed_at: string | null
