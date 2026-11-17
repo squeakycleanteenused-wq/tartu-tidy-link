@@ -9,7 +9,7 @@ export const RENTAL = {
   pricePerDay: 18 as number | null,
   maxDays: 14,
   // Üüri hinnas: kasutusjuhend ja üks puhastustablett (2 paagitäit pesuvett). Lisatableti hind eurodes; null = kokkuleppel.
-  extraTabletPrice: null as number | null,
+  extraTabletPrice: 1 as number | null,
 };
 
 /* Mis on üüri hinnas (kuvatakse lehel, kalkulaatoris ja lepingus). */
