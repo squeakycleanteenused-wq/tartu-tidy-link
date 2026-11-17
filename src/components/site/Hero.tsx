@@ -1,8 +1,8 @@
 import { ArrowRight, Phone } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
-// Foto: Unsplash (https://unsplash.com/photos/2QH11tapwpo), Unsplash License – tasuta ka ärilisel otstarbel.
-import heroBg from "@/assets/hero-green-sofa.jpg";
+// Taustafoto: ettevõtte omaniku antud pilt (luksuslik elutuba tumerohelise diivaniga).
+import heroBg from "@/assets/hero-living-room.jpg";
 
 /* Avalehe ülaosa Figma malli ("Interactive Website", Planto) põhjal:
    täislaiuses foto taustaks, selle peal hõljuvad klaasjad kastid. */
@@ -31,13 +31,13 @@ export function Hero() {
     <section className="relative isolate overflow-hidden bg-ink text-white">
       <img
         src={heroBg}
-        alt={et ? "Luksuslik elutuba rohelise sametdiivaniga" : "Luxurious living room with a green velvet sofa"}
-        width={2400}
-        height={1350}
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[30%_60%]"
+        alt={et ? "Luksuslik elutuba tumerohelise diivaniga" : "Luxurious living room with a dark green sofa"}
+        width={1408}
+        height={768}
+        className="absolute inset-0 -z-20 h-full w-full object-cover object-[35%_55%]"
       />
       {/* Vasakult tumendus teksti loetavuseks, all üleminek järgmisesse plokki */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-ink/55 to-ink/15" />
+      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/10" />
       <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink/70 to-transparent" />
 
       <div className="mx-auto flex min-h-[calc(100svh-6rem)] max-w-6xl flex-col justify-between gap-12 px-6 py-16 lg:py-24">
