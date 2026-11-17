@@ -36,6 +36,7 @@ export function Header() {
     { href: "/#teenused", label: lang === "et" ? "Teenused ja hinnad" : "Services & prices" },
     { href: "/#hinnakalkulaator", label: lang === "et" ? "Hinnapäring" : "Price request" },
     { href: "/#kkk", label: lang === "et" ? "KKK" : "FAQ" },
+    { href: "/#epood", label: t.nav.shop },
     { href: "/#taganemine", label: lang === "et" ? "Taganen lepingust" : "Withdraw from a contract" },
     { href: "/tingimused", label: t.nav.terms },
     { href: "/#kontakt", label: t.nav.contact },
