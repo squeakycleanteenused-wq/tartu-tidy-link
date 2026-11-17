@@ -676,8 +676,13 @@ export async function supabaseStore(): Promise<Store> {
 
 /** Tootmise sõltuvused keskkonnamuutujatest (vt .env.example). */
 export async function prodDeps(origin?: string): Promise<Deps> {
-  const secret = process.env["GIFTCARD_SECRET"] ?? "";
-  if (secret.length < 32) throw new Error("GIFTCARD_SECRET puudub või on liiga lühike (vähemalt 32 märki)");
+  // Allkirjade saladus: GIFTCARD_SECRET, või kui see puudub, tuletatakse see Stripe'i salajasest võtmest
+  // (sama tugev, kuid eraldi kasutuseks). Stripe'i võtme vahetamisel aeguvad vanad PDF-lingid ja halduse sessioon.
+  const own = process.env["GIFTCARD_SECRET"] ?? "";
+  const stripeKey = process.env["STRIPE_SECRET_KEY"] ?? "";
+  const secret =
+    own.length >= 32 ? own : stripeKey.length >= 32 ? createHmac("sha256", stripeKey).update("squeakyclean-giftcard-v1").digest("base64url") : "";
+  if (!secret) throw new Error("Kinkekaartide seadistus puudub: STRIPE_SECRET_KEY (või GIFTCARD_SECRET) pole seatud");
   const { renderCardPdf } = await import("@/lib/giftcard-pdf.server");
   return {
     store: await supabaseStore(),

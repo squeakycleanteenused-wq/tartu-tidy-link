@@ -34,8 +34,8 @@ Failid:
      **Signing secret** (`whsec_...`) on valikuline: kui see on Vercelis `STRIPE_WEBHOOK_SECRET`-ina, kontrollitakse
      allkirja; kui ei, küsib server iga sündmuse otse Stripe'ist üle.
 3. **Vercel → Settings → Environment Variables** (Preview keskkonda):
-   `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `GIFTCARD_SECRET` (vähemalt 32 juhuslikku märki,
-   nt `openssl rand -base64 48`), `ADMIN_PASSWORD` (vähemalt 12 märki, juhuslik), soovi korral `OWNER_EMAIL`.
+   `STRIPE_SECRET_KEY` ja soovi korral `GIFTCARD_SECRET` (vähemalt 32 juhuslikku märki, nt `openssl rand -base64 48`;
+   kui puudub, tuletatakse see Stripe'i võtmest) ning `STRIPE_WEBHOOK_SECRET` (valikuline), `ADMIN_PASSWORD` (vähemalt 12 märki, juhuslik), soovi korral `OWNER_EMAIL`.
    `MAILERSEND_API_TOKEN` ja Supabase'i muutujad on juba olemas. Vaata ka `.env.example`.
 4. Tee uus deploy ja testi Stripe'i testkaardiga `4242 4242 4242 4242` (mis tahes tulevane kuupäev ja CVC).
 
