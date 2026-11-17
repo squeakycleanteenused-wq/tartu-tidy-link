@@ -8,7 +8,17 @@ export const RENTAL = {
   // Üür ühe päeva eest eurodes, käibemaksuta. Kui null, kirjutatakse lepingusse "hind kokkuleppel".
   pricePerDay: 18 as number | null,
   maxDays: 14,
+  // Üüri hinnas: kasutusjuhend ja üks puhastustablett (2 paagitäit pesuvett). Lisatableti hind eurodes; null = kokkuleppel.
+  extraTabletPrice: null as number | null,
 };
+
+/* Mis on üüri hinnas (kuvatakse lehel, kalkulaatoris ja lepingus). */
+export function rentalIncluded(lang: "et" | "en" = "et") {
+  const p = RENTAL.extraTabletPrice;
+  return lang === "en"
+    ? `The price includes the user manual and one cleaning tablet (enough for 2 tanks of cleaning water). Extra tablets can be bought${p == null ? " (price by agreement)" : ` for ${p} € each`}.`
+    : `Hinnas on kasutusjuhend ja üks puhastustablett (piisab 2 paagitäie pesuvee jaoks). Lisatablette saab juurde osta${p == null ? " (hind kokkuleppel)" : ` hinnaga ${p} € tk`}.`;
+}
 
 /* ------------------------------------------------------------------ */
 /* ETTEVÕTTE ANDMED (kasutatakse kalkulaatoris, lepingus ja taganemisel).  */
@@ -94,7 +104,7 @@ export function buildRentalContract(d: RentalData): string {
       : `1.2. Üürnik (eraisik): ${v(d.name)}, isikukood ${v(d.code)}, elukoha aadress ${v(d.address)}, telefon ${v(d.phone)}, e-post ${v(d.email)}.`,
     "",
     "2. LEPINGU ESE",
-    `2.1. Üürileandja annab Üürnikule ajutiselt kasutada seadme: ${RENTAL.device} koos tarvikutega (edaspidi Masin). Tarvikute komplekt fikseeritakse Masina üleandmisel.`,
+    `2.1. Üürileandja annab Üürnikule ajutiselt kasutada seadme: ${RENTAL.device} koos tarvikutega (edaspidi Masin). Tarvikute komplekt fikseeritakse Masina üleandmisel. ${rentalIncluded("et")}`,
     "2.2. Masin antakse üle töökorras. Üürnik vaatab Masina üleandmisel üle ja teavitab nähtavatest puudustest kohe.",
     "2.3. Masin on mõeldud kodutekstiilide (nt polstermööbel, vaibad, madratsid, autoistmed) niiskeks puhastamiseks.",
     "",

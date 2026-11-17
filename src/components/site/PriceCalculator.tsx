@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { useLang, type Lang } from "@/lib/i18n";
 import { sendRequest, useDirectMail } from "@/lib/send-request";
-import { RENTAL, RENTAL_COMPANY, buildRentalContract, companyContact, rentalPeriod, rentalTotal } from "@/lib/rental-contract";
+import { RENTAL, RENTAL_COMPANY, buildRentalContract, companyContact, rentalIncluded, rentalPeriod, rentalTotal } from "@/lib/rental-contract";
 
 /* ------------------------------------------------------------------ */
 /* HINNAD: muuda ainult siin. Kõik on eurodes, käibemaksuta.           */
@@ -175,7 +175,7 @@ const COPY = {
     vacuumNoPending: "Koristaja võtab oma tolmuimeja kaasa, lisatasu lepime kokku eraldi.",
     vacuumPending: "Tolmuimeja kaasaveo lisatasu lepime eraldi kokku.",
     rentTitle: "Tekstiilipuhastaja üür",
-    rentText: `Bissell SpotClean Pro tekstiilipuhastusmasin polstermööbli, vaipade ja madratsite puhastamiseks. Tagatisraha ei võeta. Kui masinaga midagi juhtub, lepime hüvitise kokku (kokkuleppe puudumisel remondikulu, kuid mitte üle masina turuväärtuse).`,
+    rentText: `Bissell SpotClean Pro tekstiilipuhastusmasin polstermööbli, vaipade ja madratsite puhastamiseks. ${rentalIncluded("et")} Tagatisraha ei võeta. Kui masinaga midagi juhtub, lepime hüvitise kokku (kokkuleppe puudumisel remondikulu, kuid mitte üle masina turuväärtuse).`,
     rentOn: "Soovin tekstiilipuhastajat üürida",
     rentDays: "Mitmeks päevaks",
     rentFrom: "Üüri algus",
@@ -340,7 +340,7 @@ const COPY = {
     vacuumNoPending: "The cleaner will bring their own vacuum cleaner; the extra fee will be agreed separately.",
     vacuumPending: "The extra fee for bringing a vacuum cleaner will be agreed separately.",
     rentTitle: "Upholstery cleaner rental",
-    rentText: `Bissell SpotClean Pro machine for cleaning upholstery, carpets and mattresses. No deposit is taken. If anything happens to the machine, we agree on compensation (failing agreement, the repair cost, but not more than the market value of the machine).`,
+    rentText: `Bissell SpotClean Pro machine for cleaning upholstery, carpets and mattresses. ${rentalIncluded("en")} No deposit is taken. If anything happens to the machine, we agree on compensation (failing agreement, the repair cost, but not more than the market value of the machine).`,
     rentOn: "I want to rent the upholstery cleaner",
     rentDays: "Number of days",
     rentFrom: "Rental start",
