@@ -332,3 +332,20 @@
 [id*="lovable"] {
   display: none !important;
 }
+
+/* Avalehe slaidide pehme vahetus */
+@keyframes hero-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@utility hero-fade {
+  animation: hero-fade 900ms ease both;
+  @media (prefers-reduced-motion: reduce) {
+    animation: none;
+  }
+}
