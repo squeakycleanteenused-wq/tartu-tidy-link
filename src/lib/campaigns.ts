@@ -7,6 +7,7 @@ export type Campaign = {
   until: string; // viimane kehtiv päev, AAAA-KK-PP
   image: string;
   imagePos: string; // millist pildi osa näidata (CSS object-position)
+  aiImage?: boolean; // tehisintellektiga loodud pilt: lehel kuvatakse märge (EL tehisintellekti määrus, art 50)
   et: CampaignText;
   en: CampaignText;
 };
@@ -26,6 +27,7 @@ export const CAMPAIGNS: Campaign[] = [
     until: "2026-12-31",
     image: ruumKorda,
     imagePos: "50% 45%",
+    aiImage: true,
     et: {
       name: "Ruum korda",
       price: "200 €",
@@ -36,7 +38,7 @@ export const CAMPAIGNS: Campaign[] = [
         ["Kehtib", "kuni 31.12.2026"],
       ],
       cta: "Broneeri",
-      alt: "Korrastatud garderoob läbipaistvate hoiukastidega",
+      alt: "Tehisintellektiga loodud illustratsioon: korrastatud garderoob läbipaistvate hoiukastidega",
     },
     en: {
       name: "Room in order",
@@ -48,7 +50,7 @@ export const CAMPAIGNS: Campaign[] = [
         ["Valid", "until 31 Dec 2026"],
       ],
       cta: "Book",
-      alt: "Organised walk-in closet with clear storage boxes",
+      alt: "AI-generated illustration: organised walk-in closet with clear storage boxes",
     },
   },
 ];

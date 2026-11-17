@@ -23,10 +23,12 @@ function Slide({
   alt,
   top,
   bottom,
+  aiNote,
 }: {
   image: string;
   imagePos: string;
   alt: string;
+  aiNote?: string | undefined;
   top: ReactNode;
   bottom: ReactNode;
 }) {
@@ -36,7 +38,17 @@ function Slide({
       <div className="relative lg:hidden">
         <img src={image} alt={alt} className="aspect-[16/9] w-full object-cover" style={{ objectPosition: imagePos }} />
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
+        {aiNote && (
+          <span className="absolute right-3 top-3 rounded-full bg-black/50 px-2.5 py-1 text-[10px] text-white/85 backdrop-blur-sm">
+            {aiNote}
+          </span>
+        )}
       </div>
+      {aiNote && (
+        <span className="absolute right-6 top-6 z-10 hidden rounded-full bg-black/50 px-3 py-1 text-[11px] text-white/85 backdrop-blur-sm lg:block">
+          {aiNote}
+        </span>
+      )}
 
       {/* Arvuti: foto taustaks kogu ploki ulatuses */}
       <img
@@ -158,6 +170,7 @@ function CampaignSlide({ campaign }: { campaign: Campaign }) {
       image={campaign.image}
       imagePos={campaign.imagePos}
       alt={c.alt}
+      aiNote={campaign.aiImage ? (lang === "et" ? "Illustratsioon, loodud tehisintellektiga" : "Illustration, AI-generated") : undefined}
       top={
         <>
           <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-gold">{lang === "et" ? "Kampaania" : "Offer"}</p>
