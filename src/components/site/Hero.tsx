@@ -2,10 +2,11 @@ import { ArrowRight, Phone } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
 // Taustafoto: ettevõtte omaniku antud pilt (luksuslik elutuba tumerohelise diivaniga).
-import heroBg from "@/assets/hero-living-room.jpg";
+import heroBg from "@/assets/hero-living-room.webp";
 
 /* Avalehe ülaosa Figma malli ("Interactive Website", Planto) põhjal:
-   täislaiuses foto taustaks, selle peal hõljuvad klaasjad kastid. */
+   arvutis täislaiuses foto taustaks ja selle peal hõljuvad klaasjad kastid;
+   mobiilis/tahvlis on foto ülal tervikuna näha (välja suumitud) ja sisu tuleb selle alla. */
 
 const glass =
   "border border-white/20 bg-white/10 shadow-[0_24px_60px_-20px_rgb(0_0_0/0.6)] backdrop-blur-xl";
@@ -29,18 +30,32 @@ export function Hero() {
 
   return (
     <section className="relative isolate overflow-hidden bg-ink text-white">
+      {/* Mobiil ja tahvel: kogu foto nähtaval, alumine serv sulandub tumedasse taustasse */}
+      <div className="relative lg:hidden">
+        <img
+          src={heroBg}
+          alt={et ? "Luksuslik elutuba tumerohelise diivaniga" : "Luxurious living room with a dark green sofa"}
+          width={1680}
+          height={944}
+          className="aspect-[16/9] w-full object-cover"
+        />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
+      </div>
+
+      {/* Arvuti: foto taustaks kogu ploki ulatuses */}
       <img
         src={heroBg}
-        alt={et ? "Luksuslik elutuba tumerohelise diivaniga" : "Luxurious living room with a dark green sofa"}
-        width={1408}
-        height={768}
-        className="absolute inset-0 -z-20 h-full w-full object-cover object-[35%_55%]"
+        alt=""
+        aria-hidden="true"
+        width={1680}
+        height={944}
+        className="absolute inset-0 -z-20 hidden h-full w-full object-cover object-[30%_55%] lg:block"
       />
       {/* Vasakult tumendus teksti loetavuseks, all üleminek järgmisesse plokki */}
-      <div className="absolute inset-0 -z-10 bg-gradient-to-r from-ink/90 via-ink/60 to-ink/10" />
-      <div className="absolute inset-x-0 bottom-0 -z-10 h-40 bg-gradient-to-t from-ink/70 to-transparent" />
+      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink/90 via-ink/55 to-ink/5 lg:block" />
+      <div className="absolute inset-x-0 bottom-0 -z-10 hidden h-40 bg-gradient-to-t from-ink/70 to-transparent lg:block" />
 
-      <div className="mx-auto flex min-h-[calc(100svh-6rem)] max-w-6xl flex-col justify-between gap-12 px-6 py-16 lg:py-24">
+      <div className="relative mx-auto -mt-10 flex max-w-6xl flex-col justify-between gap-12 px-6 pb-16 sm:-mt-16 lg:mt-0 lg:min-h-[calc(100svh-6rem)] lg:py-24">
         <div className="hero-rise max-w-2xl">
           <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-gold">{t.hero.eyebrow}</p>
           <h1 className="mt-6 font-display text-5xl font-light leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
