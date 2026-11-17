@@ -143,7 +143,7 @@ const COPY = {
   et: {
     title: "Hinnakalkulaator",
     askPhoto: "Pole kindel, kas midagi on võimalik puhastada? Küsi nõu fotoga",
-    subtitle: "Sisesta oma vajadus ja näed kohe orienteeruvat hinda. Seejärel saad päringu meile saata. Hind kehtib ühekordsele koristusele.",
+    subtitle: "Vali, mida vajad, ja näed kohe orienteeruvat hinda. Kui hind sobib, saada meile päring. Hind kehtib ühe koristuskorra kohta.",
     s1: "1. Mida vajad?",
     cleaning: "Koristuse liik",
     cleaningOpts: { none: "Ei vaja (ainult aknapesu või lisatööd)", maintenance: "Hoolduskoristus (kerge koristus)", deep: "Suurpuhastus / kolimiskoristus" },
@@ -198,7 +198,7 @@ const COPY = {
     timeNote: "Ajakulu on hinnang. Tegelik aeg sõltub pinna suurusest ja seisukorrast.",
     resultTitle: "Orienteeruv hind",
     seeDetails: "Vaata täpsemalt",
-    empty: "Sisesta vajadus, et hinda näha.",
+    empty: "Vali, mida vajad, ja siia ilmub hind.",
     total: "Kokku",
     time: "Orienteeruv ajakulu",
     hoursUnit: "h",
@@ -206,7 +206,7 @@ const COPY = {
     indicative:
       "Hind on orienteeruv ja põhineb sinu sisestatud andmetel. See ei ole siduv pakkumine. Saadame sulle e-kirjaga pakkumise kindla hinnaga ja leping sõlmitakse alles siis, kui sa selle kinnitad. Kui objekt või mustuse aste erineb oluliselt kirjeldatust, on teenuseosutajal õigus hinda kohapeal korrigeerida või tööst keelduda.",
     vat: "Käibemaksuta: ettevõte ei ole käibemaksukohustuslane, käibemaksu hinnale ei lisandu.",
-    pay: "Maksmine ainult pangaülekandega arve alusel. Sularahas kahjuks maksta ei saa.",
+    pay: "Maksad arve alusel pangaülekandega. Sularahas kahjuks maksta ei saa.",
     lines: {
       maintenance: "Hoolduskoristus",
       deep: "Suurpuhastus / süvapesu",

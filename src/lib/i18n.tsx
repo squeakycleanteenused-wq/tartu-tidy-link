@@ -14,7 +14,7 @@ export const et = {
     contact: "Kontakt",
   },
   hero: {
-    eyebrow: "Koristusettevõte · ühekordne kodukoristus",
+    eyebrow: "Hoolduskoristus · suurpuhastus · aknapesu",
     title: "Kodukoristus Tartus ja Põlvas",
     subtitle:
       "Hoolduskoristus, suurpuhastus ja aknapesu Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Läbipaistev hinnakiri ja selged tingimused.",
@@ -27,13 +27,13 @@ export const et = {
     subtitle: "Ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu.",
     includes: "Sisaldab",
     book: "Arvuta hind",
-    note: "Ettevõte ei ole käibemaksukohustuslane, hindadele käibemaksu ei lisandu. Minimaalne väljakutsetasu on 30 € (2 töötundi).",
+    note: "Me ei ole käibemaksukohustuslane, seega hindadele käibemaksu ei lisandu. Väikseim väljakutsetasu on 30 € (2 töötundi).",
     items: [
       {
         name: "Hoolduskoristus (kerge koristus)",
         price: "60 € kuni 70 €",
-        meta: "Orienteeruv ajakulu: 4 kuni 5 tundi, kuni 70 m²",
-        desc: "Mõeldud regulaarselt hooldatud kodule.",
+        meta: "Kestab umbes 4–5 tundi, kodu kuni 70 m²",
+        desc: "Sobib kodule, mida koristatakse regulaarselt.",
         list: [
           "Tolmu võtmine",
           "Põrandate pesu",
@@ -46,7 +46,7 @@ export const et = {
         name: "Suurpuhastus ja kolimiskoristus",
         price: "80 € kuni 100 €",
         meta: "Lõplik hind oleneb pinna suurusest ja seisukorrast",
-        desc: "Põhjalik süvapuhastus, mis sobib kolimiskoristuseks enne või pärast kolimist ning pärast pikemat pausi.",
+        desc: "Põhjalik puhastus, mis sobib ka kolimiskoristuseks või siis, kui kodu pole tükk aega koristatud.",
         list: [
           "Kogu hoolduskoristuse maht",
           "Köögipindade rasva eemaldamine",
@@ -58,7 +58,7 @@ export const et = {
         name: "Aknapesu",
         price: "alates 3,50 €/tk",
         meta: "Hind sõltub akna tüübist",
-        desc: "Akende pesemine sise- ja välispindadelt koos raamide ja pakkudega.",
+        desc: "Peseme aknad seest ja väljast koos raamide ja pakkudega.",
         list: [
           "Tavaline korteriaken: 3,50 kuni 4,00 €/tk",
           "Suur maast laeni aken / rõduuks: 4,00 kuni 5,50 €/tk",
@@ -69,14 +69,14 @@ export const et = {
         name: "Lisatööd (tunnihind)",
         price: "15 €/tund",
         meta: "Erisoovid ja lisategevused",
-        desc: "Tellitav lisaks põhiteenusele.",
+        desc: "Saad tellida koos põhiteenusega.",
         list: ["Kappide sisemus", "Kodumasinate sisepesu", "Muud erisoovid"],
       },
       {
         name: "Tekstiilipuhastusmasina üür",
         price: RENTAL.pricePerDay == null ? "hind kokkuleppel" : `${RENTAL.pricePerDay} €/päev`,
         meta: `Kuni ${RENTAL.maxDays} päeva, tagatisraha ei võeta`,
-        desc: "Pehme mööbli, vaipade ja madratsite puhastamiseks ise: üüri masin ja puhasta diivan, tugitool, vaip või madrats kodus.",
+        desc: "Puhasta diivan, tugitool, vaip või madrats ise kodus: rendi meilt masin.",
         list: ["Bissell SpotClean Pro tekstiilipuhastusmasin", "Sobib polstermööblile, vaipadele, madratsitele ja autoistmetele", `Hinnas kasutusjuhend ja 1 puhastustablett (2 paagitäit), lisatablett ${RENTAL.extraTabletPrice} €`, "Üleandmine ja tagastamine kokkuleppel"],
       },
     ],
@@ -163,7 +163,7 @@ export const et = {
   },
   contact: {
     title: "Kontakt",
-    subtitle: "Küsimused ja pakkumised",
+    subtitle: "Kirjuta või helista, aitame hea meelega.",
     email: "E-post",
     reg: "Registrikood",
     phone: "Telefon",

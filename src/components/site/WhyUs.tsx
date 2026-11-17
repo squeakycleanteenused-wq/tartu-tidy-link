@@ -9,9 +9,9 @@ const COPY = {
     title: "Kolm asja,",
     accent: "milles võid kindel olla",
     items: [
-      ["Kindel hind enne tööd", "Kalkulaator näitab orienteeruva hinna kohe ja pakkumises saad kindla hinna. Kui olukord kohapeal oluliselt erineb, küsime enne töö algust sinu nõusolekut. Maksad arve alusel, käibemaksu ei lisandu."],
-      ["Ilma lepingu sidumiseta", "Iga koristus on eraldi tellimus, nii ühekordne kui ka regulaarne. Püsilepingut, kuutasu ega minimaalset perioodi ei ole."],
-      ["Kohalik ja selge", "Koristame Tartu ja Põlva linnas ning kokkuleppel lähiümbruses. Tingimused ja 14-päevane taganemisõigus eraisikule on lehel avalikult kirjas."],
+      ["Kindel hind enne tööd", "Kalkulaatorist näed hinda kohe, pakkumises on juba kindel hind. Kui kohapeal selgub, et olukord erineb kirjeldatust oluliselt, küsime enne alustamist sinu nõusolekut. Maksad arve alusel ja käibemaksu ei lisandu."],
+      ["Ei mingit püsilepingut", "Iga koristus on eraldi tellimus, olgu see ühekordne või regulaarne. Püsilepingut, kuutasu ega miinimumperioodi ei ole."],
+      ["Kohalik ja läbipaistev", "Koristame Tartus ja Põlvas ning kokkuleppel ka lähiümbruses. Tingimused ja eraisiku 14-päevane taganemisõigus on lehel kõigile näha."],
     ],
   },
   en: {

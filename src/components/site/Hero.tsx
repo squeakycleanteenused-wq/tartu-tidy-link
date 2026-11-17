@@ -105,7 +105,7 @@ function HomeSlide() {
     ? [
         ["Ühekordne", "või regulaarne"],
         ["Kindel hind", "enne tööd"],
-        ["Tartu ja Põlva", "ja lähiümbrus"],
+        ["Tartu ja Põlva", "ning lähiümbrus"],
       ]
     : [
         ["One-time", "or regular"],
@@ -126,7 +126,7 @@ function HomeSlide() {
           </h1>
           <p className="mt-8 max-w-md text-base font-light leading-relaxed text-white/80 sm:text-lg">
             {et
-              ? "Koristame kortereid ja maju nii, et sina saad aega muuks. Arvuta hind veebis ja saada päring."
+              ? "Meie teeme kodu puhtaks, sinule jääb aeg muuks. Hinna näed kohe veebis."
               : "We clean apartments and houses so you have time for other things. Calculate the price online and send a request."}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
