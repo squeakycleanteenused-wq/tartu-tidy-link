@@ -475,6 +475,56 @@ const COPY = {
 const fieldCls =
   "h-9 w-full rounded-md border border-input bg-background px-3 text-sm outline-none focus-visible:ring-2 focus-visible:ring-ring";
 
+/* Valik kaartidena (rippmenüü asemel) */
+function Choice<T extends string>({
+  name,
+  value,
+  onChange,
+  options,
+}: {
+  name: string;
+  value: T;
+  onChange: (v: T) => void;
+  options: { value: T; label: string; hint?: string }[];
+}) {
+  return (
+    <div role="radiogroup" className="grid gap-2">
+      {options.map((o) => (
+        <label
+          key={o.value}
+          className={`flex cursor-pointer items-start gap-3 rounded-xl border px-4 py-3 text-sm transition-colors ${
+            value === o.value ? "border-gold bg-secondary" : "border-border hover:border-gold/60"
+          }`}
+        >
+          <input
+            type="radio"
+            name={name}
+            value={o.value}
+            checked={value === o.value}
+            onChange={() => onChange(o.value)}
+            className="mt-0.5 size-4 accent-primary"
+          />
+          <span className="flex-1">
+            <span className="block font-medium">{o.label}</span>
+            {o.hint && <span className="mt-0.5 block text-xs text-muted-foreground">{o.hint}</span>}
+          </span>
+        </label>
+      ))}
+    </div>
+  );
+}
+
+/* Sammu pealkiri: "1. Mida vajad?" -> kuldne number + õhuline pealkiri */
+function StepTitle({ text }: { text: string }) {
+  const m = text.match(/^(\d+)\.\s*(.*)$/);
+  return (
+    <h3 className="flex items-baseline gap-3 font-display text-2xl font-light">
+      {m && <span className="italic text-accent">{m[1]}</span>}
+      {m ? m[2] : text}
+    </h3>
+  );
+}
+
 function Field({ label, children, hint }: { label: string; children: React.ReactNode; hint?: string }) {
   return (
     <label className="block text-sm">
@@ -707,7 +757,7 @@ export function PriceCalculator() {
 
   return (
     <section id="hinnakalkulaator" ref={sectionRef} className={`scroll-mt-28 py-24 sm:py-32 ${showBar ? "pb-28 lg:pb-32" : ""}`}>
-      <div className="mx-auto max-w-6xl px-4">
+      <div className="mx-auto max-w-6xl px-6">
         <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-accent">{lang === "et" ? "Hind" : "Price"}</p>
         <h2 className="mt-5 font-display text-4xl font-light leading-[1.1] tracking-tight sm:text-5xl">{c.title}</h2>
         <p className="mt-5 max-w-3xl text-base font-light leading-relaxed text-muted-foreground sm:text-lg">{c.subtitle}</p>
@@ -715,18 +765,28 @@ export function PriceCalculator() {
           {c.askPhoto}
         </a>
 
-        <form onSubmit={onSubmit} noValidate className="mt-8 space-y-6">
+        <form
+          onSubmit={onSubmit}
+          noValidate
+          className="mt-12 space-y-6 [&_input:not([type=checkbox]):not([type=radio])]:h-11 [&_input:not([type=checkbox]):not([type=radio])]:rounded-lg [&_select]:h-11 [&_select]:rounded-lg [&_textarea]:rounded-lg"
+        >
           {/* 1. VAJADUS + HIND */}
-          <div className="grid gap-6 lg:grid-cols-2">
-            <div className="surface-card space-y-4 p-6">
-              <h3 className="text-lg font-bold">{c.s1}</h3>
-              <Field label={c.cleaning}>
-                <select className={fieldCls} value={cleaning} onChange={(e) => setCleaning(e.target.value as Cleaning)}>
-                  <option value="maintenance">{c.cleaningOpts.maintenance}</option>
-                  <option value="deep">{c.cleaningOpts.deep}</option>
-                  <option value="none">{c.cleaningOpts.none}</option>
-                </select>
-              </Field>
+          <div className="grid items-start gap-6 lg:grid-cols-[3fr_2fr]">
+            <div className="surface-card space-y-5 p-6 sm:p-8">
+              <StepTitle text={c.s1} />
+              <div className="text-sm">
+                <p className="mb-2 font-medium">{c.cleaning}</p>
+                <Choice<Cleaning>
+                  name="cleaning"
+                  value={cleaning}
+                  onChange={setCleaning}
+                  options={[
+                    { value: "maintenance", label: c.cleaningOpts.maintenance, hint: `${RATES.maintenanceBase[0]}–${RATES.maintenanceBase[1]} € · ${lang === "et" ? "kuni" : "up to"} ${BASE_M2} m²` },
+                    { value: "deep", label: c.cleaningOpts.deep, hint: `${RATES.deepBase[0]}–${RATES.deepBase[1]} € · ${lang === "et" ? "kuni" : "up to"} ${BASE_M2} m²` },
+                    { value: "none", label: c.cleaningOpts.none },
+                  ]}
+                />
+              </div>
               {cleaning !== "none" && (
                 <>
                   <Field label={c.area}>
@@ -735,12 +795,18 @@ export function PriceCalculator() {
                   <p className="rounded-md border border-border bg-secondary/40 p-3 text-xs text-secondary-foreground">
                     {c.includes[cleaning]}
                   </p>
-                  <Field label={c.vacuumQ}>
-                    <select className={fieldCls} value={vacuum} onChange={(e) => setVacuum(e.target.value as "yes" | "no")}>
-                      <option value="yes">{c.vacuumYes}</option>
-                      <option value="no">{c.vacuumNo}</option>
-                    </select>
-                  </Field>
+                  <div className="text-sm">
+                    <p className="mb-2 font-medium">{c.vacuumQ}</p>
+                    <Choice<"yes" | "no">
+                      name="vacuum"
+                      value={vacuum}
+                      onChange={setVacuum}
+                      options={[
+                        { value: "yes", label: c.vacuumYes },
+                        { value: "no", label: c.vacuumNo },
+                      ]}
+                    />
+                  </div>
                   <p className="-mt-2 text-xs text-muted-foreground">
                     {vacuum === "yes" ? c.vacuumYesNote : VACUUM_FEE ? c.vacuumNoFee(VACUUM_FEE) : c.vacuumNoPending}
                   </p>
@@ -851,8 +917,8 @@ export function PriceCalculator() {
               </div>
             </div>
 
-            <div id="hinnakalkulaator-hind" className="surface-card flex scroll-mt-28 flex-col p-6">
-              <h3 className="text-lg font-bold">{c.resultTitle}</h3>
+            <div id="hinnakalkulaator-hind" className="surface-card flex scroll-mt-28 flex-col p-6 sm:p-8 lg:sticky lg:top-28">
+              <StepTitle text={c.resultTitle} />
               {r.hasItems ? (
                 <>
                   <ul className="mt-4 divide-y divide-border text-sm text-secondary-foreground">
@@ -862,9 +928,9 @@ export function PriceCalculator() {
                       </li>
                     ))}
                   </ul>
-                  <div ref={priceRef} className="mt-5 rounded-md border-t-2 border-gold bg-ink p-4 text-white">
-                    <p className="text-xs font-semibold uppercase tracking-wider text-gold">{c.total}</p>
-                    <p className="mt-1 font-display text-3xl font-bold">{priceText}</p>
+                  <div ref={priceRef} className="mt-6 rounded-2xl bg-ink px-6 py-7 text-white">
+                    <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-gold">{c.total}</p>
+                    <p className="mt-3 font-display text-4xl font-light sm:text-5xl">{priceText}</p>
                     {r.timeMax > 0 && (
                       <p className="mt-1 text-sm text-white/85">
                         {c.time}: {nf(Math.round(r.timeMin * 2) / 2)} – {nf(Math.round(r.timeMax * 2) / 2)} {c.hoursUnit}
@@ -885,23 +951,20 @@ export function PriceCalculator() {
                 </div>
               )}
               {!r.hasItems && rentOn && rentPending && <p className="mt-3 text-xs text-secondary-foreground">{c.rentPending}</p>}
-              <div className="mt-5 space-y-2 text-sm">
-                <p className="rounded-md border border-border bg-secondary/70 p-3">
-                  {c.indicative}
-                </p>
-                <p className="rounded-md border border-border bg-secondary/70 p-3 font-medium">
-                  {c.vat}
-                </p>
-                <p className="rounded-md border border-border bg-secondary/70 p-3 font-medium">
-                  {c.pay}
-                </p>
-              </div>
+              <ul className="mt-6 space-y-2.5 border-t border-gold/50 pt-5 text-xs leading-relaxed text-secondary-foreground">
+                {[c.indicative, c.vat, c.pay].map((x) => (
+                  <li key={x} className="flex gap-3">
+                    <span aria-hidden="true" className="mt-1.5 size-1 shrink-0 rounded-full bg-gold" />
+                    {x}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
 
           {/* 2. ANDMED */}
-          <div className="surface-card space-y-4 p-6">
-            <h3 className="text-lg font-bold">{c.s2}</h3>
+          <div className="surface-card space-y-5 p-6 sm:p-8">
+            <StepTitle text={c.s2} />
             <div className="grid gap-4 md:grid-cols-2">
               <Field label={c.clientType}>
                 <select className={fieldCls} value={clientType} onChange={(e) => setClientType(e.target.value as "person" | "company")}>
@@ -952,8 +1015,8 @@ export function PriceCalculator() {
           </div>
 
           {/* 3. TINGIMUSED */}
-          <div className="surface-card space-y-4 p-6">
-            <h3 className="text-lg font-bold">{c.s3}</h3>
+          <div className="surface-card space-y-5 p-6 sm:p-8">
+            <StepTitle text={c.s3} />
             <p className="text-sm text-muted-foreground">{c.legalIntro}</p>
             <div className="rounded-md border border-border bg-secondary/40 p-4 text-sm">
               <p className="font-semibold">{c.keyTerms}</p>
@@ -1018,7 +1081,12 @@ export function PriceCalculator() {
               </p>
             )}
 
-            <Button type="submit" size="lg" className="px-6" disabled={sending}>
+            <Button
+              type="submit"
+              size="lg"
+              className="h-14 rounded-full bg-gold px-10 text-sm font-semibold uppercase tracking-[0.15em] text-ink hover:bg-[#c9a24c]"
+              disabled={sending}
+            >
               {sending ? c.sending : c.submit}
             </Button>
             <p className="text-xs text-muted-foreground">{directMail ? c.sendNoteDirect : c.sendNote}</p>
@@ -1058,7 +1126,7 @@ export function PriceCalculator() {
           <div className="mx-auto flex max-w-6xl items-center justify-between gap-4">
             <div className="min-w-0">
               <p className="text-[11px] font-semibold uppercase tracking-wider text-gold">{c.total}</p>
-              <p className="font-display text-xl font-bold leading-tight">{priceText}</p>
+              <p className="font-display text-2xl font-light leading-tight">{priceText}</p>
               {r.timeMax > 0 && (
                 <p className="text-xs text-white/75">
                   {c.time}: {nf(Math.round(r.timeMin * 2) / 2)} – {nf(Math.round(r.timeMax * 2) / 2)} {c.hoursUnit}
