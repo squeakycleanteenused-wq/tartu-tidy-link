@@ -1,11 +1,12 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 import { SiteLayout } from "@/components/site/Layout";
-import { VALIDITY_MONTHS } from "@/lib/giftcards.config";
+import { SINGLE_USE_TEXT, VALIDITY_MONTHS } from "@/lib/giftcards.config";
 import { SITE_URL, canonical } from "@/lib/site";
 
 /* KOHATÄIDE. Juriidiline tekst on vaja omanikul (või juristil) kirjutada.
-   Kindlasti peab kirjas olema: kehtivusaeg, kas kaarti saab osadena kasutada, mis saab jäägist,
+   Omaniku otsus: kaart on ühekordne, jääki ei tagastata ega kanta üle (SINGLE_USE_TEXT giftcards.config.ts-is).
+   Kindlasti peab kirjas olema: kehtivusaeg, ühekordne kasutus ja jääk,
    eraisiku 14-päevane taganemisõigus internetiostul, tagastamine/tühistamine, prinditud kaardi kättetoimetamine. */
 export const Route = createFileRoute("/kinkekaardi-tingimused")({
   head: () => ({
@@ -30,6 +31,7 @@ function Page() {
           </a>
           . Küsimuste korral kirjuta meile.
         </p>
+        <p className="mt-4 text-sm leading-relaxed">{SINGLE_USE_TEXT}</p>
       </div>
     </SiteLayout>
   );

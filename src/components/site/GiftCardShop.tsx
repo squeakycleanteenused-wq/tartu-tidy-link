@@ -11,6 +11,7 @@ import {
   MIN_AMOUNT,
   PRINT_FEE,
   SHIPPING_TEXT,
+  SINGLE_USE_TEXT,
   VALIDITY_MONTHS,
   amountHint,
   cardSizeMm,
@@ -221,7 +222,7 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
               <legend className="mb-3 font-display text-xl font-light">
                 <span className="mr-2 italic text-accent">2</span>Summa ja saaja
               </legend>
-              <Field id="gc-amount" label="Summa" error={err("amount")} hint={amountHint(amount)}>
+              <Field id="gc-amount" label="Summa" error={err("amount")} hint={`${amountHint(amount)} Kaart on ühekordne, seega vali summa, mis vastab teenusele.`}>
                 <div className="grid gap-2 sm:grid-cols-2">
                   <select
                     id={amountSel === "custom" ? "gc-amount-sel" : "gc-amount"}
@@ -397,6 +398,7 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
                 <span className="font-display text-4xl font-light">{amount ? `${total} €` : "–"}</span>
               </p>
               <p className="mt-1 text-xs text-white/60">Käibemaksu ei lisandu. Maksad kaardi, Apple Pay või Google Payga.</p>
+              <p className="mt-3 rounded-lg border border-gold/40 px-3 py-2 text-xs leading-relaxed text-white/80">{SINGLE_USE_TEXT}</p>
               <button
                 type="submit"
                 disabled={sending || allSoldOut || soldOut(design)}

@@ -46,6 +46,10 @@ export const PRICE_NOTE =
 export const COMPANY = RENTAL_COMPANY.name;
 export const SITE = "squeakycleanteenused.ee";
 
+/** Kaart on ühekordne: jääki ei tagastata ega kanta üle. Näidatakse enne ostu (summa juures ja makse kastis). */
+export const SINGLE_USE_TEXT =
+  "Kaarti saab kasutada ühe korra. Kui teenus maksab vähem kui kaardi summa, jääki ei tagastata ega kanta üle. Kui teenus maksab rohkem, tasub saaja vahe arvega.";
+
 /** Summa all näidatav vihje. */
 export function amountHint(a: number | null) {
   if (!a) return `Sisesta summa ${MIN_AMOUNT} ja ${MAX_AMOUNT} euro vahel (täisarv).`;
