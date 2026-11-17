@@ -31,7 +31,8 @@ Failid:
    - Developers → API keys → kopeeri **Secret key** (`sk_test_...`).
    - Developers → Webhooks → **Add endpoint**: `https://<eelvaate-aadress>/api/stripe-webhook`,
      sündmused `checkout.session.completed` ja `checkout.session.async_payment_succeeded`.
-     Kopeeri **Signing secret** (`whsec_...`).
+     **Signing secret** (`whsec_...`) on valikuline: kui see on Vercelis `STRIPE_WEBHOOK_SECRET`-ina, kontrollitakse
+     allkirja; kui ei, küsib server iga sündmuse otse Stripe'ist üle.
 3. **Vercel → Settings → Environment Variables** (Preview keskkonda):
    `STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`, `GIFTCARD_SECRET` (vähemalt 32 juhuslikku märki,
    nt `openssl rand -base64 48`), `ADMIN_PASSWORD` (vähemalt 12 märki, juhuslik), soovi korral `OWNER_EMAIL`.

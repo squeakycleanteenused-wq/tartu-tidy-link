@@ -182,6 +182,18 @@ export function verifyStripeSignature(payload: string, header: string | null, se
   return sigs.some((s) => safeEqual(s, expected));
 }
 
+/** Toob sündmuse otse Stripe'ist (meie salajase võtmega). Nii on sündmus kindlasti ehtne ka ilma
+   webhooki allkirja saladuseta (STRIPE_WEBHOOK_SECRET). Tagastab null, kui Stripe sellist sündmust ei tunne. */
+export async function fetchStripeEvent(secretKey: string, eventId: string) {
+  if (!/^evt_[A-Za-z0-9]+$/.test(eventId) || !secretKey) return null;
+  const res = await fetch(`https://api.stripe.com/v1/events/${eventId}`, {
+    headers: { Authorization: `Bearer ${secretKey}` },
+  });
+  if (res.status === 404) return null;
+  if (!res.ok) throw new Error(`Stripe ${res.status}`);
+  return (await res.json()) as StripeEvent;
+}
+
 /* ---------- ost ---------- */
 
 export class SoldOutError extends Error {
@@ -228,7 +240,8 @@ export async function startCheckout(d: Deps, input: OrderInput, origin: string) 
   return { url: s.url };
 }
 
-type StripeEvent = {
+export type StripeEvent = {
+  id?: string;
   type: string;
   data: { object: { id: string; payment_status?: string; amount_total?: number; currency?: string; metadata?: Record<string, string> } };
 };
