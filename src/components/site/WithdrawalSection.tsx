@@ -13,7 +13,7 @@ const COPY = {
   et: {
     title: "Taganen lepingust",
     intro:
-      "Eraisikust tellijal (tarbijal) on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda. Tähtaeg algab lepingu sõlmimisest ehk päevast, mil kinnitasid meie pakkumise, ja lõpeb 14 päeva möödumisel. Tähtaja pidamiseks piisab, kui saadad avalduse enne tähtaja lõppu ära. Ettevõttest tellijale taganemisõigus ei kohaldu.",
+      "Iga kinnitatud tellimus on leping ühe koristuse või ühe masinarendi kohta. Eraisikust tellijal (tarbijal) on õigus sidevahendi teel sõlmitud lepingust 14 päeva jooksul põhjust avaldamata taganeda. Tähtaeg algab lepingu sõlmimisest ehk päevast, mil kinnitasid meie pakkumise, ja lõpeb 14 päeva möödumisel. Tähtaja pidamiseks piisab, kui saadad avalduse enne tähtaja lõppu ära. Ettevõttest tellijale taganemisõigus ei kohaldu.",
     how: "Taganemiseks täida allolev vorm ja vajuta „Kinnitan taganemise“ või saada meile vabas vormis ühemõtteline avaldus e-postiga. Kinnitame avalduse kättesaamise e-kirjaga viivitamata, märkides avalduse sisu, kuupäeva ja kellaaja.",
     effects:
       "Kui oled taotlenud teenuse osutamise alustamist taganemistähtaja jooksul, tasud meile taganemise korral proportsionaalselt juba osutatud teenuse eest (võrreldes lepingu täieliku täitmisega). Teenuse täielikul osutamisel kaob taganemisõigus, kui oled sellega eelnevalt nõustunud. Muul juhul tagastame sinu tasutu viivitamata, kuid mitte hiljem kui 14 päeva jooksul taganemisavalduse kättesaamisest. Üüri puhul tagasta masin viivitamata, kuid mitte hiljem kui 14 päeva jooksul avalduse tegemisest; tagastamise otsesed kulud kannad sina.",

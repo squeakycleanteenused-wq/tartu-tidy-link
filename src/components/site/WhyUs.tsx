@@ -10,7 +10,7 @@ const COPY = {
     accent: "milles võid kindel olla",
     items: [
       ["Kindel hind enne tööd", "Kalkulaatorist näed hinda kohe, pakkumises on juba kindel hind. Kui kohapeal selgub, et olukord erineb kirjeldatust oluliselt, küsime enne alustamist sinu nõusolekut. Maksad arve alusel ja käibemaksu ei lisandu."],
-      ["Ei mingit püsilepingut", "Iga koristus on eraldi tellimus, olgu see ühekordne või regulaarne. Püsilepingut, kuutasu ega miinimumperioodi ei ole."],
+      ["Tellid ainult siis, kui vajad", "Iga koristus on eraldi tellimus ja leping kehtib ainult selle ühe korra kohta. Pikaajalist lepingut, kuutasu ega miinimumperioodi ei ole."],
       ["Kohalik ja läbipaistev", "Koristame Tartus ja Põlvas ning kokkuleppel ka lähiümbruses. Tingimused ja eraisiku 14-päevane taganemisõigus on lehel kõigile näha."],
     ],
   },

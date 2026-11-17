@@ -16,8 +16,8 @@ const COPY = {
       "Squeaky Clean Teenused OÜ pakub kodukoristust Tartus ja Põlvas ning kokkuleppel ka nende lähiümbruses. Koristame kortereid ja eramaju, meie kliendid on nii eraisikud kui ka ettevõtted. Koristaja koju saad tellida veebis: arvuta hind ja saada päring.",
       "Hoolduskoristus hoiab kodu iga päev puhtana. Suurpuhastus on põhjalikum ja sobib ka kolimiskoristuseks või siis, kui kodu pole tükk aega koristatud. Lisaks peseme aknaid ja teeme lisatöid: näiteks peseme seest ahju, külmkapi ja kapid või koristame rõdu ja terrassi. Polstermööbli, vaipade ja madratsite puhastamiseks saad meilt rentida tekstiilipuhastusmasina.",
     ],
-    onceTitle: "Ühekordne või regulaarne, ilma püsilepinguta",
-    once: "Iga koristus on eraldi tellimus. Püsilepingut ega kuutasu ei ole ja järgmist korda tellima ei pea. Kui soovid, käime ka regulaarselt, näiteks kord nädalas või kord kuus, nii kodudes kui ka ettevõtetes. Iga külastuse kohta saadame eraldi pakkumise ja võid igal ajal lõpetada.",
+    onceTitle: "Ühekordne või regulaarne, ilma pikaajalise lepinguta",
+    once: "Iga koristus on eraldi tellimus ja leping kehtib ainult selle ühe korra kohta. Pikaajalist lepingut ega kuutasu ei ole ja järgmist korda tellima ei pea. Kui soovid, käime ka regulaarselt, näiteks kord nädalas või kord kuus, nii kodudes kui ka ettevõtetes. Iga külastuse kohta saadame eraldi pakkumise ja võid igal ajal lõpetada.",
     howTitle: "Kuidas tellida",
     how: [
       "Vaata kalkulaatorist hinda ja saada päring.",
