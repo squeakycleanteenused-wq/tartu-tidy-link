@@ -1,8 +1,8 @@
-import { useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { CARD_THUMBS, GiftCardPreview } from "@/components/site/GiftCardPreview";
-import { startGiftCardCheckout } from "@/lib/giftcards.functions";
+import { giftCardStock, startGiftCardCheckout } from "@/lib/giftcards.functions";
 import {
   AMOUNTS,
   DEFAULT_AMOUNT,
@@ -61,6 +61,20 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
   const [failure, setFailure] = useState("");
   const [website, setWebsite] = useState("");
   const openedAt = useRef(Date.now());
+  // Laoseis serverist (null = piiramatu). Kuni see pole laetud, on kõik kujundused valitavad; server kontrollib niikuinii.
+  const [stock, setStock] = useState<Record<string, number | null>>({});
+  const loadStock = () =>
+    giftCardStock()
+      .then((s) => {
+        setStock(s);
+        setDesign((cur) => (s[cur] === 0 ? (DESIGNS.find((x) => s[x.id] !== 0)?.id ?? cur) : cur));
+      })
+      .catch(() => undefined);
+  useEffect(() => {
+    void loadStock();
+  }, []);
+  const soldOut = (id: string) => stock[id] === 0;
+  const allSoldOut = DESIGNS.every((x) => soldOut(x.id));
 
   const d = DESIGNS.find((x) => x.id === design)!;
   const amount = amountSel === "custom" ? validAmount(custom === "" ? NaN : Number(custom)) : Number(amountSel);
@@ -116,6 +130,12 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
           elapsedMs: Date.now() - openedAt.current,
         },
       });
+      if (!r.ok) {
+        setFailure("Kahjuks on see kujundus vahepeal läbi müüdud. Vali palun mõni teine kujundus.");
+        setSending(false);
+        void loadStock();
+        return;
+      }
       window.location.href = r.url;
     } catch {
       setFailure("Makse alustamine ebaõnnestus. Proovi mõne minuti pärast uuesti või helista meile.");
@@ -156,18 +176,40 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
               <legend className="mb-3 font-display text-xl font-light">
                 <span className="mr-2 italic text-accent">1</span>Vali kujundus
               </legend>
+              {allSoldOut && (
+                <p role="status" className="mb-3 rounded-xl border border-gold/60 bg-secondary px-4 py-3 text-sm">
+                  Kõik kinkekaardid on hetkel läbi müüdud. Uued tulevad peagi, küsi julgelt telefoni või e-posti teel.
+                </p>
+              )}
               <div className="grid grid-cols-3 gap-2">
                 {DESIGNS.map((x) => (
                   <button
                     key={x.id}
                     type="button"
                     aria-pressed={design === x.id}
+                    disabled={soldOut(x.id)}
+                    aria-label={soldOut(x.id) ? `${x.name}, läbi müüdud` : undefined}
                     onClick={() => setDesign(x.id)}
                     className={`group relative overflow-hidden rounded-lg border-2 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring ${
                       design === x.id ? "border-gold" : "border-transparent hover:border-gold/50"
                     }`}
                   >
-                    <img src={CARD_THUMBS[x.id]} alt="" className="block aspect-[3/2] w-full object-cover" loading="lazy" />
+                    <img
+                      src={CARD_THUMBS[x.id]}
+                      alt=""
+                      className={`block aspect-[3/2] w-full object-cover ${soldOut(x.id) ? "opacity-35 grayscale" : ""}`}
+                      loading="lazy"
+                    />
+                    {soldOut(x.id) ? (
+                      <span className="absolute inset-x-0 top-1/2 -translate-y-1/2 bg-black/70 py-1 text-center text-[11px] font-semibold uppercase tracking-wider text-white">
+                        Läbi müüdud
+                      </span>
+                    ) : (
+                      typeof stock[x.id] === "number" &&
+                      stock[x.id]! <= 3 && (
+                        <span className="absolute right-1 top-1 rounded bg-gold px-1.5 py-0.5 text-[10px] font-semibold text-ink">Alles {stock[x.id]}</span>
+                      )
+                    )}
                     <span className="absolute bottom-1 left-1 rounded bg-black/70 px-1.5 py-0.5 text-[11px] text-white">{x.name}</span>
                   </button>
                 ))}
@@ -357,7 +399,7 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
               <p className="mt-1 text-xs text-white/60">Käibemaksu ei lisandu. Maksad kaardi, Apple Pay või Google Payga.</p>
               <button
                 type="submit"
-                disabled={sending}
+                disabled={sending || allSoldOut || soldOut(design)}
                 className="mt-6 inline-flex h-14 w-full items-center justify-center rounded-full bg-gold px-9 text-sm font-semibold uppercase tracking-[0.15em] text-ink transition-colors hover:bg-[#c9a24c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white disabled:opacity-60"
               >
                 {sending ? "Suunan maksma…" : "Maksa"}

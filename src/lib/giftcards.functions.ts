@@ -43,8 +43,19 @@ export const startGiftCardCheckout = createServerFn({ method: "POST" })
     }
     const { g, d, origin } = await ctx();
     const { terms: _terms, website: _w, elapsedMs: _e, ...input } = data;
-    return g.startCheckout(d, input, origin);
+    try {
+      return { ok: true as const, ...(await g.startCheckout(d, input, origin)) };
+    } catch (e) {
+      if (e instanceof g.SoldOutError) return { ok: false as const, reason: "sold_out" as const };
+      throw e;
+    }
   });
+
+/** Mitu kaarti igast kujundusest on veel saada (null = piiramatu). */
+export const giftCardStock = createServerFn({ method: "GET" }).handler(async () => {
+  const { g, d } = await ctx();
+  return g.stockOverview(d);
+});
 
 /** Aitäh-leht: kas webhook on kaardi juba väljastanud. */
 export const giftCardPurchase = createServerFn({ method: "GET" })

@@ -10,6 +10,8 @@ import {
   issueCard,
   purchaseResult,
   readCard,
+  remaining,
+  SoldOutError,
   setCardState,
   signedPdfUrl,
   startCheckout,
@@ -23,8 +25,9 @@ import {
   type Store,
 } from "../src/lib/giftcards.server";
 
-function memoryStore(): Store & { cards: Map<string, Card>; orders: Map<string, Order> } {
-  const orders = new Map<string, Order>();
+type MemOrder = Order & { createdAt: string };
+function memoryStore(clock: () => number): Store & { cards: Map<string, Card>; orders: Map<string, MemOrder> } {
+  const orders = new Map<string, MemOrder>();
   const cards = new Map<string, Card>();
   let n = 0;
   return {
@@ -32,7 +35,7 @@ function memoryStore(): Store & { cards: Map<string, Card>; orders: Map<string, 
     cards,
     async insertOrder(o) {
       const id = `order-${++n}`;
-      orders.set(id, { ...o, id, sessionId: null });
+      orders.set(id, { ...o, id, sessionId: null, createdAt: new Date(clock()).toISOString() });
       return id;
     },
     async setOrderSession(id, sessionId) {
@@ -65,6 +68,14 @@ function memoryStore(): Store & { cards: Map<string, Card>; orders: Map<string, 
     async listCards({ printQueue, limit }) {
       return [...cards.values()].filter((c) => !printQueue || c.printStatus === "ootab_printimist").slice(0, limit);
     },
+    async countIssued(design) {
+      return [...cards.values()].filter((c) => c.design === design && c.status !== "tühistatud").length;
+    },
+    async countReserved(design, since) {
+      return [...orders.values()].filter(
+        (o) => o.design === design && o.sessionId && o.createdAt >= since && ![...cards.values()].some((c) => c.orderId === o.id),
+      ).length;
+    },
     async expire(today) {
       for (const c of cards.values()) if (c.status === "aktiivne" && c.validUntil < today) c.status = "aegunud";
     },
@@ -72,10 +83,10 @@ function memoryStore(): Store & { cards: Map<string, Card>; orders: Map<string, 
 }
 
 function setup(nowMs = Date.UTC(2026, 10, 17, 10)) {
-  const store = memoryStore();
-  const mails: Mail[] = [];
-  const sessions: { orderId: string; lines: { name: string; cents: number }[] }[] = [];
   let now = nowMs;
+  const store = memoryStore(() => now);
+  const mails: Mail[] = [];
+  const sessions: { orderId: string; lines: { name: string; cents: number }[]; expiresAt: number }[] = [];
   const d: Deps = {
     store,
     mail: async (m) => {
@@ -191,6 +202,34 @@ describe("kinkekaardid", () => {
     setNow(Date.UTC(2027, 10, 18, 10)); // päev pärast kehtivuse lõppu
     expect((await readCard(d, card.nr))!.status).toBe("aegunud");
     await expect(setCardState(d, card.nr, "used")).rejects.toThrow();
+  });
+
+  test("laoseis: 3 kaarti kujunduse kohta, pooleli makse reserveerib, tühistatud vabastab", async () => {
+    const { d, store, setNow } = setup();
+    const start = Date.UTC(2026, 10, 17, 10);
+    for (let i = 1; i <= 3; i++) await startCheckout(d, order, "https://example.test");
+    expect(await remaining(d, "tartu")).toBe(0);
+    await expect(startCheckout(d, order, "https://example.test")).rejects.toBeInstanceOf(SoldOutError);
+    expect(await remaining(d, "roosa")).toBe(3);
+
+    await handleStripeEvent(d, paid("cs_test_1", "order-1", 7500)); // üks makstud
+    setNow(start + 32 * 60_000); // kaks pooleli makset aegusid
+    expect(await remaining(d, "tartu")).toBe(2);
+    await startCheckout(d, order, "https://example.test");
+    expect(await remaining(d, "tartu")).toBe(1);
+
+    const nr = [...store.cards.values()][0]!.nr;
+    await setCardState(d, nr, "cancel");
+    expect(await remaining(d, "tartu")).toBe(2);
+  });
+
+  test("ühekordne kasutus: kasutatud kaarti ei saa uuesti kasutatuks märkida", async () => {
+    const { d } = setup();
+    const { card } = await issueCard(d, { order: { ...order, printFee: 0 }, provider: "käsitsi", paymentId: null, paidAt: null, sendMail: false });
+    await setCardState(d, card.nr, "used");
+    await expect(setCardState(d, card.nr, "used")).rejects.toThrow(/kasutatud/);
+    await setCardState(d, card.nr, "cancel");
+    await expect(setCardState(d, card.nr, "used")).rejects.toThrow(/tühistatud/);
   });
 
   test("allkirjad: PDF-link, haldus ja Stripe'i webhook", () => {

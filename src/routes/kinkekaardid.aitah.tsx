@@ -23,18 +23,22 @@ type Result = Awaited<ReturnType<typeof giftCardPurchase>>;
 
 function Page() {
   const fromUrl = Route.useSearch().session_id;
-  const [session_id] = useState(() => {
-    if (typeof window === "undefined") return fromUrl;
-    try {
-      if (fromUrl) window.sessionStorage.setItem("sc-gc-session", fromUrl);
-      return fromUrl ?? window.sessionStorage.getItem("sc-gc-session") ?? undefined;
-    } catch {
-      return fromUrl;
-    }
-  });
+  const [session_id, setSessionId] = useState(fromUrl);
+  const [checked, setChecked] = useState(!!fromUrl);
   // Makse ID ei jää aadressiribale (ei satu analüütikasse, ajalukku ega jagatud linki).
+  // Lehe uuesti laadimisel võetakse see brauseri sessioonist.
   useEffect(() => {
-    if (fromUrl) window.history.replaceState(null, "", window.location.pathname);
+    try {
+      if (fromUrl) {
+        window.sessionStorage.setItem("sc-gc-session", fromUrl);
+        window.history.replaceState(null, "", window.location.pathname);
+      } else {
+        setSessionId(window.sessionStorage.getItem("sc-gc-session") ?? undefined);
+      }
+    } catch {
+      /* privaatne režiim: jätkame ilma */
+    }
+    setChecked(true);
   }, [fromUrl]);
   const [r, setR] = useState<Result | null>(null);
   const [tries, setTries] = useState(0);
@@ -61,7 +65,9 @@ function Page() {
       <section className="py-20 sm:py-28">
         <div className="mx-auto max-w-2xl px-6 text-center">
           <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-accent">Kinkekaart</p>
-          {!session_id || r?.state === "unknown" ? (
+          {!checked ? (
+            <h1 className="mt-5 font-display text-4xl font-light">Kinnitame makset…</h1>
+          ) : !session_id || r?.state === "unknown" ? (
             <>
               <h1 className="mt-5 font-display text-4xl font-light">Tellimust ei leitud</h1>
               <p className="mt-5 text-muted-foreground">
