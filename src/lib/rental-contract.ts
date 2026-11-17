@@ -3,8 +3,8 @@
 /* Muuda seadme andmeid ja hinda ainult siin.                          */
 /* ------------------------------------------------------------------ */
 export const RENTAL = {
-  device: "Spot Cleaner Pro tekstiilipuhastusmasin",
-  deviceEn: "Spot Cleaner Pro upholstery cleaning machine",
+  device: "Bissell SpotClean Pro tekstiilipuhastusmasin",
+  deviceEn: "Bissell SpotClean Pro upholstery cleaning machine",
   // Üür ühe päeva eest eurodes, käibemaksuta. Kui null, kirjutatakse lepingusse "hind kokkuleppel".
   pricePerDay: 18 as number | null,
   maxDays: 14,
