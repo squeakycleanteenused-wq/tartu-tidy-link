@@ -36,6 +36,7 @@ export function Header() {
     { href: "/#teenused", label: lang === "et" ? "Teenused" : "Services" },
     { href: "/#hinnakalkulaator", label: lang === "et" ? "Hind" : "Price" },
     { href: "/#kkk", label: lang === "et" ? "KKK" : "FAQ" },
+    { href: "/#epood", label: t.nav.shop },
     { href: "/#kontakt", label: t.nav.contact },
   ];
   /* Taganemise link peab olema kogu aeg kergesti leitav (VÕS / EL direktiiv 2023/2673),
