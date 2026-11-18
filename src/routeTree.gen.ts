@@ -14,6 +14,7 @@ import { Route as HaldusRouteImport } from './routes/haldus'
 import { Route as KinkekaardiTingimusedRouteImport } from './routes/kinkekaardi-tingimused'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
 import { Route as PrivaatsusRouteImport } from './routes/privaatsus'
+import { Route as RenditingimusedRouteImport } from './routes/renditingimused'
 import { Route as TingimusedRouteImport } from './routes/tingimused'
 import { Route as ApiStripeWebhookRouteImport } from './routes/api/stripe-webhook'
 import { Route as EpoodKinnitaRouteImport } from './routes/epood.kinnita'
@@ -46,6 +47,11 @@ const LlmsDottxtRoute = LlmsDottxtRouteImport.update({
 const PrivaatsusRoute = PrivaatsusRouteImport.update({
   id: '/privaatsus',
   path: '/privaatsus',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RenditingimusedRoute = RenditingimusedRouteImport.update({
+  id: '/renditingimused',
+  path: '/renditingimused',
   getParentRoute: () => rootRouteImport,
 } as any)
 const TingimusedRoute = TingimusedRouteImport.update({
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/kinkekaardi-tingimused': typeof KinkekaardiTingimusedRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
+  '/renditingimused': typeof RenditingimusedRoute
   '/tingimused': typeof TingimusedRoute
   '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/epood/kinnita': typeof EpoodKinnitaRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/kinkekaardi-tingimused': typeof KinkekaardiTingimusedRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
+  '/renditingimused': typeof RenditingimusedRoute
   '/tingimused': typeof TingimusedRoute
   '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/epood/kinnita': typeof EpoodKinnitaRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/kinkekaardi-tingimused': typeof KinkekaardiTingimusedRoute
   '/llms.txt': typeof LlmsDottxtRoute
   '/privaatsus': typeof PrivaatsusRoute
+  '/renditingimused': typeof RenditingimusedRoute
   '/tingimused': typeof TingimusedRoute
   '/api/stripe-webhook': typeof ApiStripeWebhookRoute
   '/epood/kinnita': typeof EpoodKinnitaRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/kinkekaardi-tingimused'
     | '/llms.txt'
     | '/privaatsus'
+    | '/renditingimused'
     | '/tingimused'
     | '/api/stripe-webhook'
     | '/epood/kinnita'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/kinkekaardi-tingimused'
     | '/llms.txt'
     | '/privaatsus'
+    | '/renditingimused'
     | '/tingimused'
     | '/api/stripe-webhook'
     | '/epood/kinnita'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/kinkekaardi-tingimused'
     | '/llms.txt'
     | '/privaatsus'
+    | '/renditingimused'
     | '/tingimused'
     | '/api/stripe-webhook'
     | '/epood/kinnita'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   KinkekaardiTingimusedRoute: typeof KinkekaardiTingimusedRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
   PrivaatsusRoute: typeof PrivaatsusRoute
+  RenditingimusedRoute: typeof RenditingimusedRoute
   TingimusedRoute: typeof TingimusedRoute
   ApiStripeWebhookRoute: typeof ApiStripeWebhookRoute
   EpoodKinnitaRoute: typeof EpoodKinnitaRoute
@@ -234,6 +247,13 @@ declare module '@tanstack/react-router' {
       path: '/privaatsus'
       fullPath: '/privaatsus'
       preLoaderRoute: typeof PrivaatsusRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/renditingimused': {
+      id: '/renditingimused'
+      path: '/renditingimused'
+      fullPath: '/renditingimused'
+      preLoaderRoute: typeof RenditingimusedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/tingimused': {
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   KinkekaardiTingimusedRoute: KinkekaardiTingimusedRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
   PrivaatsusRoute: PrivaatsusRoute,
+  RenditingimusedRoute: RenditingimusedRoute,
   TingimusedRoute: TingimusedRoute,
   ApiStripeWebhookRoute: ApiStripeWebhookRoute,
   EpoodKinnitaRoute: EpoodKinnitaRoute,

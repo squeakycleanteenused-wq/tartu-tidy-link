@@ -56,6 +56,13 @@ export function Services() {
                           {li}
                         </li>
                       ))}
+                      {s.list.some((li) => li.includes("SpotClean")) && (
+                        <li className="pt-1">
+                          <a href="/renditingimused" className="font-medium text-primary underline underline-offset-4">
+                            {et ? "Renditingimused (üürilepingu täistekst)" : "Rental terms (full agreement)"}
+                          </a>
+                        </li>
+                      )}
                     </ul>
                   </div>
                 </details>

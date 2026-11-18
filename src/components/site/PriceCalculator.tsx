@@ -194,7 +194,7 @@ const COPY = {
     contractCopy: "Kopeeri leping",
     contractDownload: "Laadi leping alla (.txt)",
     utilities: "Kinnitan, et objektil on töötav elekter ning ligipääs soojale ja külmale veele. Ilma nendeta ei saa tööd teha.",
-    consent3: "Olen üürilepingu tingimustega tutvunud ja nõustun nendega. Saan aru, et tagatisraha ei võeta, kuid masina kahjustamisel hüvitan kahju kokkuleppel (kokkuleppe puudumisel remondikulu, kuid mitte üle masina turuväärtuse).",
+    consent3: ["Olen ", "renditingimuste (üürilepingu)", " tekstiga tutvunud ja nõustun sellega. Saan aru, et tagatisraha ei võeta, kuid masina kahjustamisel hüvitan kahju kokkuleppel (kokkuleppe puudumisel remondikulu, kuid mitte üle masina turuväärtuse)."] as [string, string, string],
     timeNote: "Ajakulu on hinnang. Tegelik aeg sõltub pinna suurusest ja seisukorrast.",
     resultTitle: "Orienteeruv hind",
     seeDetails: "Vaata täpsemalt",
@@ -359,7 +359,7 @@ const COPY = {
     contractCopy: "Copy agreement",
     contractDownload: "Download agreement (.txt)",
     utilities: "I confirm that the site has working electricity and access to hot and cold water. Work cannot be done without them.",
-    consent3: "I have read and accept the rental agreement. I understand that no deposit is taken, but if the machine is damaged I will compensate by agreement (failing agreement, the repair cost, but not more than the market value of the machine).",
+    consent3: ["I have read and accept the ", "rental terms (rental agreement)", ". I understand that no deposit is taken, but if the machine is damaged I will compensate by agreement (failing agreement, the repair cost, but not more than the market value of the machine)."] as [string, string, string],
     timeNote: "Time is an estimate. Actual time depends on the size and condition of the space.",
     resultTitle: "Estimated price",
     seeDetails: "See details",
@@ -1065,7 +1065,13 @@ export function PriceCalculator() {
             {rentOn && (
               <label className="flex items-start gap-3 text-sm">
                 <input type="checkbox" checked={ok3} onChange={(e) => setOk3(e.target.checked)} className="mt-1 size-4 accent-primary" />
-                <span>{c.consent3}</span>
+                <span>
+                  {c.consent3[0]}
+                  <Link to="/renditingimused" target="_blank" rel="noopener" className="font-medium text-primary underline">
+                    {c.consent3[1]}
+                  </Link>
+                  {c.consent3[2]}
+                </span>
               </label>
             )}
             {!isCompany && (

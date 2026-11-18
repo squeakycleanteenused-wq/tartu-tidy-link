@@ -43,6 +43,9 @@ export function Footer() {
           <Link to="/tingimused" className="block font-medium text-primary hover:underline">
             {t.terms.link}
           </Link>
+          <Link to="/renditingimused" className="block font-medium text-primary hover:underline">
+            Renditingimused
+          </Link>
           <Link to="/kinkekaardid" className="block font-medium text-primary hover:underline">
             Kinkekaardid
           </Link>

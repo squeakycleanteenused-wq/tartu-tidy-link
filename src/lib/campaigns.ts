@@ -8,6 +8,7 @@ export type Campaign = {
   id: string;
   until?: string; // viimane kehtiv päev, AAAA-KK-PP (puudub = kehtib kuni eemaldamiseni)
   href?: string; // kuhu nupp viib (vaikimisi e-kiri kampaania nimega)
+  termsHref?: string; // link tingimustele (näidatakse nupu all)
   image: string;
   imagePos: string; // millist pildi osa näidata (CSS object-position)
   aiImage?: boolean; // tehisintellektiga loodud pilt: lehel kuvatakse märge (EL tehisintellekti määrus, art 50)
@@ -22,6 +23,7 @@ type CampaignText = {
   text: string;
   details: [string, string][];
   cta: string;
+  termsLabel?: string;
   alt: string;
 };
 
@@ -62,6 +64,7 @@ export const CAMPAIGNS: Campaign[] = [
     image: tekstiilipuhasti,
     imagePos: "70% 50%",
     href: "#hinnakalkulaator",
+    termsHref: "/renditingimused",
     et: {
       label: "Rent",
       name: "Tekstiilipuhasti",
@@ -73,6 +76,7 @@ export const CAMPAIGNS: Campaign[] = [
         ["Tartu ja Põlva", "tagastus kokkuleppel"],
       ],
       cta: "Rendi masin",
+      termsLabel: "Renditingimused",
       alt: "Bissell SpotClean Pro tekstiilipuhastusmasin vaibal",
     },
     en: {
@@ -86,6 +90,7 @@ export const CAMPAIGNS: Campaign[] = [
         ["Tartu & Põlva", "return by agreement"],
       ],
       cta: "Rent the machine",
+      termsLabel: "Rental terms",
       alt: "Bissell SpotClean Pro upholstery cleaning machine on a carpet",
     },
   },

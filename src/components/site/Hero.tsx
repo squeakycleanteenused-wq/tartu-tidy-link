@@ -185,6 +185,11 @@ function CampaignSlide({ campaign }: { campaign: Campaign }) {
             </a>
             <PhoneLink />
           </div>
+          {campaign.termsHref && (
+            <a href={campaign.termsHref} className="mt-5 inline-block text-xs text-white/70 underline underline-offset-4 hover:text-white">
+              {c.termsLabel ?? (lang === "et" ? "Tingimused" : "Terms")}
+            </a>
+          )}
         </>
       }
       bottom={<Facts items={c.details} />}
