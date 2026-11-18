@@ -5,9 +5,8 @@ import { createHmac, randomBytes, timingSafeEqual } from "node:crypto";
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
 import {
   COMPANY,
-  DESIGNS,
   RESERVE_MINUTES,
-  STOCK,
+  TOTAL_STOCK,
   DOWNLOAD_LINK_DAYS,
   PRINT_FEE,
   SHIPPING_TEXT,
@@ -71,10 +70,10 @@ export interface Store {
   insertCard(c: Card): Promise<"ok" | "duplicate_payment" | "duplicate_number">;
   updateCard(nr: string, patch: Partial<Card>): Promise<Card | null>;
   listCards(filter: { printQueue?: boolean; limit: number }): Promise<Card[]>;
-  /** Väljastatud (tühistamata) kaartide arv kujunduse järgi. */
-  countIssued(design: string): Promise<number>;
+  /** Väljastatud (tühistamata) kaartide arv kokku. */
+  countIssued(): Promise<number>;
   /** Pooleli maksete arv (tellimus loodud pärast sinceIso ja kaarti pole veel). */
-  countReserved(design: string, sinceIso: string): Promise<number>;
+  countReserved(sinceIso: string): Promise<number>;
   expire(todayIso: string): Promise<void>;
 }
 
@@ -202,26 +201,23 @@ export class SoldOutError extends Error {
   }
 }
 
-/** Mitu kaarti on kujundusest veel saada (null = piiramatu). Pooleli maksed on reserveeritud. */
-export async function remaining(d: Pick<Deps, "store" | "now">, design: string) {
-  const limit = STOCK[design];
-  if (limit == null) return null;
+/** Mitu kinkekaarti on veel saada, kõik kujundused kokku (null = piiramatu). Pooleli maksed on reserveeritud. */
+export async function remaining(d: Pick<Deps, "store" | "now">) {
+  if (TOTAL_STOCK == null) return null;
   const since = new Date(d.now() - RESERVE_MINUTES * 60_000).toISOString();
-  const [issued, reserved] = await Promise.all([d.store.countIssued(design), d.store.countReserved(design, since)]);
-  return Math.max(0, limit - issued - reserved);
+  const [issued, reserved] = await Promise.all([d.store.countIssued(), d.store.countReserved(since)]);
+  return Math.max(0, TOTAL_STOCK - issued - reserved);
 }
 
 export async function stockOverview(d: Pick<Deps, "store" | "now">) {
-  const out: Record<string, number | null> = {};
-  for (const x of DESIGNS) out[x.id] = await remaining(d, x.id);
-  return out;
+  return { remaining: await remaining(d), total: TOTAL_STOCK };
 }
 
 /** Loob tellimuse ja Stripe Checkouti. Hind arvutatakse siin, brauserist tulevat hinda ei kasutata. */
 export async function startCheckout(d: Deps, input: OrderInput, origin: string) {
   const design = designById(input.design);
   if (!design) throw new Error("Tundmatu kujundus");
-  const left = await remaining(d, design.id);
+  const left = await remaining(d);
   if (left !== null && left < 1) throw new SoldOutError();
   const printFee = input.delivery === "print" ? PRINT_FEE : 0;
   const total = input.amount + printFee;
@@ -655,14 +651,14 @@ export async function supabaseStore(): Promise<Store> {
       const r = must(await q.order("issued_at", { ascending: false }).limit(limit)) as Row[];
       return r.map(toCard);
     },
-    async countIssued(design) {
-      const r = await db.from("gift_cards").select("id", { count: "exact", head: true }).eq("design", design).neq("status", "tühistatud");
+    async countIssued() {
+      const r = await db.from("gift_cards").select("id", { count: "exact", head: true }).neq("status", "tühistatud");
       if (r.error) throw new Error(r.error.message);
       return (r.count as number) ?? 0;
     },
-    async countReserved(design, sinceIso) {
+    async countReserved(sinceIso) {
       const orders = must(
-        await db.from("gift_card_orders").select("id").eq("design", design).gte("created_at", sinceIso).not("stripe_session_id", "is", null),
+        await db.from("gift_card_orders").select("id").gte("created_at", sinceIso).not("stripe_session_id", "is", null),
       ) as { id: string }[];
       if (!orders.length) return 0;
       const done = must(await db.from("gift_cards").select("order_id").in("order_id", orders.map((o) => o.id))) as { order_id: string }[];

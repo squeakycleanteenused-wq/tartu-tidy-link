@@ -14,16 +14,9 @@ export const MAX_AMOUNT = 2000;
 export const PRINT_FEE = 5;
 export const SHIPPING_TEXT = "Postitame 2 tööpäeva jooksul.";
 
-/** Mitu kaarti igast kujundusest on müügil (kokku, kõigi aegade jooksul). null = piiramatu.
-   Tühistatud kaarte ei arvestata. Juurde lisamiseks suurenda numbrit. */
-export const STOCK: Record<string, number | null> = {
-  majahaldjas: 2,
-  roosa: 2,
-  mustkuld: 2,
-  joulud: 2,
-  sunnipaev: 2,
-  tartu: 2,
-};
+/** Mitu kinkekaarti on kokku müügil (kõik kujundused kokku, kõigi aegade jooksul). null = piiramatu.
+   Kujundust võib klient valida vabalt. Tühistatud kaarte ei arvestata. Juurde lisamiseks suurenda numbrit. */
+export const TOTAL_STOCK: number | null = 6;
 /** Kui kaua hoitakse kaarti makse ajal ostjale reserveeritud (Stripe'i makseleht aegub sama ajaga). */
 export const RESERVE_MINUTES = 31;
 

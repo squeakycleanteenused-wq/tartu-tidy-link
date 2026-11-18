@@ -148,7 +148,7 @@ function CardRow({ c, onChange }: { c: Card; onChange: (c: Card) => void }) {
 }
 
 function Admin({ onLogout }: { onLogout: () => void }) {
-  const [data, setData] = useState<{ recent: Card[]; printQueue: Card[]; stock: Record<string, number | null> } | null>(null);
+  const [data, setData] = useState<{ recent: Card[]; printQueue: Card[]; stock: { remaining: number | null; total: number | null } } | null>(null);
   const [q, setQ] = useState("");
   const [found, setFound] = useState<Card | null | "none">(null);
   const [loadErr, setLoadErr] = useState("");
@@ -182,18 +182,11 @@ function Admin({ onLogout }: { onLogout: () => void }) {
       <section>
         <h2 className="font-display text-2xl font-light">Laoseis</h2>
         <p className="mt-1 text-sm text-muted-foreground">
-          Mitu kaarti on veel müügil. Koguse muutmiseks: STOCK failis src/lib/giftcards.config.ts.
+          Mitu kinkekaarti on veel müügil (kõik kujundused kokku; pooleli maksed on reserveeritud). Koguse muutmiseks: TOTAL_STOCK failis src/lib/giftcards.config.ts.
         </p>
-        <dl className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
-          {DESIGNS.map((x) => (
-            <div key={x.id} className="rounded-xl border border-border px-4 py-3">
-              <dt className="text-sm">{x.name}</dt>
-              <dd className="font-display text-2xl font-light">
-                {data ? (data.stock[x.id] == null ? "piiramatu" : data.stock[x.id] === 0 ? "läbi müüdud" : `${data.stock[x.id]} alles`) : "…"}
-              </dd>
-            </div>
-          ))}
-        </dl>
+        <p className="mt-3 font-display text-3xl font-light">
+          {data ? (data.stock.remaining == null ? "piiramatu" : `${data.stock.remaining} / ${data.stock.total} alles`) : "…"}
+        </p>
       </section>
 
       <section>

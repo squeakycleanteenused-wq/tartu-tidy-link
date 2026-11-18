@@ -7,7 +7,7 @@ import {
   MIN_AMOUNT,
   PRINT_FEE,
   SHIPPING_TEXT,
-  STOCK,
+  TOTAL_STOCK,
   VALIDITY_MONTHS,
 } from "@/lib/giftcards.config";
 import { RENTAL_COMPANY, companyContact } from "@/lib/rental-contract";
@@ -33,7 +33,6 @@ export const Route = createFileRoute("/kinkekaardi-tingimused")({
   component: Page,
 });
 
-const perDesign = Object.values(STOCK).find((v) => v != null);
 
 const SECTIONS: [string, string[]][] = [
   [
@@ -48,7 +47,7 @@ const SECTIONS: [string, string[]][] = [
     [
       `Kinkekaart on ettemaksu tõend, mida saab kasutada ${RENTAL_COMPANY.name} kodukoristusteenuste eest tasumiseks (hoolduskoristus, suurpuhastus, kolimiskoristus, aknapesu ja lisatööd) Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Kinkekaardiga ei saa tasuda e-poe kaupade ega tekstiilipuhastusmasina rendi eest.`,
       `Kinkekaardi summa on ${MIN_AMOUNT} kuni ${MAX_AMOUNT} eurot. Igal kaardil on unikaalne number kujul SQ-AAKK-XXXX.`,
-      `Kinkekaarte on müügil piiratud koguses${perDesign ? ` (kuni ${perDesign} tk igast kujundusest)` : ""}. Kui kujundus on läbi müüdud, ei saa seda valida.`,
+      `Kinkekaarte on müügil piiratud koguses${TOTAL_STOCK != null ? ` (kokku ${TOTAL_STOCK} tk, kujundust saab valida vabalt)` : ""}. Allesolev kogus on näha ostulehel. Kui kaardid on otsas, ei saa neid osta.`,
     ],
   ],
   [
