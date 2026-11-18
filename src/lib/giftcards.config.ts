@@ -17,12 +17,12 @@ export const SHIPPING_TEXT = "Postitame 2 tööpäeva jooksul.";
 /** Mitu kaarti igast kujundusest on müügil (kokku, kõigi aegade jooksul). null = piiramatu.
    Tühistatud kaarte ei arvestata. Juurde lisamiseks suurenda numbrit. */
 export const STOCK: Record<string, number | null> = {
-  majahaldjas: 3,
-  roosa: 3,
-  mustkuld: 3,
-  joulud: 3,
-  sunnipaev: 3,
-  tartu: 3,
+  majahaldjas: 2,
+  roosa: 2,
+  mustkuld: 2,
+  joulud: 2,
+  sunnipaev: 2,
+  tartu: 2,
 };
 /** Kui kaua hoitakse kaarti makse ajal ostjale reserveeritud (Stripe'i makseleht aegub sama ajaga). */
 export const RESERVE_MINUTES = 31;

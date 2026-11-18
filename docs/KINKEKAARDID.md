@@ -52,7 +52,7 @@ Võtmeid ei panda koodi ega gitti ning neid ei saadeta kellelegi vestluses.
 ## Muutmine
 
 - **Summad, „muu summa“ piirid, printimise lisatasu, saatmise tekst, kehtivus:** `src/lib/giftcards.config.ts`.
-- **Laoseis:** `STOCK` samas failis (praegu 3 kaarti igast kujundusest, `null` = piiramatu). Arvestatakse kõik
+- **Laoseis:** `STOCK` samas failis (praegu 2 kaarti igast kujundusest, `null` = piiramatu). Arvestatakse kõik
   tühistamata kaardid (ka käsitsi väljastatud). Pooleli makse hoiab kaarti 31 minutit reserveeritud
   (Stripe'i makseleht aegub sama ajaga), seega ei saa viimast kaarti kaks inimest korraga osta.
   Läbi müüdud kujundus on lehel hall ja seda valida ei saa. Halduses on näha, mitu on alles.

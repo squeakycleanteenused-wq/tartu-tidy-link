@@ -215,6 +215,17 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
                   </button>
                 ))}
               </div>
+              {typeof stock[design] === "number" && (
+                <p role="status" className="mt-3 text-sm">
+                  <span className="font-medium">{d.name}:</span>{" "}
+                  {stock[design]! > 0 ? (
+                    <span className="text-accent">saadaval {stock[design]} tk</span>
+                  ) : (
+                    <span className="text-destructive">läbi müüdud</span>
+                  )}
+                  <span className="text-muted-foreground"> · kinkekaarte on piiratud koguses</span>
+                </p>
+              )}
               <p className="mt-2 text-xs text-muted-foreground">Kujundused on loodud tehisintellekti abil.</p>
             </fieldset>
 

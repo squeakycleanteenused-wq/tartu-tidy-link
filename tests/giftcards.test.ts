@@ -24,6 +24,7 @@ import {
   type Order,
   type Store,
 } from "../src/lib/giftcards.server";
+import { STOCK } from "../src/lib/giftcards.config";
 
 type MemOrder = Order & { createdAt: string };
 function memoryStore(clock: () => number): Store & { cards: Map<string, Card>; orders: Map<string, MemOrder> } {
@@ -204,23 +205,25 @@ describe("kinkekaardid", () => {
     await expect(setCardState(d, card.nr, "used")).rejects.toThrow();
   });
 
-  test("laoseis: 3 kaarti kujunduse kohta, pooleli makse reserveerib, tühistatud vabastab", async () => {
+  test("laoseis: piiratud kogus kujunduse kohta, pooleli makse reserveerib, tühistatud vabastab", async () => {
     const { d, store, setNow } = setup();
     const start = Date.UTC(2026, 10, 17, 10);
-    for (let i = 1; i <= 3; i++) await startCheckout(d, order, "https://example.test");
+    const limit = STOCK["tartu"]!;
+    expect(limit).toBe(2);
+    for (let i = 1; i <= limit; i++) await startCheckout(d, order, "https://example.test");
     expect(await remaining(d, "tartu")).toBe(0);
     await expect(startCheckout(d, order, "https://example.test")).rejects.toBeInstanceOf(SoldOutError);
-    expect(await remaining(d, "roosa")).toBe(3);
+    expect(await remaining(d, "roosa")).toBe(limit);
 
     await handleStripeEvent(d, paid("cs_test_1", "order-1", 7500)); // üks makstud
-    setNow(start + 32 * 60_000); // kaks pooleli makset aegusid
-    expect(await remaining(d, "tartu")).toBe(2);
+    setNow(start + 32 * 60_000); // teine pooleli makse aegus
+    expect(await remaining(d, "tartu")).toBe(limit - 1);
     await startCheckout(d, order, "https://example.test");
-    expect(await remaining(d, "tartu")).toBe(1);
+    expect(await remaining(d, "tartu")).toBe(0);
 
     const nr = [...store.cards.values()][0]!.nr;
     await setCardState(d, nr, "cancel");
-    expect(await remaining(d, "tartu")).toBe(2);
+    expect(await remaining(d, "tartu")).toBe(1);
   });
 
   test("ühekordne kasutus: kasutatud kaarti ei saa uuesti kasutatuks märkida", async () => {
