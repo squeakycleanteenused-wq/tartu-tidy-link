@@ -27,7 +27,8 @@ export type Row = {
 export interface Store {
   purgeExpired(nowIso: string): Promise<void>;
   countAttempts(ipHash: string, sinceIso: string): Promise<number>;
-  addAttempt(ipHash: string): Promise<void>;
+  addAttempt(ipHash: string): Promise<number>;
+  removeAttempt(id: number): Promise<void>;
   findByEmail(email: string): Promise<Row | null>;
   findByTokenHash(tokenHash: string): Promise<Row | null>;
   /** Lisab uue ootel rea või uuendab olemasoleva ootel rea tokenit. */
@@ -96,7 +97,7 @@ export async function subscribe(d: Deps, input: SubscribeInput): Promise<Subscri
   ) {
     return { ok: false, reason: "rate_limited" };
   }
-  await d.store.addAttempt(input.ipHash);
+  const attemptId = await d.store.addAttempt(input.ipHash);
   await d.store.purgeExpired(nowIso);
 
   const email = input.email.trim().toLowerCase();
@@ -128,6 +129,7 @@ export async function subscribe(d: Deps, input: SubscribeInput): Promise<Subscri
     });
   } catch (e) {
     await d.store.remove(row.id); // kiri ei läinud, seega ei jäta "kummitusrida"
+    await d.store.removeAttempt(attemptId); // ebaõnnestunud saatmine ei kuluta inimese tunnilimiiti
     throw e;
   }
   return { ok: true };
@@ -252,7 +254,14 @@ export async function supabaseStore(): Promise<Store> {
       return r.count ?? 0;
     },
     async addAttempt(ipHash) {
-      must(await db.from("shop_waitlist_attempts").insert({ ip_hash: ipHash }));
+      const row = must(
+        await db.from("shop_waitlist_attempts").insert({ ip_hash: ipHash }).select("id").single(),
+      );
+      if (!row) throw new Error("attempt insert failed");
+      return row.id;
+    },
+    async removeAttempt(id) {
+      must(await db.from("shop_waitlist_attempts").delete().eq("id", id));
     },
     async findByEmail(email) {
       return must(
