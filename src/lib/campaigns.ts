@@ -1,10 +1,13 @@
 import ruumKorda from "@/assets/kampaania-ruum-korda.webp";
+import tekstiilipuhasti from "@/assets/kampaania-tekstiilipuhasti.webp";
+import { RENTAL } from "@/lib/rental-contract";
 
 /* Käimasolevad kampaaniad avalehe ülaosa slaididel (esimene slaid on alati elutoa foto).
    Kampaania kaob lehelt ise pärast kuupäeva "until". Uue lisamiseks kopeeri üks plokk. */
 export type Campaign = {
   id: string;
-  until: string; // viimane kehtiv päev, AAAA-KK-PP
+  until?: string; // viimane kehtiv päev, AAAA-KK-PP (puudub = kehtib kuni eemaldamiseni)
+  href?: string; // kuhu nupp viib (vaikimisi e-kiri kampaania nimega)
   image: string;
   imagePos: string; // millist pildi osa näidata (CSS object-position)
   aiImage?: boolean; // tehisintellektiga loodud pilt: lehel kuvatakse märge (EL tehisintellekti määrus, art 50)
@@ -13,6 +16,7 @@ export type Campaign = {
 };
 
 type CampaignText = {
+  label?: string; // väike silt pealkirja kohal (vaikimisi "Kampaania")
   name: string;
   price: string;
   text: string;
@@ -53,10 +57,42 @@ export const CAMPAIGNS: Campaign[] = [
       alt: "AI-generated illustration: organised walk-in closet with clear storage boxes",
     },
   },
+  {
+    id: "tekstiilipuhasti",
+    image: tekstiilipuhasti,
+    imagePos: "70% 50%",
+    href: "#hinnakalkulaator",
+    et: {
+      label: "Rent",
+      name: "Tekstiilipuhasti",
+      price: `${RENTAL.pricePerDay} € / ööpäev`,
+      text: "Bissell SpotClean Pro diivanite, tugitoolide, vaipade, madratsite ja autoistmete puhastamiseks. Kasutusjuhend ja puhastustablett on kaasas.",
+      details: [
+        ["Tagatisraha", "ei võeta"],
+        ["Kuni", `${RENTAL.maxDays} päeva`],
+        ["Tartu ja Põlva", "tagastus kokkuleppel"],
+      ],
+      cta: "Rendi masin",
+      alt: "Bissell SpotClean Pro tekstiilipuhastusmasin vaibal",
+    },
+    en: {
+      label: "Rental",
+      name: "Upholstery cleaner",
+      price: `${RENTAL.pricePerDay} € / day`,
+      text: "Bissell SpotClean Pro for cleaning sofas, armchairs, carpets, mattresses and car seats. User manual and a cleaning tablet included.",
+      details: [
+        ["No deposit", "required"],
+        ["Up to", `${RENTAL.maxDays} days`],
+        ["Tartu & Põlva", "return by agreement"],
+      ],
+      cta: "Rent the machine",
+      alt: "Bissell SpotClean Pro upholstery cleaning machine on a carpet",
+    },
+  },
 ];
 
 /* Kehtivad kampaaniad tänase kuupäeva järgi (Eesti aeg). */
 export function activeCampaigns(now = new Date()): Campaign[] {
   const today = now.toLocaleDateString("sv-SE", { timeZone: "Europe/Tallinn" });
-  return CAMPAIGNS.filter((c) => c.until >= today);
+  return CAMPAIGNS.filter((c) => !c.until || c.until >= today);
 }

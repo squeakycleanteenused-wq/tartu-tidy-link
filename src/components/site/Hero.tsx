@@ -164,7 +164,7 @@ function HomeSlide() {
 function CampaignSlide({ campaign }: { campaign: Campaign }) {
   const { lang } = useLang();
   const c = campaign[lang];
-  const mail = `mailto:${RENTAL_COMPANY.email}?subject=${encodeURIComponent(`${c.name} ${c.price}`)}`;
+  const mail = campaign.href ?? `mailto:${RENTAL_COMPANY.email}?subject=${encodeURIComponent(`${c.name} ${c.price}`)}`;
   return (
     <Slide
       image={campaign.image}
@@ -173,7 +173,7 @@ function CampaignSlide({ campaign }: { campaign: Campaign }) {
       aiNote={campaign.aiImage ? (lang === "et" ? "Illustratsioon, loodud tehisintellektiga" : "Illustration, AI-generated") : undefined}
       top={
         <>
-          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-gold">{lang === "et" ? "Kampaania" : "Offer"}</p>
+          <p className="text-[11px] font-medium uppercase tracking-[0.3em] text-gold">{c.label ?? (lang === "et" ? "Kampaania" : "Offer")}</p>
           <p className="mt-6 font-display text-5xl font-light leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
             {c.name}
             <span className="block italic text-gold">{c.price}</span>
