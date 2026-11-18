@@ -63,7 +63,7 @@ export function Header() {
         </Link>
 
         <div className="flex items-center gap-2">
-          <nav className="hidden items-center gap-7 lg:flex">
+          <nav className="hidden items-center gap-5 lg:flex xl:gap-7">
             {links.map((l) => (
               <a
                 key={l.href}
@@ -75,7 +75,7 @@ export function Header() {
             ))}
             <a
               href={withdraw.href}
-              className="border-l border-border pl-7 text-xs text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+              className="border-l border-border pl-5 text-xs xl:pl-7 text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
             >
               {withdraw.label}
             </a>
