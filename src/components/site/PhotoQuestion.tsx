@@ -196,9 +196,9 @@ export function PhotoQuestion() {
   };
 
   return (
-    <section id="kusi-nou" className="scroll-mt-28 py-16">
+    <section id="kusi-nou" className="scroll-mt-28 py-24 sm:py-28">
       <div className="mx-auto max-w-3xl px-4">
-        <h2 className="text-2xl font-bold sm:text-3xl">
+        <h2 className="font-display text-3xl font-light tracking-tight sm:text-4xl">
           {c.title}
         </h2>
         <p className="mt-2 text-muted-foreground">{c.subtitle}</p>

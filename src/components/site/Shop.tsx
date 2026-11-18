@@ -90,12 +90,12 @@ export function Shop() {
   };
 
   return (
-    <section id="epood" className="scroll-mt-28 border-y border-border bg-secondary py-16">
+    <section id="epood" className="scroll-mt-28 bg-secondary py-24 sm:py-32">
       <div className="mx-auto max-w-3xl px-4 text-center">
-        <span className="text-xs font-semibold uppercase tracking-widest text-accent">
+        <span className="text-[11px] font-medium uppercase tracking-[0.3em] text-accent">
           {t.shop.soonBadge}
         </span>
-        <h2 className="mt-3 text-3xl font-bold sm:text-4xl">{t.shop.title}</h2>
+        <h2 className="mt-5 font-display text-4xl font-light tracking-tight sm:text-5xl">{t.shop.title}</h2>
         <p className="mx-auto mt-3 max-w-xl text-muted-foreground">{t.shop.soonText}</p>
 
         <form onSubmit={onSubmit} className="mx-auto mt-8 max-w-lg text-left">
