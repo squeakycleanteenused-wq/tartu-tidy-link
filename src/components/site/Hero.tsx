@@ -127,8 +127,8 @@ function HomeSlide() {
           </h1>
           <p className="mt-8 max-w-md text-base font-light leading-relaxed text-white/80 sm:text-lg">
             {et
-              ? "Meie teeme kodu puhtaks, sinule jääb aeg muuks. Hinna näed kohe veebis."
-              : "We clean apartments and houses so you have time for other things. Calculate the price online and send a request."}
+              ? "Sinu aeg on liiga väärtuslik tolmulapi jaoks. Vaata hinda ja telli minutiga."
+              : "Your time is too valuable for a duster. Check the price and book in a minute."}
           </p>
           <div className="mt-10 flex flex-wrap items-center gap-x-10 gap-y-5">
             <a href="#hinnakalkulaator" className={goldBtn}>
