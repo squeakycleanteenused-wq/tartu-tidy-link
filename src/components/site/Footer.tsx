@@ -5,7 +5,7 @@ import { RENTAL_COMPANY } from "@/lib/rental-contract";
 import { OPEN_COOKIE_SETTINGS } from "./CookieConsent";
 
 export function Footer() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   return (
     <footer className="border-t border-border bg-secondary/50">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-3">
@@ -64,6 +64,11 @@ export function Footer() {
           </button>
           <p className="pt-2 text-muted-foreground">
             © {new Date().getFullYear()} {t.company}. {t.footer.rights}
+          </p>
+          <p className="text-xs text-muted-foreground">
+            {lang === "et"
+              ? "Lehe pildid ja kinkekaartide kujundused on illustratsioonid, loodud tehisintellekti abil."
+              : "The images and gift card designs on this site are illustrations created with AI."}
           </p>
         </div>
       </div>

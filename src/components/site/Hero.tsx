@@ -116,6 +116,7 @@ function HomeSlide() {
     <Slide
       image={heroBg}
       imagePos="30% 55%"
+      aiNote={et ? "Illustratsioon, loodud tehisintellektiga" : "Illustration, AI-generated"}
       alt={et ? "Luksuslik elutuba tumerohelise diivaniga" : "Luxurious living room with a dark green sofa"}
       top={
         <>

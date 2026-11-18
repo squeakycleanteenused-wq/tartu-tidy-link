@@ -63,6 +63,7 @@ export const CAMPAIGNS: Campaign[] = [
     id: "tekstiilipuhasti",
     image: tekstiilipuhasti,
     imagePos: "70% 50%",
+    aiImage: true,
     href: "#hinnakalkulaator",
     termsHref: "/renditingimused",
     et: {
@@ -77,7 +78,7 @@ export const CAMPAIGNS: Campaign[] = [
       ],
       cta: "Rendi masin",
       termsLabel: "Renditingimused",
-      alt: "Bissell SpotClean Pro tekstiilipuhastusmasin vaibal",
+      alt: "Tehisintellektiga loodud illustratsioon: Bissell SpotClean Pro tekstiilipuhastusmasin vaibal",
     },
     en: {
       label: "Rental",
@@ -91,7 +92,7 @@ export const CAMPAIGNS: Campaign[] = [
       ],
       cta: "Rent the machine",
       termsLabel: "Rental terms",
-      alt: "Bissell SpotClean Pro upholstery cleaning machine on a carpet",
+      alt: "AI-generated illustration: Bissell SpotClean Pro upholstery cleaning machine on a carpet",
     },
   },
 ];

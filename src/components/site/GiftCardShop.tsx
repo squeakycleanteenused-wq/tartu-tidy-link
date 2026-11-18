@@ -215,6 +215,7 @@ export function GiftCardShop({ cancelled }: { cancelled?: boolean }) {
                   </button>
                 ))}
               </div>
+              <p className="mt-2 text-xs text-muted-foreground">Kujundused on loodud tehisintellekti abil.</p>
             </fieldset>
 
             {/* 2. Summa ja saaja */}
