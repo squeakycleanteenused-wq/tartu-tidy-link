@@ -77,6 +77,7 @@ const SECTIONS: [string, string[]][] = [
     "6. Kasutamine",
     [
       "Kinkekaardi kasutamiseks broneeri aeg kodulehe hinnapäringu vormi kaudu, e-postiga või telefonil ja ütle broneerides kaardi number. Enne teenuse osutamist kontrollime, et kaart on kehtiv ja kasutamata.",
+      "Teenuse aeg lepitakse kokku vastavalt vabadele aegadele. Palume broneerida vähemalt 7 päeva ette. Kehtivusaja viimastel nädalatel võib vabu aegu olla vähem, seega ära jäta broneerimist viimasele hetkele. Kui me ei saa pakkuda ühtegi vaba aega enne kaardi kehtivuse lõppu, pikendame kaardi kehtivust tasuta.",
       "Kinkekaarti saab kasutada ühe korra. Kui teenus maksab vähem kui kaardi summa, jääki ei tagastata ega kanta üle. Kui teenus maksab rohkem, tasub kaardi kasutaja vahe arve alusel pangaülekandega.",
       "Kinkekaarti ei saa vahetada raha vastu ega kasutada osade kaupa.",
       "Kinkekaart on esitajale: kaardi numbri esitaja võib selle kasutada. Hoia kaardi numbrit nagu sularaha. Kui kaart on juba kasutatud, ei saa seda uuesti kasutada.",
