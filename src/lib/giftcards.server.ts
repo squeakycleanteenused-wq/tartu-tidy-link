@@ -94,6 +94,7 @@ export type Checkout = {
     successUrl: string;
     cancelUrl: string;
     expiresAt: number; // unix sekundites
+    kind?: string; // "product" e-poe tellimusel; puudub = kinkekaart
   }): Promise<{ id: string; url: string }>;
 };
 
@@ -126,10 +127,10 @@ export const CARD_NR_RE = /^SQ-\d{4}-[A-HJ-NP-Z2-9]{4}$/;
 
 const today = (now: number) => new Date(now).toLocaleDateString("sv-SE", { timeZone: "Europe/Tallinn" });
 
-function hmac(secret: string, msg: string) {
+export function hmac(secret: string, msg: string) {
   return createHmac("sha256", secret).update(msg).digest("base64url");
 }
-function safeEqual(a: string, b: string) {
+export function safeEqual(a: string, b: string) {
   const x = Buffer.from(a), y = Buffer.from(b);
   return x.length === y.length && timingSafeEqual(x, y);
 }
@@ -320,10 +321,10 @@ export async function issueCard(
 /* ---------- e-kirjad ---------- */
 
 const GREEN = "#10291e", GOLD = "#b8913b";
-const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+export const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 const addressText = (a: Address | null) => (a ? `${a.name}, ${a.street}, ${a.zip} ${a.city}` : "");
 
-function htmlMail(title: string, paragraphs: string[], button?: { href: string; label: string }) {
+export function htmlMail(title: string, paragraphs: string[], button?: { href: string; label: string }) {
   return `<!doctype html><html lang="et"><body style="margin:0;background:#f5f1e8;font-family:Arial,sans-serif;color:${GREEN}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff;border-radius:12px;overflow:hidden">
@@ -498,6 +499,10 @@ export const stripeCheckout = (secretKey: string): Checkout => ({
       "payment_intent_data[metadata][order_id]": a.orderId,
       expires_at: String(a.expiresAt),
     });
+    if (a.kind) {
+      body.set("metadata[kind]", a.kind);
+      body.set("payment_intent_data[metadata][kind]", a.kind);
+    }
     a.lines.forEach((l, i) => {
       body.set(`line_items[${i}][quantity]`, "1");
       body.set(`line_items[${i}][price_data][currency]`, "eur");

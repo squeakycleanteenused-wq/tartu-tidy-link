@@ -31,7 +31,14 @@ export const Route = createFileRoute("/api/stripe-webhook")({
           return new Response("Vigane päring", { status: 400 });
         }
         try {
-          const d = await g.prodDeps(new URL(request.url).origin);
+          const origin = new URL(request.url).origin;
+          // E-poe tellimus (metadata.kind = "product") või kinkekaart (vaikimisi).
+          if (event.data.object.metadata?.["kind"] === "product") {
+            const shop = await import("@/lib/shop.server");
+            const result = await shop.handleStripeEvent(await shop.prodDeps(origin), event);
+            return Response.json({ received: true, result });
+          }
+          const d = await g.prodDeps(origin);
           const result = await g.handleStripeEvent(d, event);
           return Response.json({ received: true, result });
         } catch (e) {

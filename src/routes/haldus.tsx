@@ -12,6 +12,7 @@ import {
 } from "@/lib/giftcards.functions";
 import { AMOUNTS, DESIGNS, MAX_AMOUNT, MIN_AMOUNT, designById, fmtDate, type DesignId } from "@/lib/giftcards.config";
 import type { Card } from "@/lib/giftcards.server";
+import { AdminProducts } from "@/components/site/AdminProducts";
 
 /* Kinkekaartide haldus (ainult omanikule, parool keskkonnamuutujas ADMIN_PASSWORD). */
 export const Route = createFileRoute("/haldus")({
@@ -241,6 +242,8 @@ function Admin({ onLogout }: { onLogout: () => void }) {
           {data?.recent.map((c) => <CardRow key={c.nr} c={c} onChange={update} />)}
         </div>
       </section>
+
+      <AdminProducts />
     </div>
   );
 }

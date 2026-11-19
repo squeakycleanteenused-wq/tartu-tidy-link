@@ -46,6 +46,9 @@ export function Footer() {
           <Link to="/renditingimused" className="block font-medium text-primary hover:underline">
             Renditingimused
           </Link>
+          <Link to="/e-poe-tingimused" className="block font-medium text-primary hover:underline">
+            E-poe tingimused
+          </Link>
           <Link to="/kinkekaardid" className="block font-medium text-primary hover:underline">
             Kinkekaardid
           </Link>
