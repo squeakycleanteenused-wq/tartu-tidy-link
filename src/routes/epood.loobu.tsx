@@ -7,7 +7,7 @@ export const Route = createFileRoute("/epood/loobu")({
   validateSearch: z.object({ token: z.string().optional().catch(undefined) }),
   head: () => ({
     meta: [
-      { title: "E-poe teavitusest loobumine | Squeaky Clean" },
+      { title: "E-poe teavitusest loobumine | Koduninja" },
       { name: "robots", content: "noindex" },
     ],
     links: [{ rel: "canonical", href: `${SITE_URL}/` }],

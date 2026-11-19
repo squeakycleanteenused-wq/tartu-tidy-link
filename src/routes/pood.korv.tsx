@@ -12,7 +12,7 @@ export const Route = createFileRoute("/pood/korv")({
   validateSearch: z.object({ katkestatud: z.coerce.number().optional().catch(undefined) }),
   loader: () => shopProducts(),
   head: () => ({
-    meta: [{ title: "Ostukorv | Squeaky Clean e-pood" }, { name: "robots", content: "noindex" }],
+    meta: [{ title: "Ostukorv | Koduninja e-pood" }, { name: "robots", content: "noindex" }],
     links: [{ rel: "canonical", href: `${SITE_URL}/pood` }],
   }),
   component: Page,

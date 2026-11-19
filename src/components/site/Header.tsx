@@ -52,11 +52,11 @@ export function Header() {
             aria-hidden="true"
             className="grid size-9 shrink-0 place-items-center rounded-md bg-ink font-display text-sm font-bold tracking-wide text-gold ring-1 ring-gold/60"
           >
-            SC
+            KN
           </span>
           <span className="min-w-0">
             <span className="block truncate font-display text-base font-normal leading-tight tracking-tight sm:text-lg">
-              Squeaky Clean
+              Koduninja
             </span>
             <span className="block truncate text-[11px] text-muted-foreground">{t.hero.title}</span>
           </span>

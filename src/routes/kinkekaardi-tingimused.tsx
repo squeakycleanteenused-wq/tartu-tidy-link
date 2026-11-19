@@ -15,8 +15,8 @@ import { SITE_URL, canonical } from "@/lib/site";
 
 /* Kinkekaardi tingimused. Arvud (kehtivus, kogus, lisatasu, summad) tulevad giftcards.config.ts-ist,
    seega muuda neid seal. Omaniku otsused: kehtib 12 kuud, piiratud kogus, ühekordne kasutus, jääki ei tagastata. */
-const title = "Kinkekaardi tingimused | Squeaky Clean";
-const description = `Squeaky Clean kodukoristuse kinkekaardi tingimused: kehtib ${VALIDITY_MONTHS} kuud, ühekordne kasutus, piiratud kogus.`;
+const title = "Kinkekaardi tingimused | Koduninja";
+const description = `Koduninja kodukoristuse kinkekaardi tingimused: kehtib ${VALIDITY_MONTHS} kuud, ühekordne kasutus, piiratud kogus.`;
 const VALID_FROM = "18.11.2026";
 
 export const Route = createFileRoute("/kinkekaardi-tingimused")({
@@ -53,7 +53,7 @@ const SECTIONS: [string, string[]][] = [
   [
     "3. Ostmine ja maksmine",
     [
-      "Kinkekaardi saab osta lehel squeakycleanteenused.ee/kinkekaardid. Hind on näidatud enne makset ja see on lõplik.",
+      "Kinkekaardi saab osta lehel koduninja.ee/kinkekaardid. Hind on näidatud enne makset ja see on lõplik.",
       "Makse toimub Stripe'i turvalisel makselehel (pangakaart, Apple Pay või Google Pay). Kaardiandmed sisestad Stripe'i lehel ja need meieni ei jõua.",
       "Leping sõlmitakse, kui makse on õnnestunud. Kinkekaart väljastatakse alles pärast makse laekumise kinnitust.",
     ],

@@ -16,7 +16,7 @@ import { AdminProducts } from "@/components/site/AdminProducts";
 
 /* Kinkekaartide haldus (ainult omanikule, parool keskkonnamuutujas ADMIN_PASSWORD). */
 export const Route = createFileRoute("/haldus")({
-  head: () => ({ meta: [{ title: "Haldus | Squeaky Clean" }, { name: "robots", content: "noindex, nofollow" }] }),
+  head: () => ({ meta: [{ title: "Haldus | Koduninja" }, { name: "robots", content: "noindex, nofollow" }] }),
   component: Page,
 });
 
@@ -40,7 +40,7 @@ function Page() {
   return (
     <main className="min-h-screen bg-background px-4 py-10 sm:px-6">
       <div className="mx-auto max-w-5xl">
-        <p className="text-[11px] uppercase tracking-[0.3em] text-accent">Squeaky Clean</p>
+        <p className="text-[11px] uppercase tracking-[0.3em] text-accent">Koduninja</p>
         <h1 className="mt-2 font-display text-3xl font-light">Kinkekaartide haldus</h1>
         {logged === null ? null : logged ? <Admin onLogout={() => setLogged(false)} /> : <Login onOk={() => setLogged(true)} />}
       </div>

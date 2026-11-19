@@ -4,7 +4,7 @@ import { SiteLayout } from "@/components/site/Layout";
 import { GiftCardShop } from "@/components/site/GiftCardShop";
 import { SITE_URL, canonical } from "@/lib/site";
 
-const title = "Kinkekaardid | Squeaky Clean";
+const title = "Kinkekaardid | Koduninja";
 const description =
   "Kingi puhas kodu: kodukoristuse kinkekaart Tartus ja Põlvas. Vali kujundus ja summa, maksa kohe ja saa kaart PDF-ina või prinditult ümbrikus.";
 

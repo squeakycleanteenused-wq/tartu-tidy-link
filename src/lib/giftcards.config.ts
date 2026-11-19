@@ -33,11 +33,11 @@ export const PRICES: [string, string][] = [
   ["Lisatööd", "15 €/h"],
 ];
 export const PRICE_NOTE =
-  "Hinnad km-ta, seisuga november 2026. Kehtiv hinnakiri: squeakycleanteenused.ee. Kaart ei ole rahaks vahetatav.";
+  "Hinnad km-ta, seisuga november 2026. Kehtiv hinnakiri: koduninja.ee. Kaart ei ole rahaks vahetatav.";
 
 /** Kaardil ja e-kirjades kasutatav ettevõtte nimi ja veebiaadress. */
 export const COMPANY = RENTAL_COMPANY.name;
-export const SITE = "squeakycleanteenused.ee";
+export const SITE = "koduninja.ee";
 
 /** Kaart on ühekordne: jääki ei tagastata ega kanta üle. Näidatakse enne ostu (summa juures ja makse kastis). */
 export const SINGLE_USE_TEXT =

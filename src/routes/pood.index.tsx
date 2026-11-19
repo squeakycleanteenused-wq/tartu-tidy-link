@@ -8,8 +8,8 @@ import { Shop } from "@/components/site/Shop";
 import { shopProducts } from "@/lib/shop.functions";
 import { SITE_URL, canonical } from "@/lib/site";
 
-const title = "E-pood | Squeaky Clean";
-const description = "Squeaky Cleani e-pood: praktilised digitaalsed dokumendid ja tooted koduks. Allalaadimine kohe pärast makset.";
+const title = "E-pood | Koduninja";
+const description = "Koduninjai e-pood: praktilised digitaalsed dokumendid ja tooted koduks. Allalaadimine kohe pärast makset.";
 
 export const Route = createFileRoute("/pood/")({
   loader: () => shopProducts(),

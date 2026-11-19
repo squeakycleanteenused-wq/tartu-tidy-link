@@ -6,14 +6,14 @@ import { DIGITAL_CONSENT_TEXT } from "@/lib/shop.shared";
 import { SITE_URL, canonical } from "@/lib/site";
 
 /* E-poe tingimused (1. etapp: digitaalsed tooted). 2. etapis lisanduvad kaupade tarne ja tagastus. */
-const title = "E-poe tingimused | Squeaky Clean";
+const title = "E-poe tingimused | Koduninja";
 const VALID_FROM = "19.11.2026";
 
 export const Route = createFileRoute("/e-poe-tingimused")({
   head: () => ({
     meta: [
       { title },
-      { name: "description", content: "Squeaky Clean e-poe müügitingimused digitaalsetele toodetele." },
+      { name: "description", content: "Koduninja e-poe müügitingimused digitaalsetele toodetele." },
       { property: "og:url", content: `${SITE_URL}/e-poe-tingimused` },
     ],
     links: [canonical("/e-poe-tingimused")],

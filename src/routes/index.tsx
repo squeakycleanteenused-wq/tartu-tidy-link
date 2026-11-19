@@ -15,7 +15,7 @@ import { Contact } from "@/components/site/Contact";
 import { SITE_URL, canonical, siteJsonLd } from "@/lib/site";
 import heroImage from "@/assets/hero-clean-home.jpg";
 
-const title = "Kodukoristus Tartus ja Põlvas | Squeaky Clean";
+const title = "Kodukoristus Tartus ja Põlvas | Koduninja";
 const description =
   "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses: hoolduskoristus, suurpuhastus, kolimiskoristus ja aknapesu. Arvuta hind veebis ja telli koristaja koju.";
 

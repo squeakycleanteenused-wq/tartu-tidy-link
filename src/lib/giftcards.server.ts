@@ -328,7 +328,7 @@ export function htmlMail(title: string, paragraphs: string[], button?: { href: s
   return `<!doctype html><html lang="et"><body style="margin:0;background:#f5f1e8;font-family:Arial,sans-serif;color:${GREEN}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff;border-radius:12px;overflow:hidden">
-<tr><td style="background:${GREEN};padding:20px 24px;color:${GOLD};font-size:12px;letter-spacing:3px;text-transform:uppercase">Squeaky Clean · ${esc(kicker)}</td></tr>
+<tr><td style="background:${GREEN};padding:20px 24px;color:${GOLD};font-size:12px;letter-spacing:3px;text-transform:uppercase">Koduninja · ${esc(kicker)}</td></tr>
 <tr><td style="padding:28px 24px">
 <h1 style="margin:0 0 16px;font-family:Georgia,serif;font-weight:normal;font-size:24px">${esc(title)}</h1>
 ${paragraphs.map((p) => `<p style="margin:0 0 12px;line-height:1.5;font-size:15px">${p}</p>`).join("")}
@@ -357,7 +357,7 @@ export async function sendCardMails(d: Deps, card: Card, opts: { buyerOnly?: boo
       const pdf = await d.pdf(card, { bleed: false });
       await d.mail({
         to: card.buyerEmail,
-        subject: `Sinu Squeaky Cleani kinkekaart ${card.nr}`,
+        subject: `Sinu Koduninja kinkekaart ${card.nr}`,
         text: lines.join("\n\n"),
         html: htmlMail(
           "Sinu kinkekaart on valmis",
@@ -527,7 +527,7 @@ export const mailerSend: Mailer = async (m) => {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest" },
     body: JSON.stringify({
-      from: { email: process.env["MAIL_FROM"] || "info@squeakycleanteenused.ee", name: RENTAL_COMPANY.name },
+      from: { email: process.env["MAIL_FROM"] || "info@squeakycleanteenused.ee", name: "Koduninja" },
       to: [{ email: m.to }],
       reply_to: { email: RENTAL_COMPANY.email },
       subject: m.subject,
@@ -705,7 +705,7 @@ export async function prodDeps(origin?: string): Promise<Deps> {
     pdf: renderCardPdf,
     now: Date.now,
     // Päringu aadress eelkõige, et eelvaates (preview) viiksid lingid eelvaatesse, mitte päris lehele.
-    siteUrl: (origin || process.env["PUBLIC_SITE_URL"] || "https://www.squeakycleanteenused.ee").replace(/\/$/, ""),
+    siteUrl: (origin || process.env["PUBLIC_SITE_URL"] || "https://www.koduninja.ee").replace(/\/$/, ""),
     ownerEmail: process.env["OWNER_EMAIL"] || RENTAL_COMPANY.email,
     secret,
   };

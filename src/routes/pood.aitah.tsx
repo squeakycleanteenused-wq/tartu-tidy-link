@@ -10,7 +10,7 @@ export const Route = createFileRoute("/pood/aitah")({
   validateSearch: z.object({ session_id: z.string().optional().catch(undefined) }),
   head: () => ({
     meta: [
-      { title: "Aitäh! | Squeaky Clean e-pood" },
+      { title: "Aitäh! | Koduninja e-pood" },
       { name: "robots", content: "noindex" },
       { name: "referrer", content: "no-referrer" },
     ],
