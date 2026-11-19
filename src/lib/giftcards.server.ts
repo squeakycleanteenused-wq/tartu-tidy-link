@@ -540,6 +540,9 @@ export const mailerSend: Mailer = async (m) => {
     }),
   });
   if (!res.ok) throw new Error(`MailerSend ${res.status}: ${(await res.text()).slice(0, 300)}`);
+  // Logis on näha, et kiri anti MailerSendile üle (aadress osaliselt peidetud).
+  const masked = m.to.replace(/^(.).*(@.*)$/, "$1***$2");
+  console.info(`[kinkekaart-kiri] ${res.status} → ${masked} "${m.subject}" id=${res.headers.get("x-message-id") ?? "-"}`);
 };
 
 type Row = Record<string, unknown>;
