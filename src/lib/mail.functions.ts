@@ -30,7 +30,7 @@ async function send(to: { email: string; name?: string }, replyTo: { email: stri
     method: "POST",
     headers: { Authorization: `Bearer ${token()}`, "Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest" },
     body: JSON.stringify({
-      from: { email: from(), name: RENTAL_COMPANY.name },
+      from: { email: from(), name: "Koduninja" },
       to: [to],
       reply_to: replyTo,
       subject,

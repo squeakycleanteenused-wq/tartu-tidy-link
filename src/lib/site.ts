@@ -1,8 +1,10 @@
 import { RENTAL_COMPANY } from "@/lib/rental-contract";
 
 /* Lehe ametlik aadress. Google kasutab seda otsingutulemustes (canonical, og:url). */
-export const SITE_URL = "https://www.squeakycleanteenused.ee";
-export const SITE_NAME = "Squeaky Clean";
+export const SITE_URL = "https://www.koduninja.ee";
+export const SITE_NAME = "Koduninja";
+/* Endine kaubamärk (Google seob vana ja uue nime). Juriidiline nimi on RENTAL_COMPANY.name. */
+export const FORMER_NAME = "Squeaky Clean";
 
 export const canonical = (path: string) => ({ rel: "canonical", href: `${SITE_URL}${path}` });
 
@@ -14,13 +16,15 @@ export const siteJsonLd = {
       "@context": "https://schema.org",
       "@type": "WebSite",
       name: SITE_NAME,
-      alternateName: RENTAL_COMPANY.name,
+      alternateName: [FORMER_NAME, RENTAL_COMPANY.name],
       url: `${SITE_URL}/`,
     },
     {
       "@context": "https://schema.org",
       "@type": "LocalBusiness",
-      name: RENTAL_COMPANY.name,
+      name: SITE_NAME,
+      legalName: RENTAL_COMPANY.name,
+      alternateName: FORMER_NAME,
       url: `${SITE_URL}/`,
       email: RENTAL_COMPANY.email,
       telephone: RENTAL_COMPANY.phone,

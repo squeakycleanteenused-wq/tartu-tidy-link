@@ -17,14 +17,15 @@ const services = (d: typeof et) =>
 const faq = (lang: "et" | "en") => FAQ[lang].map(([q, a]) => `### ${q}\n${a}`).join("\n\n");
 
 export function buildLlmsTxt() {
-  return `# Squeaky Clean Teenused OÜ – kodukoristus Tartus ja Põlvas
+  return `# Koduninja – kodukoristus Tartus ja Põlvas
 
-> Squeaky Clean Teenused OÜ (kaubamärk Squeaky Clean) on Eesti koristusettevõte, mis pakub ühekordset kodukoristust – hoolduskoristust, suurpuhastust ja aknapesu – Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Hinna saab arvutada veebis ja päringu saata ${SITE_URL}.
-> Squeaky Clean Teenused OÜ is an Estonian cleaning company offering one-time home cleaning (maintenance cleaning, deep cleaning, window washing) in Tartu and Põlva, Estonia.
+> Koduninja (Squeaky Clean Teenused OÜ kaubamärk, varem Squeaky Clean) on Eesti koristusettevõte, mis pakub ühekordset kodukoristust – hoolduskoristust, suurpuhastust ja aknapesu – Tartu ja Põlva linnas ning kokkuleppel nende lähiümbruses. Hinna saab arvutada veebis ja päringu saata ${SITE_URL}.
+> Koduninja (a brand of Squeaky Clean Teenused OÜ, formerly Squeaky Clean) is an Estonian cleaning company offering one-time home cleaning (maintenance cleaning, deep cleaning, window washing) in Tartu and Põlva, Estonia.
 
 ## Põhiandmed
 
-- Ärinimi: ${c.name} (Squeaky Clean)
+- Kaubamärk: Koduninja (varem Squeaky Clean)
+- Ärinimi: ${c.name}
 - Registrikood: ${c.code}
 - Aadress: ${c.address}
 - Telefon: ${c.phone}
@@ -68,7 +69,7 @@ ${faq("et")}
 
 # English summary
 
-${c.name} (Squeaky Clean) offers one-time and, on request, regular home cleaning in ${en.contact.areaValue.replace(/^Cities of /, "the cities of ")}. Each cleaning is a separate order with no ongoing contract or monthly fee. Customers can calculate an estimated price online and send a request at ${SITE_URL}; the company replies with a fixed-price offer by email, and the contract is concluded when the customer confirms it. Payment by bank transfer against an invoice. Not VAT-registered. Contact: ${c.phone}, ${c.email}.
+Koduninja (${c.name}) offers one-time and, on request, regular home cleaning in ${en.contact.areaValue.replace(/^Cities of /, "the cities of ")}. Each cleaning is a separate order with no ongoing contract or monthly fee. Customers can calculate an estimated price online and send a request at ${SITE_URL}; the company replies with a fixed-price offer by email, and the contract is concluded when the customer confirms it. Payment by bank transfer against an invoice. Not VAT-registered. Contact: ${c.phone}, ${c.email}.
 
 ## Services and prices
 

@@ -167,7 +167,7 @@ export function drawBack(ctx: Ctx, d: Design, data: CardData) {
 
   ctx.fillStyle = CREAM;
   ctx.font = `700 ${p(50)}px "Cinzel"`;
-  tracked(ctx, "SQUEAKYCLEAN", p(140), Y(185), p(8));
+  tracked(ctx, "KODUNINJA", p(140), Y(185), p(8));
   ctx.fillStyle = GOLD;
   ctx.font = `400 ${p(28)}px "Oswald"`;
   tracked(ctx, "KODUKORISTUSE KINKEKAART", p(142), Y(232), p(6));

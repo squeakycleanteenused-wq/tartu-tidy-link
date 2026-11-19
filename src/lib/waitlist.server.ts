@@ -214,7 +214,7 @@ export const mailerSend: Mailer = async ({ to, subject, text, replyTo }) => {
     body: JSON.stringify({
       from: {
         email: process.env["MAIL_FROM"] || "info@squeakycleanteenused.ee",
-        name: RENTAL_COMPANY.name,
+        name: "Koduninja",
       },
       to: [{ email: to }],
       ...(replyTo ? { reply_to: { email: replyTo } } : {}),

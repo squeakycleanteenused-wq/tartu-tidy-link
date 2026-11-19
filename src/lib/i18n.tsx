@@ -134,7 +134,7 @@ export const et = {
     title: "E-pood",
     soonBadge: "Tulekul",
     soonText:
-      "Squeaky Cleani e-pood avaneb peagi! Varsti leiad siit meie soovitatud puhastusvahendid ja kingikomplektid.",
+      "Koduninja e-pood avaneb peagi! Varsti leiad siit meie soovitatud puhastusvahendid ja kingikomplektid.",
     notifyTitle: "Soovid teavitust, kui e-pood avaneb?",
     notifyMe: "Teavita mind",
     notifyNote: "Kasutame sinu e-posti ainult e-poe avamise teavituseks.",
@@ -322,7 +322,7 @@ export const en: Dict = {
     title: "Shop",
     soonBadge: "Coming soon",
     soonText:
-      "The Squeaky Clean shop is opening soon! You'll soon find our recommended cleaning products and gift sets here.",
+      "The Koduninja shop is opening soon! You'll soon find our recommended cleaning products and gift sets here.",
     notifyTitle: "Want to know when the shop opens?",
     notifyMe: "Notify me",
     notifyNote: "We use your email only to notify you about the shop opening.",

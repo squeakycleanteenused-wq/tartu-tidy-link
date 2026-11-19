@@ -10,7 +10,7 @@ export const Route = createFileRoute("/kinkekaardid/aitah")({
   validateSearch: z.object({ session_id: z.string().optional().catch(undefined) }),
   head: () => ({
     meta: [
-      { title: "Aitäh! | Squeaky Clean kinkekaart" },
+      { title: "Aitäh! | Koduninja kinkekaart" },
       { name: "robots", content: "noindex" },
       { name: "referrer", content: "no-referrer" },
     ],

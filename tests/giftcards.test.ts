@@ -139,7 +139,7 @@ describe("kinkekaardid", () => {
     expect(card.validUntil).toBe("2027-11-17");
     expect(card.printStatus).toBeNull();
     expect(mails.map((m) => m.to)).toEqual(["olev@example.test", "omanik@example.test"]);
-    expect(mails[0]!.subject).toBe(`Sinu Squeaky Cleani kinkekaart ${card.nr}`);
+    expect(mails[0]!.subject).toBe(`Sinu Koduninja kinkekaart ${card.nr}`);
     expect(mails[0]!.attachments?.[0]?.content[0]).toBe(1); // kliendi PDF ilma lõikevaruta
     expect(mails[1]!.attachments).toEqual([]);
 

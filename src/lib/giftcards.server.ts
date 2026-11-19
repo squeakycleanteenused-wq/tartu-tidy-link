@@ -94,6 +94,7 @@ export type Checkout = {
     successUrl: string;
     cancelUrl: string;
     expiresAt: number; // unix sekundites
+    kind?: string; // "product" e-poe tellimusel; puudub = kinkekaart
   }): Promise<{ id: string; url: string }>;
 };
 
@@ -126,10 +127,10 @@ export const CARD_NR_RE = /^SQ-\d{4}-[A-HJ-NP-Z2-9]{4}$/;
 
 const today = (now: number) => new Date(now).toLocaleDateString("sv-SE", { timeZone: "Europe/Tallinn" });
 
-function hmac(secret: string, msg: string) {
+export function hmac(secret: string, msg: string) {
   return createHmac("sha256", secret).update(msg).digest("base64url");
 }
-function safeEqual(a: string, b: string) {
+export function safeEqual(a: string, b: string) {
   const x = Buffer.from(a), y = Buffer.from(b);
   return x.length === y.length && timingSafeEqual(x, y);
 }
@@ -320,14 +321,14 @@ export async function issueCard(
 /* ---------- e-kirjad ---------- */
 
 const GREEN = "#10291e", GOLD = "#b8913b";
-const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
+export const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]!);
 const addressText = (a: Address | null) => (a ? `${a.name}, ${a.street}, ${a.zip} ${a.city}` : "");
 
-function htmlMail(title: string, paragraphs: string[], button?: { href: string; label: string }) {
+export function htmlMail(title: string, paragraphs: string[], button?: { href: string; label: string }, kicker = "Kinkekaart") {
   return `<!doctype html><html lang="et"><body style="margin:0;background:#f5f1e8;font-family:Arial,sans-serif;color:${GREEN}">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0"><tr><td align="center" style="padding:24px 12px">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="max-width:560px;background:#fff;border-radius:12px;overflow:hidden">
-<tr><td style="background:${GREEN};padding:20px 24px;color:${GOLD};font-size:12px;letter-spacing:3px;text-transform:uppercase">Squeaky Clean · Kinkekaart</td></tr>
+<tr><td style="background:${GREEN};padding:20px 24px;color:${GOLD};font-size:12px;letter-spacing:3px;text-transform:uppercase">Koduninja · ${esc(kicker)}</td></tr>
 <tr><td style="padding:28px 24px">
 <h1 style="margin:0 0 16px;font-family:Georgia,serif;font-weight:normal;font-size:24px">${esc(title)}</h1>
 ${paragraphs.map((p) => `<p style="margin:0 0 12px;line-height:1.5;font-size:15px">${p}</p>`).join("")}
@@ -356,7 +357,7 @@ export async function sendCardMails(d: Deps, card: Card, opts: { buyerOnly?: boo
       const pdf = await d.pdf(card, { bleed: false });
       await d.mail({
         to: card.buyerEmail,
-        subject: `Sinu Squeaky Cleani kinkekaart ${card.nr}`,
+        subject: `Sinu Koduninja kinkekaart ${card.nr}`,
         text: lines.join("\n\n"),
         html: htmlMail(
           "Sinu kinkekaart on valmis",
@@ -498,6 +499,10 @@ export const stripeCheckout = (secretKey: string): Checkout => ({
       "payment_intent_data[metadata][order_id]": a.orderId,
       expires_at: String(a.expiresAt),
     });
+    if (a.kind) {
+      body.set("metadata[kind]", a.kind);
+      body.set("payment_intent_data[metadata][kind]", a.kind);
+    }
     a.lines.forEach((l, i) => {
       body.set(`line_items[${i}][quantity]`, "1");
       body.set(`line_items[${i}][price_data][currency]`, "eur");
@@ -522,7 +527,7 @@ export const mailerSend: Mailer = async (m) => {
     method: "POST",
     headers: { Authorization: `Bearer ${token}`, "Content-Type": "application/json", "X-Requested-With": "XMLHttpRequest" },
     body: JSON.stringify({
-      from: { email: process.env["MAIL_FROM"] || "info@squeakycleanteenused.ee", name: RENTAL_COMPANY.name },
+      from: { email: process.env["MAIL_FROM"] || "info@squeakycleanteenused.ee", name: "Koduninja" },
       to: [{ email: m.to }],
       reply_to: { email: RENTAL_COMPANY.email },
       subject: m.subject,
@@ -700,7 +705,7 @@ export async function prodDeps(origin?: string): Promise<Deps> {
     pdf: renderCardPdf,
     now: Date.now,
     // Päringu aadress eelkõige, et eelvaates (preview) viiksid lingid eelvaatesse, mitte päris lehele.
-    siteUrl: (origin || process.env["PUBLIC_SITE_URL"] || "https://www.squeakycleanteenused.ee").replace(/\/$/, ""),
+    siteUrl: (origin || process.env["PUBLIC_SITE_URL"] || "https://www.koduninja.ee").replace(/\/$/, ""),
     ownerEmail: process.env["OWNER_EMAIL"] || RENTAL_COMPANY.email,
     secret,
   };

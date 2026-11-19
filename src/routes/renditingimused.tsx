@@ -6,7 +6,7 @@ import { SITE_URL, canonical } from "@/lib/site";
 
 /* Tekstiilipuhastusmasina üürilepingu täistekst (tüüptingimused). Sama tekst, mis tellimisel täidetakse
    üürniku andmetega ja saadetakse pakkumisega (src/lib/rental-contract.ts). Muuda tingimusi ainult seal. */
-const title = "Renditingimused: tekstiilipuhasti üürileping | Squeaky Clean";
+const title = "Renditingimused: tekstiilipuhasti üürileping | Koduninja";
 const description = `Bissell SpotClean Pro tekstiilipuhastusmasina üürilepingu täistekst: ${RENTAL.pricePerDay ?? "kokkuleppel"} € ööpäev, tagatisraha ei võeta, kuni ${RENTAL.maxDays} päeva.`;
 
 export const Route = createFileRoute("/renditingimused")({

@@ -5,7 +5,7 @@ import { SectionHeading } from "@/components/site/SectionHeading";
    About: pikem tutvustus (oluline otsingumootoritele), asub lehe allosas KKK järel. */
 const COPY = {
   et: {
-    eyebrow: "Squeaky Clean",
+    eyebrow: "Koduninja",
     lead: "Puhas kodu,",
     leadAccent: "ilma et peaksid sellele mõtlema.",
     leadText: "Ütle, mida vajad. Saadame sulle kindla hinna, tuleme kokkulepitud ajal ning sina saad tegelda oma asjadega.",
@@ -13,7 +13,7 @@ const COPY = {
     aboutEyebrow: "Meist",
     title: "Ühekordne kodukoristus Tartus, Põlvas ja lähiümbruses",
     paragraphs: [
-      "Squeaky Clean Teenused OÜ pakub kodukoristust Tartus ja Põlvas ning kokkuleppel ka nende lähiümbruses. Koristame kortereid ja eramaju, meie kliendid on nii eraisikud kui ka ettevõtted. Koristaja koju saad tellida veebis: arvuta hind ja saada päring.",
+      "Koduninja pakub kodukoristust Tartus ja Põlvas ning kokkuleppel ka nende lähiümbruses. Koristame kortereid ja eramaju, meie kliendid on nii eraisikud kui ka ettevõtted. Koristaja koju saad tellida veebis: arvuta hind ja saada päring.",
       "Hoolduskoristus hoiab kodu iga päev puhtana. Suurpuhastus on põhjalikum ja sobib ka kolimiskoristuseks või siis, kui kodu pole tükk aega koristatud. Lisaks peseme aknaid ja teeme lisatöid: näiteks peseme seest ahju, külmkapi ja kapid või koristame rõdu ja terrassi. Polstermööbli, vaipade ja madratsite puhastamiseks saad meilt rentida tekstiilipuhastusmasina.",
     ],
     onceTitle: "Ühekordne või regulaarne, ilma pikaajalise lepinguta",
@@ -27,7 +27,7 @@ const COPY = {
     ],
   },
   en: {
-    eyebrow: "Squeaky Clean",
+    eyebrow: "Koduninja",
     lead: "A clean home,",
     leadAccent: "without having to think about it.",
     leadText: "Tell us what you need. We send a fixed price, arrive at the agreed time and you get your time back.",
@@ -35,7 +35,7 @@ const COPY = {
     aboutEyebrow: "About us",
     title: "One-time home cleaning in Tartu, Põlva and the surrounding area",
     paragraphs: [
-      "Squeaky Clean Teenused OÜ offers home cleaning in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. We clean apartments and houses for private customers and companies. You can book a cleaner for your home online: calculate the price and send a request.",
+      "Koduninja offers home cleaning in the cities of Tartu and Põlva and, by agreement, in their surrounding areas. We clean apartments and houses for private customers and companies. You can book a cleaner for your home online: calculate the price and send a request.",
       "We offer maintenance cleaning to restore everyday cleanliness and deep cleaning, also as move-in or move-out cleaning or after a longer break. We also wash windows and do extra jobs such as cleaning the inside of ovens, fridges and cupboards, or cleaning balconies and terraces. You can also rent an upholstery cleaning machine for sofas, carpets and mattresses.",
     ],
     onceTitle: "One-time or regular, without a long-term contract",

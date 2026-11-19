@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as EPoeTingimusedRouteImport } from './routes/e-poe-tingimused'
 import { Route as HaldusRouteImport } from './routes/haldus'
 import { Route as KinkekaardiTingimusedRouteImport } from './routes/kinkekaardi-tingimused'
 import { Route as LlmsDottxtRouteImport } from './routes/llms[.]txt'
@@ -21,12 +22,22 @@ import { Route as EpoodKinnitaRouteImport } from './routes/epood.kinnita'
 import { Route as EpoodLoobuRouteImport } from './routes/epood.loobu'
 import { Route as KinkekaardidIndexRouteImport } from './routes/kinkekaardid.index'
 import { Route as KinkekaardidAitahRouteImport } from './routes/kinkekaardid.aitah'
+import { Route as PoodIndexRouteImport } from './routes/pood.index'
+import { Route as PoodSlugRouteImport } from './routes/pood.$slug'
+import { Route as PoodAitahRouteImport } from './routes/pood.aitah'
+import { Route as PoodKorvRouteImport } from './routes/pood.korv'
 import { Route as ApiKinkekaartHaldusPdfRouteImport } from './routes/api/kinkekaart.haldus-pdf'
 import { Route as ApiKinkekaartPdfRouteImport } from './routes/api/kinkekaart.pdf'
+import { Route as ApiPoodFailRouteImport } from './routes/api/pood.fail'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EPoeTingimusedRoute = EPoeTingimusedRouteImport.update({
+  id: '/e-poe-tingimused',
+  path: '/e-poe-tingimused',
   getParentRoute: () => rootRouteImport,
 } as any)
 const HaldusRoute = HaldusRouteImport.update({
@@ -84,6 +95,26 @@ const KinkekaardidAitahRoute = KinkekaardidAitahRouteImport.update({
   path: '/kinkekaardid/aitah',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoodIndexRoute = PoodIndexRouteImport.update({
+  id: '/pood/',
+  path: '/pood/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoodSlugRoute = PoodSlugRouteImport.update({
+  id: '/pood/$slug',
+  path: '/pood/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoodAitahRoute = PoodAitahRouteImport.update({
+  id: '/pood/aitah',
+  path: '/pood/aitah',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoodKorvRoute = PoodKorvRouteImport.update({
+  id: '/pood/korv',
+  path: '/pood/korv',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiKinkekaartHaldusPdfRoute = ApiKinkekaartHaldusPdfRouteImport.update({
   id: '/api/kinkekaart/haldus-pdf',
   path: '/api/kinkekaart/haldus-pdf',
@@ -94,9 +125,15 @@ const ApiKinkekaartPdfRoute = ApiKinkekaartPdfRouteImport.update({
   path: '/api/kinkekaart/pdf',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiPoodFailRoute = ApiPoodFailRouteImport.update({
+  id: '/api/pood/fail',
+  path: '/api/pood/fail',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/e-poe-tingimused': typeof EPoeTingimusedRoute
   '/haldus': typeof HaldusRoute
   '/kinkekaardi-tingimused': typeof KinkekaardiTingimusedRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -107,12 +144,18 @@ export interface FileRoutesByFullPath {
   '/epood/kinnita': typeof EpoodKinnitaRoute
   '/epood/loobu': typeof EpoodLoobuRoute
   '/kinkekaardid/aitah': typeof KinkekaardidAitahRoute
+  '/pood/$slug': typeof PoodSlugRoute
+  '/pood/aitah': typeof PoodAitahRoute
+  '/pood/korv': typeof PoodKorvRoute
   '/kinkekaardid/': typeof KinkekaardidIndexRoute
+  '/pood/': typeof PoodIndexRoute
   '/api/kinkekaart/haldus-pdf': typeof ApiKinkekaartHaldusPdfRoute
   '/api/kinkekaart/pdf': typeof ApiKinkekaartPdfRoute
+  '/api/pood/fail': typeof ApiPoodFailRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/e-poe-tingimused': typeof EPoeTingimusedRoute
   '/haldus': typeof HaldusRoute
   '/kinkekaardi-tingimused': typeof KinkekaardiTingimusedRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -123,13 +166,19 @@ export interface FileRoutesByTo {
   '/epood/kinnita': typeof EpoodKinnitaRoute
   '/epood/loobu': typeof EpoodLoobuRoute
   '/kinkekaardid/aitah': typeof KinkekaardidAitahRoute
+  '/pood/$slug': typeof PoodSlugRoute
+  '/pood/aitah': typeof PoodAitahRoute
+  '/pood/korv': typeof PoodKorvRoute
   '/kinkekaardid': typeof KinkekaardidIndexRoute
+  '/pood': typeof PoodIndexRoute
   '/api/kinkekaart/haldus-pdf': typeof ApiKinkekaartHaldusPdfRoute
   '/api/kinkekaart/pdf': typeof ApiKinkekaartPdfRoute
+  '/api/pood/fail': typeof ApiPoodFailRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/e-poe-tingimused': typeof EPoeTingimusedRoute
   '/haldus': typeof HaldusRoute
   '/kinkekaardi-tingimused': typeof KinkekaardiTingimusedRoute
   '/llms.txt': typeof LlmsDottxtRoute
@@ -140,14 +189,20 @@ export interface FileRoutesById {
   '/epood/kinnita': typeof EpoodKinnitaRoute
   '/epood/loobu': typeof EpoodLoobuRoute
   '/kinkekaardid/aitah': typeof KinkekaardidAitahRoute
+  '/pood/$slug': typeof PoodSlugRoute
+  '/pood/aitah': typeof PoodAitahRoute
+  '/pood/korv': typeof PoodKorvRoute
   '/kinkekaardid/': typeof KinkekaardidIndexRoute
+  '/pood/': typeof PoodIndexRoute
   '/api/kinkekaart/haldus-pdf': typeof ApiKinkekaartHaldusPdfRoute
   '/api/kinkekaart/pdf': typeof ApiKinkekaartPdfRoute
+  '/api/pood/fail': typeof ApiPoodFailRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/e-poe-tingimused'
     | '/haldus'
     | '/kinkekaardi-tingimused'
     | '/llms.txt'
@@ -158,12 +213,18 @@ export interface FileRouteTypes {
     | '/epood/kinnita'
     | '/epood/loobu'
     | '/kinkekaardid/aitah'
+    | '/pood/$slug'
+    | '/pood/aitah'
+    | '/pood/korv'
     | '/kinkekaardid/'
+    | '/pood/'
     | '/api/kinkekaart/haldus-pdf'
     | '/api/kinkekaart/pdf'
+    | '/api/pood/fail'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/e-poe-tingimused'
     | '/haldus'
     | '/kinkekaardi-tingimused'
     | '/llms.txt'
@@ -174,12 +235,18 @@ export interface FileRouteTypes {
     | '/epood/kinnita'
     | '/epood/loobu'
     | '/kinkekaardid/aitah'
+    | '/pood/$slug'
+    | '/pood/aitah'
+    | '/pood/korv'
     | '/kinkekaardid'
+    | '/pood'
     | '/api/kinkekaart/haldus-pdf'
     | '/api/kinkekaart/pdf'
+    | '/api/pood/fail'
   id:
     | '__root__'
     | '/'
+    | '/e-poe-tingimused'
     | '/haldus'
     | '/kinkekaardi-tingimused'
     | '/llms.txt'
@@ -190,13 +257,19 @@ export interface FileRouteTypes {
     | '/epood/kinnita'
     | '/epood/loobu'
     | '/kinkekaardid/aitah'
+    | '/pood/$slug'
+    | '/pood/aitah'
+    | '/pood/korv'
     | '/kinkekaardid/'
+    | '/pood/'
     | '/api/kinkekaart/haldus-pdf'
     | '/api/kinkekaart/pdf'
+    | '/api/pood/fail'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  EPoeTingimusedRoute: typeof EPoeTingimusedRoute
   HaldusRoute: typeof HaldusRoute
   KinkekaardiTingimusedRoute: typeof KinkekaardiTingimusedRoute
   LlmsDottxtRoute: typeof LlmsDottxtRoute
@@ -207,9 +280,14 @@ export interface RootRouteChildren {
   EpoodKinnitaRoute: typeof EpoodKinnitaRoute
   EpoodLoobuRoute: typeof EpoodLoobuRoute
   KinkekaardidAitahRoute: typeof KinkekaardidAitahRoute
+  PoodSlugRoute: typeof PoodSlugRoute
+  PoodAitahRoute: typeof PoodAitahRoute
+  PoodKorvRoute: typeof PoodKorvRoute
   KinkekaardidIndexRoute: typeof KinkekaardidIndexRoute
+  PoodIndexRoute: typeof PoodIndexRoute
   ApiKinkekaartHaldusPdfRoute: typeof ApiKinkekaartHaldusPdfRoute
   ApiKinkekaartPdfRoute: typeof ApiKinkekaartPdfRoute
+  ApiPoodFailRoute: typeof ApiPoodFailRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -219,6 +297,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/e-poe-tingimused': {
+      id: '/e-poe-tingimused'
+      path: '/e-poe-tingimused'
+      fullPath: '/e-poe-tingimused'
+      preLoaderRoute: typeof EPoeTingimusedRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/haldus': {
@@ -298,6 +383,34 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof KinkekaardidAitahRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pood/': {
+      id: '/pood/'
+      path: '/pood'
+      fullPath: '/pood/'
+      preLoaderRoute: typeof PoodIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pood/$slug': {
+      id: '/pood/$slug'
+      path: '/pood/$slug'
+      fullPath: '/pood/$slug'
+      preLoaderRoute: typeof PoodSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pood/aitah': {
+      id: '/pood/aitah'
+      path: '/pood/aitah'
+      fullPath: '/pood/aitah'
+      preLoaderRoute: typeof PoodAitahRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pood/korv': {
+      id: '/pood/korv'
+      path: '/pood/korv'
+      fullPath: '/pood/korv'
+      preLoaderRoute: typeof PoodKorvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/kinkekaart/haldus-pdf': {
       id: '/api/kinkekaart/haldus-pdf'
       path: '/api/kinkekaart/haldus-pdf'
@@ -312,11 +425,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiKinkekaartPdfRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/pood/fail': {
+      id: '/api/pood/fail'
+      path: '/api/pood/fail'
+      fullPath: '/api/pood/fail'
+      preLoaderRoute: typeof ApiPoodFailRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  EPoeTingimusedRoute: EPoeTingimusedRoute,
   HaldusRoute: HaldusRoute,
   KinkekaardiTingimusedRoute: KinkekaardiTingimusedRoute,
   LlmsDottxtRoute: LlmsDottxtRoute,
@@ -327,9 +448,14 @@ const rootRouteChildren: RootRouteChildren = {
   EpoodKinnitaRoute: EpoodKinnitaRoute,
   EpoodLoobuRoute: EpoodLoobuRoute,
   KinkekaardidAitahRoute: KinkekaardidAitahRoute,
+  PoodSlugRoute: PoodSlugRoute,
+  PoodAitahRoute: PoodAitahRoute,
+  PoodKorvRoute: PoodKorvRoute,
   KinkekaardidIndexRoute: KinkekaardidIndexRoute,
+  PoodIndexRoute: PoodIndexRoute,
   ApiKinkekaartHaldusPdfRoute: ApiKinkekaartHaldusPdfRoute,
   ApiKinkekaartPdfRoute: ApiKinkekaartPdfRoute,
+  ApiPoodFailRoute: ApiPoodFailRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

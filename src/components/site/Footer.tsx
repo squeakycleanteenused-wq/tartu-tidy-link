@@ -10,7 +10,10 @@ export function Footer() {
     <footer className="border-t border-border bg-secondary/50">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-12 sm:grid-cols-3">
         <div>
-          <h3 className="text-base font-bold">{t.company}</h3>
+          <h3 className="text-base font-bold">Koduninja</h3>
+          <p className="mt-1 text-sm text-muted-foreground">
+            {lang === "et" ? `Kaubamärk, mida kasutab ${t.company}` : `A brand of ${t.company}`}
+          </p>
           <p className="mt-2 text-sm text-muted-foreground">{t.hero.eyebrow}</p>
         </div>
         <ul className="space-y-2 text-sm text-muted-foreground">
@@ -45,6 +48,9 @@ export function Footer() {
           </Link>
           <Link to="/renditingimused" className="block font-medium text-primary hover:underline">
             Renditingimused
+          </Link>
+          <Link to="/e-poe-tingimused" className="block font-medium text-primary hover:underline">
+            E-poe tingimused
           </Link>
           <Link to="/kinkekaardid" className="block font-medium text-primary hover:underline">
             Kinkekaardid
