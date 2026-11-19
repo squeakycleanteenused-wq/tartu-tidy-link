@@ -337,7 +337,7 @@ ${button ? `<p style="margin:20px 0"><a href="${esc(button.href)}" style="displa
 </table></td></tr></table></body></html>`;
 }
 
-export async function sendCardMails(d: Deps, card: Card) {
+export async function sendCardMails(d: Deps, card: Card, opts: { buyerOnly?: boolean } = {}) {
   const link = signedPdfUrl(d, card.nr);
   const valid = fmtDate(card.validUntil);
   const errors: string[] = [];
@@ -378,7 +378,7 @@ export async function sendCardMails(d: Deps, card: Card) {
     }
   }
 
-  if (d.ownerEmail) {
+  if (d.ownerEmail && !opts.buyerOnly) {
     const isPrint = card.delivery === "print";
     const lines = [
       `Uus kinkekaart ${card.nr}: ${card.amount} €, kujundus ${designById(card.design)?.name ?? card.design}.`,
@@ -417,6 +417,16 @@ export async function sendCardMails(d: Deps, card: Card) {
     await d.store.updateCard(card.nr, { notes: `${card.notes}\nE-kiri ebaõnnestus ${new Date(d.now()).toISOString()}: ${errors.join("; ")}`.trim() });
   }
   return errors;
+}
+
+/** Saadab ostjale kinkekaardi kirja uuesti (halduse nupp). */
+export async function resendBuyerMail(d: Deps, nr: string) {
+  const card = await readCard(d, nr);
+  if (!card) throw new Error("Kaarti ei leitud");
+  if (!card.buyerEmail) throw new Error("Kaardil pole ostja e-posti aadressi");
+  const errors = await sendCardMails(d, card, { buyerOnly: true });
+  if (errors.length) throw new Error(`Kiri ei läinud välja: ${errors.join("; ")}`);
+  return { to: card.buyerEmail };
 }
 
 /* ---------- aitäh-leht ja haldus ---------- */

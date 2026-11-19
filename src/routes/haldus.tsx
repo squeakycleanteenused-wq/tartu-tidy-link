@@ -7,6 +7,7 @@ import {
   adminLogin,
   adminLogout,
   adminOverview,
+  adminResendMail,
   adminStatus,
 } from "@/lib/giftcards.functions";
 import { AMOUNTS, DESIGNS, MAX_AMOUNT, MIN_AMOUNT, designById, fmtDate, type DesignId } from "@/lib/giftcards.config";
@@ -76,6 +77,19 @@ function Login({ onOk }: { onOk: () => void }) {
 function CardRow({ c, onChange }: { c: Card; onChange: (c: Card) => void }) {
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
+  const [info, setInfo] = useState("");
+  async function resend() {
+    setBusy(true);
+    setErr("");
+    setInfo("");
+    try {
+      const r = await adminResendMail({ data: { nr: c.nr } });
+      setInfo(`Kiri saadetud: ${r.to}`);
+    } catch (e) {
+      setErr((e as Error).message);
+    }
+    setBusy(false);
+  }
   async function act(action: "used" | "cancel" | "posted" | "reactivate") {
     if (action === "cancel" && !window.confirm(`Tühistan kaardi ${c.nr}? Seda ei saa tagasi võtta.`)) return;
     setBusy(true);
@@ -126,6 +140,11 @@ function CardRow({ c, onChange }: { c: Card; onChange: (c: Card) => void }) {
             Tühista
           </button>
         )}
+        {c.buyerEmail && (
+          <button className={btn} disabled={busy} onClick={() => void resend()}>
+            Saada kiri uuesti
+          </button>
+        )}
         <a className={btn} href={pdfHref(c.nr)}>
           PDF
         </a>
@@ -143,6 +162,7 @@ function CardRow({ c, onChange }: { c: Card; onChange: (c: Card) => void }) {
         )}
       </div>
       {err && <p role="alert" className="mt-2 text-sm text-destructive">{err}</p>}
+      {info && <p role="status" className="mt-2 text-sm text-emerald-700 dark:text-emerald-300">{info}</p>}
     </div>
   );
 }

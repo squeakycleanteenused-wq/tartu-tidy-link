@@ -130,6 +130,14 @@ export const adminCardAction = createServerFn({ method: "POST" })
     return { card: await g.setCardState(d, data.nr, data.action) };
   });
 
+/** Saadab ostjale kinkekaardi kirja (PDF manusena) uuesti. */
+export const adminResendMail = createServerFn({ method: "POST" })
+  .inputValidator((data: unknown) => z.object({ nr: z.string().max(20) }).parse(data))
+  .handler(async ({ data }) => {
+    const { g, d } = await admin();
+    return g.resendBuyerMail(d, data.nr);
+  });
+
 /** Käsitsi väljastamine (nt kui klient maksis arvega). Makset ei looda. */
 export const adminIssueCard = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) =>
