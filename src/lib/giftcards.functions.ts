@@ -88,7 +88,7 @@ export const adminLogin = createServerFn({ method: "POST" })
   .handler(async ({ data }) => {
     const { g, d } = await ctx();
     const { setCookie } = await import("@tanstack/react-start/server");
-    if (!g.checkPassword(data.password, process.env["ADMIN_PASSWORD"] ?? "")) {
+    if (!g.checkPassword(data.password, (process.env["ADMIN_PASSWORD"] ?? "").trim())) {
       await new Promise((r) => setTimeout(r, 1000)); // aeglustab parooli arvamist
       return { ok: false };
     }

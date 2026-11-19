@@ -12,7 +12,7 @@ export const Route = createFileRoute("/api/stripe-webhook")({
       POST: async ({ request }) => {
         const g = await import("@/lib/giftcards.server");
         const payload = await request.text();
-        const whsec = process.env["STRIPE_WEBHOOK_SECRET"] ?? "";
+        const whsec = (process.env["STRIPE_WEBHOOK_SECRET"] ?? "").trim();
         let event: StripeEvent | null;
         try {
           if (whsec) {
@@ -22,11 +22,12 @@ export const Route = createFileRoute("/api/stripe-webhook")({
             event = JSON.parse(payload) as StripeEvent;
           } else {
             const id = (JSON.parse(payload) as { id?: unknown }).id;
-            event = await g.fetchStripeEvent(process.env["STRIPE_SECRET_KEY"] ?? "", typeof id === "string" ? id : "");
+            event = await g.fetchStripeEvent((process.env["STRIPE_SECRET_KEY"] ?? "").trim(), typeof id === "string" ? id : "");
             if (!event) return new Response("Tundmatu sündmus", { status: 400 });
           }
         } catch (e) {
-          console.error("[stripe-webhook] sündmuse kontroll ebaõnnestus:", (e as Error).message);
+          // Ära logi veateksti: see võib sisaldada võtit (nt vigase päise korral).
+          console.error("[stripe-webhook] sündmuse kontroll ebaõnnestus:", (e as Error).name);
           return new Response("Vigane päring", { status: 400 });
         }
         try {

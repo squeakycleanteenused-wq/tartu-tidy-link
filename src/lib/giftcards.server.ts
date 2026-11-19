@@ -687,8 +687,8 @@ export async function supabaseStore(): Promise<Store> {
 export async function prodDeps(origin?: string): Promise<Deps> {
   // Allkirjade saladus: GIFTCARD_SECRET, või kui see puudub, tuletatakse see Stripe'i salajasest võtmest
   // (sama tugev, kuid eraldi kasutuseks). Stripe'i võtme vahetamisel aeguvad vanad PDF-lingid ja halduse sessioon.
-  const own = process.env["GIFTCARD_SECRET"] ?? "";
-  const stripeKey = process.env["STRIPE_SECRET_KEY"] ?? "";
+  const own = (process.env["GIFTCARD_SECRET"] ?? "").trim();
+  const stripeKey = (process.env["STRIPE_SECRET_KEY"] ?? "").trim();
   const secret =
     own.length >= 32 ? own : stripeKey.length >= 32 ? createHmac("sha256", stripeKey).update("squeakyclean-giftcard-v1").digest("base64url") : "";
   if (!secret) throw new Error("Kinkekaartide seadistus puudub: STRIPE_SECRET_KEY (või GIFTCARD_SECRET) pole seatud");
@@ -696,7 +696,7 @@ export async function prodDeps(origin?: string): Promise<Deps> {
   return {
     store: await supabaseStore(),
     mail: mailerSend,
-    checkout: stripeCheckout(process.env["STRIPE_SECRET_KEY"] ?? ""),
+    checkout: stripeCheckout((process.env["STRIPE_SECRET_KEY"] ?? "").trim()),
     pdf: renderCardPdf,
     now: Date.now,
     // Päringu aadress eelkõige, et eelvaates (preview) viiksid lingid eelvaatesse, mitte päris lehele.
