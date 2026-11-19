@@ -25,7 +25,8 @@ export const Route = createFileRoute("/api/stripe-webhook")({
             event = await g.fetchStripeEvent(process.env["STRIPE_SECRET_KEY"] ?? "", typeof id === "string" ? id : "");
             if (!event) return new Response("Tundmatu sündmus", { status: 400 });
           }
-        } catch {
+        } catch (e) {
+          console.error("[stripe-webhook] sündmuse kontroll ebaõnnestus:", (e as Error).message);
           return new Response("Vigane päring", { status: 400 });
         }
         try {
