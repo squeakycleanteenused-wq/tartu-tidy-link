@@ -44,8 +44,19 @@ function isH3SwallowedErrorBody(body: string): boolean {
   }
 }
 
+/* Vana aadress suunab uuele (koduninja.ee). /api/* jääb vanale aadressile tööle: Stripe'i makseteated
+   ei järgi ümbersuunamisi ja varem saadetud kinkekaardi- ja allalaadimislingid peavad edasi kehtima. */
+const OLD_HOST = /(^|\.)squeakycleanteenused\.ee$/;
+function redirectOldHost(request: Request): Response | null {
+  const url = new URL(request.url);
+  if (!OLD_HOST.test(url.hostname) || url.pathname.startsWith("/api/")) return null;
+  return new Response(null, { status: 308, headers: { Location: `https://www.koduninja.ee${url.pathname}${url.search}` } });
+}
+
 export default {
   async fetch(request: Request, env: unknown, ctx: unknown) {
+    const moved = redirectOldHost(request);
+    if (moved) return moved;
     try {
       const handler = await getServerEntry();
       const response = await handler.fetch(request, env, ctx);
