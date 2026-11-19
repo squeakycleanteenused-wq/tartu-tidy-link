@@ -1,0 +1,2877 @@
+{
+"source": "Unisend pakiautomaatide nimekiri (my.unisend.ee/map → Laadi alla)",
+"updated": "2026-11-19",
+"terminals": [
+{
+"id": "9592",
+"name": "Abja-Paluoja uDrop",
+"city": "Abja-Paluoja",
+"address": "Viljandi tee 2a",
+"zip": "69402",
+"lat": 58.126924509,
+"lng": 25.360774746
+},
+{
+"id": "9600",
+"name": "Ahja uDrop Coop",
+"city": "Ahja",
+"address": "Tartu mnt 24a",
+"zip": "63710",
+"lat": 58.20894336,
+"lng": 27.0748941
+},
+{
+"id": "9587",
+"name": "Alatskivi uDrop",
+"city": "Alatskivi",
+"address": "Tartu mnt 15",
+"zip": "60201",
+"lat": 58.600766558,
+"lng": 27.13251381
+},
+{
+"id": "9158",
+"name": "Alliku Rimi",
+"city": "Alliku",
+"address": "Instituudi tee 132",
+"zip": "76403",
+"lat": 59.35783022,
+"lng": 24.602146568
+},
+{
+"id": "9613",
+"name": "Sõmeru uDrop",
+"city": "Aluvere",
+"address": "Veski 7",
+"zip": "44208",
+"lat": 59.3655063,
+"lng": 26.4305963
+},
+{
+"id": "9576",
+"name": "Antsla uDrop Coop",
+"city": "Antsla",
+"address": "Kreutzwaldi 4a",
+"zip": "66403",
+"lat": 57.82856217,
+"lng": 26.529662693
+},
+{
+"id": "9196",
+"name": "Meie Aravete",
+"city": "Aravete",
+"address": "Piibe mnt 16",
+"zip": "73501",
+"lat": 59.14437678,
+"lng": 25.75145626
+},
+{
+"id": "9601",
+"name": "Aruküla uDrop",
+"city": "Aruküla",
+"address": "Tallinna mnt 8",
+"zip": "75201",
+"lat": 59.37054532,
+"lng": 25.07809559
+},
+{
+"id": "9583",
+"name": "Aseri uDrop Grossi",
+"city": "Aseri",
+"address": "Tehase 23",
+"zip": "43401",
+"lat": 59.449690926,
+"lng": 26.866462282
+},
+{
+"id": "9568",
+"name": "Avinurme uDrop Coop",
+"city": "Avinurme",
+"address": "Võidu 18",
+"zip": "42101",
+"lat": 58.98614717,
+"lng": 26.86987724
+},
+{
+"id": "9079",
+"name": "Elva Maxima X",
+"city": "Elva",
+"address": "Valga mnt 5",
+"zip": "61504",
+"lat": 58.220844688,
+"lng": 26.405020095
+},
+{
+"id": "9097",
+"name": "Elva Meie pood",
+"city": "Elva",
+"address": "Valga mnt 7",
+"zip": "61504",
+"lat": 58.219875,
+"lng": 26.4032025
+},
+{
+"id": "9206",
+"name": "Haabneeme Coop",
+"city": "Haabneeme",
+"address": "Rohuneeme tee 32",
+"zip": "74001",
+"lat": 59.51293692,
+"lng": 24.81970631
+},
+{
+"id": "9082",
+"name": "Viimsi Rimi Hypermarket",
+"city": "Haabneeme",
+"address": "Randvere tee 9",
+"zip": "74001",
+"lat": 59.505485391,
+"lng": 24.82796331
+},
+{
+"id": "9527",
+"name": "Haapsalu Kaubanduskeskus (Udrop)",
+"city": "Haapsalu",
+"address": "Tallinna mnt 1",
+"zip": "90507",
+"lat": 58.941176798,
+"lng": 23.541989759
+},
+{
+"id": "9121",
+"name": "Kastani",
+"city": "Haapsalu",
+"address": "Kuuse tn  28",
+"zip": "90509",
+"lat": 58.936544971,
+"lng": 23.551908752
+},
+{
+"id": "9007",
+"name": "Selver Rannarootsi",
+"city": "Haapsalu",
+"address": "Rannarootsi tee 1",
+"zip": "90404",
+"lat": 58.936027553,
+"lng": 23.571292702
+},
+{
+"id": "9090",
+"name": "Haaslava Meie pood",
+"city": "Haaslava",
+"address": "Jõe tn 1",
+"zip": "62107",
+"lat": 58.32502248,
+"lng": 26.80190087
+},
+{
+"id": "9124",
+"name": "Haljala Grossi",
+"city": "Haljala",
+"address": "Võsu mnt 5",
+"zip": "45301",
+"lat": 59.433894448,
+"lng": 26.266923825
+},
+{
+"id": "9104",
+"name": "Roo Coop",
+"city": "Harkujärve",
+"address": "Roo tee 1",
+"zip": "76912",
+"lat": 59.407522051,
+"lng": 24.616455831
+},
+{
+"id": "9602",
+"name": "Häädemeeste uDrop Coop",
+"city": "Häädemeeste",
+"address": "Pärnu mnt 40",
+"zip": "86001",
+"lat": 58.07907375,
+"lng": 24.49843629
+},
+{
+"id": "9585",
+"name": "Iisaku uDrop Grossi",
+"city": "Iisaku",
+"address": "Tartu mnt 55",
+"zip": "41101",
+"lat": 59.094984377,
+"lng": 27.314806654
+},
+{
+"id": "9606",
+"name": "Imavere uDrop",
+"city": "Imavere",
+"address": "Rukkilille",
+"zip": "72401",
+"lat": 58.734522702,
+"lng": 25.766394597
+},
+{
+"id": "9086",
+"name": "Grossi Järva-Jaani",
+"city": "Järva-Jaani",
+"address": "Lai tn 23",
+"zip": "73301",
+"lat": 59.03847233,
+"lng": 25.883423258
+},
+{
+"id": "9579",
+"name": "Järvakandi uDrop Grossi",
+"city": "Järvakandi",
+"address": "Turu 1",
+"zip": "79101",
+"lat": 58.774539217,
+"lng": 24.817885549
+},
+{
+"id": "9030",
+"name": "Jõgeva Grossi",
+"city": "Jõgeva",
+"address": "Pargi tn 1",
+"zip": "48306",
+"lat": 58.745586674,
+"lng": 26.399375076
+},
+{
+"id": "9130",
+"name": "Meie Jõgeva",
+"city": "Jõgeva",
+"address": "Piiri tn 7",
+"zip": "48304",
+"lat": 58.743391666,
+"lng": 26.387471899
+},
+{
+"id": "9076",
+"name": "Jewe Center/Selver",
+"city": "Jõhvi",
+"address": "Narva mnt 8",
+"zip": "41536",
+"lat": 59.35733975,
+"lng": 27.417974021
+},
+{
+"id": "9528",
+"name": "Jõhvi Grossi (Udrop)",
+"city": "Jõhvi",
+"address": "Tartu mnt 15",
+"zip": "41538",
+"lat": 59.352993491,
+"lng": 27.411854219
+},
+{
+"id": "9115",
+"name": "Jõhvi Terminal",
+"city": "Jõhvi",
+"address": "Puru tee 5b",
+"zip": "41534",
+"lat": 59.3514167,
+"lng": 27.4192406
+},
+{
+"id": "9098",
+"name": "Sventli AS",
+"city": "Jõhvi",
+"address": "Rakvere tn 19",
+"zip": "41533",
+"lat": 59.3608971,
+"lng": 27.4046448
+},
+{
+"id": "9544",
+"name": "Jüri Grossi (Udrop)",
+"city": "Jüri",
+"address": "Aruküla tee 7",
+"zip": "75301",
+"lat": 59.354126938,
+"lng": 24.89286479
+},
+{
+"id": "9164",
+"name": "Jüri Konsum",
+"city": "Jüri",
+"address": "Aruküla tee 29",
+"zip": "75301",
+"lat": 59.35831541,
+"lng": 24.912436326
+},
+{
+"id": "9593",
+"name": "Kanepi uDrop Coop",
+"city": "Kanepi",
+"address": "A. Weizenbergi 23",
+"zip": "63101",
+"lat": 57.986067474,
+"lng": 26.757760014
+},
+{
+"id": "9572",
+"name": "Kehra uDrop Coop",
+"city": "Kehra",
+"address": "Kose mnt 9",
+"zip": "74307",
+"lat": 59.33364744,
+"lng": 25.33358962
+},
+{
+"id": "9107",
+"name": "Kehtna Konsum",
+"city": "Kehtna",
+"address": "Lasteaia tn 12",
+"zip": "79001",
+"lat": 58.92605242,
+"lng": 24.871770639
+},
+{
+"id": "9022",
+"name": "Keila Grossi",
+"city": "Keila",
+"address": "Piiri tn 7",
+"zip": "76610",
+"lat": 59.312363679,
+"lng": 24.418001432
+},
+{
+"id": "9508",
+"name": "Keila Rõõmu Kaubamaja (Udrop)",
+"city": "Keila",
+"address": "Haapsalu mnt 57b",
+"zip": "76607",
+"lat": 59.307321971,
+"lng": 24.398624209
+},
+{
+"id": "9192",
+"name": "Keila keskus",
+"city": "Keila",
+"address": "Harju tn 2",
+"zip": "76607",
+"lat": 59.316302479,
+"lng": 24.410522998
+},
+{
+"id": "9131",
+"name": "Vesiveski Rimi",
+"city": "Keila",
+"address": "Tallinna mnt 18",
+"zip": "76608",
+"lat": 59.311343337,
+"lng": 24.433498329
+},
+{
+"id": "9142",
+"name": "Kiili Maxima",
+"city": "Kiili",
+"address": "Vaela tee 4",
+"zip": "Kiili",
+"lat": 75401.0,
+"lng": 59.310177571
+},
+{
+"id": "9591",
+"name": "Kiisa uDrop",
+"city": "Kiisa",
+"address": "Kurtna tee 2",
+"zip": "75503",
+"lat": 59.235464236,
+"lng": 24.683666143
+},
+{
+"id": "9581",
+"name": "Kilingi-Nõmme uDrop Coop",
+"city": "Kilingi-Nõmme",
+"address": "Pärnu 83",
+"zip": "86305",
+"lat": 58.150637837,
+"lng": 24.968756828
+},
+{
+"id": "9099",
+"name": "Kiviõli Kaubahoov",
+"city": "Kiviõli",
+"address": "Metsa tn 3",
+"zip": "43125",
+"lat": 59.357187,
+"lng": 26.97552618
+},
+{
+"id": "9565",
+"name": "Kiviõli uDrop Grossi",
+"city": "Kiviõli",
+"address": "Keskpuiestee 33",
+"zip": "43125",
+"lat": 59.356290455,
+"lng": 26.975742278
+},
+{
+"id": "9114",
+"name": "Klooga baar",
+"city": "Klooga",
+"address": "Pargi tn 7",
+"zip": "76703",
+"lat": 59.319987132,
+"lng": 24.227812739
+},
+{
+"id": "9595",
+"name": "Koeru uDrop",
+"city": "Koeru",
+"address": "Paide tee 2",
+"zip": "73001",
+"lat": 58.964243,
+"lng": 26.028396
+},
+{
+"id": "9610",
+"name": "Kohila uDrop",
+"city": "Kohila",
+"address": "Viljandi mnt 3a",
+"zip": "79805",
+"lat": 59.167258787,
+"lng": 24.76005527
+},
+{
+"id": "9127",
+"name": "Ahtme Grossi",
+"city": "Kohtla-Järve",
+"address": "Estonia pst 30a",
+"zip": "30322",
+"lat": 59.32964057,
+"lng": 27.4257041
+},
+{
+"id": "9026",
+"name": "Ahtme Grossi",
+"city": "Kohtla-Järve",
+"address": "Maleva tn 23",
+"zip": "31021",
+"lat": 59.327431,
+"lng": 27.420286
+},
+{
+"id": "9197",
+"name": "Ahtme Maxima",
+"city": "Kohtla-Järve",
+"address": "Puru tee 77",
+"zip": "31023",
+"lat": 59.33747145,
+"lng": 27.4201505
+},
+{
+"id": "9529",
+"name": "Kohtla-Järve Grossi (Udrop)",
+"city": "Kohtla-Järve",
+"address": "Outokumpu 13a",
+"zip": "30327",
+"lat": 59.397112595,
+"lng": 27.294817023
+},
+{
+"id": "9044",
+"name": "Kohtla-Järve Maxima",
+"city": "Kohtla-Järve",
+"address": "Mõisa tee 3",
+"zip": "30325",
+"lat": 59.406604511,
+"lng": 27.290866909
+},
+{
+"id": "9071",
+"name": "Kohtla-Järve Rimi",
+"city": "Kohtla-Järve",
+"address": "Põhja allee 4",
+"zip": "30324",
+"lat": 59.407382522,
+"lng": 27.28484919
+},
+{
+"id": "9144",
+"name": "Maxima Keskalle",
+"city": "Kohtla-Järve",
+"address": "Keskallee 12",
+"zip": "30322",
+"lat": 59.402431986,
+"lng": 27.284898796
+},
+{
+"id": "9040",
+"name": "Vironia Keskus",
+"city": "Kohtla-Järve",
+"address": "Järveküla tee 50",
+"zip": "30321",
+"lat": 59.397249969,
+"lng": 27.286622852
+},
+{
+"id": "9092",
+"name": "Kose Meie pood",
+"city": "Kose",
+"address": "Pikk tn 17",
+"zip": "Kose",
+"lat": 75101.0,
+"lng": 59.18597447
+},
+{
+"id": "9575",
+"name": "Kose uDrop Coop",
+"city": "Kose",
+"address": "Pikk 23",
+"zip": "75101",
+"lat": 59.1848813,
+"lng": 25.1673022
+},
+{
+"id": "9198",
+"name": "Meie Kostivere",
+"city": "Kostivere",
+"address": "Mõisa tee 3",
+"zip": "74204",
+"lat": 59.42842668,
+"lng": 25.09475703
+},
+{
+"id": "9058",
+"name": "Auriga Kaubanduskeskus",
+"city": "Kudjape",
+"address": "Tallinna tn 88",
+"zip": "93892",
+"lat": 58.26554966,
+"lng": 22.515063789
+},
+{
+"id": "9515",
+"name": "Kuressaare Kummeli Konsum (Udrop)",
+"city": "Kudjape",
+"address": "Kummeli põik 1",
+"zip": "93851",
+"lat": 58.253876713,
+"lng": 22.520112186
+},
+{
+"id": "9563",
+"name": "Kunda uDrop Grossi",
+"city": "Kunda",
+"address": "Kasemäe 12",
+"zip": "44107",
+"lat": 59.500639457,
+"lng": 26.517523668
+},
+{
+"id": "9062",
+"name": "Kuressaare Maxima",
+"city": "Kuressaare",
+"address": "Tallinna tn 64",
+"zip": "93818",
+"lat": 58.260327977,
+"lng": 22.504688145
+},
+{
+"id": "9162",
+"name": "Kuressaare Toidumaailm",
+"city": "Kuressaare",
+"address": "Raekoja tn 1",
+"zip": "93814",
+"lat": 58.252198946,
+"lng": 22.485922688
+},
+{
+"id": "9574",
+"name": "Kuusalu uDrop Coop",
+"city": "Kuusalu",
+"address": "Kuusalu tee 13",
+"zip": "74601",
+"lat": 59.445613964,
+"lng": 25.440980653
+},
+{
+"id": "9578",
+"name": "Käina uDrop Coop",
+"city": "Käina",
+"address": "Spordi tn 9",
+"zip": "92101",
+"lat": 58.831656832,
+"lng": 22.774380633
+},
+{
+"id": "9577",
+"name": "Kärdla uDrop Coop",
+"city": "Kärdla",
+"address": "Heltermaa mnt 16",
+"zip": "92414",
+"lat": 58.990204638,
+"lng": 22.754423955
+},
+{
+"id": "9616",
+"name": "Kärla uDrop Coop",
+"city": "Kärla",
+"address": "Pargi tn 2",
+"zip": "93501",
+"lat": 58.330802016,
+"lng": 22.255530361
+},
+{
+"id": "9617",
+"name": "Kõrgessaare uDrop Coop",
+"city": "Kõrgessaare",
+"address": "Tööstuse tee 10",
+"zip": "92201",
+"lat": 58.98187298,
+"lng": 22.472148498
+},
+{
+"id": "9153",
+"name": "Kõrveküla kauplus",
+"city": "Kõrveküla",
+"address": "Vasula tee 4",
+"zip": "60512",
+"lat": 58.419788578,
+"lng": 26.761417048
+},
+{
+"id": "9111",
+"name": "Külitse Konsum",
+"city": "Külitse",
+"address": "Kiigemäe tee 2",
+"zip": "61702",
+"lat": 58.32162792,
+"lng": 26.62377882
+},
+{
+"id": "9063",
+"name": "Laagri Maxima",
+"city": "Laagri",
+"address": "Veskitammi tn 3",
+"zip": "76401",
+"lat": 59.352116126,
+"lng": 24.611700678
+},
+{
+"id": "9077",
+"name": "Pärnamäe Rimi",
+"city": "Laiaküla",
+"address": "Lilleoru tee 4",
+"zip": "74008",
+"lat": 59.462231829,
+"lng": 24.905760191
+},
+{
+"id": "9087",
+"name": "Laulasmaa Meie",
+"city": "Laulasmaa",
+"address": "Laulasmaa tee 2",
+"zip": "76702",
+"lat": 59.37725,
+"lng": 24.23955
+},
+{
+"id": "9582",
+"name": "Lelle uDrop Meie",
+"city": "Lelle",
+"address": "Pärnu mnt 13",
+"zip": "79002",
+"lat": 58.859452803,
+"lng": 24.999195051
+},
+{
+"id": "9567",
+"name": "Lihula uDrop Coop",
+"city": "Lihula",
+"address": "Tallinna mnt 20",
+"zip": "90303",
+"lat": 58.687133484,
+"lng": 23.833690398
+},
+{
+"id": "9161",
+"name": "Liiva Konsum",
+"city": "Liiva",
+"address": "Liiva küla",
+"zip": "94701",
+"lat": 58.606109958,
+"lng": 23.231934254
+},
+{
+"id": "9185",
+"name": "Selver Hiiumaa",
+"city": "Linnumäe",
+"address": "Rehemäe",
+"zip": "92422",
+"lat": 58.98964581,
+"lng": 22.7639121
+},
+{
+"id": "9106",
+"name": "Loksa Meie pood",
+"city": "Loksa",
+"address": "Posti tn 2a",
+"zip": "74805",
+"lat": 59.58378161,
+"lng": 25.717124295
+},
+{
+"id": "9573",
+"name": "Loksa uDrop Coop",
+"city": "Loksa",
+"address": "Tallinna 36",
+"zip": "74806",
+"lat": 59.579465407,
+"lng": 25.724374778
+},
+{
+"id": "9066",
+"name": "Loo Grossi",
+"city": "Loo",
+"address": "Saha tee 9",
+"zip": "74201",
+"lat": 59.43463664,
+"lng": 24.947088703
+},
+{
+"id": "9199",
+"name": "Meie Loo",
+"city": "Loo",
+"address": "Kaare tee 2",
+"zip": "Loo",
+"lat": 74201.0,
+"lng": 59.43531071
+},
+{
+"id": "9069",
+"name": "Luige Keskus",
+"city": "Luige",
+"address": "Viljandi mnt 168",
+"zip": "75404",
+"lat": 59.325215735,
+"lng": 24.766201431
+},
+{
+"id": "9172",
+"name": "Keemikute Maxima",
+"city": "Maardu",
+"address": "Keemikute tn 2",
+"zip": "74116",
+"lat": 59.4737321,
+"lng": 25.019325969
+},
+{
+"id": "9128",
+"name": "Maardu Grossi",
+"city": "Maardu",
+"address": "Keemikute tn 41",
+"zip": "74111",
+"lat": 59.484687808,
+"lng": 25.016834567
+},
+{
+"id": "9516",
+"name": "Maardu Nurga Keskus (Udrop)",
+"city": "Maardu",
+"address": "Nurga 1a",
+"zip": "74113",
+"lat": 59.487344585,
+"lng": 25.019807805
+},
+{
+"id": "9502",
+"name": "Maardu Rimi Super (Udrop)",
+"city": "Maardu",
+"address": "Keemikute 25",
+"zip": "74111",
+"lat": 59.480265755,
+"lng": 25.014843138
+},
+{
+"id": "9060",
+"name": "Muuga Maxima",
+"city": "Maardu",
+"address": "Altmetsa tee 1",
+"zip": "74117",
+"lat": 59.474039029,
+"lng": 24.916023887
+},
+{
+"id": "9129",
+"name": "Sinupood Kallavere",
+"city": "Maardu",
+"address": "Kallavere tee 41",
+"zip": "74117",
+"lat": 59.482806031,
+"lng": 24.939988271
+},
+{
+"id": "9589",
+"name": "Melliste uDrop",
+"city": "Melliste",
+"address": "Tartu maantee 1",
+"zip": "62318",
+"lat": 58.33244,
+"lng": 26.9777057
+},
+{
+"id": "9163",
+"name": "Muraste Konsum",
+"city": "Muraste",
+"address": "Lee tee 1",
+"zip": "76905",
+"lat": 59.455010125,
+"lng": 24.444089498
+},
+{
+"id": "9570",
+"name": "Mustla uDrop Grossi",
+"city": "Mustla",
+"address": "Posti 43",
+"zip": "69701",
+"lat": 58.23414828,
+"lng": 25.86620046
+},
+{
+"id": "9569",
+"name": "Mustvee uDrop Coop",
+"city": "Mustvee",
+"address": "Tartu 7b",
+"zip": "49604",
+"lat": 58.848467,
+"lng": 26.942848
+},
+{
+"id": "9070",
+"name": "Märjamaa Coop",
+"city": "Märjamaa",
+"address": "Pärnu mnt 62",
+"zip": "78304",
+"lat": 58.904621,
+"lng": 24.426226
+},
+{
+"id": "9598",
+"name": "Märjamaa uDrop",
+"city": "Märjamaa",
+"address": "Pärnu mnt 76",
+"zip": "Märjamaa",
+"lat": 78304.0,
+"lng": 58.90163118
+},
+{
+"id": "9504",
+"name": "Astri Keskus Narva (Udrop)",
+"city": "Narva",
+"address": "Tallinna mnt 41",
+"zip": "20605",
+"lat": 59.380830055,
+"lng": 28.175111625
+},
+{
+"id": "9001",
+"name": "Fama Keskus",
+"city": "Narva",
+"address": "Fama tn 10",
+"zip": "20303",
+"lat": 59.380453916,
+"lng": 28.186587549
+},
+{
+"id": "9120",
+"name": "Kerese keskus",
+"city": "Narva",
+"address": "P. Kerese tn 3",
+"zip": "20309",
+"lat": 59.376075944,
+"lng": 28.191840875
+},
+{
+"id": "9159",
+"name": "Maxima Kreenholmi",
+"city": "Narva",
+"address": "Kreenholmi tn 54",
+"zip": "20104",
+"lat": 59.364519976,
+"lng": 28.187562899
+},
+{
+"id": "9160",
+"name": "Maxima Mõisa",
+"city": "Narva",
+"address": "Mõisa tn 8",
+"zip": "21007",
+"lat": 59.37760305,
+"lng": 28.170010378
+},
+{
+"id": "9012",
+"name": "Maxima XX",
+"city": "Narva",
+"address": "Soldina tn 20",
+"zip": "21005",
+"lat": 59.381018349,
+"lng": 28.16484815
+},
+{
+"id": "9038",
+"name": "Narva Grossi",
+"city": "Narva",
+"address": "Rakvere tn 71",
+"zip": "20609",
+"lat": 59.385493177,
+"lng": 28.183957775
+},
+{
+"id": "9126",
+"name": "Narva Grossi Pähklimäe",
+"city": "Narva",
+"address": "Pähklimäe tn 2a",
+"zip": "20607",
+"lat": 59.387332,
+"lng": 28.1728992
+},
+{
+"id": "9520",
+"name": "Narva Soldina A1000 Market (Udrop)",
+"city": "Narva",
+"address": "Soldina 1c",
+"zip": "21004",
+"lat": 59.374373262,
+"lng": 28.164140821
+},
+{
+"id": "9116",
+"name": "Narva-Jõesuu Terminal",
+"city": "Narva-Jõesuu",
+"address": "J. Poska tn 26",
+"zip": "29023",
+"lat": 59.462654491,
+"lng": 28.04394593
+},
+{
+"id": "9117",
+"name": "Nõo Terminal",
+"city": "Nõo",
+"address": "Raudtee tn 2a",
+"zip": "61601",
+"lat": 58.28187116,
+"lng": 26.52711341
+},
+{
+"id": "9615",
+"name": "Orissaare uDrop Coop",
+"city": "Orissaare",
+"address": "Kuivastu mnt. 28",
+"zip": "94601",
+"lat": 58.558681054,
+"lng": 23.082830007
+},
+{
+"id": "9213",
+"name": "Oru Meie",
+"city": "Oru",
+"address": "Tähepaju tee 5",
+"zip": "75103",
+"lat": 59.19559701,
+"lng": 24.98833755
+},
+{
+"id": "9506",
+"name": "Otepää Nurga Konsum (Udrop)",
+"city": "Otepää",
+"address": "J. Hurda 1",
+"zip": "67405",
+"lat": 58.061806188,
+"lng": 26.497287619
+},
+{
+"id": "9530",
+"name": "Paide Grossi (Udrop)",
+"city": "Paide",
+"address": "Pikk 25",
+"zip": "72713",
+"lat": 58.884357924,
+"lng": 25.569345799
+},
+{
+"id": "9135",
+"name": "Paide Maksimarket",
+"city": "Paide",
+"address": "Ringtee 2",
+"zip": "72751",
+"lat": 58.886663915,
+"lng": 25.539818502
+},
+{
+"id": "9597",
+"name": "Palamuse uDrop",
+"city": "Palamuse",
+"address": "Uus tn 14",
+"zip": "49226",
+"lat": 58.68550066,
+"lng": 26.58586283
+},
+{
+"id": "9152",
+"name": "Paldiski Maxima",
+"city": "Paldiski",
+"address": "Rae tn 14b",
+"zip": "76805",
+"lat": 59.347770186,
+"lng": 24.062506739
+},
+{
+"id": "9571",
+"name": "Paldiski uDrop",
+"city": "Paldiski",
+"address": "Rae 38",
+"zip": "76806",
+"lat": 59.35269059,
+"lng": 24.05661236
+},
+{
+"id": "9596",
+"name": "Papsaare uDrop",
+"city": "Papsaare",
+"address": "Haapsalu mnt 43",
+"zip": "88317",
+"lat": 58.395309765,
+"lng": 24.457747304
+},
+{
+"id": "9181",
+"name": "Peetri Selver",
+"city": "Peetri",
+"address": "Veesaare tee 2",
+"zip": "75312",
+"lat": 59.402631293,
+"lng": 24.810446543
+},
+{
+"id": "9140",
+"name": "Peetri keskus",
+"city": "Peetri",
+"address": "Küti tee 4",
+"zip": "75312",
+"lat": 59.397680141,
+"lng": 24.806429466
+},
+{
+"id": "9560",
+"name": "Peetri Ärimaja (Udrop)",
+"city": "Peetri",
+"address": "Vana-Tartu Maantee 79a",
+"zip": "75312",
+"lat": 59.382289198,
+"lng": 24.836407683
+},
+{
+"id": "9122",
+"name": "Puhja Terminal",
+"city": "Puhja",
+"address": "Hommiku tn 2",
+"zip": "61301",
+"lat": 58.33980276,
+"lng": 26.318766621
+},
+{
+"id": "9533",
+"name": "Hommiku Ärimaja (Udrop)",
+"city": "Pärnu",
+"address": "Hommiku 1",
+"zip": "80010",
+"lat": 58.386545361,
+"lng": 24.502095113
+},
+{
+"id": "9072",
+"name": "Jannseni Rimi",
+"city": "Pärnu",
+"address": "J. V. Jannseni tn 3",
+"zip": "80032",
+"lat": 58.391717349,
+"lng": 24.49391494
+},
+{
+"id": "9218",
+"name": "Papiniidu Selver",
+"city": "Pärnu",
+"address": "Papiniidu tn 50",
+"zip": "80045",
+"lat": 58.36738269,
+"lng": 24.54443447
+},
+{
+"id": "9011",
+"name": "Pärnu A1000 Market",
+"city": "Pärnu",
+"address": "Karja tn 6",
+"zip": "80018",
+"lat": 58.381877681,
+"lng": 24.512051855
+},
+{
+"id": "9580",
+"name": "Pärnu Kaubamajakas uDrop",
+"city": "Pärnu",
+"address": "Papiniidu 8",
+"zip": "80010",
+"lat": 58.371008789,
+"lng": 24.550177859
+},
+{
+"id": "9105",
+"name": "Pärnu Meie pood",
+"city": "Pärnu",
+"address": "Lille tn 44c",
+"zip": "80038",
+"lat": 58.39947715,
+"lng": 24.51143962
+},
+{
+"id": "9047",
+"name": "Pärnu Riia mnt Maxima",
+"city": "Pärnu",
+"address": "Riia mnt 131",
+"zip": "80010",
+"lat": 58.374867018,
+"lng": 24.536152516
+},
+{
+"id": "9052",
+"name": "Rimi Super",
+"city": "Pärnu",
+"address": "Niidu tn 18b",
+"zip": "80040",
+"lat": 58.391918688,
+"lng": 24.535447382
+},
+{
+"id": "9028",
+"name": "Suur-Jõe Selver",
+"city": "Pärnu",
+"address": "Suur-Jõe tn 57",
+"zip": "80042",
+"lat": 58.378305073,
+"lng": 24.532939511
+},
+{
+"id": "9191",
+"name": "Vana-Pärnu Selver ABC",
+"city": "Pärnu",
+"address": "Haapsalu mnt 41",
+"zip": "80030",
+"lat": 58.39401238,
+"lng": 24.46086727
+},
+{
+"id": "9183",
+"name": "Ülejõe Selver",
+"city": "Pärnu",
+"address": "Tallinna mnt 93a",
+"zip": "80041",
+"lat": 58.40850172,
+"lng": 24.493959048
+},
+{
+"id": "9586",
+"name": "Pärnu-Jaagupi uDrop",
+"city": "Pärnu-Jaagupi",
+"address": "Uus 20a",
+"zip": "87201",
+"lat": 58.60937686,
+"lng": 24.50477921
+},
+{
+"id": "9083",
+"name": "Põltsamaa Grossi",
+"city": "Põltsamaa",
+"address": "Tartu mnt 1b",
+"zip": "48105",
+"lat": 58.652568899,
+"lng": 25.982817554
+},
+{
+"id": "9523",
+"name": "Põlva A1000 Market (Udrop)",
+"city": "Põlva",
+"address": "Jaama 16a",
+"zip": "63308",
+"lat": 58.067177349,
+"lng": 27.07536983
+},
+{
+"id": "9100",
+"name": "Põlva Meie pood",
+"city": "Põlva",
+"address": "Lao tn 14",
+"zip": "63306",
+"lat": 58.0669673,
+"lng": 27.09267638
+},
+{
+"id": "9024",
+"name": "Raadimõisa Konsum",
+"city": "Raadi",
+"address": "Kaupmehe tn 2",
+"zip": "60532",
+"lat": 58.402758096,
+"lng": 26.741543921
+},
+{
+"id": "9167",
+"name": "Raasiku Konsum",
+"city": "Raasiku",
+"address": "Tallinna mnt 19",
+"zip": "75203",
+"lat": 59.369767013,
+"lng": 25.182400213
+},
+{
+"id": "9108",
+"name": "Rae küla Meie",
+"city": "Rae",
+"address": "Künnapuu tee 2",
+"zip": "75310",
+"lat": 59.386764749,
+"lng": 24.84688363
+},
+{
+"id": "9603",
+"name": "Rakke uDrop Grossi",
+"city": "Rakke",
+"address": "Fr. R. Faehlmanni tee 38",
+"zip": "46301",
+"lat": 58.9901807,
+"lng": 26.23523697
+},
+{
+"id": "9101",
+"name": "Aldar Market Lilleoru",
+"city": "Rakvere",
+"address": "Tartu tn 55",
+"zip": "44315",
+"lat": 59.327914308,
+"lng": 26.36529565
+},
+{
+"id": "9501",
+"name": "Põhjakeskus (Udrop)",
+"city": "Rakvere",
+"address": "Haljala tee 4",
+"zip": "44415",
+"lat": 59.363098449,
+"lng": 26.338324238
+},
+{
+"id": "9103",
+"name": "Rakvere Meie pood",
+"city": "Rakvere",
+"address": "Tallinna tn 68",
+"zip": "44311",
+"lat": 59.35613582,
+"lng": 26.368182
+},
+{
+"id": "9033",
+"name": "Rakvere Turutare",
+"city": "Rakvere",
+"address": "Laada tn 18",
+"zip": "44310",
+"lat": 59.347077971,
+"lng": 26.364507397
+},
+{
+"id": "9518",
+"name": "Rakvere Vaala Keskus (Udrop)",
+"city": "Rakvere",
+"address": "Lõõtspilli 2",
+"zip": "44313",
+"lat": 59.354391437,
+"lng": 26.383322898
+},
+{
+"id": "9093",
+"name": "Randvere Meie pood",
+"city": "Randvere",
+"address": "G. H. Schüdlöffeli tee 2",
+"zip": "74016",
+"lat": 59.505894,
+"lng": 24.905
+},
+{
+"id": "9536",
+"name": "Rapla Rimi (Udrop)",
+"city": "Rapla",
+"address": "Tallinna mnt 46a",
+"zip": "79512",
+"lat": 58.999818765,
+"lng": 24.791510239
+},
+{
+"id": "9145",
+"name": "Rapla Selver",
+"city": "Rapla",
+"address": "Tallinna mnt 4",
+"zip": "79511",
+"lat": 59.01000357,
+"lng": 24.793494912
+},
+{
+"id": "9137",
+"name": "Nissi kauplus",
+"city": "Riisipere",
+"address": "Nissi tee 51",
+"zip": "76202",
+"lat": 59.104490674,
+"lng": 24.31203038
+},
+{
+"id": "9619",
+"name": "Risti uDrop Coop",
+"city": "Risti",
+"address": "Haapsalu mnt 1",
+"zip": "90901",
+"lat": 58.998226,
+"lng": 24.05694184
+},
+{
+"id": "9594",
+"name": "Roela uDrop",
+"city": "Roela",
+"address": "Tartu mnt 9",
+"zip": "46602",
+"lat": 59.164589726,
+"lng": 26.586043779
+},
+{
+"id": "9620",
+"name": "Rummu uDrop",
+"city": "Rummu",
+"address": "Kooli tn 2",
+"zip": "76102",
+"lat": 59.23125035,
+"lng": 24.20424717
+},
+{
+"id": "9590",
+"name": "Räpina uDrop",
+"city": "Räpina",
+"address": "Kooli 14a",
+"zip": "64505",
+"lat": 58.09500468,
+"lng": 27.45947555
+},
+{
+"id": "9123",
+"name": "Rõngu Terminal",
+"city": "Rõngu",
+"address": "Võru mnt 1",
+"zip": "61001",
+"lat": 58.142287567,
+"lng": 26.248513039
+},
+{
+"id": "9015",
+"name": "Saku Coop",
+"city": "Saku",
+"address": "Pargi tn 2",
+"zip": "75501",
+"lat": 59.299875445,
+"lng": 24.662587272
+},
+{
+"id": "9125",
+"name": "Saue Grossi",
+"city": "Saue",
+"address": "Pärnasalu põik 1a",
+"zip": "76505",
+"lat": 59.32188921,
+"lng": 24.556710544
+},
+{
+"id": "9507",
+"name": "Saue Kaubakeskus (Udrop)",
+"city": "Saue",
+"address": "Ridva 15",
+"zip": "76506",
+"lat": 59.324834,
+"lng": 24.552639975
+},
+{
+"id": "9073",
+"name": "Sillamäe Maxima X",
+"city": "Sillamäe",
+"address": "Viru pst 35",
+"zip": "40233",
+"lat": 59.391428024,
+"lng": 27.790641304
+},
+{
+"id": "9102",
+"name": "Sillamäe turg",
+"city": "Sillamäe",
+"address": "Viru pst 14",
+"zip": "40232",
+"lat": 59.39280235,
+"lng": 27.7778751
+},
+{
+"id": "9156",
+"name": "Sindi Maxima",
+"city": "Sindi",
+"address": "Pärnu mnt 57",
+"zip": "86703",
+"lat": 58.408189987,
+"lng": 24.659388558
+},
+{
+"id": "9588",
+"name": "Soinaste uDrop Kaasiku Coop",
+"city": "Soinaste",
+"address": "Kaasiku 35",
+"zip": "61709",
+"lat": 58.3300521,
+"lng": 26.727321249
+},
+{
+"id": "9599",
+"name": "Suure-Jaani uDrop",
+"city": "Suure-Jaani",
+"address": "Lembitu pst 48",
+"zip": "71502",
+"lat": 58.537091544,
+"lng": 25.466512798
+},
+{
+"id": "9084",
+"name": "Tabasalu Rimi",
+"city": "Tabasalu",
+"address": "Klooga mnt 10b",
+"zip": "76901",
+"lat": 59.429907518,
+"lng": 24.543560595
+},
+{
+"id": "9609",
+"name": "Tabivere uDrop Meie",
+"city": "Tabivere",
+"address": "Tuuliku tn 8",
+"zip": "49127",
+"lat": 58.550972327,
+"lng": 26.595907187
+},
+{
+"id": "9094",
+"name": "Taebla Konsum",
+"city": "Taebla",
+"address": "Pargi tn 2",
+"zip": "90801",
+"lat": 58.9566602,
+"lng": 23.74418039
+},
+{
+"id": "9016",
+"name": "Akadeemia Konsum",
+"city": "Tallinn",
+"address": "Akadeemia tee 35",
+"zip": "12618",
+"lat": 59.403160239,
+"lng": 24.655800289
+},
+{
+"id": "9532",
+"name": "Arsenali Keskus (Udrop)",
+"city": "Tallinn",
+"address": "Erika 14",
+"zip": "10416",
+"lat": 59.451157321,
+"lng": 24.717129278
+},
+{
+"id": "9512",
+"name": "Balti Jaama Turg (Udrop)",
+"city": "Tallinn",
+"address": "Kopli 1",
+"zip": "10412",
+"lat": 59.440835491,
+"lng": 24.734207323
+},
+{
+"id": "9505",
+"name": "Bravo Kaubakeskus (Udrop)",
+"city": "Tallinn",
+"address": "Pae 80",
+"zip": "13620",
+"lat": 59.435973341,
+"lng": 24.820942088
+},
+{
+"id": "9043",
+"name": "Ehitajate tee Grossi",
+"city": "Tallinn",
+"address": "Ehitajate tee 41",
+"zip": "12612",
+"lat": 59.4017277,
+"lng": 24.668343832
+},
+{
+"id": "9556",
+"name": "Ekspressi Maja (Udrop)",
+"city": "Tallinn",
+"address": "Aedvilja 1a",
+"zip": "10120",
+"lat": 59.438106461,
+"lng": 24.766143521
+},
+{
+"id": "9004",
+"name": "Endla Grossi",
+"city": "Tallinn",
+"address": "Endla tn 53",
+"zip": "10615",
+"lat": 59.427630685,
+"lng": 24.71556665
+},
+{
+"id": "9168",
+"name": "Haabersti Rimi",
+"city": "Tallinn",
+"address": "Haabersti tn 1",
+"zip": "13516",
+"lat": 59.424976586,
+"lng": 24.645139794
+},
+{
+"id": "9091",
+"name": "Harkujärve Meie pood",
+"city": "Tallinn",
+"address": "Liiva tee 2",
+"zip": "76912",
+"lat": 59.418838825,
+"lng": 24.590452397
+},
+{
+"id": "9148",
+"name": "Hiiu Rimi",
+"city": "Tallinn",
+"address": "Pärnu mnt 386",
+"zip": "11612",
+"lat": 59.3829061,
+"lng": 24.666570918
+},
+{
+"id": "9558",
+"name": "Idakeskus (Udrop)",
+"city": "Tallinn",
+"address": "Punane 16b",
+"zip": "13619",
+"lat": 59.43210384,
+"lng": 24.823880376
+},
+{
+"id": "9169",
+"name": "Jannseni Maxima",
+"city": "Tallinn",
+"address": "Vabaduse pst 128",
+"zip": "10918",
+"lat": 59.373348591,
+"lng": 24.664927737
+},
+{
+"id": "9042",
+"name": "Järveotsa Grossi",
+"city": "Tallinn",
+"address": "Järveotsa tee 35b",
+"zip": "13520",
+"lat": 59.407360842,
+"lng": 24.640565849
+},
+{
+"id": "9178",
+"name": "Kadaka Selver",
+"city": "Tallinn",
+"address": "Kadaka tee 56a",
+"zip": "12915",
+"lat": 59.412526711,
+"lng": 24.667385313
+},
+{
+"id": "9180",
+"name": "Kakumäe Selver",
+"city": "Tallinn",
+"address": "Rannamõisa tee 6",
+"zip": "13516",
+"lat": 59.428308508,
+"lng": 24.626618015
+},
+{
+"id": "9109",
+"name": "Kakumäe parkla",
+"city": "Tallinn",
+"address": "Kakumäe tee 42",
+"zip": "13516",
+"lat": 59.442944266,
+"lng": 24.59460809
+},
+{
+"id": "9085",
+"name": "Kalevipoja Rimi",
+"city": "Tallinn",
+"address": "Kalevipoja põik 8",
+"zip": "13614",
+"lat": 59.438655548,
+"lng": 24.831614113
+},
+{
+"id": "9075",
+"name": "Kari Grossi",
+"city": "Tallinn",
+"address": "Kari tn 3",
+"zip": "10311",
+"lat": 59.447654923,
+"lng": 24.697996933
+},
+{
+"id": "9005",
+"name": "Kivila Grossi",
+"city": "Tallinn",
+"address": "Kivila tn 26",
+"zip": "13917",
+"lat": 59.443589319,
+"lng": 24.8727182
+},
+{
+"id": "9067",
+"name": "Kolde Rimi",
+"city": "Tallinn",
+"address": "Sõle tn 27",
+"zip": "10614",
+"lat": 59.438614919,
+"lng": 24.707343013
+},
+{
+"id": "9029",
+"name": "Kollane Keskus",
+"city": "Tallinn",
+"address": "Õismäe tee 107a",
+"zip": "13515",
+"lat": 59.411886956,
+"lng": 24.637917071
+},
+{
+"id": "9133",
+"name": "Kopli Maxima",
+"city": "Tallinn",
+"address": "Kopli tn 69b",
+"zip": "10312",
+"lat": 59.454521214,
+"lng": 24.689552121
+},
+{
+"id": "9010",
+"name": "Kärberi Selver",
+"city": "Tallinn",
+"address": "K. Kärberi tn 20",
+"zip": "13919",
+"lat": 59.44538853,
+"lng": 24.882293333
+},
+{
+"id": "9023",
+"name": "Linnamäe Keskus",
+"city": "Tallinn",
+"address": "Linnamäe tee 95",
+"zip": "13911",
+"lat": 59.449886965,
+"lng": 24.889581179
+},
+{
+"id": "9019",
+"name": "Linnamäe Konsum",
+"city": "Tallinn",
+"address": "Linnamäe tee 3",
+"zip": "13912",
+"lat": 59.449049508,
+"lng": 24.862827751
+},
+{
+"id": "9035",
+"name": "Linnamäe Maxima XXX",
+"city": "Tallinn",
+"address": "Linnamäe tee 57",
+"zip": "13911",
+"lat": 59.449859564,
+"lng": 24.881297397
+},
+{
+"id": "9037",
+"name": "Läänemere Selver",
+"city": "Tallinn",
+"address": "Läänemere tee 28",
+"zip": "13913",
+"lat": 59.452991956,
+"lng": 24.874054179
+},
+{
+"id": "9537",
+"name": "Läänemere mini Rimi (Udrop)",
+"city": "Tallinn",
+"address": "Läänemere tee 2c",
+"zip": "13913",
+"lat": 59.450715348,
+"lng": 24.861424303
+},
+{
+"id": "9055",
+"name": "Magdaleena Olerex",
+"city": "Tallinn",
+"address": "Pärnu mnt 106",
+"zip": "11312",
+"lat": 59.415180798,
+"lng": 24.739126848
+},
+{
+"id": "9526",
+"name": "Magistrali Keskus (Udrop)",
+"city": "Tallinn",
+"address": "Sõpruse pst 201-203",
+"zip": "13411",
+"lat": 59.40075439,
+"lng": 24.696771458
+},
+{
+"id": "9509",
+"name": "Marienthali Keskus (Udrop)",
+"city": "Tallinn",
+"address": "Mustamäe tee 16",
+"zip": "10617",
+"lat": 59.422777417,
+"lng": 24.696770021
+},
+{
+"id": "9002",
+"name": "Marja Grossi",
+"city": "Tallinn",
+"address": "Mustamäe tee 41",
+"zip": "10619",
+"lat": 59.422035655,
+"lng": 24.699613469
+},
+{
+"id": "9171",
+"name": "Maxima Astangu",
+"city": "Tallinn",
+"address": "Astangu tn 27a",
+"zip": "13519",
+"lat": 59.405169,
+"lng": 24.638344515
+},
+{
+"id": "9179",
+"name": "Merimetsa Selver",
+"city": "Tallinn",
+"address": "Paldiski mnt 56",
+"zip": "10614",
+"lat": 59.43037589,
+"lng": 24.697392303
+},
+{
+"id": "9202",
+"name": "Miiduranna Coop",
+"city": "Tallinn",
+"address": "Ranna tee 46a",
+"zip": "12111",
+"lat": 59.49638126,
+"lng": 24.82887137
+},
+{
+"id": "9013",
+"name": "Mustakivi Selver",
+"city": "Tallinn",
+"address": "Mustakivi tee 3a",
+"zip": "13912",
+"lat": 59.437697263,
+"lng": 24.871087024
+},
+{
+"id": "9201",
+"name": "Mustakivi keskus",
+"city": "Tallinn",
+"address": "Mahtra tn 1",
+"zip": "Tallinn",
+"lat": 13811.0,
+"lng": 59.44226052
+},
+{
+"id": "9061",
+"name": "Mustamäe keskus",
+"city": "Tallinn",
+"address": "A. H. Tammsaare tee 104a",
+"zip": "12918",
+"lat": 59.408442783,
+"lng": 24.688327685
+},
+{
+"id": "9525",
+"name": "Mustika Keskus (Udrop)",
+"city": "Tallinn",
+"address": "Karjavälja 4",
+"zip": "12918",
+"lat": 59.410311401,
+"lng": 24.681931291
+},
+{
+"id": "9009",
+"name": "Mähe Grossi",
+"city": "Tallinn",
+"address": "Randvere tee 115",
+"zip": "11913",
+"lat": 59.491364213,
+"lng": 24.878920811
+},
+{
+"id": "9157",
+"name": "Männiku Rimi",
+"city": "Tallinn",
+"address": "Männiku tee 100",
+"zip": "11215",
+"lat": 59.372121669,
+"lng": 24.716551364
+},
+{
+"id": "9522",
+"name": "Mööblimaja A1000 Market  (Udrop)",
+"city": "Tallinn",
+"address": "Mulla 1",
+"zip": "10611",
+"lat": 59.435155277,
+"lng": 24.718062311
+},
+{
+"id": "9535",
+"name": "Nautika keskus (Udrop)",
+"city": "Tallinn",
+"address": "Ahtri 9",
+"zip": "10151",
+"lat": 59.441403426,
+"lng": 24.762998599
+},
+{
+"id": "9003",
+"name": "Paasiku Grossi",
+"city": "Tallinn",
+"address": "Paasiku tn 2a",
+"zip": "13916",
+"lat": 59.448560379,
+"lng": 24.845159183
+},
+{
+"id": "9036",
+"name": "Pallasti Maxima X",
+"city": "Tallinn",
+"address": "Pallasti tn 18",
+"zip": "11414",
+"lat": 59.429531223,
+"lng": 24.791529232
+},
+{
+"id": "9187",
+"name": "Pelgulinna Selver",
+"city": "Tallinn",
+"address": "Sõle tn 51",
+"zip": "10318",
+"lat": 59.444896495,
+"lng": 24.70046339
+},
+{
+"id": "9182",
+"name": "Pirita Selver",
+"city": "Tallinn",
+"address": "Rummu tee 4",
+"zip": "11911",
+"lat": 59.46235763,
+"lng": 24.82771488
+},
+{
+"id": "9510",
+"name": "Pirita Ärikeskus (Udrop)",
+"city": "Tallinn",
+"address": "Merivälja tee 1",
+"zip": "11911",
+"lat": 59.466542181,
+"lng": 24.832605052
+},
+{
+"id": "9112",
+"name": "Punane",
+"city": "Tallinn",
+"address": "Punane tn 1",
+"zip": "13620",
+"lat": 59.4323667,
+"lng": 24.8130353
+},
+{
+"id": "9200",
+"name": "Punane 48",
+"city": "Tallinn",
+"address": "Punane tn 48",
+"zip": "13619",
+"lat": 59.43543879,
+"lng": 24.84319915
+},
+{
+"id": "9049",
+"name": "Pärnu mnt 390b Maxima X",
+"city": "Tallinn",
+"address": "Pärnu mnt 390",
+"zip": "11612",
+"lat": 59.380595713,
+"lng": 24.658229099
+},
+{
+"id": "9068",
+"name": "Pääsküla Rimi",
+"city": "Tallinn",
+"address": "Pärnu mnt 453e",
+"zip": "10916",
+"lat": 59.360922905,
+"lng": 24.630554605
+},
+{
+"id": "9170",
+"name": "Põhja Rimi super",
+"city": "Tallinn",
+"address": "Põhja pst 17",
+"zip": "10414",
+"lat": 59.444262642,
+"lng": 24.742804489
+},
+{
+"id": "9017",
+"name": "Raudalu Konsum",
+"city": "Tallinn",
+"address": "Viljandi mnt 41a",
+"zip": "11218",
+"lat": 59.366172985,
+"lng": 24.760361824
+},
+{
+"id": "9113",
+"name": "Realiseerimiskeskus",
+"city": "Tallinn",
+"address": "Pärnu mnt 421",
+"zip": "10913",
+"lat": 59.369489008,
+"lng": 24.638757009
+},
+{
+"id": "9139",
+"name": "Rimi Juhkentali",
+"city": "Tallinn",
+"address": "Juhkentali tn 35",
+"zip": "10144",
+"lat": 59.427636667,
+"lng": 24.770066504
+},
+{
+"id": "9065",
+"name": "Rimi Nurmenuku",
+"city": "Tallinn",
+"address": "Ehitajate tee 107",
+"zip": "13514",
+"lat": 59.41327792,
+"lng": 24.65517048
+},
+{
+"id": "9151",
+"name": "Rocca al Mare",
+"city": "Tallinn",
+"address": "Paldiski mnt 102",
+"zip": "13522",
+"lat": 59.42592275,
+"lng": 24.650470011
+},
+{
+"id": "9545",
+"name": "Roheruum Tehnopol (Udrop)",
+"city": "Tallinn",
+"address": "Teaduspargi 3a",
+"zip": "12618",
+"lat": 59.39744242,
+"lng": 24.657807245
+},
+{
+"id": "9557",
+"name": "Rävala Parkimismaja (Udrop)",
+"city": "Tallinn",
+"address": "Rävala pst 5",
+"zip": "10145",
+"lat": 59.433514825,
+"lng": 24.756582688
+},
+{
+"id": "9025",
+"name": "Sikupilli keskus",
+"city": "Tallinn",
+"address": "Tartu mnt 87",
+"zip": "10112",
+"lat": 59.426361702,
+"lng": 24.785059284
+},
+{
+"id": "9559",
+"name": "Solaris Keskus (Udrop)",
+"city": "Tallinn",
+"address": "Estonia pst 9",
+"zip": "10143",
+"lat": 59.433537461,
+"lng": 24.751549977
+},
+{
+"id": "9039",
+"name": "Stroomi Maxima XX",
+"city": "Tallinn",
+"address": "Tuulemaa tn 20",
+"zip": "10315",
+"lat": 59.44739531,
+"lng": 24.693045693
+},
+{
+"id": "9048",
+"name": "Sõpruse 171 Maxima",
+"city": "Tallinn",
+"address": "Sõpruse pst 171",
+"zip": "13413",
+"lat": 59.407451519,
+"lng": 24.704294223
+},
+{
+"id": "9543",
+"name": "Sõpruse 249 Konsum (Udrop)",
+"city": "Tallinn",
+"address": "Sõpruse pst 249",
+"zip": "13412",
+"lat": 59.398359168,
+"lng": 24.682784247
+},
+{
+"id": "9008",
+"name": "Sütiste Maxima",
+"city": "Tallinn",
+"address": "J. Sütiste tee 28",
+"zip": "13411",
+"lat": 59.39774415,
+"lng": 24.690757491
+},
+{
+"id": "9511",
+"name": "T1 Keskus (Udrop)",
+"city": "Tallinn",
+"address": "Peterburi tee 2",
+"zip": "11415",
+"lat": 59.424674157,
+"lng": 24.796255164
+},
+{
+"id": "9554",
+"name": "Tallinna Arendused AS (Udrop)",
+"city": "Tallinn",
+"address": "Veerenni 20",
+"zip": "10134",
+"lat": 59.425364907,
+"lng": 24.748028274
+},
+{
+"id": "9514",
+"name": "Tallinna Keskturg (Udrop)",
+"city": "Tallinn",
+"address": "Lastekodu tn 12",
+"zip": "10113",
+"lat": 59.430740114,
+"lng": 24.767427141
+},
+{
+"id": "9584",
+"name": "Tallinna uDrop Stockmann",
+"city": "Tallinn",
+"address": "Liivalaia 53",
+"zip": "10145",
+"lat": 59.43183328,
+"lng": 24.761241095
+},
+{
+"id": "9034",
+"name": "Tammsaare Maxima XX",
+"city": "Tallinn",
+"address": "A. H. Tammsaare tee 133",
+"zip": "12915",
+"lat": 59.408930223,
+"lng": 24.675190247
+},
+{
+"id": "9078",
+"name": "Tondiraba Maxima",
+"city": "Tallinn",
+"address": "Tondiraba tn 7",
+"zip": "13916",
+"lat": 59.450810045,
+"lng": 24.855845494
+},
+{
+"id": "9177",
+"name": "Torupilli Selver",
+"city": "Tallinn",
+"address": "Vesivärava tn 37",
+"zip": "10152",
+"lat": 59.4324213,
+"lng": 24.7800156
+},
+{
+"id": "9555",
+"name": "Tuukri 56 Europark (Udrop)",
+"city": "Tallinn",
+"address": "Tuukri 56",
+"zip": "10120",
+"lat": 59.4397679,
+"lng": 24.772280501
+},
+{
+"id": "9521",
+"name": "Tähesaju A1000 Market (Udrop)",
+"city": "Tallinn",
+"address": "Varraku 12",
+"zip": "13917",
+"lat": 59.442409674,
+"lng": 24.849011346
+},
+{
+"id": "9534",
+"name": "Tähesaju Coop (Udrop)",
+"city": "Tallinn",
+"address": "Mustakivi tee 17",
+"zip": "13912",
+"lat": 59.442921079,
+"lng": 24.862805847
+},
+{
+"id": "9166",
+"name": "Tähesaju Selver",
+"city": "Tallinn",
+"address": "Tähesaju tee 1",
+"zip": "13917",
+"lat": 59.442045186,
+"lng": 24.849577715
+},
+{
+"id": "9552",
+"name": "Tööstuse (Udrop)",
+"city": "Tallinn",
+"address": "Tööstuse 48a",
+"zip": "10416",
+"lat": 59.4496842,
+"lng": 24.725319
+},
+{
+"id": "9538",
+"name": "Tööstuse Rimi Super (Udrop)",
+"city": "Tallinn",
+"address": "Tööstuse 103",
+"zip": "10416",
+"lat": 59.453293338,
+"lng": 24.705029031
+},
+{
+"id": "9141",
+"name": "Valdeku Maxima",
+"city": "Tallinn",
+"address": "Valdeku tn 114",
+"zip": "11215",
+"lat": 59.37639028,
+"lng": 24.712095909
+},
+{
+"id": "9184",
+"name": "Valdeku Selver",
+"city": "Tallinn",
+"address": "Vabaduse pst 54b",
+"zip": "11621",
+"lat": 59.381535631,
+"lng": 24.700924551
+},
+{
+"id": "9542",
+"name": "Vanalinna Europark  (Udrop)",
+"city": "Tallinn",
+"address": "Aia 8",
+"zip": "10111",
+"lat": 59.438077503,
+"lng": 24.751350405
+},
+{
+"id": "9539",
+"name": "Vikerlase Mini Rimi  (Udrop)",
+"city": "Tallinn",
+"address": "Vikerlase 19",
+"zip": "13616",
+"lat": 59.439259673,
+"lng": 24.84505098
+},
+{
+"id": "9150",
+"name": "Vilde Rimi",
+"city": "Tallinn",
+"address": "E. Vilde tee 101",
+"zip": "12911",
+"lat": 59.404540774,
+"lng": 24.676067868
+},
+{
+"id": "9050",
+"name": "Vilde tee 124 Maxima",
+"city": "Tallinn",
+"address": "E. Vilde tee 124",
+"zip": "12614",
+"lat": 59.403789623,
+"lng": 24.664160523
+},
+{
+"id": "9045",
+"name": "Vilde tee Maxima XX",
+"city": "Tallinn",
+"address": "Vilde tee 75/77",
+"zip": "12911",
+"lat": 59.402744812,
+"lng": 24.685917906
+},
+{
+"id": "9041",
+"name": "Virbi Maxima",
+"city": "Tallinn",
+"address": "Virbi tn 12",
+"zip": "13629",
+"lat": 59.440981319,
+"lng": 24.843710727
+},
+{
+"id": "9541",
+"name": "Virmalise Europark (Udrop)",
+"city": "Tallinn",
+"address": "Kristiina 17",
+"zip": "10131",
+"lat": 59.424888816,
+"lng": 24.737413337
+},
+{
+"id": "9074",
+"name": "Õismäe tee 46 Maxima",
+"city": "Tallinn",
+"address": "Õismäe tee 46",
+"zip": "13512",
+"lat": 59.411415431,
+"lng": 24.647786392
+},
+{
+"id": "9046",
+"name": "Õismäe tee 88 Maxima",
+"city": "Tallinn",
+"address": "Õismäe tee 88",
+"zip": "13513",
+"lat": 59.415451366,
+"lng": 24.640003331
+},
+{
+"id": "9006",
+"name": "Ümera Keskus/Maxima",
+"city": "Tallinn",
+"address": "Laagna tee 80",
+"zip": "13817",
+"lat": 59.44442034,
+"lng": 24.889157376
+},
+{
+"id": "9546",
+"name": "Tammiste Konsum (Udrop)",
+"city": "Tammiste",
+"address": "Kellukese tee 2",
+"zip": "85009",
+"lat": 58.388833706,
+"lng": 24.607798135
+},
+{
+"id": "9562",
+"name": "Tamsalu uDrop Grossi",
+"city": "Tamsalu",
+"address": "Tehnika 24",
+"zip": "46106",
+"lat": 59.162335273,
+"lng": 26.112299588
+},
+{
+"id": "9136",
+"name": "Tapa Coop",
+"city": "Tapa",
+"address": "Kivilo tn 3",
+"zip": "45108",
+"lat": 59.265092297,
+"lng": 25.96658553
+},
+{
+"id": "9561",
+"name": "Tapa uDrop Grossi",
+"city": "Tapa",
+"address": "Jaama 1",
+"zip": "45106",
+"lat": 59.26446404,
+"lng": 25.963531213
+},
+{
+"id": "9147",
+"name": "Aardla Rimi",
+"city": "Tartu",
+"address": "Võru tn 170",
+"zip": "50112",
+"lat": 58.35620156,
+"lng": 26.722492346
+},
+{
+"id": "9165",
+"name": "Aardla Selver",
+"city": "Tartu",
+"address": "Võru tn 77",
+"zip": "50112",
+"lat": 58.357609239,
+"lng": 26.721468689
+},
+{
+"id": "9174",
+"name": "Anne Maxima",
+"city": "Tartu",
+"address": "Anne tn 57",
+"zip": "50703",
+"lat": 58.37515121,
+"lng": 26.7563631
+},
+{
+"id": "9551",
+"name": "Eeden Keskus  (Udrop)",
+"city": "Tartu",
+"address": "Kalda tee 1c",
+"zip": "50703",
+"lat": 58.37385583,
+"lng": 26.74930956
+},
+{
+"id": "9054",
+"name": "Jõe keskus",
+"city": "Tartu",
+"address": "Sõbra tn 58",
+"zip": "50106",
+"lat": 58.365308555,
+"lng": 26.74329821
+},
+{
+"id": "9175",
+"name": "Kalda Maxima",
+"city": "Tartu",
+"address": "Kalda tee 15",
+"zip": "50703",
+"lat": 58.3713152,
+"lng": 26.76273578
+},
+{
+"id": "9203",
+"name": "Kaunase pst mini-Rimi",
+"city": "Tartu",
+"address": "Kaunase pst 21",
+"zip": "50706",
+"lat": 58.37408978,
+"lng": 26.76819231
+},
+{
+"id": "9154",
+"name": "Kivilinna Konsum",
+"city": "Tartu",
+"address": "Jaama tn 173",
+"zip": "50705",
+"lat": 58.379664094,
+"lng": 26.764749883
+},
+{
+"id": "9550",
+"name": "Kvissentali Konsum (Udrop)",
+"city": "Tartu",
+"address": "Aruküla tee 5",
+"zip": "50303",
+"lat": 58.401824933,
+"lng": 26.709285543
+},
+{
+"id": "9146",
+"name": "Lai parkla",
+"city": "Tartu",
+"address": "Lai tn 7",
+"zip": "Tartu",
+"lat": 51005.0,
+"lng": 58.382268408
+},
+{
+"id": "9020",
+"name": "Lõunakeskus",
+"city": "Tartu",
+"address": "Lääneringtee 39",
+"zip": "50501",
+"lat": 58.358290128,
+"lng": 26.678125366
+},
+{
+"id": "9053",
+"name": "Maxima",
+"city": "Tartu",
+"address": "Võru tn 55f",
+"zip": "50111",
+"lat": 58.36467132,
+"lng": 26.719245516
+},
+{
+"id": "9021",
+"name": "Märja Konsum",
+"city": "Tartu",
+"address": "Aisa tn 2",
+"zip": "61406",
+"lat": 58.360770513,
+"lng": 26.651347145
+},
+{
+"id": "9211",
+"name": "Pubi 6Teist Kannu",
+"city": "Tartu",
+"address": "Suur kaar 53",
+"zip": "50404",
+"lat": 58.36243418,
+"lng": 26.70491092
+},
+{
+"id": "9119",
+"name": "Raadi Maxima",
+"city": "Tartu",
+"address": "Narva mnt 112",
+"zip": "50303",
+"lat": 58.391939,
+"lng": 26.73052
+},
+{
+"id": "9547",
+"name": "Raatuse Ärikeskus (Udrop)",
+"city": "Tartu",
+"address": "Raatuse 20",
+"zip": "50603",
+"lat": 58.382492543,
+"lng": 26.730415393
+},
+{
+"id": "9149",
+"name": "Rebase Rimi",
+"city": "Tartu",
+"address": "Rebase tn 10",
+"zip": "50104",
+"lat": 58.368477173,
+"lng": 26.739095594
+},
+{
+"id": "9051",
+"name": "Selver",
+"city": "Tartu",
+"address": "Jaama tn 74",
+"zip": "50605",
+"lat": 58.381541864,
+"lng": 26.751542865
+},
+{
+"id": "9014",
+"name": "Selver",
+"city": "Tartu",
+"address": "Teemandi tn 2",
+"zip": "50415",
+"lat": 58.35329807,
+"lng": 26.68586446
+},
+{
+"id": "9027",
+"name": "Selver",
+"city": "Tartu",
+"address": "Kalda tee 43",
+"zip": "50707",
+"lat": 58.368370832,
+"lng": 26.767139565
+},
+{
+"id": "9548",
+"name": "Soola 7 Grossi (Udrop)",
+"city": "Tartu",
+"address": "Soola 7",
+"zip": "51004",
+"lat": 58.378332013,
+"lng": 26.735419553
+},
+{
+"id": "9549",
+"name": "Spordihoone kompleks (Udrop)",
+"city": "Tartu",
+"address": "Näituse 33",
+"zip": "50407",
+"lat": 58.376839996,
+"lng": 26.699084202
+},
+{
+"id": "9188",
+"name": "Sõbra Selver",
+"city": "Tartu",
+"address": "Sõbra tn 41",
+"zip": "50106",
+"lat": 58.36408206,
+"lng": 26.74107996
+},
+{
+"id": "9519",
+"name": "Tartu A1000 Market (Udrop)",
+"city": "Tartu",
+"address": "Tehnika 13",
+"zip": "50105",
+"lat": 58.347724267,
+"lng": 26.744433363
+},
+{
+"id": "9513",
+"name": "Tartu Lunini EuroPark (Udrop)",
+"city": "Tartu",
+"address": "Nikolai Lunini 16",
+"zip": "50412",
+"lat": 58.37004141,
+"lng": 26.697102424
+},
+{
+"id": "9204",
+"name": "Tartu Tervisekeskus",
+"city": "Tartu",
+"address": "Mõisavahe tn 34c",
+"zip": "50708",
+"lat": 58.37191185,
+"lng": 26.78002553
+},
+{
+"id": "9205",
+"name": "Tähe mini-Rimi",
+"city": "Tartu",
+"address": "Tähe tn 19",
+"zip": "Tartu",
+"lat": 50103.0,
+"lng": 58.3703216
+},
+{
+"id": "9155",
+"name": "Ujula Konsum",
+"city": "Tartu",
+"address": "Ujula tn 2",
+"zip": "51008",
+"lat": 58.38659189,
+"lng": 26.724259701
+},
+{
+"id": "9176",
+"name": "Vahi Selver",
+"city": "Tartu",
+"address": "Vahi tn 62",
+"zip": "50304",
+"lat": 58.40175217,
+"lng": 26.720764231
+},
+{
+"id": "9143",
+"name": "Veeriku Selver",
+"city": "Tartu",
+"address": "Vitamiini tn 1",
+"zip": "50412",
+"lat": 58.376386026,
+"lng": 26.69710679
+},
+{
+"id": "9059",
+"name": "Tiskre Coop",
+"city": "Tiskre",
+"address": "Liiva tee 61",
+"zip": "76916",
+"lat": 59.431348089,
+"lng": 24.563135821
+},
+{
+"id": "9618",
+"name": "Toila uDrop Meie",
+"city": "Toila",
+"address": "Pikk tn 18",
+"zip": "41702",
+"lat": 59.418779598,
+"lng": 27.51129261
+},
+{
+"id": "9138",
+"name": "Turba kauplus",
+"city": "Turba",
+"address": "Jaama tee 8",
+"zip": "76201",
+"lat": 59.08056966,
+"lng": 24.236574401
+},
+{
+"id": "9517",
+"name": "Tõrva Konsum Ehituskeskus (Udrop)",
+"city": "Tõrva",
+"address": "Viljandi mnt 28",
+"zip": "68604",
+"lat": 58.006083575,
+"lng": 25.914496795
+},
+{
+"id": "9096",
+"name": "Tõrva Meie pood",
+"city": "Tõrva",
+"address": "Valga tn 3",
+"zip": "68607",
+"lat": 58.002276075,
+"lng": 25.9231582
+},
+{
+"id": "9612",
+"name": "Tõrvandi uDrop Grossi",
+"city": "Tõrvandi",
+"address": "Tamme tn 2",
+"zip": "61715",
+"lat": 58.3237279,
+"lng": 26.7099227
+},
+{
+"id": "9134",
+"name": "Türi Coop",
+"city": "Türi",
+"address": "Kalevi tn 1",
+"zip": "72215",
+"lat": 58.81257138,
+"lng": 25.408101604
+},
+{
+"id": "9531",
+"name": "Türi Grossi (Udrop)",
+"city": "Türi",
+"address": "Viljandi 13a",
+"zip": "72213",
+"lat": 58.802998599,
+"lng": 25.429781849
+},
+{
+"id": "9081",
+"name": "Valga Coop",
+"city": "Valga",
+"address": "A. Neulandi tn 2",
+"zip": "68207",
+"lat": 57.77867102,
+"lng": 26.037082535
+},
+{
+"id": "9540",
+"name": "Valga Rimi (Udrop)",
+"city": "Valga",
+"address": "Riia 18",
+"zip": "68203",
+"lat": 57.777923437,
+"lng": 26.028274575
+},
+{
+"id": "9614",
+"name": "Valjala uDrop Coop",
+"city": "Valjala",
+"address": "Posti tn 27",
+"zip": "94302",
+"lat": 58.409415209,
+"lng": 22.791175081
+},
+{
+"id": "9173",
+"name": "Viimsi Maxima",
+"city": "Viimsi",
+"address": "Pargi tee 22",
+"zip": "74001",
+"lat": 59.50524,
+"lng": 24.8294
+},
+{
+"id": "9110",
+"name": "Viiratsi Konsum",
+"city": "Viiratsi",
+"address": "Sakala tn 3b",
+"zip": "70101",
+"lat": 58.359147268,
+"lng": 25.639394196
+},
+{
+"id": "9553",
+"name": "Kaubanduskeskus Home Gallery (Udrop)",
+"city": "Viljandi",
+"address": "Leola 53",
+"zip": "71008",
+"lat": 58.377737638,
+"lng": 25.594166656
+},
+{
+"id": "9118",
+"name": "Koidu Konsum",
+"city": "Viljandi",
+"address": "Koidu tn 3",
+"zip": "71004",
+"lat": 58.365109197,
+"lng": 25.602551317
+},
+{
+"id": "9031",
+"name": "Männimäe Maksimarket",
+"city": "Viljandi",
+"address": "Puidu tn 2",
+"zip": "71009",
+"lat": 58.347604848,
+"lng": 25.578777375
+},
+{
+"id": "9186",
+"name": "Männimäe Selver",
+"city": "Viljandi",
+"address": "Riia mnt. 35",
+"zip": "71002",
+"lat": 58.352943455,
+"lng": 25.583836032
+},
+{
+"id": "9524",
+"name": "Viljandi A1000 (Udrop)",
+"city": "Viljandi",
+"address": "Lossi 41a",
+"zip": "71007",
+"lat": 58.367661205,
+"lng": 25.599865004
+},
+{
+"id": "9032",
+"name": "Viljandi Maksimarket",
+"city": "Viljandi",
+"address": "Lääne tn 2",
+"zip": "71013",
+"lat": 58.37057806,
+"lng": 25.583520624
+},
+{
+"id": "9057",
+"name": "Viljandi Maxima X",
+"city": "Viljandi",
+"address": "Vaksali tn 11b",
+"zip": "71012",
+"lat": 58.36195786,
+"lng": 25.582615417
+},
+{
+"id": "9604",
+"name": "Vinni uDrop Grossi",
+"city": "Vinni",
+"address": "Sõpruse 5",
+"zip": "46601",
+"lat": 59.291064102,
+"lng": 26.42768043
+},
+{
+"id": "9605",
+"name": "Virtsu uDrop Coop",
+"city": "Virtsu",
+"address": "Tallinna mnt 13",
+"zip": "90101",
+"lat": 58.5723618,
+"lng": 23.5152655
+},
+{
+"id": "9607",
+"name": "Viru-Nigula uDrop Meie",
+"city": "Viru-Nigula",
+"address": "Kunda tee 4",
+"zip": "44001",
+"lat": 59.44500876,
+"lng": 26.6912219
+},
+{
+"id": "9564",
+"name": "Väike-Maarja uDrop Grossi",
+"city": "Väike-Maarja",
+"address": "Pikk 9",
+"zip": "46202",
+"lat": 59.129995874,
+"lng": 26.25229732
+},
+{
+"id": "9566",
+"name": "Vändra uDrop Grossi",
+"city": "Vändra",
+"address": "Pärnu-Paide mnt 26",
+"zip": "87701",
+"lat": 58.656442857,
+"lng": 25.043349219
+},
+{
+"id": "9611",
+"name": "Vääna-Jõesuu uDrop",
+"city": "Vääna-Jõesuu",
+"address": "Hiie tee 5",
+"zip": "76909",
+"lat": 59.4334966,
+"lng": 24.36764635
+},
+{
+"id": "9608",
+"name": "Võhma uDrop",
+"city": "Võhma",
+"address": "Tallinna tn 28a",
+"zip": "70603",
+"lat": 58.63072762,
+"lng": 25.55917793
+},
+{
+"id": "9193",
+"name": "Võru Charloti kauplus",
+"city": "Võru",
+"address": "Räpina mnt 4",
+"zip": "65606",
+"lat": 57.84219994,
+"lng": 27.00775761
+},
+{
+"id": "9503",
+"name": "Võru Kagukeskus (Udrop)",
+"city": "Võru",
+"address": "Kooli 6",
+"zip": "65606",
+"lat": 57.846641057,
+"lng": 27.007063171
+},
+{
+"id": "9018",
+"name": "Võru Maksimarket",
+"city": "Võru",
+"address": "Jüri tn 83",
+"zip": "65607",
+"lat": 57.835583032,
+"lng": 27.010119347
+},
+{
+"id": "9095",
+"name": "Ääsmäe Meie",
+"city": "Ääsmäe",
+"address": "Pärtlemäe tee 1",
+"zip": "76402",
+"lat": 59.242364518,
+"lng": 24.498436585
+}
+]
+}
