@@ -46,7 +46,7 @@ export const startProductCheckout = createServerFn({ method: "POST" })
   .inputValidator((data: unknown) =>
     z
       .object({
-        slug: z.string().max(100),
+        slugs: z.array(z.string().max(100)).min(1).max(20),
         buyerName: text(80),
         buyerEmail: z.string().trim().email().max(160),
         digitalConsent: z.literal(true),
@@ -64,7 +64,7 @@ export const startProductCheckout = createServerFn({ method: "POST" })
     try {
       return { ok: true as const, ...(await shop.startCheckout(d, data, origin)) };
     } catch (e) {
-      if (e instanceof shop.NotForSaleError) return { ok: false as const };
+      if (e instanceof shop.NotForSaleError) return { ok: false as const, unavailable: e.slugs };
       throw e;
     }
   });
@@ -101,6 +101,7 @@ const productSchema = z.object({
   fileName: z.string().max(200).nullable(),
   active: z.boolean(),
   sort: z.number().int().min(-1000).max(1000),
+  aiMade: z.boolean(),
 });
 
 export const adminSaveProduct = createServerFn({ method: "POST" })

@@ -9,7 +9,7 @@ export const Route = createFileRoute("/api/pood/fail")({
         const shop = await import("@/lib/shop.server");
         const u = new URL(request.url);
         const d = await shop.prodDeps(u.origin);
-        const r = await shop.resolveDownload(d, u.searchParams.get("o") ?? "", Number(u.searchParams.get("exp")), u.searchParams.get("sig") ?? "");
+        const r = await shop.resolveDownload(d, u.searchParams.get("o") ?? "", u.searchParams.get("p") ?? "", Number(u.searchParams.get("exp")), u.searchParams.get("sig") ?? "");
         if (!r.ok) {
           return new Response(
             r.reason === "link"

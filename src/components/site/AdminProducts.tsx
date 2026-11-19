@@ -129,8 +129,16 @@ function OrderRow({ o }: { o: Data["orders"][number] }) {
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <p className="font-medium">
-            {o.productTitle} · {euro(o.priceCents)}
+            {euro(o.priceCents)}
+            {o.discountCents > 0 ? ` (soodustus ${euro(o.discountCents)})` : ""}
           </p>
+          <ul className="list-inside list-disc">
+            {(o.items.length ? o.items : [{ productId: "", title: o.productTitle, priceCents: o.priceCents }]).map((i) => (
+              <li key={i.productId || i.title}>
+                {i.title} · {euro(i.priceCents)}
+              </li>
+            ))}
+          </ul>
           <p className="text-muted-foreground">
             {o.buyerName ? `${o.buyerName}, ` : ""}
             {o.buyerEmail} · {o.paidAt ? fmtDate(o.paidAt) : ""} · alla laaditud {o.downloads}×
@@ -156,6 +164,7 @@ function ProductForm({ product, onDone }: { product: AdminProduct | null; onDone
     price: product ? String(product.priceCents / 100).replace(".", ",") : "",
     sort: String(product?.sort ?? 0),
     active: product?.active ?? false,
+    aiMade: product?.aiMade ?? false,
   });
   const [imagePath, setImagePath] = useState(product?.imagePath ?? null);
   const [imagePreview, setImagePreview] = useState(product?.imageUrl ?? null);
@@ -212,6 +221,7 @@ function ProductForm({ product, onDone }: { product: AdminProduct | null; onDone
           fileName: file.name,
           active: f.active,
           sort: Number.parseInt(f.sort, 10) || 0,
+          aiMade: f.aiMade,
         },
       });
       onDone(true);
@@ -270,6 +280,10 @@ function ProductForm({ product, onDone }: { product: AdminProduct | null; onDone
       <label className="text-sm">
         <span className="mb-1 block">Järjekord (väiksem number eespool)</span>
         <input inputMode="numeric" value={f.sort} onChange={set("sort")} className={input} />
+      </label>
+      <label className="flex items-center gap-3 text-sm sm:col-span-2">
+        <input type="checkbox" checked={f.aiMade} onChange={(e) => setF({ ...f, aiMade: e.target.checked })} className="size-4 accent-[#b8913b]" />
+        Kujundus on loodud tehisintellekti abil (tootelehel näidatakse märget)
       </label>
       <label className="flex items-center gap-3 self-end text-sm">
         <input type="checkbox" checked={f.active} onChange={(e) => setF({ ...f, active: e.target.checked })} className="size-4 accent-[#b8913b]" />

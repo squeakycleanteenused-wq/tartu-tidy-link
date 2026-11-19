@@ -22,14 +22,18 @@ export type Product = {
   fileName: string | null;
   active: boolean;
   sort: number;
+  aiMade: boolean;
 };
 export type ProductInput = Omit<Product, "id"> & { id?: string | undefined };
 
+export type OrderItem = { productId: string; title: string; priceCents: number };
 export type Order = {
   id: string;
   productId: string | null;
   productTitle: string;
-  priceCents: number;
+  priceCents: number; // kogusumma pärast soodustust
+  items: OrderItem[];
+  discountCents: number;
   buyerName: string;
   buyerEmail: string;
   consentAt: string;
@@ -77,6 +81,7 @@ export type Deps = {
 };
 
 export { euro } from "@/lib/shop.shared";
+import { MAX_CART, priceCart } from "@/lib/shop.shared";
 import { euro } from "@/lib/shop.shared";
 
 export function slugify(s: string) {
@@ -101,17 +106,20 @@ export function publicProduct(d: Pick<Deps, "files">, p: Product) {
     priceCents: p.priceCents,
     imageUrl: p.imagePath ? d.files.imageUrl(p.imagePath) : null,
     fileType: p.fileName ? (p.fileName.split(".").pop() ?? "").toUpperCase() : null,
+    aiMade: p.aiMade,
   };
 }
 export type PublicProduct = ReturnType<typeof publicProduct>;
 
 /* ---------- allalaadimislink ---------- */
 
-export function signedDownloadUrl(d: Pick<Deps, "secret" | "siteUrl" | "now">, orderId: string, days = DOWNLOAD_DAYS) {
+/** Allkiri katab tellimuse; toote (p) peab tellimuses olema, mida kontrollib resolveDownload. */
+export function signedDownloadUrl(d: Pick<Deps, "secret" | "siteUrl" | "now">, orderId: string, productId: string, days = DOWNLOAD_DAYS) {
   const exp = Math.floor(d.now() / 1000) + days * 86400;
   const sig = hmac(d.secret, `dl.${orderId}.${exp}`);
-  return `${d.siteUrl}/api/pood/fail?o=${orderId}&exp=${exp}&sig=${sig}`;
+  return `${d.siteUrl}/api/pood/fail?o=${orderId}&p=${productId}&exp=${exp}&sig=${sig}`;
 }
+const itemLinks = (d: Deps, o: Order) => o.items.map((i) => ({ title: i.title, url: signedDownloadUrl(d, o.id, i.productId) }));
 export function verifyDownloadSig(d: Pick<Deps, "secret" | "now">, orderId: string, exp: number, sig: string) {
   if (!Number.isFinite(exp) || exp * 1000 < d.now()) return false;
   return safeEqual(sig, hmac(d.secret, `dl.${orderId}.${exp}`));
@@ -120,22 +128,33 @@ export function verifyDownloadSig(d: Pick<Deps, "secret" | "now">, orderId: stri
 /* ---------- ost ---------- */
 
 export class NotForSaleError extends Error {
-  constructor() {
+  constructor(public slugs: string[]) {
     super("Toode ei ole müügil");
   }
 }
 
 export async function startCheckout(
   d: Deps,
-  input: { slug: string; buyerName: string; buyerEmail: string },
+  input: { slugs: string[]; buyerName: string; buyerEmail: string },
   origin: string,
 ) {
-  const p = await d.store.getProductBySlug(input.slug);
-  if (!p || !p.active || p.kind !== "digital" || !p.filePath) throw new NotForSaleError();
+  const slugs = [...new Set(input.slugs)];
+  if (slugs.length === 0 || slugs.length > MAX_CART) throw new NotForSaleError([]);
+  const found = await Promise.all(slugs.map((s) => d.store.getProductBySlug(s)));
+  const missing = slugs.filter((_, i) => {
+    const p = found[i];
+    return !p || !p.active || p.kind !== "digital" || !p.filePath;
+  });
+  if (missing.length) throw new NotForSaleError(missing);
+  const products = found as Product[];
+  const price = priceCart(products.map((p) => p.priceCents));
+  const items = products.map((p, i) => ({ productId: p.id, title: p.title, priceCents: price.lines[i]! }));
   const id = await d.store.insertOrder({
-    productId: p.id,
-    productTitle: p.title,
-    priceCents: p.priceCents,
+    productId: products.length === 1 ? products[0]!.id : null,
+    productTitle: products.length === 1 ? products[0]!.title : `${products.length} toodet: ${products.map((p) => p.title).join(", ")}`.slice(0, 300),
+    priceCents: price.total,
+    items,
+    discountCents: price.discount,
     buyerName: input.buyerName,
     buyerEmail: input.buyerEmail,
     consentAt: new Date(d.now()).toISOString(),
@@ -143,10 +162,10 @@ export async function startCheckout(
   const s = await d.checkout.createSession({
     orderId: id,
     kind: "product",
-    lines: [{ name: p.title, cents: p.priceCents }],
+    lines: items.map((i) => ({ name: price.pct ? `${i.title} (komplekt −${price.pct}%)` : i.title, cents: i.priceCents })),
     email: input.buyerEmail,
     successUrl: `${origin}/pood/aitah?session_id={CHECKOUT_SESSION_ID}`,
-    cancelUrl: `${origin}/pood/${p.slug}?katkestatud=1`,
+    cancelUrl: `${origin}/pood/korv?katkestatud=1`,
     expiresAt: Math.floor(d.now() / 1000) + RESERVE_MINUTES * 60,
   });
   await d.store.setOrderSession(id, s.id);
@@ -171,7 +190,8 @@ export async function handleStripeEvent(d: Deps, ev: StripeEvent): Promise<"paid
 }
 
 export async function sendOrderMails(d: Deps, o: Order, opts: { buyerOnly?: boolean } = {}) {
-  const link = signedDownloadUrl(d, o.id);
+  const links = itemLinks(d, o);
+  const what = o.items.length === 1 ? `${o.items[0]!.title} on` : "Sinu tooted on";
   const consent = new Date(o.consentAt).toLocaleString("et-EE", { timeZone: "Europe/Tallinn" });
   const errors: string[] = [];
   try {
@@ -179,8 +199,8 @@ export async function sendOrderMails(d: Deps, o: Order, opts: { buyerOnly?: bool
       to: o.buyerEmail,
       subject: `Sinu ost: ${o.productTitle}`,
       text: [
-        `Aitäh ostu eest! ${o.productTitle} (${euro(o.priceCents)}) on allalaadimiseks valmis.`,
-        `Laadi alla (link kehtib ${DOWNLOAD_DAYS} päeva): ${link}`,
+        `Aitäh ostu eest (${euro(o.priceCents)})! ${what} allalaadimiseks valmis. Lingid kehtivad ${DOWNLOAD_DAYS} päeva.`,
+        ...links.map((l) => `${l.title}: ${l.url}`),
         `Nõustusid ${consent}, et digitaalne sisu tehakse kättesaadavaks kohe pärast makset ja et sellega kaob 14-päevane taganemisõigus.`,
         `Tingimused: ${d.siteUrl}/e-poe-tingimused`,
         `Küsimuste korral: ${RENTAL_COMPANY.email}, ${RENTAL_COMPANY.phone}`,
@@ -188,12 +208,14 @@ export async function sendOrderMails(d: Deps, o: Order, opts: { buyerOnly?: bool
       html: htmlMail(
         "Sinu ost on valmis",
         [
-          `Aitäh ostu eest! <b>${esc(o.productTitle)}</b> (${esc(euro(o.priceCents))}) on allalaadimiseks valmis.`,
-          `Allalaadimislink kehtib ${DOWNLOAD_DAYS} päeva. Kui see aegub, kirjuta meile ja saadame uue.`,
+          `Aitäh ostu eest (${esc(euro(o.priceCents))})! ${esc(what)} allalaadimiseks valmis.`,
+          ...links.map((l) => `<a href="${esc(l.url)}" style="color:#10291e;font-weight:600">Laadi alla: ${esc(l.title)}</a>`),
+          `Lingid kehtivad ${DOWNLOAD_DAYS} päeva. Kui need aeguvad, kirjuta meile ja saadame uued.`,
           `Kinnitus: nõustusid ${esc(consent)}, et digitaalne sisu tehakse kättesaadavaks kohe pärast makset ja et sellega kaob 14-päevane taganemisõigus.`,
           `Tingimused: <a href="${esc(d.siteUrl)}/e-poe-tingimused">${esc(d.siteUrl)}/e-poe-tingimused</a>`,
         ],
-        { href: link, label: "Laadi alla" },
+        links.length === 1 ? { href: links[0]!.url, label: "Laadi alla" } : undefined,
+        "E-pood",
       ),
     });
   } catch (e) {
@@ -202,7 +224,7 @@ export async function sendOrderMails(d: Deps, o: Order, opts: { buyerOnly?: bool
   if (d.ownerEmail && !opts.buyerOnly) {
     try {
       const lines = [
-        `Uus e-poe ost: ${o.productTitle}, ${euro(o.priceCents)}.`,
+        `Uus e-poe ost: ${o.productTitle}, ${euro(o.priceCents)}${o.discountCents ? ` (komplektisoodustus ${euro(o.discountCents)})` : ""}.`,
         `Ostja: ${o.buyerName || "–"} <${o.buyerEmail}>`,
         `Tellimus: ${o.id}`,
       ];
@@ -210,7 +232,7 @@ export async function sendOrderMails(d: Deps, o: Order, opts: { buyerOnly?: bool
         to: d.ownerEmail,
         subject: `Uus e-poe ost: ${o.productTitle} (${euro(o.priceCents)})`,
         text: lines.join("\n"),
-        html: htmlMail("Uus e-poe ost", lines.map(esc), { href: `${d.siteUrl}/haldus`, label: "Ava haldus" }),
+        html: htmlMail("Uus e-poe ost", lines.map(esc), { href: `${d.siteUrl}/haldus`, label: "Ava haldus" }, "E-pood"),
       });
     } catch (e) {
       errors.push(`omaniku kiri: ${(e as Error).message}`);
@@ -229,18 +251,17 @@ export async function purchaseResult(d: Deps, sessionId: string) {
   if (o.status !== "paid") return { state: "pending" as const };
   return {
     state: "ready" as const,
-    title: o.productTitle,
     email: o.buyerEmail,
-    downloadUrl: signedDownloadUrl(d, o.id),
+    items: itemLinks(d, o),
   };
 }
 
 /** Allalaadimine: kontrollib allkirja ja makset, tagastab lühiajalise salvelingi. */
-export async function resolveDownload(d: Deps, orderId: string, exp: number, sig: string) {
+export async function resolveDownload(d: Deps, orderId: string, productId: string, exp: number, sig: string) {
   if (!verifyDownloadSig(d, orderId, exp, sig)) return { ok: false as const, reason: "link" as const };
   const o = await d.store.getOrder(orderId);
-  if (!o || o.status !== "paid" || !o.productId) return { ok: false as const, reason: "order" as const };
-  const p = await d.store.getProduct(o.productId);
+  if (!o || o.status !== "paid" || !o.items.some((i) => i.productId === productId)) return { ok: false as const, reason: "order" as const };
+  const p = await d.store.getProduct(productId);
   if (!p?.filePath) return { ok: false as const, reason: "file" as const };
   await d.store.addDownload(o.id);
   return { ok: true as const, url: await d.files.downloadUrl(p.filePath, p.fileName ?? "fail") };
@@ -283,6 +304,7 @@ const toProduct = (r: Row): Product => ({
   fileName: (r["file_name"] as string | null) ?? null,
   active: r["active"] as boolean,
   sort: (r["sort"] as number) ?? 0,
+  aiMade: (r["ai_made"] as boolean) ?? false,
 });
 const fromProduct = (p: ProductInput) => ({
   slug: p.slug,
@@ -297,6 +319,7 @@ const fromProduct = (p: ProductInput) => ({
   file_name: p.fileName,
   active: p.active,
   sort: p.sort,
+  ai_made: p.aiMade,
   updated_at: new Date().toISOString(),
 });
 const toOrder = (r: Row): Order => ({
@@ -304,6 +327,8 @@ const toOrder = (r: Row): Order => ({
   productId: (r["product_id"] as string | null) ?? null,
   productTitle: r["product_title"] as string,
   priceCents: r["price_cents"] as number,
+  items: (r["items"] as OrderItem[] | null) ?? [],
+  discountCents: (r["discount_cents"] as number) ?? 0,
   buyerName: (r["buyer_name"] as string) ?? "",
   buyerEmail: r["buyer_email"] as string,
   consentAt: r["consent_at"] as string,
@@ -353,6 +378,8 @@ export async function supabaseStore(): Promise<Store> {
             product_id: o.productId,
             product_title: o.productTitle,
             price_cents: o.priceCents,
+            items: o.items,
+            discount_cents: o.discountCents,
             buyer_name: o.buyerName,
             buyer_email: o.buyerEmail,
             consent_at: o.consentAt,

@@ -3,6 +3,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { z } from "zod";
 import { SiteLayout } from "@/components/site/Layout";
 import { productPurchase } from "@/lib/shop.functions";
+import { cart } from "@/lib/cart";
 import { SITE_URL } from "@/lib/site";
 
 export const Route = createFileRoute("/pood/aitah")({
@@ -54,6 +55,9 @@ function Page() {
     };
   }, [session_id, tries]);
   useEffect(() => {
+    if (r?.state === "ready") cart.clear();
+  }, [r]);
+  useEffect(() => {
     if (r?.state !== "pending" || tries > 30) return;
     const t = window.setTimeout(() => setTries((n) => n + 1), 2000);
     return () => window.clearTimeout(t);
@@ -76,19 +80,25 @@ function Page() {
           ) : r?.state === "ready" ? (
             <>
               <h1 className="mt-5 font-display text-4xl font-light sm:text-5xl">
-                Aitäh! <span className="italic text-accent">Fail on valmis.</span>
+                Aitäh! <span className="italic text-accent">{r.items.length === 1 ? "Fail on valmis." : "Failid on valmis."}</span>
               </h1>
               <div className="mx-auto mt-10 max-w-md rounded-2xl bg-ink px-6 py-7 text-white">
                 <p className="text-[11px] uppercase tracking-[0.3em] text-gold">Sinu ost</p>
-                <p className="mt-2 font-display text-2xl font-light">{r.title}</p>
-                <a
-                  href={r.downloadUrl}
-                  className="mt-6 inline-flex h-12 items-center justify-center rounded-full bg-gold px-8 text-sm font-semibold uppercase tracking-[0.15em] text-ink hover:bg-[#c9a24c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
-                >
-                  Laadi alla
-                </a>
+                <ul className="mt-4 space-y-4">
+                  {r.items.map((i) => (
+                    <li key={i.url} className="flex flex-col items-center gap-3">
+                      <p className="font-display text-xl font-light">{i.title}</p>
+                      <a
+                        href={i.url}
+                        className="inline-flex h-11 items-center justify-center rounded-full bg-gold px-7 text-sm font-semibold uppercase tracking-[0.15em] text-ink hover:bg-[#c9a24c] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+                      >
+                        Laadi alla
+                      </a>
+                    </li>
+                  ))}
+                </ul>
               </div>
-              <p className="mt-8 text-muted-foreground">Saatsime allalaadimislingi ka e-postile {r.email}. Link kehtib 7 päeva.</p>
+              <p className="mt-8 text-muted-foreground">Saatsime allalaadimislingid ka e-postile {r.email}. Need kehtivad 7 päeva.</p>
             </>
           ) : (
             <>

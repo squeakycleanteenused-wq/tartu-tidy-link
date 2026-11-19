@@ -25,6 +25,7 @@ import { Route as KinkekaardidAitahRouteImport } from './routes/kinkekaardid.ait
 import { Route as PoodIndexRouteImport } from './routes/pood.index'
 import { Route as PoodSlugRouteImport } from './routes/pood.$slug'
 import { Route as PoodAitahRouteImport } from './routes/pood.aitah'
+import { Route as PoodKorvRouteImport } from './routes/pood.korv'
 import { Route as ApiKinkekaartHaldusPdfRouteImport } from './routes/api/kinkekaart.haldus-pdf'
 import { Route as ApiKinkekaartPdfRouteImport } from './routes/api/kinkekaart.pdf'
 import { Route as ApiPoodFailRouteImport } from './routes/api/pood.fail'
@@ -109,6 +110,11 @@ const PoodAitahRoute = PoodAitahRouteImport.update({
   path: '/pood/aitah',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoodKorvRoute = PoodKorvRouteImport.update({
+  id: '/pood/korv',
+  path: '/pood/korv',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ApiKinkekaartHaldusPdfRoute = ApiKinkekaartHaldusPdfRouteImport.update({
   id: '/api/kinkekaart/haldus-pdf',
   path: '/api/kinkekaart/haldus-pdf',
@@ -140,6 +146,7 @@ export interface FileRoutesByFullPath {
   '/kinkekaardid/aitah': typeof KinkekaardidAitahRoute
   '/pood/$slug': typeof PoodSlugRoute
   '/pood/aitah': typeof PoodAitahRoute
+  '/pood/korv': typeof PoodKorvRoute
   '/kinkekaardid/': typeof KinkekaardidIndexRoute
   '/pood/': typeof PoodIndexRoute
   '/api/kinkekaart/haldus-pdf': typeof ApiKinkekaartHaldusPdfRoute
@@ -161,6 +168,7 @@ export interface FileRoutesByTo {
   '/kinkekaardid/aitah': typeof KinkekaardidAitahRoute
   '/pood/$slug': typeof PoodSlugRoute
   '/pood/aitah': typeof PoodAitahRoute
+  '/pood/korv': typeof PoodKorvRoute
   '/kinkekaardid': typeof KinkekaardidIndexRoute
   '/pood': typeof PoodIndexRoute
   '/api/kinkekaart/haldus-pdf': typeof ApiKinkekaartHaldusPdfRoute
@@ -183,6 +191,7 @@ export interface FileRoutesById {
   '/kinkekaardid/aitah': typeof KinkekaardidAitahRoute
   '/pood/$slug': typeof PoodSlugRoute
   '/pood/aitah': typeof PoodAitahRoute
+  '/pood/korv': typeof PoodKorvRoute
   '/kinkekaardid/': typeof KinkekaardidIndexRoute
   '/pood/': typeof PoodIndexRoute
   '/api/kinkekaart/haldus-pdf': typeof ApiKinkekaartHaldusPdfRoute
@@ -206,6 +215,7 @@ export interface FileRouteTypes {
     | '/kinkekaardid/aitah'
     | '/pood/$slug'
     | '/pood/aitah'
+    | '/pood/korv'
     | '/kinkekaardid/'
     | '/pood/'
     | '/api/kinkekaart/haldus-pdf'
@@ -227,6 +237,7 @@ export interface FileRouteTypes {
     | '/kinkekaardid/aitah'
     | '/pood/$slug'
     | '/pood/aitah'
+    | '/pood/korv'
     | '/kinkekaardid'
     | '/pood'
     | '/api/kinkekaart/haldus-pdf'
@@ -248,6 +259,7 @@ export interface FileRouteTypes {
     | '/kinkekaardid/aitah'
     | '/pood/$slug'
     | '/pood/aitah'
+    | '/pood/korv'
     | '/kinkekaardid/'
     | '/pood/'
     | '/api/kinkekaart/haldus-pdf'
@@ -270,6 +282,7 @@ export interface RootRouteChildren {
   KinkekaardidAitahRoute: typeof KinkekaardidAitahRoute
   PoodSlugRoute: typeof PoodSlugRoute
   PoodAitahRoute: typeof PoodAitahRoute
+  PoodKorvRoute: typeof PoodKorvRoute
   KinkekaardidIndexRoute: typeof KinkekaardidIndexRoute
   PoodIndexRoute: typeof PoodIndexRoute
   ApiKinkekaartHaldusPdfRoute: typeof ApiKinkekaartHaldusPdfRoute
@@ -391,6 +404,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PoodAitahRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pood/korv': {
+      id: '/pood/korv'
+      path: '/pood/korv'
+      fullPath: '/pood/korv'
+      preLoaderRoute: typeof PoodKorvRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/api/kinkekaart/haldus-pdf': {
       id: '/api/kinkekaart/haldus-pdf'
       path: '/api/kinkekaart/haldus-pdf'
@@ -430,6 +450,7 @@ const rootRouteChildren: RootRouteChildren = {
   KinkekaardidAitahRoute: KinkekaardidAitahRoute,
   PoodSlugRoute: PoodSlugRoute,
   PoodAitahRoute: PoodAitahRoute,
+  PoodKorvRoute: PoodKorvRoute,
   KinkekaardidIndexRoute: KinkekaardidIndexRoute,
   PoodIndexRoute: PoodIndexRoute,
   ApiKinkekaartHaldusPdfRoute: ApiKinkekaartHaldusPdfRoute,

@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SiteLayout } from "@/components/site/Layout";
 import { SectionHeading } from "@/components/site/SectionHeading";
 import { ProductCard } from "@/components/site/ProductCard";
+import { CartBar } from "@/components/site/CartBar";
+import { BUNDLE_TEXT } from "@/lib/shop.shared";
 import { Shop } from "@/components/site/Shop";
 import { shopProducts } from "@/lib/shop.functions";
 import { SITE_URL, canonical } from "@/lib/site";
@@ -43,6 +45,9 @@ function Page() {
               accent="koduks"
               subtitle="Digitaalsed tooted on allalaaditavad kohe pärast makset. Link tuleb ka e-postile."
             />
+            <p className="mx-auto mt-8 max-w-xl rounded-full border border-gold/50 px-6 py-3 text-center text-sm">
+              Pane ise komplekt kokku. {BUNDLE_TEXT.replace("Komplekt: ", "")}
+            </p>
             {Object.entries(groups).map(([cat, list]) => (
               <div key={cat} className="mt-14">
                 {Object.keys(groups).length > 1 && (
@@ -58,6 +63,7 @@ function Page() {
           </div>
         </section>
       )}
+      <CartBar />
     </SiteLayout>
   );
 }
