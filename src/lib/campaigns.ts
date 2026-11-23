@@ -11,6 +11,7 @@ export type Campaign = {
   termsHref?: string; // link tingimustele (näidatakse nupu all)
   image: string;
   imagePos: string; // millist pildi osa näidata (CSS object-position)
+  panel?: boolean; // arvutis pilt tervikuna paremal kaardina (toote lähivõte), mitte kogu taustana
   aiImage?: boolean; // tehisintellektiga loodud pilt: lehel kuvatakse märge (EL tehisintellekti määrus, art 50)
   et: CampaignText;
   en: CampaignText;
@@ -63,6 +64,7 @@ export const CAMPAIGNS: Campaign[] = [
     id: "tekstiilipuhasti",
     image: tekstiilipuhasti,
     imagePos: "70% 50%",
+    panel: true,
     aiImage: true,
     href: "#hinnakalkulaator",
     termsHref: "/renditingimused",

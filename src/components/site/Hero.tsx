@@ -24,11 +24,14 @@ function Slide({
   top,
   bottom,
   aiNote,
+  panel = false,
 }: {
   image: string;
   imagePos: string;
   alt: string;
   aiNote?: string | undefined;
+  /** Arvutis pilt tervikuna paremal kaardina (lähivõte tootest), mitte kogu tausta katvana. */
+  panel?: boolean | undefined;
   top: ReactNode;
   bottom: ReactNode;
 }) {
@@ -50,16 +53,38 @@ function Slide({
         </span>
       )}
 
-      {/* Arvuti: foto taustaks kogu ploki ulatuses */}
-      <img
-        src={image}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 -z-20 hidden h-full w-full object-cover lg:block"
-        style={{ objectPosition: imagePos }}
-      />
-      {/* Vasakult tumendus teksti loetavuseks, all üleminek järgmisesse plokki */}
-      <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink/90 via-ink/55 to-ink/5 lg:block" />
+      {panel ? (
+        <>
+          {/* Arvuti: hägustatud ja tumendatud sama pilt taustaks, pilt ise tervikuna paremal */}
+          <img
+            src={image}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 -z-20 hidden h-full w-full scale-110 object-cover opacity-35 blur-2xl lg:block"
+          />
+          <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink via-ink/85 to-ink/60 lg:block" />
+          <img
+            src={image}
+            alt=""
+            aria-hidden="true"
+            className="absolute right-[4%] top-1/2 -z-10 hidden aspect-[16/9] w-[38%] -translate-y-1/2 rounded-[28px] object-cover shadow-[0_40px_90px_-30px_rgb(0_0_0/0.8)] ring-1 ring-white/15 lg:block xl:w-[44%]"
+          />
+        </>
+      ) : (
+        <>
+          {/* Arvuti: foto taustaks kogu ploki ulatuses */}
+          <img
+            src={image}
+            alt=""
+            aria-hidden="true"
+            className="absolute inset-0 -z-20 hidden h-full w-full object-cover lg:block"
+            style={{ objectPosition: imagePos }}
+          />
+          {/* Vasakult tumendus teksti loetavuseks */}
+          <div className="absolute inset-0 -z-10 hidden bg-gradient-to-r from-ink/90 via-ink/55 to-ink/5 lg:block" />
+        </>
+      )}
+      {/* All üleminek järgmisesse plokki */}
       <div className="absolute inset-x-0 bottom-0 -z-10 hidden h-40 bg-gradient-to-t from-ink/70 to-transparent lg:block" />
 
       <div className="relative mx-auto -mt-10 flex max-w-6xl flex-col justify-between gap-12 px-6 pb-16 sm:-mt-16 lg:mt-0 lg:min-h-[calc(100svh-6rem)] lg:py-24">
@@ -170,6 +195,7 @@ function CampaignSlide({ campaign }: { campaign: Campaign }) {
     <Slide
       image={campaign.image}
       imagePos={campaign.imagePos}
+      panel={campaign.panel}
       alt={c.alt}
       aiNote={campaign.aiImage ? (lang === "et" ? "Illustratsioon, loodud tehisintellektiga" : "Illustration, AI-generated") : undefined}
       top={
