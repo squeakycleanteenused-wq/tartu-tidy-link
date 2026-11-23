@@ -12,6 +12,7 @@ import imgMustkuld from "@/assets/giftcards/mustkuld.jpg?inline";
 import imgJoulud from "@/assets/giftcards/joulud.jpg?inline";
 import imgSunnipaev from "@/assets/giftcards/sunnipaev.jpg?inline";
 import imgTartu from "@/assets/giftcards/tartu.jpg?inline";
+import imgNinja from "@/assets/giftcards/ninja.jpg?inline";
 import fPlayfair700 from "@/assets/giftcards/fonts/playfair-display-700.ttf?inline";
 import fPlayfair800 from "@/assets/giftcards/fonts/playfair-display-800.ttf?inline";
 import fCinzel700 from "@/assets/giftcards/fonts/cinzel-700.ttf?inline";
@@ -29,6 +30,7 @@ const IMAGES: Record<string, string> = {
   joulud: imgJoulud,
   sunnipaev: imgSunnipaev,
   tartu: imgTartu,
+  ninja: imgNinja,
 };
 const FONT_DATA: Record<string, string> = {
   "playfair-display-700": fPlayfair700,

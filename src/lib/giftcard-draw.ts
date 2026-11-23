@@ -59,7 +59,8 @@ export function drawFront(ctx: Ctx, d: Design, image: CanvasImageSource, data: C
   const W = d.w, H = d.h, s = W / 2000, p = (v: number) => v * s;
   ctx.drawImage(image, 0, 0, W, H);
   const w = 960, h = 300, gridH = (2000 * H) / W;
-  const px = 2000 - PANEL_MARGIN - w, py = gridH - PANEL_MARGIN - h;
+  const left = "panel" in d && d.panel === "left";
+  const px = left ? PANEL_MARGIN : 2000 - PANEL_MARGIN - w, py = gridH - PANEL_MARGIN - h;
   const X0 = p(px), Y0 = p(py), X1 = p(px + w), Y1 = p(py + h), HEAD = p(46);
 
   ctx.save();

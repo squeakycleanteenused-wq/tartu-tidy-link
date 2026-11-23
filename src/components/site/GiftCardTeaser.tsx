@@ -22,8 +22,8 @@ export function GiftCardTeaser() {
             </span>
             <span className="mt-3 block text-base font-light text-muted-foreground">
               {et
-                ? "Kodukoristuse kinkekaart kuue kujundusega. Maksad kohe ja saad kaardi PDF-ina või prinditult ümbrikus."
-                : "A home cleaning gift card in six designs. Pay online and get the card as a PDF or printed in an envelope."}
+                ? "Kodukoristuse kinkekaart seitsme kujundusega. Maksad kohe ja saad kaardi PDF-ina või prinditult ümbrikus."
+                : "A home cleaning gift card in seven designs. Pay online and get the card as a PDF or printed in an envelope."}
             </span>
           </span>
           <span className="grid size-12 place-items-center rounded-full border border-border transition-colors group-hover:border-gold group-hover:text-accent">

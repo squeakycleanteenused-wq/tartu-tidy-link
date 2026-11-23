@@ -52,7 +52,8 @@ export function amountHint(a: number | null) {
   return "Piisab mitmeks koristuseks.";
 }
 
-/** Kujundused. Pealkirjad on pildil, ülejäänu joonistab src/lib/giftcard-draw.ts. */
+/** Kujundused. Pealkirjad on pildil, ülejäänu joonistab src/lib/giftcard-draw.ts.
+    panel: "left" paneb summa ja väljadega kasti vasakusse alanurka (vaikimisi paremal). */
 export const DESIGNS = [
   { id: "majahaldjas", name: "Majahaldjas", w: 1748, h: 1240, border: "#0a122c", accent: "#e2ba68", price: "#0a122c", fill: "#fcf6e8", font: "800|Playfair Display" },
   { id: "roosa", name: "Roosa siid", w: 2000, h: 1294, border: "#601c3a", accent: "#be8e4a", price: "#601c3a", fill: "#fff8f6", font: "800|Playfair Display" },
@@ -60,6 +61,7 @@ export const DESIGNS = [
   { id: "joulud", name: "Jõulud", w: 2000, h: 1294, border: "#101a3a", accent: "#deb460", price: "#961820", fill: "#fdf5e4", font: "800|Playfair Display" },
   { id: "sunnipaev", name: "Sünnipäev", w: 2000, h: 1294, border: "#247a8c", accent: "#e86056", price: "#e86056", fill: "#ffffff", font: "700|Oswald" },
   { id: "tartu", name: "Tartu", w: 2000, h: 1294, border: "#184282", accent: "#e8b63c", price: "#184282", fill: "#ffffff", font: "800|Playfair Display" },
+  { id: "ninja", name: "Koduninja", w: 1748, h: 1240, border: "#0a122c", accent: "#e2ba68", price: "#0a122c", fill: "#fcf6e8", font: "800|Playfair Display", panel: "left" },
 ] as const;
 
 export type Design = (typeof DESIGNS)[number];
