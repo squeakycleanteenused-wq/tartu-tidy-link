@@ -8,12 +8,14 @@ import imgMustkuld from "@/assets/giftcards/mustkuld.jpg";
 import imgJoulud from "@/assets/giftcards/joulud.jpg";
 import imgSunnipaev from "@/assets/giftcards/sunnipaev.jpg";
 import imgTartu from "@/assets/giftcards/tartu.jpg";
+import imgNinja from "@/assets/giftcards/ninja.jpg";
 import thMajahaldjas from "@/assets/giftcards/majahaldjas-thumb.webp";
 import thRoosa from "@/assets/giftcards/roosa-thumb.webp";
 import thMustkuld from "@/assets/giftcards/mustkuld-thumb.webp";
 import thJoulud from "@/assets/giftcards/joulud-thumb.webp";
 import thSunnipaev from "@/assets/giftcards/sunnipaev-thumb.webp";
 import thTartu from "@/assets/giftcards/tartu-thumb.webp";
+import thNinja from "@/assets/giftcards/ninja-thumb.webp";
 
 /* Kinkekaardi eelvaade brauseris. Joonistab sama koodiga mis serveri PDF (giftcard-draw.ts). */
 
@@ -29,6 +31,7 @@ export const CARD_IMAGES: Record<string, string> = {
   joulud: imgJoulud,
   sunnipaev: imgSunnipaev,
   tartu: imgTartu,
+  ninja: imgNinja,
 };
 export const CARD_THUMBS: Record<string, string> = {
   majahaldjas: thMajahaldjas,
@@ -37,6 +40,7 @@ export const CARD_THUMBS: Record<string, string> = {
   joulud: thJoulud,
   sunnipaev: thSunnipaev,
   tartu: thTartu,
+  ninja: thNinja,
 };
 
 let fontsPromise: Promise<unknown> | null = null;
