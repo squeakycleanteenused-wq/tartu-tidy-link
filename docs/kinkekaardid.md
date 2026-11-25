@@ -46,6 +46,7 @@ Võtmeid ei panda koodi ega gitti ning neid ei saadeta kellelegi vestluses.
 1. Stripe'is lõpeta konto aktiveerimine (ettevõtte andmed, pangakonto).
 2. Lülita Dashboard päris režiimi ja võta sealt `sk_live_...` võti.
 3. Loo päris režiimis uus webhook `https://www.squeakycleanteenused.ee/api/stripe-webhook` ja võta selle `whsec_...`.
+   **[TÄPSUSTADA]** Leht töötab aadressil `koduninja.ee` (`src/lib/site.ts`). Kontrolli, kumb domeen on webhooki jaoks õige.
 4. Pane need Vercelis **Production** keskkonda (`STRIPE_SECRET_KEY`, `STRIPE_WEBHOOK_SECRET`). Testvõtmed jäävad Preview'sse.
 5. Kontrolli, et kinkekaardi tingimuste leht (`src/routes/kinkekaardi-tingimused.tsx`) on täidetud.
 
